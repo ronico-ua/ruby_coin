@@ -30,6 +30,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -56,7 +57,7 @@ group :test do
   # gem 'json_spec'
   gem 'rails-controller-testing'
   # gem 'rspec-html-matchers', '0.9.2'
-  gem 'rspec-rails'
+
   # gem 'rspec-sidekiq', '~> 3.0', '>= 3.0.3'
   # gem 'rspec_junit_formatter', '0.3.0'
   gem 'shoulda-matchers'

@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "ronico",
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
@@ -13,5 +13,6 @@
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
-  }
+  },
+  "packageManager": "yarn@3.3.0"
 }

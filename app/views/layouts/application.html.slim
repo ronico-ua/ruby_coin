@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title
+      | Ronico
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload", media: 'all'
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  - css_classes = [controller_path.gsub('/', '-'), action_name].map { |s| s.gsub('_', '-') }
+  body class=css_classes
+    = yield
