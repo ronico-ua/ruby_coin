@@ -9,7 +9,7 @@ Installation
 5. Open [http://localhost:3000/](http://localhost:3000/) in your browser
 
 
-* Ruby version 3.1.3
+* Ruby version 3.2.0
 * Rails version 7.0.4
 * PostgreSQL 9.3
 
