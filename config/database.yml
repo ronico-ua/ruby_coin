@@ -7,6 +7,8 @@ default: &default
 development:
   <<: *default
   database: ronico_development
+  username: dev
+  password: dev
 
 test:
   <<: *default
