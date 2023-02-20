@@ -21,6 +21,7 @@ gem "redis"
 gem 'sidekiq'
 gem 'slim'
 gem 'carrierwave'
+gem 'devise'
 
 group :development, :test do
   # gem 'letter_opener', '1.7.0'
