@@ -8,7 +8,7 @@ Installation
 
 Start server
 --------------
-1. To start a web server please run `bin/dev`
+1. To start a web server please run `bin/dev` or `s.cmd` if windows
 2. Open [http://localhost:3000/](http://localhost:3000/) in your browser
 
 ### Stack of technologies
