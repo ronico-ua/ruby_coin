@@ -4,7 +4,8 @@ Installation
 --------------
 1. git clone git@github.com:anko20094/ronico.git
 2. Run `bundle install`
-3. Run `rails db:create db:migrate db:seed`
+3. Run `yarn`
+4. Run `rails db:create db:migrate db:seed`
 
 Start server
 --------------

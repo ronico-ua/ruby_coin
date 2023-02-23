@@ -1,14 +1,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: ronico_development
-  username: dev
-  password: dev
 
 test:
   <<: *default
