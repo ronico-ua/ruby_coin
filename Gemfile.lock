@@ -110,6 +110,9 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hpricot (0.8.6)
+    html2slim (0.2.0)
+      hpricot
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -301,6 +304,7 @@ DEPENDENCIES
   carrierwave
   cssbundling-rails
   devise
+  html2slim
   jbuilder
   jsbundling-rails
   pg (~> 1.4.5)

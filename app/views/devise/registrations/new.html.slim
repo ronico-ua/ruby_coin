@@ -1,0 +1,24 @@
+.log-reg__form
+  h1.title Реєстрація
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    .group
+      label.standart-label Емейл*
+      .input
+        .badge
+          = image_tag "mail-icon.svg" 
+        = f.email_field :email, autofocus: true, autocomplete: "email", label: false, class: 'standart-input'
+    .group
+      label.standart-label Пароль*
+      .input
+        .badge
+          = image_tag "pass-icon.svg" 
+        = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
+    .group
+      label.standart-label Повтор пароля*
+      .input
+        .badge
+          = image_tag "pass-icon.svg" 
+        = f.password_field :password_confirmation, label: false, autocomplete: "current-password", class: 'standart-input'
+    .actions
+      = f.submit "Зареєструватися", class: 'main-btn register'
+      = link_to "У вас вже є обліковий запис?", new_session_path(resource_name), class: 'text'

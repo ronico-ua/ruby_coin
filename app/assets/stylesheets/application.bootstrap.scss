@@ -9,6 +9,13 @@
   text-fill-color: transparent;
 }
 
+@mixin fz-14-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+}
+
 body {
   font-family: 'Gilroy' sans-serif !important;
 }
@@ -16,6 +23,7 @@ body {
 .main-btn {
   cursor: pointer;
   width: fit-content;
+  background: initial;
   padding: 15px 53px;
   border-radius: 10px;
   border: 1px solid rgba(81, 116, 255, 1);
@@ -33,6 +41,7 @@ body {
 
 .sticky-footer {
   position: relative;
+  min-height: calc(100vh - 100px);
   overflow: hidden;
   .element-bg-first, .element-bg-second, .element-bg-third {
     position: absolute;
@@ -496,4 +505,118 @@ body {
       margin-right: 37px;
     }
   }
+}
+
+// Login Form
+
+.log-reg__form {
+  max-width: 400px;
+  margin: 0 auto;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #FFFFFF;
+  border-radius: 15px;
+  .title {
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 39px;
+    color: #000000;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    .group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 23px;
+      }
+    }
+  }
+  .remember_me {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    .left {
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 12px;
+      }
+    }
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    .main-btn {
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+      &.register {
+        margin-top: 40px;
+      }
+      &:first-child {
+        margin-bottom: 25px;
+      }
+    }
+    .text {
+      text-align: center;
+    }
+    .text {
+      @include fz-14-text();
+    }
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  .input {
+    display: flex;
+    .badge {
+      background: linear-gradient(94.22deg, #5174FF 0%, #D251FF 100%);
+      border-radius: 8px;
+      min-width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .standart-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.standart-label {
+  @include fz-14-text();
+}
+
+.standart-input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(81, 116, 255, 1);
+  height: 50px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  padding: 0 17px;
+}
+
+// Admin Panel
+
+.admin-panel {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
