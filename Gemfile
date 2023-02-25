@@ -10,7 +10,6 @@ gem "puma", "~> 6.0"
 gem "propshaft"
 gem "jsbundling-rails"
 gem "turbo-rails"
-gem "html2slim"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 

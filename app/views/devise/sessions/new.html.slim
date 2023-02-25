@@ -1,11 +1,12 @@
 .log-reg__form
   h1.title Вхід
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = form_for(resource, as: resource_name, url: session_path(resource_name),
+          html: { data: { turbo: false } }) do |f|
     .group
       label.standart-label Емейл*
       .input
         .badge
-          = image_tag "mail-icon.svg" 
+          = image_tag "mail-icon.svg"
         = f.email_field :email, autofocus: true, autocomplete: "email", label: false, class: 'standart-input'
     .group
       label.standart-label Пароль*
