@@ -1,0 +1,79 @@
+.admin-panel
+  .admin-panel__content
+    .admin-panel__inner
+      = render 'admin/partials/admin-left'
+      .admin-panel__right
+        .tags__inner
+          .tags__left
+            .inner-title
+              h1.admin__title Існуючі теги
+              .search-form
+                input.search-input type="search" placeholder="Пошук"
+            .tags
+              .tag
+                h3.tag__title Тег 1
+                .tag__actions
+                  .edit
+                    = image_tag "edit-icon.svg"
+                  .delete
+                  = image_tag "delete-icon.svg"
+              .tag
+                h3.tag__title Тег 1
+                .tag__actions
+                  .edit
+                    = image_tag "edit-icon.svg"
+                  .delete
+                  = image_tag "delete-icon.svg"
+              .tag
+                h3.tag__title Тег 1
+                .tag__actions
+                  .edit
+                    = image_tag "edit-icon.svg"
+                  .delete
+                  = image_tag "delete-icon.svg"
+              .tag
+                h3.tag__title Тег 1
+                .tag__actions
+                  .edit
+                    = image_tag "edit-icon.svg"
+                  .delete
+                  = image_tag "delete-icon.svg"
+              .tag
+                h3.tag__title Тег 1
+                .tag__actions
+                  .edit
+                    = image_tag "edit-icon.svg"
+                  .delete
+                  = image_tag "delete-icon.svg"
+              .tag
+                h3.tag__title Тег 1
+                .tag__actions
+                  .edit
+                    = image_tag "edit-icon.svg"
+                  .delete
+                  = image_tag "delete-icon.svg"
+              .tag
+                h3.tag__title Тег 1
+                .tag__actions
+                  .edit
+                    = image_tag "edit-icon.svg"
+                  .delete
+                  = image_tag "delete-icon.svg"
+            .pagination
+              .pagination__inner
+                span.page-number.first Перша
+                .pages
+                  span.page-number.active 1
+                  span.page-number 2
+                  span.page-number 3
+                  span.page-number ...
+                  span.page-number 7
+                  span.page-number 8
+                  span.page-number 9
+                span.page-number.last Остання
+          .tags__right
+            h1.admin__title Створити категорію
+            input.standart-input placeholder="Назва категорії" type="text"
+            .main-btn Створити
+.element-bg-first
+= image_tag "element-bg-first.svg", class: 'element-posts'

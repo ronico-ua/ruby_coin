@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'posts#index'
     resources :posts
+    resources :tags
   end
 end
