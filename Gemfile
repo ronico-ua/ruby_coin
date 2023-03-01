@@ -31,11 +31,15 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
-  gem 'rubocop'
 end
 
 group :development do
   gem "web-console"
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-faker', require: false
 
   # gem 'capistrano-bundler'
   # gem 'capistrano-linked-files'
