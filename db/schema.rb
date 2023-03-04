@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_194911) do
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.string "description"
     t.string "photo"
     t.integer "status"

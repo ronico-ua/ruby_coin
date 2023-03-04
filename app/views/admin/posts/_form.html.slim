@@ -1,0 +1,30 @@
+= form_with model: [:admin, post], data: { turbo: :false } do |f|
+  = render 'shared/errors', object: post
+  .mb-3.row
+    .col-sm-2.col-form-label
+      = f.label :title
+    .col-sm-10
+      = f.text_field :title, class: 'form-control'
+  .mb-3.row
+    .col-sm-2.col-form-label
+      = f.label :description
+    .col-sm-10
+      = f.text_field :description, class: 'form-control'
+  .mb-3.row
+    .col-sm-2.col-form-label
+      = f.label :photo
+    .col-sm-10
+      = f.file_field :photo
+      / = thumbnail_rectangle_image(f.object.image_file)
+  .mb-3.row
+    .col-sm-2.col-form-label
+      = f.label :status, 'Active?'
+    .col-sm-10
+      = f.check_box :status, checked: post.status
+  - if tags.present?
+    .mb-3.row
+      .col-sm-2.col-form-label
+        = f.label :tags
+    .col-sm-10
+      = f.collection_select :tag_ids, tags, :id, :name, {}, multiple: true
+  = f.submit 'Send', class: 'btn btn-primary'

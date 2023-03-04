@@ -11,8 +11,9 @@ nav.navbar.navbar-expand-custom.sticky-top
         li.nav-item
           a.nav-link[href="#"] FAQ
       .actions
-        .main-btn Sign up
-        .main-btn.filled Sign in
+        - if current_user.blank?
+          = link_to 'Sign up', new_user_registration_path, class: 'main-btn'
+          = link_to 'Sign in', new_user_session_path, class: 'main-btn filled'
         .dropdown
           a.nav-link.dropdown-toggle[href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"]
             = image_tag "uk-flag.svg" 
