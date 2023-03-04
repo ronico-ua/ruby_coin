@@ -1,0 +1,3 @@
+= form_with model: [:admin, Tag.new] do |f|
+  = f.text_field :name, class: 'standart-input', placeholder: 'Name of the tag'
+  = f.submit 'Create', class: 'main-btn'
