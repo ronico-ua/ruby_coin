@@ -1,9 +1,8 @@
-= turbo_frame_tag tag do
-  .tag
-    h3.tag__title = tag.name
-    .tag__actions
-      .edit
-        = image_tag "edit-icon.svg"
-      .delete
-        = link_to image_tag("delete-icon.svg"), admin_tag_path(tag),
-                data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+= turbo_frame_tag tag, class: 'tag' do
+  h3.tag__title = tag.name
+  .tag__actions
+    .edit
+      = image_tag "edit-icon.svg"
+    .delete
+      = link_to image_tag("delete-icon.svg"), admin_tag_path(tag),
+              data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

@@ -8,20 +8,19 @@
           .dropdown Теги
         .posts-admin
           - @posts.each do |post|
-            = turbo_frame_tag post do
-              .post
-                = image_tag "post-small.png", class: 'post-img'
-                .post__content
-                  .post__text
-                    h4.post__title = post.title
-                    p.post__description = post.description
-                  .post__actions
-                    .delete
-                      = link_to image_tag("delete-icon.svg"), admin_post_path(post),
-                                              data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
-                    .edit
-                      = link_to  image_tag("edit-icon.svg"), edit_admin_post_path(post),
-                              data: { turbo: :false }
+            = turbo_frame_tag post, class: 'post' do
+              = image_tag "post-small.png", class: 'post-img'
+              .post__content
+                .post__text
+                  h4.post__title = post.title
+                  p.post__description = post.description
+                .post__actions
+                  .delete
+                    = link_to image_tag("delete-icon.svg"), admin_post_path(post),
+                                            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+                  .edit
+                    = link_to  image_tag("edit-icon.svg"), edit_admin_post_path(post),
+                            data: { turbo: :false }
           .post
             = image_tag "post-small.png", class: 'post-img'
             .post__content

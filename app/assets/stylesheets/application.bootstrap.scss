@@ -20,6 +20,11 @@ body {
   font-family: 'Gilroy' sans-serif !important;
 }
 
+a {
+  text-decoration: none;
+  border: 0;
+}
+
 .main-btn {
   cursor: pointer;
   width: fit-content;
@@ -31,8 +36,12 @@ body {
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 0.025em;
-  color: #000000;
+  color: rgb(113, 65, 245);
   transition: all 0.2s ease;
+  &.filled {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(81,116,255,1) 0%, rgba(210,81,255,1) 100%);
+  }
   &:hover {
     color: #fff;
     background: linear-gradient(90deg, rgba(81,116,255,1) 0%, rgba(210,81,255,1) 100%);
@@ -93,6 +102,7 @@ body {
     .main-btn {
       font-weight: 400;
       padding: 10px 30px;
+      text-decoration: none;
       &.filled {
         margin: 0 40px 0 15px;
         border: 0;
@@ -648,7 +658,7 @@ body {
   width: 100%;
   max-width: 1200px;
   padding: 0 15px;
-  margin: 65px auto 0;
+  margin: 65px auto;
   &__content {
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -689,6 +699,7 @@ body {
     .navigation {
       display: flex;
       flex-direction: column;
+      margin-bottom: 50px;
     }
     .nav-link {
       display: flex;
@@ -756,6 +767,9 @@ body {
           border-top-left-radius: 10px;
           border-bottom-left-radius: 10px;
         }
+        &__text {
+          padding-right: 10px;
+        }
         &__content {
           display: flex;
           justify-content: space-between;
@@ -768,10 +782,20 @@ body {
           line-height: 19px;
           color: #000000;
           margin-bottom: 10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
         &__description {
           @include fz-14-text();
           margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
         }
         &__actions {
           display: flex;
@@ -880,6 +904,7 @@ body {
     }
   }
   .tags__right {
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     .admin__title {
@@ -890,4 +915,63 @@ body {
       margin-bottom: 20px;
     }
   }
+}
+
+.admin-form {
+  width: 100%;
+  max-width: 1230px;
+  margin: 60px auto 90px;
+  &__content {
+    padding: 30px 30px 40px;
+    background: linear-gradient(97.02deg, rgba(255, 255, 255, 0.25) 0%, rgba(217, 217, 217, 0) 100%);
+    backdrop-filter: blur(34px);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.039);
+  }
+  .standart-label {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 12px;
+  }
+  .group {
+    margin-bottom: 40px;
+    flex-direction: column;
+    &.column {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .flex-inner {
+    margin-bottom: 40px;
+    label {
+      margin-right: 10px;
+    }
+  }
+  .descr {
+    height: 600px;
+  }
+  .tags {
+    height: 200px;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    .main-btn.filled {
+      margin-left: 40px;
+    }
+  }
+}
+
+.element-form-1 {
+  position: absolute;
+  top: 12%;
+  z-index: -1;
+}
+
+.element-form-2 {
+  position: absolute;
+  top: 60%;
+  z-index: -1;
 }
