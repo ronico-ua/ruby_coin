@@ -7,11 +7,8 @@
         input.welcome-block__search type="search" placeholder="Пошук"
   .categories-inner
     .category-item.active Всі
-    .category-item Баги
-    .category-item Фічі
-    .category-item Аніме
-    .category-item Тянки
-    .category-item Кодинг
+    - @tags.each do |tag|
+      .category-item = tag.name
   .main-post
     .main-post__inner
       .main-post__left
