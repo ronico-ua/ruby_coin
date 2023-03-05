@@ -2,7 +2,8 @@
   h3.tag__title = tag.name
   .tag__actions
     .edit
-      = image_tag "edit-icon.svg"
+      = link_to image_tag("edit-icon.svg"), edit_admin_tag_path(tag),
+              data: { turbo_frame: dom_id(tag) }
     .delete
       = link_to image_tag("delete-icon.svg"), admin_tag_path(tag),
               data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

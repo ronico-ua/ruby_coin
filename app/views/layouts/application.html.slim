@@ -10,7 +10,7 @@ html
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   - css_classes = [controller_path.gsub('/', '-'), action_name].map { |s| s.gsub('_', '-') }
   body class=css_classes
-    = render 'layouts/navbar'
+    = render 'shared/navbar'
     .sticky-footer
       = yield
-    = render 'layouts/footer'
+    = render 'shared/footer'

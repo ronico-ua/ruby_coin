@@ -1,12 +1,12 @@
 .admin-panel
   .admin-panel__content
     .admin-panel__inner
-      = render 'admin/partials/admin-left'
+      = render 'admin/shared/admin_left_panel'
       .admin-panel__right
         .tags__inner
           .tags__left
             .inner-title
-              h1.admin__title Існуючі теги
+              h1.admin__title = t('.tags')
               .search-form
                 input.search-input type="search" placeholder="Пошук"
             .tags
@@ -25,7 +25,7 @@
                   span.page-number 9
                 span.page-number.last Остання
           .tags__right
-            h1.admin__title Створити тег
+            h1.admin__title = t('.create')
             = render 'form'
 .element-bg-first
 = image_tag "element-bg-first.svg", class: 'element-posts'

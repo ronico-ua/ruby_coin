@@ -1,11 +1,11 @@
 .admin-panel
   .admin-panel__content
     .admin-panel__inner
-      = render 'admin/partials/admin-left'
+      = render 'admin/shared/admin_left_panel'
       .admin-panel__right
         .inner-title
-          h1.admin__title Блоги
-          .dropdown Теги
+          h1.admin__title = t('.title')
+          .dropdown = t('.tags')
         .posts-admin
           - @posts.each do |post|
             = turbo_frame_tag post, class: 'post' do
@@ -17,21 +17,10 @@
                 .post__actions
                   .delete
                     = link_to image_tag("delete-icon.svg"), admin_post_path(post),
-                                            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+                                            data: { turbo_method: :delete, turbo_confirm: t('global.dialog.you_sure') }
                   .edit
                     = link_to  image_tag("edit-icon.svg"), edit_admin_post_path(post),
                             data: { turbo: :false }
-          .post
-            = image_tag "post-small.png", class: 'post-img'
-            .post__content
-              .post__text
-                h4.post__title Що таке Ruby?
-                p.post__description Що таке Ruby?
-              .post__actions
-                .delete
-                  = image_tag "delete-icon.svg"
-                .edit
-                  = image_tag  "edit-icon.svg"
         .footer-panel
           .pagination
             .pagination__inner

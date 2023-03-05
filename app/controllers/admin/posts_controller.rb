@@ -21,7 +21,7 @@ module Admin
       @post = current_user.posts.build post_params
 
       if @post.save
-        flash[:success] = 'Successfully created new post'
+        flash[:success] = t('.success')
         redirect_to admin_posts_path
       else
         render :new, status: :unprocessable_entity
@@ -32,12 +32,12 @@ module Admin
       if @post.update post_params
         respond_to do |format|
           format.html do
-            flash[:success] = 'Successfully updated the post' # t('.success')
+            flash[:success] = t('.success')
             redirect_to admin_posts_path
           end
 
           format.turbo_stream do
-            flash.now[:success] = 'Successfully updated the post' # t('.success')
+            flash.now[:success] = t('.success')
           end
         end
       else
@@ -50,11 +50,11 @@ module Admin
 
       respond_to do |format|
         format.html do
-          flash[:success] = 'Successfully deleted the post'
+          flash[:success] = t('.success')
           redirect_to admin_posts_path, status: :see_other
         end
 
-        format.turbo_stream { flash.now[:success] = 'Successfully deleted the post' }
+        format.turbo_stream { flash.now[:success] = t('.success') }
       end
     end
 

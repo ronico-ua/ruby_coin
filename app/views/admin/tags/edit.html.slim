@@ -1,0 +1,4 @@
+= turbo_frame_tag @tag do
+  = form_with model: [:admin, @tag], url: admin_tag_path(@tag) do |f|
+    = f.text_field :name, class: 'standart-input', placeholder: t('.name_label')
+    = f.submit t('global.button.save'), class: 'main-btn'

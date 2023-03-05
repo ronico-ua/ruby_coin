@@ -1,18 +1,18 @@
 .admin-panel__left
   .admin-badge
     = image_tag "admin-icon.png"
-    h6.title Admin
+    h6.title = t('.admin')
   .navigation
     a.nav-link href=admin_posts_path
       = image_tag "blogs-icon.svg"
-      h6.title Блоги
+      h6.title = t('.posts')
     a.nav-link href=admin_tags_path
       = image_tag "tags-icon.svg"
-      h6.title Теги
+      h6.title = t('.tags')
     .nav-link
       = image_tag "stats-icon.svg"
-      h6.title Статистика
+      h6.title = t('.statistic')
   .exit-admin
     .inner
       = image_tag "exit-icon.svg"
-      h6.title Вихід
+      h6.title = t('.exit')

@@ -2,31 +2,43 @@
 
 module Admin
   class TagsController < ApplicationController
-    before_action :set_tag!, only: %i[show destroy edit update]
+    before_action :set_tag!, only: %i[destroy edit update]
 
     def index
-      @new_tag = Tag.new
-      @tags = Tag.all
+      @tags = Tag.all.order(created_at: :desc)
     end
 
-    def new
-      @tag = Tag.new
-    end
+    def edit; end
 
     def create
-      @tag = Tag.new(post_params)
+      @tag = Tag.new(tag_params)
 
       if @tag.save
         respond_to do |format|
           format.html do
-            flash[:success] = 'Successfully deleted the post'
+            flash[:success] = t('.success')
             redirect_to admin_tags_path, status: :see_other
           end
 
-          format.turbo_stream { flash.now[:success] = 'Successfully deleted the post' }
+          format.turbo_stream { flash.now[:success] = t('.success') }
         end
       else
-        render 'new'
+        render 'index'
+      end
+    end
+
+    def update
+      if @tag.update(tag_params)
+        respond_to do |format|
+          format.html do
+            flash[:success] = t('.success')
+            redirect_to admin_tags_path, status: :see_other
+          end
+
+          format.turbo_stream { flash.now[:success] = t('.success') }
+        end
+      else
+        render 'index'
       end
     end
 
@@ -35,17 +47,17 @@ module Admin
 
       respond_to do |format|
         format.html do
-          flash[:success] = 'Successfully deleted the post'
-          redirect_to admin_posts_path, status: :see_other
+          flash[:success] = t('.success')
+          redirect_to admin_tags_path, status: :see_other
         end
 
-        format.turbo_stream { flash.now[:success] = 'Successfully deleted the post' }
+        format.turbo_stream { flash.now[:success] = t('.success') }
       end
     end
 
     private
 
-    def post_params
+    def tag_params
       params.require(:tag).permit(:name, :status)
     end
 
