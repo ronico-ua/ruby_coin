@@ -7,9 +7,9 @@ nav.navbar.navbar-expand-custom.sticky-top
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav
         li.nav-item
-          a.nav-link.active[href="#"] Головна
+          a.nav-link.active href=root_path Головна
         li.nav-item
-          a.nav-link[href="#"] FAQ
+          a.nav-link href=faq_path FAQ
       .actions
         - if current_user.blank?
           = link_to 'Sign up', new_user_registration_path, class: 'main-btn'
