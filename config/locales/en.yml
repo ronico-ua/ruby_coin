@@ -1,2 +1,90 @@
 en:
-  hello: Hello world
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        old_password: Old password
+        password: Password
+        password_confirmation: Password confirmation
+        updated_at: Updated
+        created_at: Created
+        role: Role
+      post:
+        title: Title
+        description: Description
+        photo: Photo
+        status: Status
+      tag:
+        name: Name
+        status: Status
+    models:
+      post: Post
+
+  admin:
+    posts:
+      index:
+        title: Post
+        tags: Tags
+      new:
+        title: Create a post
+      edit:
+        title: Egit the post
+      form:
+        title_label: Enter title
+        photo_label: Main photo
+        description_label: Description
+        status_label: Status active ?
+        tag_label: Tags
+      create:
+        success: Post successfully created
+      update:
+        success: Post successfully updated
+      destroy:
+        success: Post successfully deleted
+
+    shared:
+      admin_left_panel:
+        admin: Admin
+        posts: Posts
+        tags: Tags
+        statistic: Statistic
+        exit: Exit
+
+    tags:
+      index:
+        tags: Exist tags
+        create: Create a tag
+      form:
+        name_label: Name of the tag
+      edit:
+        name_label: Name of the tag
+      create:
+        success: Tag successfully created
+      update:
+        success: Tag successfully updated
+      destroy:
+        success: Tag successfully deleted
+
+  en: English
+  uk: Українська
+
+  global:
+    errors:
+      invalid_format: has an invalid format
+    user:
+      roles:
+        basic: Basic
+        moderator: Moderator
+        admin: Admin
+    button:
+      delete: Delete
+      cancel: Cancel
+      create: Create
+      save: Cave
+      edit: Edit
+      show: Show
+      submit: Submit
+    dialog:
+      you_sure: Are you sure?
+    text:
+      omission: ... (continuation)

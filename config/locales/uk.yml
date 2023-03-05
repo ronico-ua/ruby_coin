@@ -1,2 +1,90 @@
 uk:
-  hello: Привіт світ!
+  activerecord:
+    attributes:
+      user:
+        email: Пошта
+        old_password: Старий пароль
+        password: Пароль
+        password_confirmation: Підтвердження паролю
+        updated_at: Оновлено
+        created_at: Створено
+        role: Роль
+      post:
+        title: Загаловок
+        description: Опис
+        photo: Фото
+        status: Статус
+      tag:
+        name: Ім'я
+        status: Статус
+    models:
+      post: Допис
+
+  admin:
+    posts:
+      index:
+        title: Дописи
+        tags: Теги
+      new:
+        title: Новий допис
+      edit:
+        title: Редагування допису
+      form:
+        title_label: Введіть заголовок
+        photo_label: Головне зображення
+        description_label: Опис
+        status_label: Статус Активний ?
+        tag_label: Теги
+      create:
+        success: Допис успішно створено
+      update:
+        success: Допис успішно оновлено
+      destroy:
+        success: Допис успішно видалено
+
+    shared:
+      admin_left_panel:
+        admin: Адмін
+        posts: Дописи
+        tags: Теги
+        statistic: Статистика
+        exit: Вихід
+
+    tags:
+      index:
+        tags: Існуючі теги
+        create: Створити тег
+      form:
+        name_label: Назва тегу
+      edit:
+        name_label: Назва тегу
+      create:
+        success: Тег успішно створено
+      update:
+        success: Тег успішно оновлено
+      destroy:
+        success: Тег успішно видалено
+
+  en: Англійська
+  uk: Українська
+
+  global:
+    errors:
+      invalid_format: має недійсний формат
+    user:
+      roles:
+        basic: Базовий
+        moderator: Модератор
+        admin: Адмін
+    button:
+      delete: Видалити
+      cancel: Скасувати
+      create: Створити
+      save: Зберегти
+      edit: Редагувати
+      show: Показти
+      submit: Надіслати
+    dialog:
+      you_sure: Ви впевнені?
+    text:
+      omission: ... (продовження)
