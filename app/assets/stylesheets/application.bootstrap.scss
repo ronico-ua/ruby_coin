@@ -975,3 +975,69 @@ a {
   top: 60%;
   z-index: -1;
 }
+
+// Faq
+
+.faq__inner {
+  width: 100%;
+  max-width: 1270px;
+  padding: 0 20px;
+  margin: 64px auto 130px;
+  display: flex;
+  flex-direction: column;
+  .faq__title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #000000;
+    margin-bottom: 40px;
+    margin-left: 25px;
+  }
+  .faq__text {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 140.7%;
+    letter-spacing: 0.025em;
+    color: #000000;
+    margin-bottom: 20px;
+    &.last {
+      margin-bottom: 0;
+    }
+  }
+  .accordion-item {
+    margin-bottom: 25px;
+    .accordion-button {
+      margin-left: 25px;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 140.7%;
+      letter-spacing: 0.025em;
+      color: #313131;
+      margin-bottom: 17px;
+    }
+    .accordion-body {
+      background: linear-gradient(97.02deg, rgba(255, 255, 255, 0.25) 0%, rgba(217, 217, 217, 0) 100%);
+      backdrop-filter: blur(34px);
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+  }
+}
+
+.faq {
+  position: relative;
+  .element-faq-1 {
+    position: absolute;
+    width: 100%;
+    top: 9%;
+    left: 0;
+    z-index: -1;
+  }
+  .element-faq-2 {
+    position: absolute;
+    right: 0;
+    bottom: 21%;
+    z-index: -1;
+  }
+}
