@@ -1,4 +1,17 @@
 en:
+  datetime: &datetime
+    month_names:
+      [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    day_names:
+      [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    formats:
+      default: "%m/%d/%Y"
+      short: "%m/%d/%y"
+      iso: "%Y-%m-%d"
+  date:
+    <<: *datetime
+  time:
+    <<: *datetime
   activerecord:
     attributes:
       user:

@@ -1,4 +1,17 @@
 uk:
+  datetime: &datetime
+    month_names:
+      [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Жовтень, Листопад, Грудень]
+    day_names:
+      [Неділя, Понеділок, Вівторок, Середа, Четвер, Пʼятниця, Субота]
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d.%m.%y"
+      iso: "%Y-%m-%d"
+  date:
+    <<: *datetime
+  time:
+    <<: *datetime
   activerecord:
     attributes:
       user:
