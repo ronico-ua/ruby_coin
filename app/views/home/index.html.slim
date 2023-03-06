@@ -36,7 +36,7 @@
             = image_tag "admin.png"
             h6.title = post.user.email
           .admin__right
-            .created-at = Time.at(post.created_at).strftime("%d.%m.%Y")
+            .created-at =l post.created_at, :format => :default
   .pagination
     .pagination__inner
       span.page-number.first Перша
