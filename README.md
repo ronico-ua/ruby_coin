@@ -2,7 +2,7 @@
 
 Installation
 --------------
-1. git clone git@github.com:anko20094/ronico.git
+1. git clone git@github.com:ronico-ua/ronico.git
 2. Run `bundle install`
 3. Run `yarn`
 4. Run `rails db:create db:migrate db:seed`
@@ -21,8 +21,5 @@ Start server
 * turbo-rails
 * stimulus-rails
 * cssbundling-rails
-
 * rbenv
-
 * Capistrano
-
