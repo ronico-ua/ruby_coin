@@ -1,4 +1,4 @@
-User.create(email: 'test@test.com', password: 'test@test.com') if User.all.blank?
+User.create(email: 'test@test.com', password: 'test@test.com', nickname: 'test_user', role: 0) if User.all.blank?
 
 30.times do
   Tag.create(name: Faker::Hipster.word, status: true)
