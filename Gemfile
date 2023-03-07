@@ -22,6 +22,7 @@ gem 'sidekiq'
 gem 'slim'
 gem 'carrierwave'
 gem 'devise'
+gem 'pundit'
 
 group :development, :test do
   # gem 'letter_opener', '1.7.0'

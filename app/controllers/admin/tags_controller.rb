@@ -5,7 +5,7 @@ module Admin
     before_action :set_tag!, only: %i[destroy edit update]
 
     def index
-      @tags = Tag.all.order(created_at: :desc)
+      @tags = policy_scope(Tag).order(created_at: :desc)
     end
 
     def edit; end
