@@ -1,3 +1,3 @@
 = form_with model: [:admin, Tag.new] do |f|
-  = f.text_field :name, class: 'standart-input', placeholder: t('.name_label')
+  = f.text_field :title, class: 'standart-input', placeholder: t('.title_label')
   = f.submit t('global.button.create'), class: 'main-btn'

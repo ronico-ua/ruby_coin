@@ -68,9 +68,9 @@ uk:
         tags: Існуючі теги
         create: Створити тег
       form:
-        name_label: Назва тегу
+        title_label: Назва тегу
       edit:
-        name_label: Назва тегу
+        title_label: Назва тегу
       create:
         success: Тег успішно створено
       update:

@@ -18,7 +18,7 @@
       - if tags.present?
         .group
           = f.label :tags, t('.tag_label'), class: 'standart-label'
-          = f.collection_select :tag_ids, tags, :id, :name, {}, multiple: true, class: 'standart-input tags'
+          = f.collection_select :tag_ids, tags, :id, :title, {}, multiple: true, class: 'standart-input tags'
       .actions
         = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn'
         = f.submit t('global.button.create'), class: 'main-btn filled'

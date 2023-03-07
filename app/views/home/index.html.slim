@@ -8,7 +8,7 @@
   .categories-inner
     .category-item.active Всі
     - @tags.each do |tag|
-      .category-item = tag.name
+      .category-item = tag.title
   .main-post
     .main-post__inner
       .main-post__left
@@ -28,7 +28,7 @@
         .post__img
           = image_tag "post-img.png"
         - post.tags.all.limit(5).each do |tag|
-          .tag style="display: inline-block;" = tag.name
+          .tag style="display: inline-block;" = tag.title
         h2.post__title = post.title
         p.post__text = post.description
         .admin

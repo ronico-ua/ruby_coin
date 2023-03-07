@@ -68,9 +68,9 @@ en:
         tags: Exist tags
         create: Create a tag
       form:
-        name_label: Name of the tag
+        title_label: Name of the tag
       edit:
-        name_label: Name of the tag
+        title_label: Name of the tag
       create:
         success: Tag successfully created
       update:

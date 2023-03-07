@@ -59,7 +59,7 @@ module Admin
     private
 
     def tag_params
-      params.require(:tag).permit(:name, :status)
+      params.require(:tag).permit(:title)
     end
 
     def set_tag!
