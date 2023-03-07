@@ -7,11 +7,8 @@
         input.welcome-block__search type="search" placeholder="Пошук"
   .categories-inner
     .category-item.active Всі
-    .category-item Баги
-    .category-item Фічі
-    .category-item Аніме
-    .category-item Тянки
-    .category-item Кодинг
+    - @tags.each do |tag|
+      .category-item = tag.name
   .main-post
     .main-post__inner
       .main-post__left
@@ -26,150 +23,20 @@
             h6.title ADMIN
             .created-at 21.02.2022
   .posts
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
-    .post
-      .post__img
-        = image_tag "post-img.png"
-      .tag tagname
-      h2.post__title Що таке Ruby?
-      p.post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної...
-      .admin
-        .admin__left
-          = image_tag "admin.png"
-          h6.title Admin
-        .admin__right
-          .created-at 21.02.2022
+    - @posts.each do |post|
+      .post
+        .post__img
+          = image_tag "post-img.png"
+        - post.tags.all.limit(5).each do |tag|
+          .tag style="display: inline-block;" = tag.name
+        h2.post__title = post.title
+        p.post__text = post.description
+        .admin
+          .admin__left
+            = image_tag "admin.png"
+            h6.title = post.user.email
+          .admin__right
+            .created-at =l post.created_at, :format => :default
   .pagination
     .pagination__inner
       span.page-number.first Перша
