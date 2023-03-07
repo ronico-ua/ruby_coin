@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
+
+  enum :role, { admin: 0, moderator: 1, user: 2}
 end

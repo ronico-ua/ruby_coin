@@ -2,6 +2,7 @@
 
 module Admin
   class PostsController < ApplicationController
+    before_action :authorize_policy
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit]
 
@@ -19,6 +20,8 @@ module Admin
 
     def create
       @post = current_user.posts.build post_params
+
+      authorize @post
 
       if @post.save
         flash[:success] = t('.success')
@@ -70,6 +73,10 @@ module Admin
 
     def fetch_tags
       @tags = Tag.all
+    end
+
+    def authorize_policy
+      authorize Post
     end
   end
 end
