@@ -2,6 +2,7 @@
 
 module Admin
   class TagsController < ApplicationController
+    before_action :authorize_policy
     before_action :set_tag!, only: %i[destroy edit update]
 
     def index
@@ -63,6 +64,10 @@ module Admin
 
     def set_tag!
       @tag = Tag.find params[:id]
+    end
+
+    def authorize_policy
+      authorize Tag
     end
   end
 end

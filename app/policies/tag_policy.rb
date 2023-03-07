@@ -1,4 +1,12 @@
 class TagPolicy < ApplicationPolicy
+  def index?
+    admin?
+  end
+
+  def show?
+    admin?
+  end
+
   class Scope < Scope
     def resolve
       if user.present? && user.admin?

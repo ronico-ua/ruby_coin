@@ -9,31 +9,31 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
-    false
+    true
   end
 
   def create?
-    false
+    admin?
   end
 
   def new?
-    create?
+    admin?
   end
 
   def update?
-    false
+    admin?
   end
 
   def edit?
-    update?
+    admin?
   end
 
   def destroy?
-    false
+    admin?
   end
 
   class Scope
@@ -49,5 +49,11 @@ class ApplicationPolicy
     private
 
     attr_reader :user, :scope
+  end
+
+  private
+
+  def admin?
+    user.present? && user.admin?
   end
 end

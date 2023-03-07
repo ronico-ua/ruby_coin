@@ -1,14 +1,10 @@
 class PostPolicy < ApplicationPolicy
   def index?
-    true
+    admin?
   end
 
   def show?
-    true
-  end
-
-  def create?
-    user.present?
+    admin?
   end
 
   def update?
