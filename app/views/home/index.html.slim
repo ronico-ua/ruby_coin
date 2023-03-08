@@ -39,7 +39,7 @@
             .created-at =l post.created_at, :format => :default
   .pagination
     .pagination__inner
-      = pagy_nav(@pagy).html_safe
+      == pagy_nav(@pagy)
 = image_tag "element-bg-first.svg", class: 'element-bg-first'
 = image_tag "element-bg-second.svg", class: 'element-bg-second'
 = image_tag "element-bg-third.svg", class: 'element-bg-third'
