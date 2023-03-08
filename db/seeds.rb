@@ -6,7 +6,7 @@ end
   Tag.create(title: Faker::Hipster.word)
 end
 
-20.times do
+100.times do
   Post.create(title: Faker::Hipster.sentence(word_count: 1),
               description: Faker::Lorem.paragraph(sentence_count: 5, supplemental: true,
                                                   random_sentences_to_add: 4),
