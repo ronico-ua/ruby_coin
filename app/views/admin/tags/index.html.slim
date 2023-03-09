@@ -14,7 +14,7 @@
                 = render @records
             .pagination
               .pagination__inner
-                == pagy_nav(@pagy)
+                == pagy_bootstrap_nav(@pagy)
           .tags__right
             h1.admin__title = t('.create')
             = render 'form'
