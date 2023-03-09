@@ -23,7 +23,7 @@ uk:
         created_at: Створено
         role: Роль
       post:
-        title: Загаловок
+        title: Заголовок
         description: Опис
         photo: Фото
         status: Статус
