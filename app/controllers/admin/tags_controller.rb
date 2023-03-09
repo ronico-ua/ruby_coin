@@ -7,6 +7,7 @@ module Admin
 
     def index
       @tags = policy_scope(Tag).order(created_at: :desc)
+      @pagy, @tags = pagy(@tags)
     end
 
     def edit; end

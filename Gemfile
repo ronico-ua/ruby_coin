@@ -23,6 +23,7 @@ gem 'slim'
 gem 'carrierwave'
 gem 'devise'
 gem 'pundit'
+gem 'pagy'
 
 group :development, :test do
   # gem 'letter_opener', '1.7.0'
