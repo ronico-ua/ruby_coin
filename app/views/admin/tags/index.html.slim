@@ -11,19 +11,10 @@
                 input.search-input type="search" placeholder="Пошук"
             .tags
               = turbo_frame_tag 'tags' do
-                = render @tags
+                = render @records
             .pagination
               .pagination__inner
-                span.page-number.first Перша
-                .pages
-                  span.page-number.active 1
-                  span.page-number 2
-                  span.page-number 3
-                  span.page-number ...
-                  span.page-number 7
-                  span.page-number 8
-                  span.page-number 9
-                span.page-number.last Остання
+                == pagy_nav(@pagy)
           .tags__right
             h1.admin__title = t('.create')
             = render 'form'
