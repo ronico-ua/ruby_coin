@@ -2,12 +2,15 @@
 
 module Admin
   class PostsController < ApplicationController
+    Pagy::DEFAULT[:items] = 8
     before_action :authorize_policy
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit]
+    before_action { @pagy_locale = I18n.locale.to_s }
 
     def index
-      @posts = Post.all
+      @posts = Post.all.order(created_at: :desc)
+      @pagy, @records = pagy(@posts)
     end
 
     def show; end

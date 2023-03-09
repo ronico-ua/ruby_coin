@@ -7,7 +7,7 @@
           h1.admin__title = t('.title')
           .dropdown = t('.tags')
         .posts-admin
-          - @posts.each do |post|
+          - @records.each do |post|
             = turbo_frame_tag post, class: 'post' do
               = image_tag "post-small.png", class: 'post-img'
               .post__content
@@ -24,16 +24,7 @@
         .footer-panel
           .pagination
             .pagination__inner
-              span.page-number.first Перша
-              .pages
-                span.page-number.active 1
-                span.page-number 2
-                span.page-number 3
-                span.page-number ...
-                span.page-number 7
-                span.page-number 8
-                span.page-number 9
-              span.page-number.last Остання
+              == pagy_nav(@pagy)
           = link_to 'Create', new_admin_post_path, class: 'main-btn'
 .element-bg-first
 = image_tag "element-bg-first.svg", class: 'element-posts'
