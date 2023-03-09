@@ -5,12 +5,10 @@ module Admin
     before_action :authorize_policy
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit]
-    before_action { @pagy_locale = I18n.locale.to_s }
 
     def index
-      Pagy::DEFAULT[:items] = 8
       @posts = Post.all.order(created_at: :desc)
-      @pagy, @records = pagy(@posts)
+      @pagy, @posts = pagy(@posts)
     end
 
     def show; end

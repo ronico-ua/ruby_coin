@@ -11,7 +11,7 @@
                 input.search-input type="search" placeholder="Пошук"
             .tags
               = turbo_frame_tag 'tags' do
-                = render @records
+                = render @tags
             .pagination
               .pagination__inner
                 == pagy_bootstrap_nav(@pagy)

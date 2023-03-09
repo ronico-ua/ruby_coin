@@ -7,7 +7,7 @@
           h1.admin__title = t('.title')
           .dropdown = t('.tags')
         .posts-admin
-          - @records.each do |post|
+          - @posts.each do |post|
             = turbo_frame_tag post, class: 'post' do
               = image_tag "post-small.png", class: 'post-img'
               .post__content
