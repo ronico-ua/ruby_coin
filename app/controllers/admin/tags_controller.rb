@@ -2,13 +2,13 @@
 
 module Admin
   class TagsController < ApplicationController
-    Pagy::DEFAULT[:items] = 6
 
     before_action :authorize_policy
     before_action :set_tag!, only: %i[destroy edit update]
     before_action { @pagy_locale = I18n.locale.to_s }
 
     def index
+      Pagy::DEFAULT[:items] = 6
       @tags = policy_scope(Tag).order(created_at: :desc)
       @pagy, @records = pagy(@tags)
     end
