@@ -101,3 +101,6 @@ uk:
       you_sure: Ви впевнені?
     text:
       omission: ... (продовження)
+  nav_item:
+    root: Головна
+    faq: FAQ

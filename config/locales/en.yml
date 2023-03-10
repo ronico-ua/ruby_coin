@@ -101,3 +101,6 @@ en:
       you_sure: Are you sure?
     text:
       omission: ... (continuation)
+  nav_item:
+    root: Main page
+    faq: FAQ

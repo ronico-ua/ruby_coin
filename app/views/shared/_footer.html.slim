@@ -3,9 +3,9 @@ footer.footer
     .footer__inner
       ul.footer__navigation
         li.footer-page
-          a.footer-link href=root_path Головна
+          = link_to t("nav_item.root"), root_path, class: "footer-link"
         li.footer-page
-          a.footer-link href=faq_path FAQ
+          = link_to t("nav_item.faq"), faq_path, class: "footer-link"
       .footer-logo
         = image_tag "logo-navbar.png"
     .footer__inner
