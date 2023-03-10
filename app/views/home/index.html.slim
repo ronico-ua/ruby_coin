@@ -28,10 +28,10 @@
         .post__img
           = image_tag "post-img.png"
         - post.tags.all.limit(5).each do |tag|
-          .tag style="display: inline-block;" = tag.title
+          .tag = tag.title
         h2.post__title = post.title
         p.post__text = post.truncated_description
-        = link_to post_path(post), style: "display: inline;" do
+        = link_to post_path(post) do
           .main-btn Читати далі
         .admin
           .admin__left
