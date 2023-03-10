@@ -16,7 +16,7 @@
       .main-post__right
         h2.main-post__title Що таке Ruby?
         p.main-post__text Динамічна, рефлективна, інтерпретована високорівнева мова програмування, що інтерпретується. Мова має незалежну від операційної системи реалізацію багатопотоковості, сильну динамічну типізацію, збирач сміття та багато інших можливостей
-        .main-btn Читати далі
+        .main-btn = t "main_btn.read_more"
         .admin
           = image_tag "admin.png"
           .content
@@ -32,7 +32,7 @@
         h2.post__title = post.title
         p.post__text = post.truncated_description
         = link_to post_path(post) do
-          .main-btn Читати далі
+          .main-btn = t "main_btn.read_more"
         .admin
           .admin__left
             = image_tag "admin.png"

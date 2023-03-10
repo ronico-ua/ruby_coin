@@ -101,3 +101,5 @@ en:
       you_sure: Are you sure?
     text:
       omission: ... (continuation)
+  main_btn:
+    read_more: Read more
