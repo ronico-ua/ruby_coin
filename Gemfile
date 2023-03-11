@@ -26,11 +26,10 @@ gem 'pundit'
 gem 'pagy'
 
 group :development, :test do
-  # gem 'letter_opener', '1.7.0'
+  gem 'letter_opener'
 
   # For debugging
   gem 'pry'
-  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'faker'
