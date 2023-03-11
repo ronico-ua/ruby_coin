@@ -23,7 +23,7 @@ uk:
         created_at: Створено
         role: Роль
       post:
-        title: Загаловок
+        title: Заголовок
         description: Опис
         photo: Фото
         status: Статус
@@ -101,3 +101,6 @@ uk:
       you_sure: Ви впевнені?
     text:
       omission: ... (продовження)
+  nav_item:
+    root: Головна
+    faq: FAQ
