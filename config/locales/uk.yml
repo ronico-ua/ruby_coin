@@ -101,6 +101,8 @@ uk:
       you_sure: Ви впевнені?
     text:
       omission: ... (продовження)
+  main_btn:
+    read_more: Читати далі
   nav_item:
     root: Головна
     faq: FAQ
