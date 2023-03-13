@@ -103,3 +103,6 @@ en:
       omission: ... (continuation)
   main_btn:
     read_more: Read more
+  nav_item:
+    root: Main page
+    faq: FAQ

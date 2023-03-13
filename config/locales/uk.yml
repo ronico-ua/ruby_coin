@@ -23,7 +23,7 @@ uk:
         created_at: Створено
         role: Роль
       post:
-        title: Загаловок
+        title: Заголовок
         description: Опис
         photo: Фото
         status: Статус
@@ -103,3 +103,6 @@ uk:
       omission: ... (продовження)
   main_btn:
     read_more: Читати далі
+  nav_item:
+    root: Головна
+    faq: FAQ

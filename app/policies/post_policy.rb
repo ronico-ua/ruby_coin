@@ -8,10 +8,10 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && (record.user == user || user.admin?)
+    user.present? && (user.admin? || record.user == user )
   end
 
   def destroy?
-    user.present? && (record.user == user || user.admin?)
+    user.present? && (user.admin? || record.user == user )
   end
 end
