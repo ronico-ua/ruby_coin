@@ -9,6 +9,7 @@ gem 'puma', '~> 6.0'
 
 gem 'propshaft'
 gem 'jsbundling-rails'
+gem 'overcommit', '~> 0.60.0'
 gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'cssbundling-rails'
