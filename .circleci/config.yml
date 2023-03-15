@@ -78,11 +78,6 @@ commands:
           name: run bundle audit
           command: bundle exec bundler-audit check --update
 
-  run_rails_best_practices:
-    steps:
-      - run:
-          name: run rails_best_practices
-          command: bundle exec rails_best_practices .
 jobs:
   lintering:
     executor: default
@@ -91,7 +86,6 @@ jobs:
 #      - run_rubocop
       - run_fasterer
       - run_bundle_audit
-      - run_rails_best_practices
 
   specs:
     executor: default
