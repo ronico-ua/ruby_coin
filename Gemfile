@@ -31,7 +31,6 @@ group :development, :test do
   gem 'faker'
   gem 'letter_opener'
   gem 'pry'
-  gem 'rails_best_practices', '~> 1.23.2'
   gem 'fasterer', '~> 0.10.0'
   gem 'rspec-rails'
 end
