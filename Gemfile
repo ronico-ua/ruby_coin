@@ -25,6 +25,7 @@ gem 'carrierwave'
 gem 'devise'
 gem 'pundit'
 gem 'pagy'
+gem 'rbs', '~> 2.8.2'
 
 group :development, :test do
   gem 'letter_opener'
