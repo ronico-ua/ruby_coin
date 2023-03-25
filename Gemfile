@@ -9,6 +9,7 @@ gem 'puma', '~> 6.0'
 
 gem 'propshaft'
 gem 'jsbundling-rails'
+gem 'overcommit', '~> 0.60.0'
 gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'cssbundling-rails'
@@ -24,6 +25,7 @@ gem 'carrierwave'
 gem 'devise'
 gem 'pundit'
 gem 'pagy'
+gem 'rbs', '~> 2.8.2'
 
 group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
