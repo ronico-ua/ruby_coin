@@ -83,7 +83,7 @@ jobs:
     executor: default
     steps:
       - setup_environment
-#      - run_rubocop
+      - run_rubocop
       - run_fasterer
       - run_bundle_audit
 
