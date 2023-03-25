@@ -1,0 +1,104 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/repo
+    description: The official CircleCI Ruby Docker image
+    docker:
+      - image: cimg/ruby:3.2.0-node
+        environment:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: myapp
+          PGPORT: 5432
+          DATABASE_URL: postgresql://myapp@localhost:5432/ronico_test
+      - image: circleci/postgres:11.3-alpine
+        environment:
+          POSTGRES_USER: myapp
+          POSTGRES_DB: ronico_test
+
+caches:
+  - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}
+  - &bundle_cache v2-repo-
+
+commands:
+  setup_environment:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - *bundle_cache_full
+            - *bundle_cache
+      - run:
+          name: install required gems
+          command: |
+            bundle config set --local path 'vendor/bundle'
+            bundle install
+      - save_cache:
+          key: *bundle_cache_full
+          paths:
+            - vendor/bundle
+      - run:
+          name: Set up DB
+          command: |
+            bundle exec rails db:create
+            bundle exec rails db:schema:load
+            bundle exec rails db:migrate
+
+  run_specs:
+    steps:
+      - run:
+          name: run specs
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            bundle exec rspec --format progress \
+                              --format json \
+                              --out /tmp/test-results/coverage/.resultset.json \
+                              $TEST_FILES
+      - store_artifacts:
+          path: ~/repo/coverage
+          destination: coverage
+
+  run_rubocop:
+    steps:
+      - run:
+          name: run rubocop
+          command: bundle exec rubocop
+
+  run_fasterer:
+    steps:
+      - run:
+          name: run fasterer
+          command: bundle exec fasterer
+
+  run_bundle_audit:
+    steps:
+      - run:
+          name: run bundle audit
+          command: bundle exec bundler-audit check --update
+
+jobs:
+  lintering:
+    executor: default
+    steps:
+      - setup_environment
+      - run_rubocop
+      - run_fasterer
+      - run_bundle_audit
+
+  specs:
+    executor: default
+    parallelism: 2
+    steps:
+      - setup_environment
+      - run_specs
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - lintering
+      - specs:
+          requires:
+            - lintering
