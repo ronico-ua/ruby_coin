@@ -106,3 +106,5 @@ en:
   nav_item:
     root: Main page
     faq: FAQ
+  application_controller:
+    alert: You are not authorized to perform this action.

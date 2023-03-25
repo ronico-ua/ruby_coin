@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   before_create :nickname
 
-  has_many :posts
+  has_many :posts, dependent: :delete_all
 
   enum :role, { admin: 0, moderator: 1, user: 2 }
 

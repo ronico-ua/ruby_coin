@@ -106,3 +106,5 @@ uk:
   nav_item:
     root: Головна
     faq: FAQ
+  application_controller:
+    alert: Ви не авторизовані для виконання цього екшену.
