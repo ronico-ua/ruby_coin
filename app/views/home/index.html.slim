@@ -26,7 +26,10 @@
     - @posts.each do |post|
       .post
         .post__img
-          = image_tag "post-img.png"
+          - if post.photo.url
+            = image_tag post.photo.url
+          -else
+            = image_tag "post-img.png"
         - post.tags.all.limit(5).each do |tag|
           .tag = tag.title
         h2.post__title = post.title

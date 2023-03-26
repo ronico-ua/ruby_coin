@@ -8,7 +8,7 @@
   .posts
     .post
       .post__img
-        = image_tag "post-img.png"
+        = image_tag @post.photo.url
       - @post_tags.limit(5).each do |tag|
         .tag = tag.title
       h2.post__title = @post.title

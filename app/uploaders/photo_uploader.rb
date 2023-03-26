@@ -1,4 +1,5 @@
 class PhotoUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -13,9 +14,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :thumb do
-    process resize_to_fit: [356, 320]
+  def filename
+    'icon.png' if original_filename.present?
   end
+
+  process convert: 'png'
+
+  # version :thumb do
+  #   process resize_to_fit: [356, 320]
+  # end
 
   def extension_whitelist
     %w[jpg jpeg gif png]
