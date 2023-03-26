@@ -9,7 +9,10 @@
         .posts-admin
           - @posts.each do |post|
             = turbo_frame_tag post, class: 'post' do
-              = image_tag "post-small.png", class: 'post-img'
+              - if post.photo.url
+                = image_tag post.photo.url, class: 'post-img'
+              - else
+                = image_tag "post-small.png", class: 'post-img'
               .post__content
                 .post__text
                   h4.post__title = post.title
