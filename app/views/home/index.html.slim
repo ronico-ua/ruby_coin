@@ -27,7 +27,7 @@
       .post
         .post__img
           - if post.photo.url
-            = image_tag post.photo.url
+            = image_tag post.photo.url(:medium)
           -else
             = image_tag "post-img.png"
         - post.tags.all.limit(5).each do |tag|

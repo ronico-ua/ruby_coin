@@ -10,7 +10,7 @@
           - @posts.each do |post|
             = turbo_frame_tag post, class: 'post' do
               - if post.photo.url
-                = image_tag post.photo.url, class: 'post-img'
+                = image_tag post.photo.url(:thumb), class: 'post-img'
               - else
                 = image_tag "post-small.png", class: 'post-img'
               .post__content
