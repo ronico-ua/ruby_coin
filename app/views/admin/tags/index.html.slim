@@ -4,19 +4,15 @@
       = render 'admin/shared/admin_left_panel'
       .admin-panel__right
         .tags__inner
-          .tags__left
-            .inner-title
-              h1.admin__title = t('.tags')
-              .search-form
-                input.search-input type="search" placeholder="Пошук"
-            .tags
-              = turbo_frame_tag 'tags' do
-                = render @tags
-            .pagination
-              .pagination__inner
-                == pagy_bootstrap_nav(@pagy)
-          .tags__right
-            h1.admin__title = t('.create')
-            = render 'form'
+          .inner-title
+            h1.admin__title = t('.tags')
+            .search-form
+              input.search-input type="search" placeholder="Пошук"
+          = turbo_frame_tag 'tags', class: 'tags' do
+            = render @tags
+          .pagination
+            .pagination__inner
+              == pagy_bootstrap_nav(@pagy)
+              .main-btn = t('global.button.create')
 .element-bg-first
 = image_tag "element-bg-first.svg", class: 'element-posts'

@@ -1,8 +1,8 @@
 default: &default
   adapter: postgresql
   host: localhost
-  username: dev
-  password: dev
+  # username: dev
+  # password: dev
   encoding: utf8
   reconnect: true
   pool: 5
