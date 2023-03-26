@@ -339,7 +339,7 @@ DEPENDENCIES
   bundler-audit (~> 0.9.1)
   bundler-leak (~> 0.3.0)
   capybara
-  carrierwave
+  carrierwave (~> 2.2.3)
   cssbundling-rails
   devise
   faker
