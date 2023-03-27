@@ -22,13 +22,6 @@ Layout/ArgumentAlignment:
   Exclude:
     - 'app/services/tracker_service.rb'
     - 'spec/controllers/api/v2/imports_controller_spec.rb'
-    - 'spec/controllers/api/v2/seller_digest/leads_controller_spec.rb'
-    - 'spec/controllers/partners/api/v1/report/leads_controller_spec.rb'
-    - 'spec/controllers/partners/api/v1/reports_controller_spec.rb'
-    - 'spec/mailers/crm/agent_mailer_spec.rb'
-    - 'spec/mailers/crm/lender_mailer_spec.rb'
-    - 'spec/mailers/seller_traffic/client_mailer_spec.rb'
-    - 'spec/serializers/v2/collections/buyer_iq/lead_serializer_spec.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -36,7 +29,6 @@ Layout/ClosingParenthesisIndentation:
   Exclude:
     - 'app/controllers/api/v2/admin/users_controller.rb'
     - 'spec/interactors/seller_digest/send_digest_manual_spec.rb'
-    - 'spec/interactors/seller_digest/send_digest_spec.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -85,9 +77,7 @@ Layout/FirstArrayElementIndentation:
 Layout/HashAlignment:
   Exclude:
     - 'app/controllers/partners/api/v1/report/leads_controller.rb'
-    - 'spec/controllers/partners/api/v1/clients_controller_spec.rb'
     - 'spec/interactors/partners/check_home_data_spec.rb'
-    - 'spec/interactors/seller_digest/leads/create_from_redis_spec.rb'
     - 'spec/jobs/scheduled/remind_complete_account_job_spec.rb'
 
 # Offense count: 1
@@ -105,15 +95,6 @@ Layout/MultilineMethodCallBraceLayout:
   Exclude:
     - 'app/controllers/api/v2/admin/users_controller.rb'
     - 'app/models/concerns/common/jsonb.rb'
-    - 'app/queries/overdue_user_balance_query.rb'
-    - 'spec/controllers/api/v2/activities_controller_spec.rb'
-    - 'spec/controllers/api/v2/leads_controller_spec.rb'
-    - 'spec/interactors/seller_digest/leads/import_csv_spec.rb'
-    - 'spec/interactors/seller_digest/send_digest_manual_spec.rb'
-    - 'spec/interactors/seller_digest/send_digest_spec.rb'
-    - 'spec/services/actions/seller_digest/digest_spec.rb'
-    - 'spec/validators/leads/digest_ask_question_validator_spec.rb'
-    - 'spec/validators/partners/clients/ask_question_validator_spec.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -129,7 +110,6 @@ Layout/MultilineMethodCallIndentation:
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - 'spec/interactors/partnerships/accept_spec.rb'
-    - 'spec/interactors/users/update_balance_spec.rb'
 
 # Offense count: 5
 # Cop supports --auto-correct.
@@ -137,8 +117,6 @@ Lint/AmbiguousOperator:
   Exclude:
     - 'app/controllers/api/v2/admin/users_controller.rb'
     - 'spec/queries/history_leads/load_newest_query_spec.rb'
-    - 'spec/queries/history_leads/pending_leads_query_spec.rb'
-    - 'spec/queries/history_leads/processed_leads_query_spec.rb'
 
 # Offense count: 4
 # Configuration parameters: AllowedMethods.
@@ -146,8 +124,6 @@ Lint/AmbiguousOperator:
 Lint/ConstantDefinitionInBlock:
   Exclude:
     - 'lib/tasks/deployment/20180604132214_fill_zip_codes.rake'
-    - 'lib/tasks/deployment/20180803150540_set_free_user_value.rake'
-    - 'lib/tasks/migrate_data/fix_report_update_flags.rake'
     - 'lib/tasks/tools/bulk_invite.rake'
 
 # Offense count: 1
@@ -173,11 +149,6 @@ Lint/RedundantCopDisableDirective:
   Exclude:
     - 'app/serializers/application_serializer.rb'
     - 'spec/tasks/after_party/fill_referral_token_to_users_spec.rb'
-    - 'spec/tasks/after_party/fix_leads_loan_data_spec.rb'
-    - 'spec/tasks/after_party/migrate_users_to_new_ftl_flow_spec.rb'
-    - 'spec/tasks/after_party/normalize_properties_streets_spec.rb'
-    - 'spec/tasks/after_party/update_closing_collection_spec.rb'
-    - 'spec/views/api/v1/buyer_traffic/brands/show.html.slim_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -441,18 +412,6 @@ Style/SingleArgumentDig:
     - 'app/interactors/buyer_traffic/leads/create.rb'
     - 'app/interactors/partners/callbacks/lending_pad_import.rb'
     - 'app/interactors/seller_traffic/steppers/leads/base.rb'
-    - 'app/services/property_data/fees_sources/first_american/fees_base.rb'
-    - 'app/services/property_data/rent_sources/airbnb.rb'
-    - 'app/services/property_data/rent_sources/zillow.rb'
-    - 'app/services/property_data/sources/corelogic/loan_info.rb'
-    - 'app/services/property_data/sources/corelogic/property_info.rb'
-    - 'app/services/property_data/sources/remine/property_info.rb'
-    - 'app/services/property_data/sources/zillow/avm.rb'
-    - 'lib/tasks/migrate_data/fix_loan_with_corelogic.rake'
-    - 'lib/tasks/tools/avm_comp_api.rake'
-    - 'lib/tasks/tools/lending_pad_log_finder_csv.rake'
-    - 'lib/tasks/tools/loan_comp_api.rake'
-    - 'lib/tasks/tools/prop_comp_api.rake'
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -497,13 +456,6 @@ RSpec/MultipleMemoizedHelpers:
   Exclude:
     - 'spec/interactors/buyer_traffic/leads/create_spec.rb'
     - 'spec/interactors/leads/update_contact_details_spec.rb'
-    - 'spec/interactors/partners/leads/create_spec.rb'
-    - 'spec/interactors/seller_digest/leads/create_spec.rb'
-    - 'spec/interactors/seller_digest/leads/import_csv_spec.rb'
-    - 'spec/services/actions/global_spec.rb'
-    - 'spec/services/tracker_service_spec.rb'
-    - 'spec/interactors/partnerships/invite_spec.rb'
-
 RSpec/NestedGroups:
   Exclude:
     - 'spec/interactors/buyer_traffic/leads/create_spec.rb'

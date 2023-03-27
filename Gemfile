@@ -1,51 +1,51 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.0'
 
-gem 'rails', '~> 7.0.4'
 gem 'pg', '~> 1.4.5'
 gem 'puma', '~> 6.0'
+gem 'rails', '~> 7.0.4'
 
-gem 'propshaft'
+gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 gem 'overcommit', '~> 0.60.0'
-gem 'turbo-rails'
+gem 'propshaft'
 gem 'stimulus-rails'
-gem 'cssbundling-rails'
+gem 'turbo-rails'
 
+gem 'bootsnap', require: false
 gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'bootsnap', require: false
 
+gem 'carrierwave'
+gem 'devise'
+gem 'pagy'
+gem 'pundit'
+gem 'rbs', '~> 3.0.4'
 gem 'redis'
 gem 'sidekiq'
 gem 'slim'
-gem 'carrierwave'
-gem 'devise'
-gem 'pundit'
-gem 'pagy'
-gem 'rbs', '~> 3.0.4'
 
 group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
   gem 'bundler-leak', '~> 0.3.0'
   gem 'faker'
+  gem 'fasterer', '~> 0.10.0'
   gem 'letter_opener'
   gem 'pry'
-  gem 'fasterer', '~> 0.10.0'
   gem 'rspec-rails'
 end
 
 group :development do
-  gem 'web-console'
   gem 'rubocop', require: false
+  gem 'rubocop-faker', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'rubocop-faker', require: false
-  gem 'rubocop-rubycw', require: false
-  gem 'rubocop-discourse', '~> 3.2'
+  gem 'web-console'
 
   # gem 'capistrano-bundler'
   # gem 'capistrano-linked-files'
