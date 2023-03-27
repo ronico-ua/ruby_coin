@@ -1,162 +1,28 @@
-inherit_from: .rubocop_todo.yml
 require:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
   - rubocop-faker
 
-# Following Cops were enabled:
-
-Layout/FirstArrayElementLineBreak:
-  Description: >-
-    Checks for a line break before the first element in a
-    multi-line array.
-  Enabled: true
-
-Layout/FirstHashElementLineBreak:
-  Description: >-
-    Checks for a line break before the first element in a
-    multi-line hash.
-  Enabled: true
-
-Layout/LineLength:
-  Max: 100
-
-Lint/Debugger:
-  Description: 'Check for debugger calls.'
-  Enabled: true
-  Severity: 'fatal'
-
-Style/CollectionMethods:
-  Description: 'Preferred collection methods.'
-  StyleGuide: '#map-find-select-reduce-size'
-  Enabled: true
-
-Style/ImplicitRuntimeError:
-  Description: >-
-    Use `raise` or `fail` with an explicit exception class and
-    message, rather than just a message.
-  Enabled: true
-
-Style/MethodCalledOnDoEndBlock:
-  Description: 'Avoid chaining a method call on a do...end block.'
-  StyleGuide: '#single-line-blocks'
-  Enabled: true
-
-Style/Send:
-  Description: 'Prefer `Object#__send__` or `Object#public_send` to `send`, as `send` may overlap with existing methods.'
-  StyleGuide: '#prefer-public-send'
-  Enabled: true
-
-Style/BlockDelimiters:
-  Enabled: true
-  AllowedMethods:
-    - lambda
-    - proc
-
-Rails/UnknownEnv:
-  Environments:
-    - production
-    - development
-    - test
-    - dev
-    - stage
-
-Bundler/DuplicatedGem:
-  Enabled: true
-  Include:
-    - '**/Gemfile'
-    - '**/gems.rb'
-    - '**/.overcommit_gems'
-
-Metrics/BlockLength:
-  Description: 'Avoid long blocks with many lines.'
-  Enabled: true
-  Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-    - 'spec/**/*.rb'
-    - 'config/routes.rb'
-    - 'config/routes/*.rb'
-    - 'config/environments/*.rb'
-    - 'app/api_docs/**/*.rb'
-
-# Following Cops were disabled:
-
-Style/Encoding:
-  Description: 'Use UTF-8 as the source file encoding.'
-  Enabled: false
-
-Style/Documentation:
-  Description: 'Document classes and non-namespace modules.'
-  Enabled: false
-
-Style/RescueModifier:
-  Description: 'Avoid using rescue in its modifier form.'
-  Enabled: false
-
-Style/EmptyCaseCondition:
-  Description: 'Avoid empty condition in case statements.'
-  Enabled: false
-
-Style/FormatStringToken:
-  Description: 'Prefer annotated tokens (like `%<foo>s`) over unannotated tokens (like `%s`).'
-  Enabled: false
-
-# Rails cops
-
-Rails:
-  Enabled: true
-
-Rails/SkipsModelValidations:
-  Enabled: false
-
-Rails/NotNullColumn:
-  Enabled: false
-
-# RSpec cops
-
-RSpec/AnyInstance:
-  Description: 'Avoid stubbing using `allow_any_instance_of`.'
-  Enabled: false
-
-RSpec/ExampleLength:
-  Max: 15
-
-RSpec/FilePath:
-  Description: 'Checks that spec file paths are consistent with the test subject.'
-  Enabled: true
-  IgnoreMethods: true
-  SpecSuffixOnly: true
-
-RSpec/LetSetup:
-  Description: 'Checks unreferenced `let!` calls being used for test setup.'
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Description: 'Checks if examples contain too many `expect` calls.'
-  Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Max: 10
-
-RSpec/NestedGroups:
-  Max: 4
-
-RSpec/VerifiedDoubles:
-  Description: 'Prefer using verifying doubles over normal doubles.'
-  Enabled: false
-
-# Global configuration:
-
 AllCops:
   NewCops: enable
-  Exclude:
-    - 'db/schema.rb'
-    - 'bin/**/*'
-    - 'config/deploy.rb'
-    - 'config/puma.rb'
-    - 'config/initializers/devise.rb'
-    - 'config/initializers/pagy.rb'
-  SuggestExtensions: false
-  TargetRubyVersion: 2.7.6
+  TargetRubyVersion: 3.2.0
+
+Style/Documentation:
+  Enabled: false
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/BlockLength:
+  Max: 30
+

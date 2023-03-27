@@ -343,7 +343,7 @@ DEPENDENCIES
   cssbundling-rails
   devise
   faker
-  fasterer (~> 0.10.0)
+  fasterer (~> 0.10.1)
   jbuilder
   jsbundling-rails
   letter_opener

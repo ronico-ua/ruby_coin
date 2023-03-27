@@ -21,3 +21,4 @@ speedups:
 exclude_paths:
   - 'vendor/**/*.rb'
   - 'db/schema.rb'
+  - 'config/puma.rb'
