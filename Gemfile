@@ -33,7 +33,7 @@ group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
   gem 'bundler-leak', '~> 0.3.0'
   gem 'faker'
-  gem 'fasterer', '~> 0.10.0'
+  gem 'fasterer', '~> 0.10.1'
   gem 'letter_opener'
   gem 'pry'
   gem 'rspec-rails'
