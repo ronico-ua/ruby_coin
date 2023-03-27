@@ -101,7 +101,7 @@ GEM
     coderay (1.1.3)
     colorize (0.8.1)
     concurrent-ruby (1.2.2)
-    connection_pool (2.3.0)
+    connection_pool (2.4.0)
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
@@ -229,7 +229,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
-    rbs (2.8.4)
+    rbs (3.0.4)
     redis (5.0.6)
       redis-client (>= 0.9.0)
     redis-client (0.14.0)
@@ -266,7 +266,7 @@ GEM
       rubocop-ast (>= 1.26.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.27.0)
+    rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
     rubocop-capybara (2.17.1)
       rubocop (~> 1.41)
@@ -312,7 +312,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2022.7)
+    tzinfo-data (1.2023.2)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.4.2)
     warden (1.2.9)
@@ -356,7 +356,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.4)
   rails-controller-testing
-  rbs (~> 2.8.2)
+  rbs (~> 3.0.4)
   redis
   rspec-rails
   rubocop

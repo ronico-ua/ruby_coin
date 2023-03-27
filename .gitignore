@@ -36,3 +36,4 @@
 /node_modules
 .idea
 .yarn/cache
+.yarn/install-state.gz

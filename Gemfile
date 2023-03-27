@@ -25,7 +25,7 @@ gem 'carrierwave'
 gem 'devise'
 gem 'pundit'
 gem 'pagy'
-gem 'rbs', '~> 2.8.2'
+gem 'rbs', '~> 3.0.4'
 
 group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
