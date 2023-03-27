@@ -1,4 +1,5 @@
-inherit_from: .rubocop_todo.yml
+inherit_gem:
+  rubocop-discourse: default.yml
 require:
   - rubocop-performance
   - rubocop-rails
@@ -79,7 +80,6 @@ Metrics/BlockLength:
     - 'config/routes.rb'
     - 'config/routes/*.rb'
     - 'config/environments/*.rb'
-    - 'app/api_docs/**/*.rb'
 
 # Following Cops were disabled:
 
@@ -159,4 +159,4 @@ AllCops:
     - 'config/initializers/devise.rb'
     - 'config/initializers/pagy.rb'
   SuggestExtensions: false
-  TargetRubyVersion: 2.7.6
+  TargetRubyVersion: 3.2.0

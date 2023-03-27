@@ -44,6 +44,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-faker', require: false
+  gem 'rubocop-discourse', '~> 3.2'
 
   # gem 'capistrano-bundler'
   # gem 'capistrano-linked-files'
