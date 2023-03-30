@@ -18,5 +18,10 @@ module Ronico
     config.time_zone = 'Kyiv'
     # config.active_record.default_timezone = :local
     config.active_job.queue_adapter = :sidekiq
+
+    config.generators do |g|
+      g.test_framework :rspec
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+    end
   end
 end

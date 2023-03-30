@@ -25,7 +25,6 @@ gem 'slim'
 gem 'devise'
 gem 'pundit'
 gem 'pagy'
-gem 'rbs', '~> 2.8.2'
 
 group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
@@ -38,6 +37,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'factory_bot_rails', '~> 6.2.0'
   gem 'web-console'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
