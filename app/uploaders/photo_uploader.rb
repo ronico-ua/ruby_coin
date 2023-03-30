@@ -22,6 +22,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   process convert: 'png'
 
+  process resize_to_fit: [356, 320], if: :not_testing?
+
+  def not_testing?(_picture)
+    !Rails.env.test?
+  end
+
   version :thumb do
     process resize_to_fit: [102, 120]
     process convert: 'png'

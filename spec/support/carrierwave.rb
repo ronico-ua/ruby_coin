@@ -29,4 +29,5 @@ CarrierWave.configure do |config|
       end
     end
   end
+  # Update PhotoUploader to only process :thumb version
 end
