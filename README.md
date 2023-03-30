@@ -5,7 +5,8 @@ Installation
 1. git clone git@github.com:ronico-ua/ronico.git
 2. Run `bundle install`
 3. Run `yarn`
-4. Run `rails db:create db:migrate db:seed`
+4. Copy .env settings for database: `cp .env.example .env`
+5. Run `rails db:create db:migrate db:seed`
 
 Start server
 --------------
