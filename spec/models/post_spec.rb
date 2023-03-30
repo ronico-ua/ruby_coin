@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post do
@@ -11,7 +13,7 @@ RSpec.describe Post do
     end
 
     it 'uploads a photo successfully' do
-      image_path = Rails.root.join('./spec/fixtures/files/test_image.png')
+      image_path = Rails.root.join('spec', 'fixtures', 'files', 'test_image.png')
       post.update(photo: fixture_file_upload(image_path, 'image/png'))
       expect(post.photo).to be_present
     end
@@ -19,11 +21,9 @@ RSpec.describe Post do
 
   describe "updating post's photo" do
     it 'updates the cached profile image for post' do
-      image_path = 'thumb_icon.png'
-      # rubocop:disable Style/MethodCalledOnDoEndBlock
       expect do
         post.update(photo: fixture_file_upload(
-          image_path, 'image/png'
+          'thumb_icon.png', 'image/png'
         ))
       end.to(change { post.reload.photo })
       # rubocop:enable Style/MethodCalledOnDoEndBlock

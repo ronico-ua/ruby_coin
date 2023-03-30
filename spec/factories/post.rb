@@ -5,9 +5,7 @@ FactoryBot.define do
     title { Faker::Book.title }
     description { Faker::Lorem.sentence }
     photo do
-      Rack::Test::UploadedFile.new(File.open(
-                                     Rails.root.join('./spec/fixtures/files/test_image.png')
-                                   ))
+      Rack::Test::UploadedFile.new(File.open(Rails.root.join('spec', 'fixtures', 'files', 'test_image.png')))
     end
     status { 0 }
     user

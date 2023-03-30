@@ -1,6 +1,6 @@
-if User.all.blank?
-  User.create(email: 'test@test.com', password: 'test@test.com', nickname: 'test_user', role: 0)
-end
+# frozen_string_literal: true
+
+User.create(email: 'test@test.com', password: 'test@test.com', nickname: 'test_user', role: 0) if User.all.blank?
 
 30.times do
   Tag.create(title: Faker::Hipster.word)
