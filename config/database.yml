@@ -1,8 +1,9 @@
 default: &default
   adapter: postgresql
-  host: localhost
-  username: dev
-  password: dev
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   encoding: utf8
   reconnect: true
   pool: 5
@@ -19,4 +20,4 @@ production:
   <<: *default
   database: ronico_production
   username: ronico
-  password: ronico2022
+  password: <%= ENV["RONICO_PRODUCTION_PASSWORD"] %>

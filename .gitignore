@@ -26,6 +26,7 @@
 !/tmp/storage/.keep
 
 /public/assets
+/public/uploads/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -36,6 +37,5 @@
 /node_modules
 .idea
 .yarn/cache
-/public/uploads/tmp
-
 .yarn/install-state.gz
+.env
