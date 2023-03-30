@@ -1,38 +1,27 @@
-.default__container.post-show
-  .post-show__content
-    .navigation
-      .prev-page Головна
-      .slash 
-      .next-page Що таке Ruby?
-    h1.post-title = @post.title
-    .admin
-      .admin__left
-        = image_tag "admin.png"
-        h6.title = @post.user.email
-      .admin__right
-        .created-at =l @post.created_at, :format => :default
-    .post-img
-      = image_tag "post-show-img.png"
-    p.post-description Часто чую запитання: чи варто вчити Ruby? Як правило, питання ґрунтується на сумнівах: наскільки легко знайти роботу з даною спеціалізацією, чи будуть цікаві проєкти тощо. Ruby - сучасна мова програмування, що постійно розвивається, сфер застосування їй - маса. Напевно ви чули про Chef, Vagrant, Homebrew, але найчастіше всі ми чуємо про Rails. Ось пост із коментарем самого автора фреймворку про те, чому варто вчити Rails.
-    p.post-description Звичайно, кожен сам для себе вирішує, який інструмент йому використовувати. І немає сенсу нескінченно довго сперечатися про те, чому одна технологія краща за іншу. Я вибрав Ruby, тому що це неймовірно виразна і гнучка мова, яка дає змогу одну й ту саму задачу вирішити багатьма способами.
-    p.post-description Ruby - інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Вона поєднує в собі Perl-подібний синтаксис з об'єктно-орієнтованим підходом. Також деякі риси запозичені з мов програмування Python, Lisp, Dylan і CLU. Кросплатформна реалізація інтерпретатора мови Ruby поширюється на умовах відкритого програмного забезпечення. Код, написаний Ruby, може бути зрозумілий навіть людині, яка не розуміється на програмуванні. На RoR було створено такі проєкти, як Redmine, Twitter, Shopify, Basecamp, GitHub, Kickstarter, Airbnb та інші.
-    p.post-description Зі зростанням Node.js популярність Ruby on Rails дещо зменшилася, але технологічні стартапи часто використовують RoR завдяки простоті прототипування. Ruby - 11-та найпопулярніша мова в індексі TIOBE.
-    h2.post-title.second Схожі публікації
-    .posts
-      - @post_tags.limit(3).each do |tag|
-        = link_to post_path(@post), class: 'post' do
-          .post__img
-            = image_tag "post-img.png"
-          .tags
-            - @post.tags.all.limit(5).each do |tag|
-              .tag = tag.title
-          h2.post__title = @post.title
-          p.post__text = @post.truncated_description
-          .admin
-            .admin__left
-              = image_tag "admin.png"
-              h6.title = @post.user.email
-            .admin__right
-              .created-at =l @post.created_at, :format => :default
+.default__container
+  .welcome-block
+    .welcome-block__inner
+      h1.welcome-block__title RONICO
+      h4.welcome-block__subtitle Найпопулярніший аніме клуб у світі!
+      .search-block
+        input.welcome-block__search type="search" placeholder="Пошук"
+  .posts
+    .post
+      .post__img
+        - if @post.photo.url
+          = image_tag @post.photo.url
+        - else
+          = image_tag "post-img.png"
+      - @post_tags.limit(5).each do |tag|
+        .tag = tag.title
+      h2.post__title = @post.title
+      p.post__text = @post.description
+      .admin
+        .admin__left
+          = image_tag "admin.png"
+          h6.title = @post.user.email
+        .admin__right
+          .created-at =l @post.created_at, :format => :default
 = image_tag "element-bg-first.svg", class: 'element-bg-first'
 = image_tag "element-bg-second.svg", class: 'element-bg-second'
+= image_tag "element-bg-third.svg", class: 'element-bg-third'
