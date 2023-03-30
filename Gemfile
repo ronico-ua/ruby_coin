@@ -5,41 +5,39 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.0'
 
-gem 'pg', '~> 1.4.5'
-gem 'puma', '~> 6.0'
-gem 'rails', '~> 7.0.4'
-
+gem 'bootsnap', require: false
+gem 'carrierwave'
 gem 'cssbundling-rails'
+gem 'devise'
+gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'overcommit', '~> 0.60.0'
-gem 'propshaft'
-gem 'stimulus-rails'
-gem 'turbo-rails'
-
-gem 'bootsnap', require: false
-gem 'jbuilder'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem 'carrierwave'
-gem 'devise'
 gem 'pagy'
+gem 'pg', '~> 1.4.5'
+gem 'propshaft'
+gem 'puma', '~> 6.0'
 gem 'pundit'
+gem 'rails', '~> 7.0.4'
 gem 'rbs', '~> 3.0.4'
 gem 'redis'
 gem 'sidekiq'
 gem 'slim'
+gem 'stimulus-rails'
+gem 'turbo-rails'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
   gem 'bundler-leak', '~> 0.3.0'
   gem 'faker'
-  gem 'fasterer', '~> 0.10.1'
+  gem 'fasterer', '~> 0.10.0'
   gem 'letter_opener'
   gem 'pry'
   gem 'rspec-rails'
 end
 
 group :development do
+  gem 'factory_bot_rails', '~> 6.2.0'
   gem 'rubocop', require: false
   gem 'rubocop-faker', require: false
   gem 'rubocop-performance', require: false
