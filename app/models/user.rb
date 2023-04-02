@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  before_create :nickname
+  before_create :set_nickname
 
   has_many :posts, dependent: :delete_all
 
@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   private
 
-  def nickname
+  def set_nickname
     self.nickname = Faker::Internet.username(specifier: 10, separators: ['_'])
   end
 end

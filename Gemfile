@@ -38,6 +38,7 @@ end
 
 group :development do
   gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'rubocop-faker', require: false
   gem 'rubocop-performance', require: false

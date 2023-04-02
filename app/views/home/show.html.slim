@@ -1,0 +1,39 @@
+.default__container.post-show
+  .post-show__content
+    .navigation
+      .prev-page Головна
+      .slash
+      .next-page = @post.title
+    h1.post-title = @post.title
+    .admin
+      .admin__left
+        = image_tag "admin.png"
+        h6.title = @post.user.nickname
+      .admin__right
+        .created-at =l @post.created_at, :format => :default
+    .post-img
+      - if @post.photo.url
+        = image_tag @post.photo.url
+      - else
+        = image_tag "post-img.png"
+    p.post-description = @post.description
+
+    h2.post-title.second Схожі публікації
+    .posts
+      - @similar_posts.each do |similar_post|
+        = link_to post_path(similar_post), class: 'post' do
+          .post__img
+            = image_tag "post-img.png"
+          .tags
+            - similar_post.tags.each do |tag|
+              .tag = tag.title
+          h2.post__title = similar_post.title
+          p.post__text = similar_post.truncated_description
+          .admin
+            .admin__left
+              = image_tag "admin.png"
+              h6.title = similar_post.user.nickname
+            .admin__right
+              .created-at =l similar_post.created_at, :format => :default
+  = image_tag "element-bg-first.svg", class: 'element-bg-first'
+  = image_tag "element-bg-second.svg", class: 'element-bg-second'

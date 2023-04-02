@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get '/faq', to: 'faq#index'
-  get '/post/:id', to: 'post#show', as: 'post'
+  get '/post/:id', to: 'home#show', as: 'post'
 
   namespace :admin do
     root 'posts#index'

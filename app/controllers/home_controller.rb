@@ -6,4 +6,11 @@ class HomeController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
     @pagy, @posts = pagy(@posts, items: 6)
   end
+
+  def show
+    @post = Post.find(params[:id])
+    @post_tags = @post.tags.all.limit(3)
+    @similar_posts = Post.where.not(id: @post.id).includes(:tags)
+                         .where(tags: { title: @post.tags.pluck(:title) }).limit(3)
+  end
 end

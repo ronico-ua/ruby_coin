@@ -24,24 +24,23 @@
             .created-at 21.02.2022
   .posts
     - @posts.each do |post|
-      .post
+      = link_to post_path(post), class: 'post' do
         .post__img
           - if post.photo.url
             = image_tag post.photo.url(:medium)
-          -else
+          - else
             = image_tag "post-img.png"
-        - post.tags.all.limit(5).each do |tag|
-          .tag = tag.title
+        .tags
+          - post.tags.limit(3).each do |tag|
+            .tag = tag.title
         h2.post__title = post.title
         p.post__text = post.truncated_description
-        = link_to post_path(post) do
-          .main-btn = t "main_btn.read_more"
         .admin
           .admin__left
             = image_tag "admin.png"
-            h6.title = post.user.email
+            h6.title = post.user.nickname
           .admin__right
-            .created-at =l post.created_at, :format => :default
+            .created-at = l post.created_at, :format => :default
   .pagination
     .pagination__inner
       == pagy_bootstrap_nav(@pagy)
