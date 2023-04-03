@@ -48,6 +48,7 @@ uk:
         description_label: Опис
         status_label: Статус Активний ?
         tag_label: Теги
+        main_post_label: Головна допис ?
       create:
         success: Допис успішно створено
       update:

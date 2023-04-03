@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-custom.sticky-top
         - if current_user.blank?
           = link_to 'Sign up', new_user_registration_path, class: 'main-btn'
           = link_to 'Sign in', new_user_session_path, class: 'main-btn filled'
-        .dropdown
+        .dropdown.languages
           a.nav-link.dropdown-toggle[href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"]
             = image_tag "uk-flag.svg" 
           ul.dropdown-menu
