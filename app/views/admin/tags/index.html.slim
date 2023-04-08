@@ -13,6 +13,8 @@
           .pagination
             .pagination__inner
               == pagy_bootstrap_nav(@pagy)
-              .main-btn = t('global.button.create')
+              = turbo_frame_tag @tag, class: 'create_tag' do
+                = link_to t('global.button.create'), new_admin_tag_path, class: 'main-btn',
+                        data: { turbo_frame: dom_id(@tag) }
 .element-bg-first
 = image_tag "element-bg-first.svg", class: 'element-posts'

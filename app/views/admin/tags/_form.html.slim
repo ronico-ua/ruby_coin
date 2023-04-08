@@ -1,3 +1,4 @@
-= form_with model: [:admin, Tag.new] do |f|
-  = f.text_field :title, class: 'standart-input', placeholder: t('.title_label')
-  = f.submit t('global.button.create'), class: 'main-btn'
+= turbo_frame_tag @tag do
+  = form_with model: [:admin, @tag] do |f|
+    = f.text_field :title, class: 'standart-input', placeholder: t('.title_label')
+    = f.submit t('global.button.submit'), class: 'main-btn'

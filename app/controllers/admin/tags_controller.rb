@@ -6,8 +6,13 @@ module Admin
     before_action :set_tag!, only: %i[destroy edit update]
 
     def index
+      @tag = Tag.new
       @tags = policy_scope(Tag).order(created_at: :desc)
-      @pagy, @tags = pagy(@tags)
+      @pagy, @tags = pagy(@tags, items: 8)
+    end
+
+    def new
+      @tag = Tag.new
     end
 
     def edit; end
