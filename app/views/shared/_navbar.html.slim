@@ -7,9 +7,9 @@ nav.navbar.navbar-expand-custom.sticky-top
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav
         li.nav-item
-          = link_to t("nav_item.root"), root_path, class: "nav-link active"
+          = link_to t("nav_item.root"), root_path, class: "nav-link #{active_class(root_path)}"
         li.nav-item
-          = link_to t("nav_item.faq"), faq_path, class: "nav-link"
+          = link_to t("nav_item.faq"), faq_path, class: "nav-link #{active_class(faq_path)}"
       .actions
         - if current_user.blank?
           = link_to 'Sign up', new_user_registration_path, class: 'main-btn'
