@@ -47,20 +47,14 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'web-console'
 
-  # gem 'capistrano-bundler'
-  # gem 'capistrano-linked-files'
-  # gem 'capistrano-rails'
-  # gem 'capistrano-rails-console'
-  # gem 'capistrano-rvm'
-  # gem 'capistrano3-git-push'
-  # gem 'capistrano3-puma'
-  # gem 'listen', '3.7.1'
+  gem 'capistrano', '~> 3.17', '>= 3.17.2', require: false
+  gem 'capistrano-rails', '~> 1.6', '>= 1.6.2', require: false
+  gem 'capistrano3-puma', '6.0.0.beta.1', require: false
+  gem 'capistrano-rvm', require: false
 end
 
 group :test do
   gem 'capybara'
-  # gem 'database_cleaner'
-  # gem 'json_spec'
   gem 'rails-controller-testing'
   # gem 'rspec-html-matchers', '0.9.2'
 
