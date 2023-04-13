@@ -49,7 +49,7 @@ group :development do
 
   gem 'capistrano', '~> 3.17', '>= 3.17.2', require: false
   gem 'capistrano-rails', '~> 1.6', '>= 1.6.2', require: false
-  gem 'capistrano3-puma', '6.0.0.beta.1', require: false
+  gem 'capistrano3-puma', '~> 1.2', '>= 1.2.1', require: false
   gem 'capistrano-rvm', require: false
 end
 

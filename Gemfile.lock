@@ -95,10 +95,9 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano3-puma (6.0.0.beta.1)
-      capistrano (~> 3.7)
-      capistrano-bundler
-      puma (>= 5.1, < 7.0)
+    capistrano3-puma (1.2.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     capybara (3.39.0)
       addressable
       matrix
@@ -377,7 +376,7 @@ DEPENDENCIES
   capistrano (~> 3.17, >= 3.17.2)
   capistrano-rails (~> 1.6, >= 1.6.2)
   capistrano-rvm
-  capistrano3-puma (= 6.0.0.beta.1)
+  capistrano3-puma (~> 1.2, >= 1.2.1)
   capybara
   carrierwave
   cssbundling-rails
