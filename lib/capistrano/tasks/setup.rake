@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -35,7 +35,7 @@ namespace :deploy do
   desc 'Make sure local git is in sync with remote.'
   task :check_revision do
     on roles(:app) do
-      # Update this to your branch name: master, main, etc. Here it's main
+      # Update this to your branch name: master, main, etc. Here it's master
       # unless `git rev-parse HEAD` == `git rev-parse origin/master`
       #   puts 'WARNING: HEAD is not the same as origin/master'
       #   puts 'Run `git push` to sync changes.'

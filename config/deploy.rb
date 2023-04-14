@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.17.2'
 
@@ -36,4 +38,3 @@ set :assets_manifests, lambda {
 
 append :linked_files, *%w[config/master.key config/database.yml]
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/assets public/uploads]
-
