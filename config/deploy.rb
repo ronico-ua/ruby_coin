@@ -6,7 +6,7 @@ server '45.90.59.143', port: 22, roles: %i[web app db], primary: true
 # Change these
 set :application,  'ronico'
 set :repo_url,     'git@github.com:ronico-ua/ronico.git'
-set :branch,       :master
+set :branch,       'add-gem-capistrano'
 set :user,         'root'
 set :deploy_to,    "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :ssh_options,  { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa.pub] }
@@ -26,6 +26,7 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true # Change to false when not using ActiveRecord
+set :puma_enable_socket_service, true
 
 append :linked_files, *%w[config/master.key config/database.yml]
-append :linked_dirs, 'public/uploads'
+set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/assets public/uploads]
