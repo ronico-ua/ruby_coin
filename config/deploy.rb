@@ -8,7 +8,7 @@ server '45.90.59.143', port: 22, roles: %i[web app db], primary: true
 # Change these
 set :application,  'ronico'
 set :repo_url,     'git@github.com:ronico-ua/ronico.git'
-set :branch,       'add-gem-capistrano'
+set :branch,       'master'
 set :user,         'root'
 set :deploy_to,    "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :ssh_options,  { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa.pub] }
