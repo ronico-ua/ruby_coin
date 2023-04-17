@@ -15,7 +15,7 @@ gem 'overcommit', '~> 0.60.0'
 gem 'pagy'
 gem 'pg', '~> 1.4.5'
 gem 'propshaft'
-gem 'puma', '~> 6.0'
+gem 'puma', '~> 5.6', '>= 5.6.5'
 gem 'pundit'
 gem 'rails', '~> 7.0.4'
 gem 'rbs', '~> 3.0.4'
@@ -47,20 +47,16 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'web-console'
 
-  # gem 'capistrano-bundler'
-  # gem 'capistrano-linked-files'
-  # gem 'capistrano-rails'
-  # gem 'capistrano-rails-console'
-  # gem 'capistrano-rvm'
-  # gem 'capistrano3-git-push'
-  # gem 'capistrano3-puma'
-  # gem 'listen', '3.7.1'
+  gem 'capistrano', '~> 3.17', '>= 3.17.2', require: false
+  gem 'capistrano3-puma', '~> 5.2', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', '~> 1.6', '>= 1.6.2', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-yarn', require: false
 end
 
 group :test do
   gem 'capybara'
-  # gem 'database_cleaner'
-  # gem 'json_spec'
   gem 'rails-controller-testing'
   # gem 'rspec-html-matchers', '0.9.2'
 
