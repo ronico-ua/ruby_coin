@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable#, :confirmable
 
   before_create :set_nickname
 
@@ -15,6 +15,12 @@ class User < ApplicationRecord
   private
 
   def set_nickname
-    self.nickname = Faker::Internet.username(specifier: 10, separators: ['_'])
+    self.nickname = email.split('@').first
+    num = 2
+
+    until User.find_by(nickname: self.nickname).nil?
+      self.nickname = "#{nickname}_#{num}"
+      num += 1
+    end
   end
 end
