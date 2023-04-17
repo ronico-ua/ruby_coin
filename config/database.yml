@@ -19,5 +19,5 @@ test:
 production:
   <<: *default
   database: ronico_production
-  username: ronico
-  password: <%= ENV["RONICO_PRODUCTION_PASSWORD"] %>
+  username: <%= ENV["PRODUCTION_USERNAME"] %>
+  password: <%= ENV["PRODUCTION_PASSWORD"] %>
