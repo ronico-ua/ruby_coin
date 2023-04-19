@@ -17,7 +17,7 @@ class User < ApplicationRecord
     self.nickname = email.split('@').first
     num = 2
 
-    until User.find_by(nickname: self.nickname).nil?
+    until User.find_by(nickname:).nil?
       self.nickname = "#{nickname}_#{num}"
       num += 1
     end
