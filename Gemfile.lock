@@ -393,6 +393,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   letter_opener
+  mini_magick
   overcommit (~> 0.60.0)
   pagy
   pg (~> 1.4.5)

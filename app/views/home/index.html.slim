@@ -22,7 +22,7 @@
             .content
               h6.title ADMIN
               .created-at 21.02.2022
-          .main-btn = t "main_btn.read_more"
+          .main-btn.filled = t "main_btn.read_more"
   .posts
     - @posts.each do |post|
       = link_to post_path(post), class: 'post' do

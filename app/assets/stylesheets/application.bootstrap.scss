@@ -27,11 +27,8 @@ a {
 
 .alert {
   padding: 12px 18px;
-  position: fixed;
-  left: 171px;
-  top: 54px;
-  z-index: 323232;
   border-radius: 8px;
+  margin: 0 20px 0 0;
   animation: fade-in-out 5s infinite;
   &-success, &-notice {
     border: 1px solid #4caf50;
@@ -60,6 +57,14 @@ a {
   }
 }
 
+#flash {
+  position: fixed;
+  left: 171px;
+  top: 54px;
+  z-index: 323232;
+  display: flex;
+}
+
 .main-btn {
   cursor: pointer;
   width: fit-content;
@@ -72,10 +77,16 @@ a {
   line-height: 19px;
   letter-spacing: 0.025em;
   color: rgb(113, 65, 245);
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
   &.filled {
     color: #fff;
+    border: 0;
     background: linear-gradient(90deg, rgba(81,116,255,1) 0%, rgba(210,81,255,1) 100%);
+    &:hover {
+      background: linear-gradient(90deg, rgb(0, 46, 231) 0%, rgba(197, 38, 255) 100%);
+      box-shadow: 0px 0px 10px 1px rgba(0,38,189,0.99);
+      text-shadow: 0px 0px 10px #FFFFFF;      
+    }
   }
   &:hover {
     color: #fff;
@@ -1155,6 +1166,25 @@ a {
     justify-content: space-between;
     .checkboxes {
       width: 33%;
+      .flex-inner {
+        flex-direction: column;
+      }
+      .radio-buttons {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        input {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+        }
+        label {
+          font-size: 18px;
+          line-height: 1.1;
+          color: #000;
+          font-weight: 400;
+        }
+      }
     }
     .group {
       width: 64%;
@@ -1328,5 +1358,12 @@ a {
   }
   .next-page {
     color: #727272;
+  }
+}
+
+#dropzone.dragover {
+  .image__dragging {
+    background-color: #f1f1f1;
+    border-style: solid;
   }
 }
