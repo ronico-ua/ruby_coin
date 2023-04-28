@@ -43,7 +43,7 @@
           = f.label :status, "Статус", class: 'standart-label'
           .radio-buttons
             = f.collection_radio_buttons :status, [[true, 'Активний'], [false, 'Неактивний']], :first, :last
-            <input id="toggle-one" checked type="checkbox">
+            input id="toggle-one" type="checkbox"
         .flex-inner
           = f.label :status, "Головний допис", class: 'standart-label'
           .radio-buttons

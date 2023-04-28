@@ -6,11 +6,11 @@
     "@popperjs/core": "^2.11.7",
     "@rails/activestorage": "^7.0.4-3",
     "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.3",
+    "bootstrap-icons": "^1.10.5",
     "bootstrap5-toggle": "^5.0.6",
-    "esbuild": "^0.17.14",
+    "esbuild": "^0.17.18",
     "jquery": "^3.6.4",
-    "sass": "^1.60.0"
+    "sass": "^1.62.1"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
