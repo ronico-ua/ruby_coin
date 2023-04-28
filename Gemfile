@@ -15,7 +15,7 @@ gem 'overcommit', '~> 0.60.0'
 gem 'pagy'
 gem 'pg', '~> 1.5.3'
 gem 'propshaft'
-gem 'puma', '~> 5.6', '>= 5.6.5'
+gem 'puma', '~> 6.2.2'
 gem 'pundit'
 gem 'rails', '~> 7.0.4'
 gem 'rbs', '~> 3.1'
@@ -48,7 +48,7 @@ group :development do
   gem 'web-console'
 
   gem 'capistrano', '~> 3.17', '>= 3.17.2', require: false
-  gem 'capistrano3-puma', '~> 5.2', require: false
+  gem 'capistrano3-puma', '~> 6.0.0.alpha1', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', '~> 1.6', '>= 1.6.2', require: false
   gem 'capistrano-rvm', require: false
