@@ -97,10 +97,10 @@ GEM
       sshkit (~> 1.2)
     capistrano-yarn (2.0.2)
       capistrano (~> 3.0)
-    capistrano3-puma (6.0.0.beta.1)
+    capistrano3-puma (5.2.0)
       capistrano (~> 3.7)
       capistrano-bundler
-      puma (>= 5.1, < 7.0)
+      puma (>= 4.0, < 6.0)
     capybara (3.39.0)
       addressable
       matrix
@@ -224,7 +224,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (5.6.5)
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
@@ -381,7 +381,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.6, >= 1.6.2)
   capistrano-rvm
   capistrano-yarn
-  capistrano3-puma (~> 6.0.0.alpha1)
+  capistrano3-puma (~> 5.2)
   capybara
   carrierwave
   cssbundling-rails
@@ -399,7 +399,7 @@ DEPENDENCIES
   propshaft
   pry
   pry-rails
-  puma (~> 6.2.2)
+  puma (~> 5.6, >= 5.6.5)
   pundit
   rails (~> 7.0.4)
   rails-controller-testing
