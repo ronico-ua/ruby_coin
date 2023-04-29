@@ -35,4 +35,4 @@ set :assets_manifests, lambda {
 }
 
 append :linked_files, *%w[config/master.key config/database.yml .env]
-set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads]
+set :linked_dirs, %w[tmp/cache public/uploads]
