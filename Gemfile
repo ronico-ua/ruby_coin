@@ -47,10 +47,10 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'web-console'
 
-  gem 'capistrano', '~> 3.17', '>= 3.17.2', require: false
+  gem 'capistrano', '~> 3.17', require: false
   gem 'capistrano3-puma', '~> 5.2', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails', '~> 1.6', '>= 1.6.2', require: false
+  gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rvm', require: false
   gem 'capistrano-yarn', require: false
 end

@@ -376,9 +376,9 @@ DEPENDENCIES
   bootsnap
   bundler-audit (~> 0.9.1)
   bundler-leak (~> 0.3.0)
-  capistrano (~> 3.17, >= 3.17.2)
+  capistrano (~> 3.17)
   capistrano-bundler
-  capistrano-rails (~> 1.6, >= 1.6.2)
+  capistrano-rails (~> 1.6)
   capistrano-rvm
   capistrano-yarn
   capistrano3-puma (~> 5.2)

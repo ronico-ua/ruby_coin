@@ -15,6 +15,7 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh
 set :pty,             true
 set :use_sudo,        false
 set :stage,           :production
+set :rails_env,       :production
 set :deploy_via,      :remote_cache
 
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
@@ -26,6 +27,8 @@ set :puma_preload_app,           true
 set :puma_worker_timeout,        nil
 set :puma_init_active_record,    true
 set :puma_enable_socket_service, true
+set :keep_releases, 3
+set :conditionally_migrate, true
 
 # Issue with propshaft as asset pipwlinw
 # See: https://github.com/capistrano/rails/issues/257
@@ -35,4 +38,4 @@ set :assets_manifests, lambda {
 }
 
 append :linked_files, *%w[config/master.key config/database.yml .env]
-set :linked_dirs, %w[tmp/pids tmp/sockets tmp/cache vendor/bundle public/uploads public/system]
+set :linked_dirs, %w[tmp/pids tmp/sockets tmp/cache vendor/bundle public/uploads public/system node_modules]
