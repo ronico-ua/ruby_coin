@@ -11,9 +11,6 @@ nav.navbar.navbar-expand-custom.sticky-top
         li.nav-item
           = link_to t("nav_item.faq"), faq_path, class: "nav-link #{active_class(faq_path)}"
       .actions
-        - if current_user.blank?
-          = link_to 'Sign up', new_user_registration_path, class: 'main-btn'
-          = link_to 'Sign in', new_user_session_path, class: 'main-btn filled'
         .dropdown.languages
           a.nav-link.dropdown-toggle[href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"]
             = image_tag "uk-flag.svg" 
@@ -24,9 +21,9 @@ nav.navbar.navbar-expand-custom.sticky-top
             li
               a.dropdown-item[href="#"]
                 = image_tag "en-flag.svg"
+        .search-link
         .dropdown.admin
           button.dropdown-toggle[type="button" data-bs-toggle="dropdown" aria-expanded="false"]
-            = image_tag "admin.png"
           ul.dropdown-menu
             li
               a.dropdown-item.profile[href="#"]
