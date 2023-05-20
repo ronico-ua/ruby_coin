@@ -57,15 +57,6 @@
       color: #fff;
     }
   }
-  .tags-inner {
-    display: flex;
-    align-items: center;
-  }
-  .intro-block__tag {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.5;
-  }
   &__title {
     font-weight: 600;
     font-size: 32px;
@@ -78,13 +69,25 @@
     line-height: 1.5;
     margin-bottom: 15px;
   }
-  &__tag {
-    padding: 3px 15px;
-    border: 1px solid #FFFFFF;
-    border-radius: 3px;
-    &:not(:last-child) {
-      margin-right: 15px;
-    }
+}
+
+.tags-inner {
+  display: flex;
+  align-items: center;
+}
+
+.intro-block__tag {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.intro-block__tag {
+  padding: 3px 15px;
+  border: 1px solid #FFFFFF;
+  border-radius: 3px;
+  &:not(:last-child) {
+    margin-right: 15px;
   }
 }
 

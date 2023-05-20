@@ -13,4 +13,6 @@ class HomeController < ApplicationController
     @similar_posts = Post.where.not(id: @post.id).includes(:tags)
                          .where(tags: { title: @post.tags.pluck(:title) }).limit(3)
   end
+
+  def search; end
 end

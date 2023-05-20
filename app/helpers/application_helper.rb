@@ -7,6 +7,10 @@ module ApplicationHelper
     turbo_stream.prepend 'flash', partial: 'shared/flash'
   end
 
+  def post_image(post)
+    post.photo.url || image_url('defautl.svg')
+  end
+
   def nav_tab(title, url, options = {})
     current_page = options.delete :current_page
 

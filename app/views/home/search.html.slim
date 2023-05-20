@@ -1,25 +1,8 @@
-.post-show
-  .navigation
-    .prev-page Головна
-    .slash
-    .next-page = @post.title
-  .post-main-img
-    - if @post.photo.url
-      = image_tag @post.photo.url
-    - else
-      = image_tag "post-img.png"
-  .details-inner
-    .flex-admin
-      .admin Admin
-      .intro-block__date 10/10/2024
-    .tags-inner
-      .intro-block__tag Ruby
-      .intro-block__tag Ruby on Rails
-      .intro-block__tag BackEnd part
-  .post-show__content
-    h1.post-title = @post.title
-    p.post-description = @post.description
-  h2.post-title.second Схожі публікації
+.search-page
+  h1.search-page__title Пошук
+  .search-page__group
+    input.search-page__input type="search" placeholder="Що таке gem в мові Ruby?"
+  h2.recomment__title Можливо вам буде цікаво
   .posts
     .posts__inner
       .post

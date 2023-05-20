@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   root 'home#index'
+  get '/search', to: 'home#search'
   get '/faq', to: 'faq#index'
   get '/post/:id', to: 'home#show', as: 'post'
 

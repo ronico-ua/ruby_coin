@@ -1,38 +1,21 @@
 = form_with model: [:admin, post], data: { turbo: :false } do |f|
   .admin-form__content
     = render 'shared/errors', object: post
-    h1.new_post = t('.title')
     .group
       = f.label :title, t('.title_label'), class: 'standart-label'
       = f.text_field :title, class: 'standart-input', placeholder: t('.title_label')
-    / .group.column
-    /   = f.label :photo, t('.photo_label'), class: 'standart-label'
-    /   / = f.file_field :photo
-    /   .image__content
-    /     .image__dragging
-    /       = image_tag "image-upload-icon.svg"
-    /     .main-btn.filled Завантажити зображення
-    /   label.image__content
-    /     .image__dragging
-    /       - if @post.photo.present? && @post.photo.attached?
-    /         h1 fdfdfd
-    /       = image_tag "image-upload-icon.svg"
-    /       .d-none
-    /         = f.file_field :photo
-    .group
-      = f.label :image, class: 'standart-label'
-      .image__content
-        #dropzone
-          .image__dragging.active
-            = image_tag 'image-upload-icon.svg'
-        label.main-btn.filled
-          | Завантажити зображення
-          .d-none
-            = f.file_field :photo, id: "image-upload" 
+    = f.label :title, "Головне зображення", class: 'standart-label'
+    .image-content
+      #preview.preview-img-box-edit
+        = image_tag post_image(@post), alt: 'img', id: "file-ip-1-preview", class: 'admin-preview-img'
+      label.main-btn[for="add-img"]
+        svg.label-img[width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"]
+          path[d="M2 18C1.45 18 0.979 17.8043 0.587 17.413C0.195667 17.021 0 16.55 0 16V2C0 1.45 0.195667 0.979 0.587 0.587C0.979 0.195667 1.45 0 2 0H11V2H2V16H16V7H18V16C18 16.55 17.8043 17.021 17.413 17.413C17.021 17.8043 16.55 18 16 18H2ZM14 6V4H12V2H14V0H16V2H18V4H16V6H14ZM3 14H15L11.25 9L8.25 13L6 10L3 14Z" fill="white"]
+        |  Вибрати зображення 
+      = f.file_field :photo, id: 'add-img', accept: "image/*", onchange: "showPreview(event);", class: "btn-main" 
     .group
       = f.label :description, t('.description_label'), class: 'standart-label'
       = f.text_field :description, class: 'standart-input descr'
-      / = thumbnail_rectangle_image(f.object.image_file)
     .form-inner
       - if tags.present?
         .group
@@ -41,15 +24,21 @@
       .checkboxes
         .flex-inner
           = f.label :status, "Статус", class: 'standart-label'
-          .radio-buttons
-            = f.collection_radio_buttons :status, [[true, 'Активний'], [false, 'Неактивний']], :first, :last
-            input id="toggle-one" type="checkbox"
+          input[checked type="checkbox" data-toggle="toggle" data-onlabel="Активний" data-offlabel="Не активний" data-onstyle="success" data-offstyle="danger" class="switcher"] 
         .flex-inner
           = f.label :status, "Головний допис", class: 'standart-label'
-          .radio-buttons
-            = f.collection_radio_buttons :status, [[true, 'Головний'], [false, 'Не головний']], :first, :last
+          input[checked type="checkbox" data-toggle="toggle" data-onlabel="Головний" data-offlabel="Не головний" data-onstyle="success" data-offstyle="danger" class="switcher"]
     .actions
-      = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn'
+      = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
       = f.submit t('global.button.create'), class: 'main-btn filled'
-= image_tag "element-bg-first.svg", class: 'element-form-1'
-= image_tag "element-bg-first.svg", class: 'element-form-2'
+
+javascript:
+  function showPreview(event) {
+    if (event.target.files.length > 0) {
+      var src = URL.createObjectURL(event.target.files[0]);
+      var preview = document.getElementById("file-ip-1-preview");
+      preview.src = src;
+      preview.style.display = "block";
+      document.getElementById('preview').style.backgroundImage = "none";
+    }
+  }

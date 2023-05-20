@@ -1,24 +1,54 @@
 .log-reg__form
-  h1.title Реєстрація
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    .group
-      label.standart-label Емейл*
-      .input
-        .badge
-          = image_tag "mail-icon.svg" 
-        = f.email_field :email, autofocus: true, autocomplete: "email", label: false, class: 'standart-input'
-    .group
-      label.standart-label Пароль*
-      .input
-        .badge
-          = image_tag "pass-icon.svg" 
-        = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
-    .group
-      label.standart-label Повтор пароля*
-      .input
-        .badge
-          = image_tag "pass-icon.svg" 
-        = f.password_field :password_confirmation, label: false, autocomplete: "current-password", class: 'standart-input'
-    .actions
-      = f.submit "Зареєструватися", class: 'main-btn register'
-      = link_to "У вас вже є обліковий запис?", new_session_path(resource_name), class: 'text'
+  .log-reg__form--content.sign-up
+    h1.title Реєстрація
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .group
+        label.standart-label Емейл*
+        .input
+          .badge
+            = image_tag "mail-icon.svg" 
+          = f.email_field :email, autofocus: true, autocomplete: "email", label: false, class: 'standart-input'
+      .group
+        label.standart-label Пароль*
+        .input
+          .badge
+            = image_tag "pass-icon.svg" 
+          = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
+          #show-hide1.show__password-wrapper.active[onclick="ShowHide1()"]
+            .eye-icon
+      .group
+        label.standart-label Повтор пароля*
+        .input
+          .badge
+            = image_tag "pass-icon.svg" 
+          = f.password_field :password_confirmation, label: false, autocomplete: "current-password", class: 'standart-input'
+          #show-hide2.show__password-wrapper.active[onclick="ShowHide2()"]
+            .eye-icon
+      .actions
+        = f.submit "Зареєструватися", class: 'main-btn not_filled register'
+        = link_to "У вас вже є обліковий запис?", new_session_path(resource_name), class: 'text'
+
+
+javascript:
+  var input1 = document.getElementById('user_password');
+  function ShowHide1() {
+    document.getElementById('show-hide1').classList.toggle('active');
+    if(input1.getAttribute('type') == 'password') {
+      input1.removeAttribute('type');
+      input1.setAttribute('type', 'text');
+    } else {
+      input1.removeAttribute('type');
+      input1.setAttribute('type', 'password');
+    }
+  }
+  var input2 = document.getElementById('user_password_confirmation');
+  function ShowHide2() {
+    document.getElementById('show-hide2').classList.toggle('active');
+    if(input2.getAttribute('type') == 'password') {
+      input2.removeAttribute('type');
+      input2.setAttribute('type', 'text');
+    } else {
+      input2.removeAttribute('type');
+      input2.setAttribute('type', 'password');
+    }
+  }
