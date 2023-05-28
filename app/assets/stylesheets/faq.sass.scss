@@ -5,6 +5,9 @@
   margin: 100px auto 200px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 900px) {
+    max-width: 500px;
+  }
   .faq__title {
     font-weight: 700;
     font-size: 36px;

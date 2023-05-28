@@ -1,7 +1,10 @@
 .footer {
-  padding: 51px 0 59px;
+  padding: 85px 0 80px;
   background: #FFFFFF;
   box-shadow: -4px -4px 40px rgba(0, 0, 0, 0.1);
+  .home__container {
+    margin: 0 auto;
+  }
   &__inner {
     display: flex;
     align-items: center;

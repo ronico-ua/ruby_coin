@@ -16,11 +16,21 @@
 
 .admin-panel {
   width: 100%;
-  max-width: 1200px;
-  padding: 0 15px;
-  margin: 65px auto;
+  max-width: 1250px;
+  padding: 0 30px;
+  margin: 65px auto 200px;
   .pagination__inner {
     margin: 0;
+    .page-item.next {
+      @media (max-width: 1200px) {
+        margin-left: 25px;
+      }
+    }
+    .page-item.prev {
+      @media (max-width: 1200px) {
+        margin-right: 25px;
+      }
+    }
   }
   &__content {
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
@@ -39,6 +49,9 @@
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    @media (max-width: 900px) {
+      width: 30%;
+    }
     .admin-badge {
       display: flex;
       justify-content: center;
@@ -100,6 +113,12 @@
     background: #f6f6f6;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      padding: 20px 30px;
+    }
+    @media (max-width: 900px) {
+      width: 70%;
+    }
     .inner-title {
       display: flex;
       align-items: center;
@@ -125,6 +144,9 @@
         border-radius: 10px;
         height: 100%;
         margin-bottom: 20px;
+        @media (max-width: 1100px) {
+          width: 100%;
+        }
         &-img {
           width: 102px;
           height: 120px;
@@ -222,6 +244,9 @@
       border-radius: 20px;
       border: 2px dashed rgba(81, 116, 255, 1);
       margin-bottom: 27px;
+      @media (max-width: 900px) {
+        height: 350px;
+      }
       img {
         position: absolute;
         top: 50%;
@@ -301,13 +326,21 @@
 }
 
 .pagination__inner.tags {
-  transform: translateY(-20px);
+  margin-top: 10px;
+  @media (max-width: 1024px) {
+    width: 100%;
+    order: 1;
+  }
 }
 
 .tags__inner {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   height: 100%;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
   .inner-title {
     .admin__title {
       margin-right: 25px;
@@ -315,6 +348,10 @@
   }
   .tags__right {
     width: 54%;
+    @media (max-width: 1024px) {
+      width: 100%;
+      order: 0;
+    }
     .admin__title {
       margin-bottom: 0;
     }
@@ -323,6 +360,11 @@
     width: 42%;
     display: flex;
     flex-direction: column;
+    @media (max-width: 1024px) {
+      width: 100%;
+      order: 2;
+      margin-top: 50px;
+    }
     .standart-input {
       margin-bottom: 50px;
     }
@@ -447,6 +489,9 @@
   @media (max-width: 730px) {
     border: 2px dashed #000000;
     background-image: url(image-upload-icon.svg);
+  }
+  @media (max-width: 900px) {
+    height: 350px;
   }
   @media (max-width: 600px) {
     height: 300px;

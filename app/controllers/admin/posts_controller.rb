@@ -8,7 +8,7 @@ module Admin
 
     def index
       @posts = Post.all.order(created_at: :desc)
-      @pagy, @posts = pagy(@posts)
+      @pagy, @posts = pagy(@posts, items: 6)
     end
 
     def show; end
