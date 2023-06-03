@@ -7,8 +7,9 @@ Installation
 3. Run `overcommit --install`
 4. Run `overcommit --sign`
 5. Run `yarn`
-6. Copy .env settings for database: `cp .env.example .env`
-7. Run `rails db:create db:migrate db:seed`
+6. Run `bundle exec rails assets:precompile` if any style issue
+7. Copy .env settings for database: `cp .env.example .env`
+8. Run `rails db:create db:migrate db:seed`
 
 Start server
 --------------
