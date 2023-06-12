@@ -1183,9 +1183,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ronico@workspace:.":
+"ruby_coin@workspace:.":
   version: 0.0.0-use.local
-  resolution: "ronico@workspace:."
+  resolution: "ruby_coin@workspace:."
   dependencies:
     "@hotwired/stimulus": ^3.2.1
     "@hotwired/turbo-rails": ^7.3.0

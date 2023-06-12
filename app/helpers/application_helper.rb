@@ -30,7 +30,7 @@ module ApplicationHelper
   end
 
   def full_title(page_title = '')
-    base_title = 'RONICO'
+    base_title = 'RubyCoin'
     if page_title.present?
       "#{page_title} | #{base_title}"
     else

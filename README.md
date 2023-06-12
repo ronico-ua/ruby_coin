@@ -1,8 +1,8 @@
-# RONICO
+# RubyCoin
 
 Installation
 --------------
-1. git clone git@github.com:ronico-ua/ronico.git
+1. git clone git@github.com:ronico-ua/ruby_coin.git
 2. Run `bundle install`
 3. Run `overcommit --install`
 4. Run `overcommit --sign`

@@ -10,14 +10,14 @@ default: &default
 
 development:
   <<: *default
-  database: ronico_development
+  database: ruby_coin_development
 
 test:
   <<: *default
-  database: ronico_test
+  database: ruby_coin_test
 
 production:
   <<: *default
-  database: ronico_production
+  database: ruby_coin_production
   username: <%= ENV["PRODUCTION_USERNAME"] %>
   password: <%= ENV["PRODUCTION_PASSWORD"] %>

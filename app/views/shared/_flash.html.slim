@@ -1,22 +1,3 @@
 = turbo_frame_tag 'flash_messages' do
   - flash.each do |type, message|
     = tag.div message, class: "alert alert-#{type}", role: 'alert'
-
-javascript:
-  function hideFlashMessage(setTime) {
-    let time = 0;
-    const alertElements = document.getElementsByClassName('alert');
-    const reversedAlerts = Array.from(alertElements).reverse();
-
-    reversedAlerts.forEach(function(alertElement) {
-      time += setTime;
-      setTimeout(function() {
-        alertElement.style.opacity = '0';
-        setTimeout(function() {
-          alertElement.style.display = 'none';
-        }, 300);
-      }, time);
-    });
-  }
-
-  hideFlashMessage(3000);

@@ -11,11 +11,11 @@ executors:
           PGHOST: localhost
           PGUSER: myapp
           PGPORT: 5432
-          DATABASE_URL: postgresql://myapp@localhost:5432/ronico_test
+          DATABASE_URL: postgresql://myapp@localhost:5432/ruby_coin_test
       - image: circleci/postgres:11.3-alpine
         environment:
           POSTGRES_USER: myapp
-          POSTGRES_DB: ronico_test
+          POSTGRES_DB: ruby_coin_test
 
 caches:
   - &bundle_cache_full v2-repo-{{ checksum "Gemfile.lock" }}

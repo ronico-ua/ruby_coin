@@ -1,7 +1,5 @@
 // Entry point for the build script in your package.json
-import "./jquery"
-import "./toggle"
-import "./controllers"
+import "./common"
 
 import "@hotwired/turbo-rails"
 import 'bootstrap/js/dist/dropdown'

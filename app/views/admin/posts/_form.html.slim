@@ -24,7 +24,7 @@
       .checkboxes
         .flex-inner
           = f.label :status, "Статус", class: 'standart-label'
-          input[checked type="checkbox" data-toggle="toggle" data-onlabel="Активний" data-offlabel="Не активний" data-onstyle="success" data-offstyle="danger" class="switcher"] 
+          input[checked type="checkbox" data-toggle="toggle" data-onlabel="Активний" data-offlabel="Не активний" data-onstyle="success" data-offstyle="danger" class="switcher"]
         .flex-inner
           = f.label :status, "Головний допис", class: 'standart-label'
           input[checked type="checkbox" data-toggle="toggle" data-onlabel="Головний" data-offlabel="Не головний" data-onstyle="success" data-offstyle="danger" class="switcher"]
@@ -33,6 +33,7 @@
       = f.submit t('global.button.create'), class: 'main-btn filled'
 
 javascript:
+  $('input[type="checkbox"].toggle').bootstrapToggle();
   function showPreview(event) {
     if (event.target.files.length > 0) {
       var src = URL.createObjectURL(event.target.files[0]);

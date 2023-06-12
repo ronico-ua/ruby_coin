@@ -5,8 +5,8 @@ lock '~> 3.17.2'
 
 # Change these
 server '45.90.59.143', port: 22, roles: %i[web app db], primary: true
-set :application,     'ronico'
-set :repo_url,        'git@github.com:ronico-ua/ronico.git'
+set :application,     'ruby_coin'
+set :repo_url,        'git@github.com:ronico-ua/ruby_coin.git'
 set :branch,          'master'
 set :user,            'root'
 
