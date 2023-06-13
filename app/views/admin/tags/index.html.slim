@@ -11,10 +11,10 @@
               = render @tags
           .tags__left
             h1.admin__title Створити тег
-            input.standart-input type="text" placeholder="Назва тегу"
-             = turbo_frame_tag @tag, class: 'create_tag' do
-                = link_to t('global.button.create'), new_admin_tag_path, class: 'main-btn',
-                        data: { turbo_frame: dom_id(@tag) }
+            = turbo_frame_tag @tag, class: 'create_tag' do
+              = form_with model: [:admin, Tag.new] do |f|
+                = f.text_field :title, class: 'standart-input', placeholder: 'Name of the tag'
+                = f.submit t('global.button.create'), class: 'main-btn'
             .search-form
               input.search-input type="search" placeholder="Пошук"   
           .pagination__inner.tags
