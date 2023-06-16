@@ -26,6 +26,8 @@ module Admin
             flash[:success] = t('.success')
             redirect_to admin_tags_path, status: :see_other
           end
+
+          format.turbo_stream { flash.now[:success] = t('.success') }
         end
       else
         render 'index'
