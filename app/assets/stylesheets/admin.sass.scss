@@ -615,7 +615,8 @@
 .admin-preview-img {
   object-fit: cover;
   border-radius: 20px;
-  max-width: 715px;
+  max-width: 100%;
+  height: inherit;
 }
 
 .preview-img-box-edit {
@@ -658,4 +659,53 @@
 
 .form-editor-tag {
   width: 100%;
+}
+
+.modal {
+  .modal-dialog.tags {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    overflow: hidden;
+    .modal-content {
+      .modal-header {
+        border-bottom: 0;
+        margin-bottom: 5px;
+        padding: 15px;
+        h1 {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+          color: #000000;
+        }
+      }
+      .modal-body {
+        padding: 0 15px 20px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+      }
+      .modal-footer {
+        padding: 11px 15px;
+      }
+    }
+    .main-btn {
+      padding: 9px 23px;
+      margin-bottom: 0;
+      @media (max-width: 500px) {
+        margin-bottom: 15px;
+      }
+      a {
+        color: #fff;
+      }
+    }
+    .btn-close {
+      font-size: 20px;
+      font-weight: 100;
+      opacity: 1;
+      filter: invert(14%) sepia(99%) saturate(5484%) hue-rotate(343deg) brightness(90%) contrast(91%);
+    }
+  }
 }

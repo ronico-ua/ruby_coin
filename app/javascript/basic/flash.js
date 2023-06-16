@@ -1,15 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
   const hideFlashMessage = function(setTime) {
     let time = 0;
-    const alertElements = document.getElementsByClassName('alert');
+    const alertElements = $('.alert');
     const reversedAlerts = Array.from(alertElements).reverse();
     reversedAlerts.forEach(function(alertElement) {
       time += setTime;
       setTimeout(function() {
-        alertElement.style.opacity = '0';
-        setTimeout(function() {
-          alertElement.style.display = 'none';
-        }, 300);
+        $(alertElement).animate({ opacity: '0' }, 300, function() {
+          $(this).hide();
+        });
       }, time);
     });
   };

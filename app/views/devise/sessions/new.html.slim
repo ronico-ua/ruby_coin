@@ -15,7 +15,7 @@
           .badge
             = image_tag "pass-icon.svg" 
           = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
-          #show-hide.show__password-wrapper.active[onclick="ShowHide()"]
+          #show-hide.show__password-wrapper.active
             .eye-icon
       - if devise_mapping.rememberable?
         .remember_me
@@ -26,21 +26,4 @@
             = link_to "Забули пароль?", new_password_path(resource_name), class: 'text'
       .actions
         = f.submit "Увійти", class: 'main-btn'
-        = link_to "Зареєструватися", new_registration_path(resource_name), class: 'main-btn not_filled'
-
-javascript:
-  var input = document.getElementById('user_password');
-  function ShowHide() {
-    document.getElementById('show-hide').classList.toggle('active');
-    if(input.getAttribute('type') == 'password') {
-      input.removeAttribute('type');
-      input.setAttribute('type', 'text');
-    } else {
-      input.removeAttribute('type');
-      input.setAttribute('type', 'password');
-    }
-  }
-
-  document.querySelector('#user_remember_me').addEventListener('click', function() {
-    document.querySelector('.custom').classList.toggle('checked');
-  })
+        = link_to "Зареєструватися", new_registration_path(resource_name), class: 'main-btn not_filled' 

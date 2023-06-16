@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def post_image(post)
-    post.photo.url || image_url('defautl.svg')
+    post.photo.url || image_url('')
   end
 
   def nav_tab(title, url, options = {})

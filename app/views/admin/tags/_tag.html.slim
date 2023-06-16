@@ -5,5 +5,20 @@
       = link_to image_tag("edit-icon.svg"), edit_admin_tag_path(tag),
               data: { turbo_frame: dom_id(tag) }
     .delete
-      = link_to image_tag("delete-icon.svg"), admin_tag_path(tag),
-              data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+      .[type="button" data-bs-toggle="modal" data-bs-target="#exampleModal#{tag.id}"]
+        = image_tag("delete-icon.svg")
+      .modal.fade[tabindex="-1" aria-labelledby="exampleModalLabel#{tag.id}" aria-hidden="true" id="exampleModal#{tag.id}"]
+        .modal-dialog.tags
+          .modal-content
+            .modal-header
+              h1#exampleModalLabel.modal-title.fs-5
+                | Підтвердження дії
+              button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close"]
+            .modal-body
+              | Ви впевнені, що бажаєте видалити тег "#{tag.title}"?
+            .modal-footer
+              button.main-btn[type="button" data-bs-dismiss="modal"]
+                = link_to "Так", admin_tag_path(tag),
+                    data: { turbo_method: :delete }
+              button.main-btn.not_filled[type="button" data-bs-dismiss="modal"]
+                | Ні

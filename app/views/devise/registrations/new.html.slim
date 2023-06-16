@@ -14,7 +14,7 @@
           .badge
             = image_tag "pass-icon.svg" 
           = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
-          #show-hide1.show__password-wrapper.active[onclick="ShowHide1()"]
+          #show-hide1.show__password-wrapper.active
             .eye-icon
       .group
         label.standart-label Повтор пароля*
@@ -22,33 +22,8 @@
           .badge
             = image_tag "pass-icon.svg" 
           = f.password_field :password_confirmation, label: false, autocomplete: "current-password", class: 'standart-input'
-          #show-hide2.show__password-wrapper.active[onclick="ShowHide2()"]
+          #show-hide2.show__password-wrapper.active
             .eye-icon
       .actions
         = f.submit "Зареєструватися", class: 'main-btn not_filled register'
         = link_to "У вас вже є обліковий запис?", new_session_path(resource_name), class: 'text'
-
-
-javascript:
-  var input1 = document.getElementById('user_password');
-  function ShowHide1() {
-    document.getElementById('show-hide1').classList.toggle('active');
-    if(input1.getAttribute('type') == 'password') {
-      input1.removeAttribute('type');
-      input1.setAttribute('type', 'text');
-    } else {
-      input1.removeAttribute('type');
-      input1.setAttribute('type', 'password');
-    }
-  }
-  var input2 = document.getElementById('user_password_confirmation');
-  function ShowHide2() {
-    document.getElementById('show-hide2').classList.toggle('active');
-    if(input2.getAttribute('type') == 'password') {
-      input2.removeAttribute('type');
-      input2.setAttribute('type', 'text');
-    } else {
-      input2.removeAttribute('type');
-      input2.setAttribute('type', 'password');
-    }
-  }
