@@ -19,6 +19,9 @@
   max-width: 1250px;
   padding: 0 30px;
   margin: 65px auto 200px;
+  @media (max-width: 500px) {
+    padding: 0;
+  }
   .pagination__inner {
     margin: 0;
     .page-item.next {
@@ -52,6 +55,10 @@
     @media (max-width: 900px) {
       width: 30%;
     }
+    @media (max-width: 700px) {
+       width: 20%;
+       padding: 40px 20px;   
+    }
     .admin-badge {
       display: flex;
       justify-content: center;
@@ -61,6 +68,10 @@
       img {
         width: 100px;
         height: 100px;
+        @media (max-width: 650px) {
+          width: 48px;
+          height: 48px;
+        }
       }
       .title {
         margin-top: 20px;
@@ -70,6 +81,9 @@
         letter-spacing: 0.04em;
         text-transform: capitalize;
         color: #000000;
+        @media (max-width: 500px) {
+          display: none;
+        }
       }
     }
     .navigation {
@@ -78,6 +92,9 @@
       justify-content: start;
       align-items: revert;
       margin-bottom: 50px;
+      @media (max-width: 700px) {
+        align-items: center;
+      }
     }
     .nav-link {
       display: flex;
@@ -96,6 +113,9 @@
     .nav-link, .exit-admin {
       img {
         margin-right: 22px;
+        @media (max-width: 700px) {
+          margin: 0;
+        }
       }
       .title {
         font-weight: 700;
@@ -104,6 +124,9 @@
         letter-spacing: 0.04em;
         color: #000000;
         margin: 0;
+        @media (max-width: 700px) {
+          display: none;
+        }
       }
     }
   }
@@ -115,6 +138,10 @@
     border-bottom-right-radius: 10px;
     @media (min-width: 1024px) and (max-width: 1200px) {
       padding: 20px 30px;
+    }
+    @media (max-width: 700px) {
+      padding: 30px 20px 50px;
+      width: 80% !important;
     }
     @media (max-width: 900px) {
       width: 70%;
@@ -153,6 +180,10 @@
           object-fit: cover;
           border-top-left-radius: 10px;
           border-bottom-left-radius: 10px;
+          @media (max-width: 600px) {
+            height: 91px;
+            width: 67px;
+          }
         }
         &__text {
           padding-right: 10px;
@@ -174,6 +205,9 @@
           display: -webkit-box;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
+          @media (max-width: 600px) {
+            font-size: 14px;
+          }
         }
         &__description {
           @include fz-14-text();
@@ -183,6 +217,10 @@
           display: -webkit-box;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
+          @media (max-width: 600px) {
+            font-size: 12px;
+            -webkit-line-clamp: 2;
+          }
         }
         &__actions {
           display: flex;
@@ -201,12 +239,29 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 600px) {
+      flex-direction: column;
+      margin-top: 30px;
+      align-items: start;
+    }
     .pagination {
       margin: 0;
+      @media (max-width: 600px) {
+        order: 1;
+      }
     }
   }
   .main-btn {
     padding: 16px 47px;
+    @media (max-width: 600px) {
+      order: 0;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 500px) {
+      width: 100%;
+      text-align: center;
+      padding: 12px 40px;
+    }
   }
 }
 
@@ -214,6 +269,9 @@
   width: 100%;
   max-width: 1230px;
   margin: 60px auto 90px;
+  @media (max-width: 500px) {
+    margin: 45px auto 100px;
+  }
   .main-btn {
     padding: 16px 47px;
     font-weight: 600;
@@ -289,19 +347,46 @@
   .actions {
     display: flex;
     align-items: center;
+    @media (max-width: 450px) {
+      flex-direction: column;
+    }
     .main-btn.filled {
       margin-left: 40px;
+      @media (max-width: 450px) {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+    .main-btn {
+      @media (max-width: 450px) {
+        width: 100%;
+        text-align: center;
+      }
     }
   }
   .form-inner {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    @media (max-width: 550px) {
+      flex-direction: column;
+      align-items: start;
+    }
     .checkboxes {
       width: 33%;
+      @media (max-width: 550px) {
+        width: 100%;
+        display: flex;
+        margin-bottom: 30px;
+      }
       .flex-inner {
         display: flex;
         flex-direction: column;
+        &:first-child {
+          @media (max-width: 550px) {
+            margin-right: 30px;
+          }
+        }
         .toggle {
           width: 60px;
         }
@@ -310,11 +395,17 @@
           font-size: 20px;
           line-height: 24px;
           color: #000000;
+          @media (max-width: 650px) {
+            font-size: 16px;
+          }
         }
       }
     }
     .group {
       width: 64%;
+      @media (max-width: 550px) {
+        width: 100%;
+      }
     }
     .flex-inner {
       margin-bottom: 20px;
@@ -374,6 +465,10 @@
   }
   .main-btn {
     font-weight: 600;
+    @media (max-width: 500px) {
+      width: 100%;
+      text-align: center;
+    }
   }
   .search-input {
     background: #FFFFFF;
@@ -478,6 +573,11 @@
   label {
     margin-top: 27px;
   }
+  .label-img {
+    @media (max-width: 400px) {
+      display: none;
+    }
+  }
 }
 
 .preview-img-box-edit {
@@ -486,22 +586,20 @@
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 20px;
-  @media (max-width: 730px) {
-    border: 2px dashed #000000;
-    background-image: url(image-upload-icon.svg);
-  }
+
   @media (max-width: 900px) {
     height: 350px;
   }
   @media (max-width: 600px) {
-    height: 300px;
+    height: 218px;
   }
   @media (max-width: 500px) {
-    height: 295px;
+    height: 200px;
   }
-  @media (max-width: 340px) {
-    height: 250px;
+  @media (max-width: 450px) {
+    height: 180px;
   }
+  
 }
 
 #add-img {
