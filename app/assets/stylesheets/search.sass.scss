@@ -3,12 +3,18 @@
   max-width: 1340px;
   padding: 0 30px;
   margin: 50px auto 200px;
+  @media (max-width: 500px) {
+    margin: 30px auto 200px;
+  }
   &__title {
     font-weight: 700;
     font-size: 36px;
     line-height: 1.5;
     color: #000000;
     margin-bottom: 30px;
+    @media (max-width: 500px) {
+      margin-bottom: 20px;
+    }
   }
   &__group {
     margin-bottom: 40px;
@@ -52,6 +58,9 @@
     line-height: 1.5;
     color: #000000;
     margin-bottom: 20px;
+    @media (max-width: 500px) {
+      font-size: 24px;
+    }
   }
   .posts {
     margin-top: 0;
