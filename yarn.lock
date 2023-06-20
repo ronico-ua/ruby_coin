@@ -210,6 +210,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@orchidjs/sifter@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@orchidjs/sifter@npm:1.0.3"
+  dependencies:
+    "@orchidjs/unicode-variants": ^1.0.4
+  checksum: 5925ce6e5babb872beaaeb562634f02befea118bf19676a734070647efee0a7eb591f5f4ae280b6bbb5288c7959eb679e9daf2c42a7d9ba1262e9daff3748958
+  languageName: node
+  linkType: hard
+
+"@orchidjs/unicode-variants@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@orchidjs/unicode-variants@npm:1.0.4"
+  checksum: a6ad1c66f4e978527ee529086b875bcaa93e23d75a3b894343bd226a2492b1fa2f9faa2a72967e4ab101a5f2c4cf4751b5a6a14086f8a864b35036f178d9aaeb
+  languageName: node
+  linkType: hard
+
 "@popperjs/core@npm:^2.11.8":
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
@@ -1197,6 +1213,7 @@ __metadata:
     esbuild: ^0.17.19
     jquery: ^3.7.0
     sass: ^1.62.1
+    tom-select: ^2.2.2
   languageName: unknown
   linkType: soft
 
@@ -1352,6 +1369,16 @@ __metadata:
   dependencies:
     is-number: ^7.0.0
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
+  languageName: node
+  linkType: hard
+
+"tom-select@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "tom-select@npm:2.2.2"
+  dependencies:
+    "@orchidjs/sifter": ^1.0.3
+    "@orchidjs/unicode-variants": ^1.0.4
+  checksum: 44483e82ff2604c136d41753c4dcc59f794723a6e7910af5711f4332f9d3a48fafc334bca43c5e0b0c9da7ac18d46254196723debc6e39690fe8799934b1fe8c
   languageName: node
   linkType: hard
 

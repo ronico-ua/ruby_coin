@@ -1,5 +1,6 @@
 // Entry point for the build script in your package.json
 import "./common"
+import "."
 
 import "@hotwired/turbo-rails"
 Turbo.session.drive = false

@@ -20,7 +20,7 @@
       - if tags.present?
         .group
           = f.label :tags, t('.tag_label'), class: 'standart-label'
-          = f.collection_select :tag_ids, tags, :id, :title, {}, multiple: true, class: 'standart-input tags'
+          = f.collection_select :tag_ids, tags, :id, :title, { selected: post.tag_ids }, { multiple: true, class: 'standart-input js-multiple-select', data: { 'ajax-url': '/api/tags' }, placeholder: "Введіть теги" }
       .checkboxes
         .flex-inner
           = f.label :status, "Статус", class: 'standart-label'
