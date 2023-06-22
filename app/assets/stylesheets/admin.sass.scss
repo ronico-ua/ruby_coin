@@ -689,6 +689,21 @@
       }
       .modal-footer {
         padding: 11px 15px;
+        .main-btn.yes {
+          position: relative;
+          height: 44px;
+          width: 76px;
+        }
+        a {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
     .main-btn {
