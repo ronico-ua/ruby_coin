@@ -2,8 +2,15 @@
 
 class HomeController < ApplicationController
   def index
-    @tags = Tag.all.limit(5)
-    @posts = Post.all.order(created_at: :desc)
+    # @tags = Tag.all.limit(5)
+    @tags = Tag.joins(:posts).group('tags.id').order('COUNT(posts.id) DESC').limit(5)
+    @active_tags = params[:tags]
+    @all_posts = Post.all.order(created_at: :desc)
+    @posts = if params[:tags].present?
+               @all_posts.joins(:tags).where(tags: { title: params[:tags] })
+             else
+               @all_posts
+             end
     @pagy, @posts = pagy(@posts, items: 6)
   end
 

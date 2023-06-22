@@ -19,147 +19,45 @@
           | Всі категорії
       #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
         .accordion-body
-          .filter-block
-            h4.heading-filter Спочатку показувати
-            .filter-inner
-              .filter-item.active Нові
-              .filter-item Найкращі
-          .filter-block
-            h4.heading-filter За тегами
-            .filter-inner
-              .filter-item.active Аніме
-              .filter-item Віскі
-              .filter-item Кола
-              .filter-item Текіла
-            .search-form
-              input.filter-search type="search" placeholder="Пошук"
-              .search-button
-          .filter-block
-            h4.heading-filter Рівень складності
-            .filter-inner
-              .filter-item.active Всі
-              .filter-item Простий
-              .filter-item Середній
-              .filter-item Складний
-          .main-btn Застосувати
+          = form_tag root_path, method: :get do
+            .filter-block
+              h4.heading-filter Спочатку показувати
+              .filter-inner
+                .filter-item.active Нові
+                .filter-item Найкращі
+            .filter-block
+              h4.heading-filter За тегами
+              .filter-inner
+                - @tags.each do |tag|
+                  label.filter-item
+                    = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item"
+                    = tag.title
+              .search-form
+                input.filter-search type="search" placeholder="Пошук"
+                .search-button
+            .filter-block
+              h4.heading-filter Рівень складності
+              .filter-inner
+                .filter-item.active Всі
+                .filter-item Простий
+                .filter-item Середній
+                .filter-item Складний
+            = submit_tag 'Застосувати', class: 'main-btn'
   .posts
     .posts__inner
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
+      - @posts.each do |post|
+        .post-column
+          .post
+            = link_to post_path(post.id) do
+              .post-img
+                = image_tag "post-img.png"
+            .flex-admin
+              .admin Admin
+              .intro-block__date = l(post.created_at, format: :default)
+            h2.post__title = post.title
+            p.post__text = post.description
+            .post-tags
+              - post.tags.first(3).each do |tag|
+                .post-tag = tag.title
   .pagination__inner
     == pagy_bootstrap_nav(@pagy)
