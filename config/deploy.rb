@@ -29,6 +29,7 @@ set :puma_init_active_record,    true
 set :puma_enable_socket_service, true
 set :keep_releases, 3
 set :conditionally_migrate, true
+set :puma_systemctl_user, :system
 
 # Issue with propshaft as asset pipwlinw
 # See: https://github.com/capistrano/rails/issues/257
