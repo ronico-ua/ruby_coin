@@ -3,16 +3,23 @@
 @import 'bootstrap5-toggle/css/bootstrap5-toggle';
 @import 'tom-select/dist/css/tom-select.bootstrap5';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @import 'navbar.sass.scss';
 @import 'home.sass.scss';
 @import 'footer.sass.scss';
-
 @import 'faq.sass.scss';
 @import 'post.sass.scss';
 @import 'search.sass.scss';
 @import 'forms_auth.sass.scss';
-
 @import 'admin.sass.scss';
+@import 'prism.sass.scss';
+
+//@import 'tinymce/skins/content/dark/content';
+//@import 'tinymce/skins/content/writer/content';
+@import 'tinymce/skins/ui/oxide-dark/skin';
+//@import 'tinymce/skins/ui/oxide-dark/skin.shadowdom';
+@import 'tinymce/skins/ui/oxide-dark/content';
+//@import 'tinymce/skins/ui/oxide-dark/content.inline';
 
 @mixin colorgradint {
   background: linear-gradient(94.22deg, #5174FF 0%, #D251FF 100%);
