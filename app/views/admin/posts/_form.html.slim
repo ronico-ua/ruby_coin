@@ -19,7 +19,7 @@
     .form-inner
       .group
         = f.label :tags, t('.tag_label'), class: 'standart-label'
-        = f.collection_select :tag_ids, (tags || []), :id, :title, { selected: params[:tag_ids] },
+        = f.collection_select :tag_ids, (tags || []), :id, :title, { selected: post.tag_ids },
                 { multiple: true, required: true, class: 'standart-input js-multiple-select',
                         data: { 'ajax-url': '/api/tags' }, placeholder: "Введіть теги" }
       .checkboxes

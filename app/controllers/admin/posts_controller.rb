@@ -73,7 +73,7 @@ module Admin
     end
 
     def fetch_tags
-      @tags = Tag.find(params[:tag_ids]) if params[:tag_ids]
+      @tags = @post.tags
     end
 
     def authorize_policy
