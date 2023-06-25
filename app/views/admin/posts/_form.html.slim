@@ -17,10 +17,11 @@
       = f.label :description, t('.description_label'), class: 'standart-label'
       = f.text_area :description, class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60
     .form-inner
-      - if tags.present?
-        .group
-          = f.label :tags, t('.tag_label'), class: 'standart-label'
-          = f.collection_select :tag_ids, tags, :id, :title, {}, multiple: true, class: 'standart-input tags'
+      .group
+        = f.label :tags, t('.tag_label'), class: 'standart-label'
+        = f.collection_select :tag_ids, (tags || []), :id, :title, { selected: post.tag_ids },
+                { multiple: true, required: true, class: 'standart-input js-multiple-select',
+                        data: { 'ajax-url': '/api/tags' }, placeholder: "Введіть теги" }
       .checkboxes
         .flex-inner
           = f.label :status, "Статус", class: 'standart-label'

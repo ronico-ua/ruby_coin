@@ -709,3 +709,47 @@
     }
   }
 }
+
+.ts-wrapper.standart-input {
+  border: 1px solid #DC143C !important;
+  &:focus {
+    box-shadow: none !important;
+  }
+  .ts-control {
+    border: none;
+    box-shadow: none !important;
+  }
+  .item {
+    border: 1px solid #000000 !important;
+    border-radius: 3px !important;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000 !important;
+    background: transparent !important;
+    padding: 5.5px 10px !important;
+    .remove {
+      border-left: none !important;
+      margin-left: 10px !important;
+      padding: 0 !important;
+      font-size: 17px;
+    }
+  }
+}
+
+.ts-dropdown.multi {
+  border: 1px solid #DC143C;
+  .ts-dropdown-content {
+    max-height: 75px;
+    .option.active {
+      background: #F4F4F4;
+    }
+    .option {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 15px;
+      color: #000000;
+      padding: 9px 15px;
+    }
+  }
+}

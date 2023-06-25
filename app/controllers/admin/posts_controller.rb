@@ -73,7 +73,7 @@ module Admin
     end
 
     def fetch_tags
-      @tags = Tag.all
+      @tags = @post.tags
     end
 
     def authorize_policy

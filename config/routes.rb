@@ -18,4 +18,8 @@ Rails.application.routes.draw do
     resources :posts
     resources :tags
   end
+
+  namespace :api do
+    resources :tags, only: :index
+  end
 end
