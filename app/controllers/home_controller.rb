@@ -2,12 +2,11 @@
 
 class HomeController < ApplicationController
   def index
-    # @tags = Tag.all.limit(5)
-    @tags = Tag.joins(:posts).group('tags.id').order('COUNT(posts.id) DESC').limit(5)
+    @tags = Tag.joins(:posts).distinct.limit(5)
     @active_tags = params[:tags]
-    @all_posts = Post.all.order(created_at: :desc)
-    @posts = if params[:tags].present?
-               @all_posts.joins(:tags).where(tags: { title: params[:tags] })
+    @all_posts = Post.active.order(created_at: :desc)
+    @posts = if @active_tags.present?
+               @all_posts.joins(:tags).where(tags: { title: @active_tags }).distinct
              else
                @all_posts
              end

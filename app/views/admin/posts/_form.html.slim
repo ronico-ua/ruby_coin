@@ -25,10 +25,10 @@
       .checkboxes
         .flex-inner
           = f.label :status, "Статус", class: 'standart-label'
-          input[checked type="checkbox" data-toggle="toggle" data-onlabel="Активний" data-offlabel="Не активний" data-onstyle="success" data-offstyle="danger" class="switcher"]
+          = f.check_box :status, { data: { toggle: 'toggle' , onlabel: 'Активний', offlabel: 'Не активний', onstyle: 'success', offstyle: 'danger', class: 'switcher' } }, "active", "inactive"
         .flex-inner
-          = f.label :status, "Головний допис", class: 'standart-label'
-          input[checked type="checkbox" data-toggle="toggle" data-onlabel="Головний" data-offlabel="Не головний" data-onstyle="success" data-offstyle="danger" class="switcher"]
+          = f.label :main_post, "Головний допис", class: 'standart-label'
+          = f.check_box :main_post, { data: { toggle: 'toggle' , onlabel: 'Головний', offlabel: 'Не головний', onstyle: 'success', offstyle: 'danger', class: 'switcher' } }, "active", "inactive"
     .actions
       = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
       = f.submit t('global.button.create'), class: 'main-btn filled'

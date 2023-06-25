@@ -29,7 +29,7 @@
               h4.heading-filter За тегами
               .filter-inner
                 - @tags.each do |tag|
-                  label.filter-item
+                  label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}"
                     = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item"
                     = tag.title
               .search-form
