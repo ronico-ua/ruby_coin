@@ -16,7 +16,7 @@
               .post__content
                 .post__text
                   h4.post__title = post.title
-                  p.post__description = post.description
+                  p.post__description = post.subtitle
                 .post__actions
                   .delete
                     = link_to image_tag("delete-icon.svg"), admin_post_path(post),

@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_194911) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
+    t.string "subtitle"
     t.string "description"
     t.string "photo"
     t.integer "status"
