@@ -50,7 +50,10 @@
           .post
             = link_to post_path(post.id) do
               .post-img
-                = image_tag "post-img.png"
+                - if post.photo.present?
+                  = image_tag post.photo.url
+                - else
+                  = image_tag "post-img.png"
             .flex-admin
               .admin Admin
               .intro-block__date = l(post.created_at, format: :default)
