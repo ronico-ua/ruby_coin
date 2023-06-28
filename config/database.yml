@@ -8,7 +8,6 @@ default: &default
   reconnect: true
   pool: 5
 
-
 development:
   <<: *default
   database: ruby_coin_development
