@@ -44,6 +44,7 @@ uk:
         title: Редагування допису
       form:
         title_label: Введіть заголовок
+        subtitle_label:  Введіть підзаголовок
         photo_label: Головне зображення
         description_label: Опис
         status_label: Статус Активний ?

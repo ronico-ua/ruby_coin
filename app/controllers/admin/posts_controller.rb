@@ -65,7 +65,7 @@ module Admin
     private
 
     def post_params
-      params.require(:post).permit(:title, :description, :status, :photo, tag_ids: [])
+      params.require(:post).permit(:title, :subtitle, :description, :status, :photo, tag_ids: [])
     end
 
     def set_post!
@@ -73,7 +73,7 @@ module Admin
     end
 
     def fetch_tags
-      @tags = @post.tags
+      @tags = @post.present? ? @post.tags : []
     end
 
     def authorize_policy

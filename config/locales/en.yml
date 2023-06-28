@@ -44,6 +44,7 @@ en:
         title: Egit the post
       form:
         title_label: Enter title
+        subtitle_label: Enter subtitle
         photo_label: Main photo
         description_label: Description
         status_label: Status active ?
