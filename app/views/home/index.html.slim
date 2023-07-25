@@ -27,10 +27,10 @@
                 .filter-item Найкращі
             .filter-block
               h4.heading-filter За тегами
-              .filter-inner
+              .filter-inner data-controller="highlight"
                 - @tags.each do |tag|
-                  label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}"
-                    = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item"
+                  label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}" for="highlight_item_#{tag.id}"
+                    = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item", data: { action: "click->highlight#toggleHighlight" }, id: "highlight_item_#{tag.id}"
                     = tag.title
               .search-form
                 input.filter-search type="search" placeholder="Пошук"
