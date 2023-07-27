@@ -10,4 +10,9 @@ class Post < ApplicationRecord
   def truncated_description
     description.truncate(100, separator: /\s/)
   end
+
+  def similar_posts(post)
+    post_tags = post.tags.pluck(:id)
+    Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(3)
+  end
 end
