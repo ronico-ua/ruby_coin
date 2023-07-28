@@ -65,7 +65,7 @@ module Admin
     private
 
     def post_params
-      params.require(:post).permit(:title, :subtitle, :description, :status, :photo, tag_ids: [])
+      params.require(:post).permit(:title, :subtitle, :description, :status, :main_post, :photo, tag_ids: [])
     end
 
     def set_post!
