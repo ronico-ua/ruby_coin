@@ -12,8 +12,13 @@ class Post < ApplicationRecord
     description.truncate(100, separator: /\s/)
   end
 
+  def similar_posts(post)
+    post_tags = post.tags.pluck(:id)
+    Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(3)
+  end
+  
   private
-
+  
   def deactivate_previous_main_post
     previous_main_post = Post.find_by(main_post: true)
     previous_main_post.update(main_post: false) if previous_main_post.present? && previous_main_post != self

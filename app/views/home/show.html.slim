@@ -22,42 +22,20 @@
   h2.post-title.second Схожі публікації
   .posts
     .posts__inner
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
-      .post-column
-        .post
-          .post-img
-            = image_tag "post-img.png"
-          .flex-admin
-            .admin Admin
-            .intro-block__date 10/10/2024
-          h2.post__title Ruby Expertise! Full course in telegram
-          p.post__text це інтерпретована, повністю об'єктно-орієнтована мова програмування з чіткою динамічною типізацією. Мова вирізняється високою ефективністю розробки програм і увібрала в себе найкращі риси Perl, Java, Python, Smalltalk, Eiffel, Ada і Lisp
-          .post-tags
-            .post-tag Ruby
-            .post-tag Ruby on Rails
-            .post-tag BackEnd part
+      - @similar_posts.each do |similar_post|
+        .post-column
+          .post
+            .post-img
+              - if similar_post.photo.url
+                = image_tag similar_post.photo.url
+              - else
+                = image_tag "post-img.png"
+            .flex-admin
+              .admin Admin
+              .intro-block__date = similar_post.created_at.strftime('%d/%m/%Y')
+            h2.post__title = similar_post.title
+            p.post__text = similar_post.description
+            .post-tags
+              - similar_post.tags.each do  |tag|
+                .post-tag = tag.title
+
