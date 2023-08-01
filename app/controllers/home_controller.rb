@@ -2,6 +2,7 @@
 
 class HomeController < ApplicationController
   def index
+    @main_post = Post.find_by(main_post: true)
     @tags = Tag.joins(:posts).distinct.limit(5)
     @active_tags = params[:tags]
     @all_posts = Post.active.order(created_at: :desc)
