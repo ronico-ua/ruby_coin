@@ -202,6 +202,9 @@
             font-size: 14px;
           }
         }
+        [type="checkbox"]{
+          display: none;
+        }
       }
       .filter-search {
         width: 100%;
