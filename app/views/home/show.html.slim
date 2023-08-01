@@ -32,7 +32,7 @@
                 - else
                   = image_tag "post-img.png"
               .flex-admin
-                .admin Admin
+                .admin = similar_post.user.role
                 .intro-block__date = l(similar_post.created_at, format: :default)
               h2.post__title = similar_post.title
               p.post__text = similar_post.subtitle
