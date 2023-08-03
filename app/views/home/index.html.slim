@@ -22,7 +22,7 @@
           | Всі категорії
       #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
         .accordion-body
-          = form_tag root_path, method: :get do
+          = form_tag root_path(anchor: 'posts-list'), method: :get do
             .filter-block
               h4.heading-filter Спочатку показувати
               .filter-inner
@@ -46,7 +46,7 @@
                 .filter-item Середній
                 .filter-item Складний
             = submit_tag 'Застосувати', class: 'main-btn'
-  .posts
+  .posts id="posts-list"
     .posts__inner
       - @posts.each do |post|
         .post-column
