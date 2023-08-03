@@ -42,9 +42,8 @@ nav.navbar.navbar-expand-custom.sticky-top
           li
             a.dropdown-item.profile[href="#"]
               | Профіль
-          li
-            a.dropdown-item.panel[href="#"]
-              | Панель
+          - if current_user && current_user.role == 'admin'
+            li
+              = link_to "Панель", admin_root_path, class: "dropdown-item panel"
           li.exit
-            a.dropdown-item.exit[href="#"]
-              | Вихід
+            = button_to "Вихід", destroy_user_session_path, method: :delete, class: "dropdown-item exit"
