@@ -17,15 +17,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    'icon.png' if original_filename.present?
-  end
-
-  process convert: 'png'
-
-  process resize_to_fit: [356, 320], if: :not_testing?
-
-  def not_testing?(_picture)
-    !Rails.env.test?
+    "#{Time.zone.now} - #{original_filename}"
   end
 
   version :thumb do
@@ -34,13 +26,13 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process resize_to_fit: [356, 320]
+    process resize_to_fit: [1356, 1320]
     process convert: 'png'
   end
 
-  # def extension_whitelist
-  #   %w[jpg jpeg gif png]
-  # end
+  def extension_whitelist
+    %w[jpg jpeg gif png]
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
