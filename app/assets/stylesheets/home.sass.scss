@@ -281,7 +281,9 @@
       margin-bottom: 50px;
       &-img {
         img {
-          width: 100%;
+          border-radius: 8px;
+          width: 400px;
+          height: 350px;
           max-width: 100%;
           object-fit: cover;
           margin-bottom: 20px;
