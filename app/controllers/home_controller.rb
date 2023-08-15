@@ -11,7 +11,7 @@ class HomeController < ApplicationController
              else
                @all_posts
              end
-    @pagy, @posts = pagy(@posts, items: 6)
+    @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
 
   def show

@@ -65,5 +65,5 @@
             .post-tags
               - post.tags.first(3).each do |tag|
                 .post-tag = tag.title
-  .pagination__inner data-controller="pagination"
+  .pagination__inner
     == pagy_bootstrap_nav(@pagy)
