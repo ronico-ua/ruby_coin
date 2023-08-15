@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import HighlightController from "./highlight_controller"
 application.register("highlight", HighlightController)
+
+import PaginationController from "./pagination_controller"
+application.register("pagination", PaginationController)
