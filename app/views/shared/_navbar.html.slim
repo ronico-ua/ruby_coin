@@ -40,10 +40,12 @@ nav.navbar.navbar-expand-custom.sticky-top
         button.dropdown-toggle[type="button" data-bs-toggle="dropdown" aria-expanded="false"]
         ul.dropdown-menu
           li
-            a.dropdown-item.profile[href="#"]
-              | Профіль
-          - if current_user && current_user.role == 'admin'
-            li
-              = link_to "Панель", admin_root_path, class: "dropdown-item panel"
-          li.exit
-            = button_to "Вихід", destroy_user_session_path, method: :delete, class: "dropdown-item exit"
+            - unless user_signed_in?
+              li
+                = link_to "Профіль", new_user_session_path, class: "dropdown-item profile"
+            - else
+              - if current_user && current_user.role == 'admin'
+                li
+                  = link_to "Панель", admin_root_path, class: "dropdown-item panel"
+                li.exit
+                  = button_to "Вихід", destroy_user_session_path, method: :delete, class: "dropdown-item exit"
