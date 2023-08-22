@@ -42,10 +42,10 @@ nav.navbar.navbar-expand-custom.sticky-top
           li
             - unless user_signed_in?
               li
-                = link_to "Профіль", new_user_session_path, class: "dropdown-item profile"
+                = link_to t("nav_item.sign_in"), new_user_session_path, class: "dropdown-item profile"
             - else
-              - if current_user && current_user.role == 'admin'
+              - if current_user.admin?
                 li
-                  = link_to "Панель", admin_root_path, class: "dropdown-item panel"
+                  = link_to t("nav_item.panel"), admin_root_path, class: "dropdown-item panel"
                 li.exit
-                  = button_to "Вихід", destroy_user_session_path, method: :delete, class: "dropdown-item exit"
+                  = button_to t("nav_item.sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item exit"

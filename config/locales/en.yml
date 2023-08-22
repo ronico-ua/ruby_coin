@@ -105,6 +105,9 @@ en:
   main_btn:
     read_more: Read more
   nav_item:
+    sign_in: Sign in
+    sign_out: Sign out
+    panel: Panel
     root: Main page
     faq: FAQ
   application_controller:

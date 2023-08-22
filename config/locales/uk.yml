@@ -106,6 +106,9 @@ uk:
   main_btn:
     read_more: Читати далі
   nav_item:
+    sign_in: Увійти
+    sign_out: Вихід
+    panel: Панель
     root: Головна
     faq: FAQ
   application_controller:
