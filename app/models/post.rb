@@ -6,6 +6,12 @@ class Post < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?
 
+  validates :title, presence: true
+  validates :subtitle, presence: true
+  validates :description, presence: true
+  validates :photo, presence: true
+  validates :main_post, inclusion: { in: [true, false] }
+
   enum status: { active: 0, inactive: 1 }
 
   def truncated_description

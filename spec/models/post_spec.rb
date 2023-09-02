@@ -5,7 +5,23 @@ require 'rails_helper'
 RSpec.describe Post do
   include_context 'when carrierwave cleanup'
 
-  let(:post) { create(:post) }
+  let(:post) { create(:post, status: 'active') }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_and_belong_to_many(:tags) }
+  end
+
+  describe 'enums' do
+    it { is_expected.to define_enum_for(:status).with_values(active: 0, inactive: 1) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:subtitle) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:photo) }
+  end
 
   describe 'photo uploader' do
     it 'has a photo uploader mounted' do

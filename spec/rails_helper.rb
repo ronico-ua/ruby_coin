@@ -10,6 +10,13 @@ require 'rspec/rails'
 # NOTE: require 'devise' after require 'rspec/rails'
 require 'devise'
 require 'factory_bot_rails'
+require 'shoulda/matchers'
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
