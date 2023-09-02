@@ -30,7 +30,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process convert: 'png'
   end
 
-  def extension_whitelist
+  def extension_allowlist
     %w[jpg jpeg gif png]
   end
 

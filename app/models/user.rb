@@ -9,6 +9,11 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :delete_all
 
+  validates :nickname, presence: true, uniqueness: { case_sensitive: false }
+  validates :avatar, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
+  validates :encrypted_password, presence: true
+
   enum :role, { admin: 0, moderator: 1, user: 2 }
 
   private
