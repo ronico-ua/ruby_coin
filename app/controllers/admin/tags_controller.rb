@@ -2,6 +2,7 @@
 
 module Admin
   class TagsController < ApplicationController
+    before_action :authenticate_user!
     before_action :authorize_policy
     before_action :set_tag!, only: %i[destroy edit update]
 
@@ -30,7 +31,7 @@ module Admin
           format.turbo_stream { flash.now[:success] = t('.success') }
         end
       else
-        render 'index'
+        render 'index', status: :unprocessable_entity
       end
     end
 
@@ -45,7 +46,7 @@ module Admin
           format.turbo_stream { flash.now[:success] = t('.success') }
         end
       else
-        render 'index'
+        render 'index', status: :unprocessable_entity
       end
     end
 
