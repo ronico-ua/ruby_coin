@@ -2,6 +2,7 @@
 
 module Admin
   class PostsController < ApplicationController
+    before_action :authenticate_user!
     before_action :authorize_policy
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit]

@@ -26,3 +26,11 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Max: 30
 
+MultipleMemoizedHelpers:
+  Max: 15
+
+ExampleLength:
+  Max: 30
+
+NestedGroups:
+  Max: 5

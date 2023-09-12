@@ -8,7 +8,7 @@ FactoryBot.define do
     photo do
       Rack::Test::UploadedFile.new(File.open(Rails.root.join('spec', 'fixtures', 'files', 'test_image.png')))
     end
-    status { 0 }
+    status { :active }
     main_post { false }
     user
   end
