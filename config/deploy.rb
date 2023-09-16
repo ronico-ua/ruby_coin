@@ -17,6 +17,8 @@ set :use_sudo,        false
 set :stage,           :production
 set :rails_env,       :production
 set :deploy_via,      :remote_cache
+set :rvm_ruby_version, '3.2.0'
+set :rvm_custom_path, '/usr/local/rvm'
 
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
