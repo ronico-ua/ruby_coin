@@ -1,20 +1,21 @@
 .home__container
-  .intro-block
-    = link_to post_path(@main_post.id) do
-      .intro-block__img
-        - if @main_post.photo.present?
-          = image_tag @main_post.photo.url
-        - else
-          = image_tag "intro-img.png"
-        .intro-block__content
-          .flex-admin
-            .admin = @main_post.user.role
-            .intro-block__date = l(@main_post.created_at, format: :default)
-          h1.intro-block__title = @main_post.title
-          h6.intro-block__subtitle = @main_post.subtitle
-          .tags-inner
-            - @main_post.tags.first(3).each do |tag|
-              .intro-block__tag = tag.title
+  - if @main_post.present?
+    .intro-block
+      = link_to post_path(@main_post.id) do
+        .intro-block__img
+          - if @main_post.photo.present?
+            = image_tag @main_post.photo.url
+          - else
+            = image_tag "intro-img.png"
+          .intro-block__content
+            .flex-admin
+              .admin = @main_post.user.role
+              .intro-block__date = l(@main_post.created_at, format: :default)
+            h1.intro-block__title = @main_post.title
+            h6.intro-block__subtitle = @main_post.subtitle
+            .tags-inner
+              - @main_post.tags.first(3).each do |tag|
+                .intro-block__tag = tag.title
   .accordion-category
     .accordion-item
       h2#headingOne.accordion-header

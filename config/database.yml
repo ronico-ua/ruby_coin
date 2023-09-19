@@ -1,9 +1,9 @@
 default: &default
   adapter: postgresql
-  host: <%= ENV['POSTGRES_HOST'] %>
-  port: <%= ENV['POSTGRES_PORT'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: dev
+  password: dev
+  host: localhost
+  port: 5432
   encoding: utf8
   reconnect: true
   pool: 5
