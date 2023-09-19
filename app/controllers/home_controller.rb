@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_tags = @post.tags.all.limit(3)
+    @post_tags = @post.tags.limit(3)
     @similar_posts = Post.where.not(id: @post.id).includes(:tags)
                          .where(tags: { title: @post.tags.pluck(:title) }).limit(3)
   end

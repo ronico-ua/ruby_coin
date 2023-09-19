@@ -8,7 +8,7 @@ module Admin
     before_action :fetch_tags, only: %i[new edit]
 
     def index
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.order(created_at: :desc)
       @pagy, @posts = pagy(@posts, items: 6)
     end
 
