@@ -1,3 +1,4 @@
+= render "shared/errors", object: resource, timeout: 6000
 .log-reg__form
   .log-reg__form--content.sign-up
     h1.title Реєстрація
@@ -6,13 +7,13 @@
         label.standart-label Емейл*
         .input
           .badge
-            = image_tag "mail-icon.svg" 
+            = image_tag "mail-icon.svg"
           = f.email_field :email, autofocus: true, autocomplete: "email", label: false, class: 'standart-input'
       .group
         label.standart-label Пароль*
         .input
           .badge
-            = image_tag "pass-icon.svg" 
+            = image_tag "pass-icon.svg"
           = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
           #show-hide1.show__password-wrapper.active
             .eye-icon
@@ -20,7 +21,7 @@
         label.standart-label Повтор пароля*
         .input
           .badge
-            = image_tag "pass-icon.svg" 
+            = image_tag "pass-icon.svg"
           = f.password_field :password_confirmation, label: false, autocomplete: "current-password", class: 'standart-input'
           #show-hide2.show__password-wrapper.active
             .eye-icon

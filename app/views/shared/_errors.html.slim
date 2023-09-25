@@ -1,5 +1,8 @@
-- if object&.errors&.full_messages&.any?
-  .alert.alert-danger
-    ul.mb-0
-      - object.errors.full_messages.each do |msg|
-        li = msg
+= turbo_frame_tag 'error_message' do
+  - if object&.errors&.full_messages&.any?
+    div data-controller="flash" class="alert alert-danger" role="alert"
+      h2
+        = I18n.t("errors.messages.not_saved", count: object.errors.count, resource: resource.class.model_name.human.downcase)
+      ul.mb-0
+        - object.errors.full_messages.each do |msg|
+          li = msg
