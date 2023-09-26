@@ -12,6 +12,10 @@ h2
       | Currently waiting confirmation for:
       = resource.unconfirmed_email
   .field
+    = f.label :nickname
+  br
+  = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+  .field
     = f.label :password
     i
       | (leave blank if you don't want to change it)
