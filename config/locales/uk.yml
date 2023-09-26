@@ -32,7 +32,23 @@ uk:
         status: Статус
     models:
       post: Допис
-
+    errors:
+      models:
+        user:
+          attributes:
+            nickname:
+              blank: не може бути порожнім
+              taken: вже існує
+            password:
+              blank: не може бути порожнім
+              too_short: надто короткий, обов'язково мінімум %{count} символів
+              too_long: надто довгий, обов'язково максимум %{count} символів
+            password_confirmation:
+              confirmation: не співпадає
+            email:
+              blank: не може бути порожньою
+              invalid: недопустимого формату
+              taken: вже існує
   admin:
     posts:
       index:

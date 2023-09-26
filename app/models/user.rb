@@ -12,8 +12,9 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true, uniqueness: { case_sensitive: false }, on: :update
   validates :avatar, presence: true, on: :update
-  validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
-  validates :encrypted_password, presence: true
+
+  validates :email, presence: true
+  validates :email, uniqueness: true, format: { with: Devise.email_regexp }, if: -> { email.present? }
 
   enum :role, { admin: 0, moderator: 1, user: 2 }
 

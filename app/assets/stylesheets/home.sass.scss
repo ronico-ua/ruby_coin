@@ -394,3 +394,10 @@
     margin-right: 50px;
   }
 }
+.absolute-centered {
+  position: absolute;
+  left: 35%;
+  right: 35%;
+  margin: 0 auto;
+  z-index: 99;
+}

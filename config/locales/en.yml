@@ -32,7 +32,23 @@ en:
         status: Status
     models:
       post: Post
-
+    errors:
+      models:
+        user:
+          attributes:
+            nickname:
+              blank: can't be blank
+              taken: is already taken
+            password:
+              blank: can't be blank
+              too_short: is too short, required minimum %{count} symbols
+              too_long: is too long, reuqired maximum %{count} symbols
+            password_confirmation:
+              confirmation: doesn't match
+            email:
+              blank: can't be blank
+              invalid: is invalid
+              taken: is already taken
   admin:
     posts:
       index:
