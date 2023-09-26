@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  subject { FactoryGirl::Syntax::Methods.build(:user) }
+  subject { build(:user) }
 
   describe 'associations' do
     it { is_expected.to have_many(:posts).dependent(:delete_all) }
@@ -18,6 +18,6 @@ RSpec.describe User do
     it { is_expected.to validate_uniqueness_of(:nickname).case_insensitive.on(:update) }
 
     it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.told validate_uniqueness_of(:email).case_insensitive }
+    it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   end
 end
