@@ -24,6 +24,7 @@ en:
         role: Role
       post:
         title: Title
+        subtitle: Subtitle
         description: Description
         photo: Photo
         status: Status
