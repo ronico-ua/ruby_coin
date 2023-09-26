@@ -24,6 +24,7 @@ uk:
         role: Роль
       post:
         title: Заголовок
+        subtitle: Підзаголовок
         description: Опис
         photo: Фото
         status: Статус
@@ -49,6 +50,16 @@ uk:
               blank: не може бути порожньою
               invalid: недопустимого формату
               taken: вже існує
+        post:
+          attributes:
+            title:
+              blank: не може бути порожнім
+            subtitle:
+              blank: не може бути порожнім
+            description:
+              blank: не може бути порожнім
+            photo:
+              blank: не може бути порожнім
   admin:
     posts:
       index:

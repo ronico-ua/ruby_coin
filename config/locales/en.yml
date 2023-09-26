@@ -49,6 +49,16 @@ en:
               blank: can't be blank
               invalid: is invalid
               taken: is already taken
+        post:
+          attributes:
+            title:
+              blank: can't be blank
+            subtitle:
+              blank: can't be blank
+            description:
+              blank: can't be blank
+            photo:
+              blank: can't be blank
   admin:
     posts:
       index:
