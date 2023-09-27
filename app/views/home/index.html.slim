@@ -4,9 +4,9 @@
       = link_to post_path(@main_post.id) do
         .intro-block__img
           - if @main_post.photo.present?
-            = image_tag @main_post.photo.url
+            = image_tag(@main_post.photo.url, class: "intro-block__main_img")
           - else
-            = image_tag "intro-img.png"
+            = image_tag("intro-img.png", class: "intro-block__main_img")
           .intro-block__content
             .flex-admin
               .admin = @main_post.user.role

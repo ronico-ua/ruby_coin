@@ -74,6 +74,10 @@
     height: 100%;
     background-image: linear-gradient(180deg, transparent 0 70%, black 90%);
   }
+  &__main_img {
+    width: 50vw!important;
+    height: 30vw!important;
+  }
   &__content {
     position: absolute;
     bottom: 36px;
