@@ -1,4 +1,14 @@
 uk:
+  buttons:
+    remember_me: Запам'ятати мене
+    forgot_password: Забули пароль?
+    sign_in: Увійти
+    sign_up: Зареєструватись
+    update: Оновити
+    delete_account: Видалити акаунт
+  labels:
+    enter_account: Вхід в акаунт
+    edit_account: Змінити акаунт
   datetime: &datetime
     month_names:
       [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Жовтень, Листопад, Грудень]
@@ -19,6 +29,8 @@ uk:
         old_password: Старий пароль
         password: Пароль
         password_confirmation: Підтвердження паролю
+        current_password: Поточний пароль
+        nickname: Нікнейм
         updated_at: Оновлено
         created_at: Створено
         role: Роль
@@ -140,7 +152,6 @@ uk:
     faq: FAQ
   application_controller:
     alert: Ви не авторизовані для виконання цього екшену.
-
   errors:
     messages:
       carrierwave_processing_error: Неможливо змінити розмір зображення
