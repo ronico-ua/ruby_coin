@@ -6,7 +6,11 @@ en:
     sign_up: Sign up
     update: Update
     delete_account: Delete account
+    have_account: Do you already have an account?
+    back: Back
+    send_reset_password: Send me reset password instructions
   labels:
+    registration: Registration
     enter_account: Account login
     edit_account: Edit account
   datetime: &datetime

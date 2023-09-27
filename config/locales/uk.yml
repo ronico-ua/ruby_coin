@@ -6,7 +6,11 @@ uk:
     sign_up: Зареєструватись
     update: Оновити
     delete_account: Видалити акаунт
+    have_account: У вас вже є обліковий запис?
+    back: Назад
+    send_reset_password: Відправити інструкцію зі скидання паролю
   labels:
+    registration: Реєстрація
     enter_account: Вхід в акаунт
     edit_account: Змінити акаунт
   datetime: &datetime

@@ -46,6 +46,7 @@ en:
       edit:
         confirm_notice: (needed to confim changes)
         leave_blank: (leave blank if you don't want to change it)
+        waiting_confirm: Currently waiting confirmation for
       new:
         password_length: (minimum %{length} symbols)
     sessions:
