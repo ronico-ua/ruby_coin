@@ -121,3 +121,4 @@ uk:
       carrierwave_download_error: Не вдалося завантажити зображення
       extension_whitelist_error: "Вам заборонено завантажувати файли %{extension}, дозволені типи: %{allowed_types}"
       extension_blacklist_error: "Вам заборонено завантажувати файли %{extension}, заборонені типи: %{prohibited_types}"
+      record_invalid: "Невірно"

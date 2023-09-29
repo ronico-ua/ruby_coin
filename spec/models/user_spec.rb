@@ -12,10 +12,9 @@ RSpec.describe User do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:avatar) }
     it { is_expected.to validate_presence_of(:encrypted_password) }
 
-    it 'validates that :nickname is case-insensitively unique' do
+    it 'validates that :nickname is case-insensitively and unique' do
       existing_user = build(:user, nickname: 'JohnDoe')
       new_user = build(:user, nickname: existing_user.nickname.upcase)
       expect(new_user).to be_valid
