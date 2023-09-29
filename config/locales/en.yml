@@ -1,4 +1,18 @@
 en:
+  buttons:
+    remember_me: Remember me
+    forgot_password: Forgot password?
+    sign_in: Sign in
+    sign_up: Sign up
+    update: Update
+    delete_account: Delete account
+    have_account: Do you already have an account?
+    back: Back
+    send_reset_password: Send me reset password instructions
+  labels:
+    registration: Registration
+    enter_account: Account login
+    edit_account: Edit account
   datetime: &datetime
     month_names:
       [~, January, February, March, April, May, June, July, August, September, October, November, December]
@@ -19,11 +33,14 @@ en:
         old_password: Old password
         password: Password
         password_confirmation: Password confirmation
+        current_password: Current password
+        nickname: Nickname
         updated_at: Updated
         created_at: Created
         role: Role
       post:
         title: Title
+        subtitle: Subtitle
         description: Description
         photo: Photo
         status: Status
@@ -32,7 +49,33 @@ en:
         status: Status
     models:
       post: Post
-
+    errors:
+      models:
+        user:
+          attributes:
+            nickname:
+              blank: can't be blank
+              taken: is already taken
+            password:
+              blank: can't be blank
+              too_short: is too short, required minimum %{count} symbols
+              too_long: is too long, reuqired maximum %{count} symbols
+            password_confirmation:
+              confirmation: doesn't match
+            email:
+              blank: can't be blank
+              invalid: is invalid
+              taken: is already taken
+        post:
+          attributes:
+            title:
+              blank: can't be blank
+            subtitle:
+              blank: can't be blank
+            description:
+              blank: can't be blank
+            photo:
+              blank: can't be blank
   admin:
     posts:
       index:

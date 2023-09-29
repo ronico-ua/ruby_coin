@@ -1,4 +1,18 @@
 uk:
+  buttons:
+    remember_me: Запам'ятати мене
+    forgot_password: Забули пароль?
+    sign_in: Увійти
+    sign_up: Зареєструватись
+    update: Оновити
+    delete_account: Видалити акаунт
+    have_account: У вас вже є обліковий запис?
+    back: Назад
+    send_reset_password: Відправити інструкцію зі скидання паролю
+  labels:
+    registration: Реєстрація
+    enter_account: Вхід в акаунт
+    edit_account: Змінити акаунт
   datetime: &datetime
     month_names:
       [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Жовтень, Листопад, Грудень]
@@ -19,11 +33,14 @@ uk:
         old_password: Старий пароль
         password: Пароль
         password_confirmation: Підтвердження паролю
+        current_password: Поточний пароль
+        nickname: Нікнейм
         updated_at: Оновлено
         created_at: Створено
         role: Роль
       post:
         title: Заголовок
+        subtitle: Підзаголовок
         description: Опис
         photo: Фото
         status: Статус
@@ -32,7 +49,33 @@ uk:
         status: Статус
     models:
       post: Допис
-
+    errors:
+      models:
+        user:
+          attributes:
+            nickname:
+              blank: не може бути порожнім
+              taken: вже існує
+            password:
+              blank: не може бути порожнім
+              too_short: надто короткий, обов'язково мінімум %{count} символів
+              too_long: надто довгий, обов'язково максимум %{count} символів
+            password_confirmation:
+              confirmation: не співпадає
+            email:
+              blank: не може бути порожньою
+              invalid: недопустимого формату
+              taken: вже існує
+        post:
+          attributes:
+            title:
+              blank: не може бути порожнім
+            subtitle:
+              blank: не може бути порожнім
+            description:
+              blank: не може бути порожнім
+            photo:
+              blank: не може бути порожнім
   admin:
     posts:
       index:
@@ -113,7 +156,6 @@ uk:
     faq: FAQ
   application_controller:
     alert: Ви не авторизовані для виконання цього екшену.
-
   errors:
     messages:
       carrierwave_processing_error: Неможливо змінити розмір зображення

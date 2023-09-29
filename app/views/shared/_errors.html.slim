@@ -1,5 +1,6 @@
-- if object&.errors&.full_messages&.any?
-  .alert.alert-danger
-    ul.mb-0
-      - object.errors.full_messages.each do |msg|
-        li = msg
+= turbo_frame_tag 'error_message' do
+  - if object&.errors&.full_messages&.any?
+    div data-controller="flash" class="alert alert-danger absolute-centered" role="alert"
+      ul.mb-0
+        - object.errors.full_messages.each do |msg|
+          li = msg
