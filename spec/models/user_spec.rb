@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe User do
+  subject { build(:user) }
+
   describe 'associations' do
     it { is_expected.to have_many(:posts).dependent(:delete_all) }
   end
@@ -25,5 +27,11 @@ RSpec.describe User do
       new_user = build(:user, email: existing_user.email.upcase)
       expect(new_user).to be_valid
     end
+
+    it { is_expected.to validate_presence_of(:nickname).on(:update) }
+    it { is_expected.to validate_uniqueness_of(:nickname).case_insensitive.on(:update) }
+
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   end
 end

@@ -9,11 +9,12 @@ footer.footer
       .footer-logo
         = image_tag "logo-navbar.png"
     .footer__inner
-      p.copyright © 2023 Rubycoin
+      p.copyright
+        = "© #{Date.current.year} Rubycoin"
       .socials
-        a.socials__link href=""
+        a.socials__link href="https://www.linkedin.com/in/danyils/"
           = image_tag "linkedin-icon.svg"
-        a.socials__link href=""
+        a.socials__link href="https://t.me/ruby4you"
           = image_tag "telegram-icon.svg"
-        a.socials__link href=""
+        a.socials__link href="javascript:void(0)"
           = image_tag "youtube-icon.svg"
