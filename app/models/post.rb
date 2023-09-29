@@ -14,6 +14,8 @@ class Post < ApplicationRecord
 
   enum status: { active: 0, inactive: 1 }
 
+  scope :ordered, -> { order(created_at: :desc) }
+
   def truncated_description
     description.truncate(100, separator: /\s/)
   end
