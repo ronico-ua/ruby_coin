@@ -1,7 +1,7 @@
 .home__container
   - if @main_post.present?
     .intro-block
-      = link_to post_path(@main_post.id) do
+      = link_to post_path(@main_post) do
         .intro-block__img
           - if @main_post.photo.present?
             = image_tag(@main_post.photo.medium.url, class: "intro-block__main_img")
@@ -58,7 +58,7 @@
       - @posts.each do |post|
         .post-column
           .post
-            = link_to post_path(post.id) do
+            = link_to post_path(post) do
               .post-img
                 - if post.photo.present?
                   = image_tag post.photo.medium.url

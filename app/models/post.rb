@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   has_and_belongs_to_many :tags
   belongs_to :user
   mount_uploader :photo, PhotoUploader
@@ -23,6 +26,10 @@ class Post < ApplicationRecord
   def similar_posts(post)
     post_tags = post.tags.pluck(:id)
     Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(3)
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
   end
 
   private
