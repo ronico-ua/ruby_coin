@@ -329,6 +329,7 @@
         }
       }
       &__text {
+        height: 70px;
         font-weight: 400;
         font-size: 16px;
         line-height: 1.5;
@@ -341,6 +342,7 @@
         margin-bottom: 0;
         @media (max-width: 440px) {
           font-size: 14px;
+          height: 65px;
         }
       }
       .post-tags {
