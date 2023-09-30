@@ -25,7 +25,7 @@
         - @similar_posts.each do |similar_post|
           .post-column
             .post
-              = link_to post_path(similar_post.id) do
+              = link_to post_path(similar_post) do
                 .post-img
                   - if similar_post.photo.present?
                     = image_tag similar_post.photo.url
@@ -39,4 +39,3 @@
                 .post-tags
                   - similar_post.tags.first(3).each do |tag|
                     .post-tag = tag.title
-
