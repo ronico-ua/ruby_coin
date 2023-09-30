@@ -10,12 +10,11 @@
       = image_tag "post-img.png"
   .details-inner
     .flex-admin
-      .admin Admin
-      .intro-block__date 10/10/2024
+      .admin = @post.user.role
+      .intro-block__date = l(@post.created_at, format: :default)
     .tags-inner
-      .intro-block__tag Ruby
-      .intro-block__tag Ruby on Rails
-      .intro-block__tag BackEnd part
+      - @post.tags.first(3).each do |tag|
+        .intro-block__tag = tag.title
   .post-show__content
     h1.post-title = @post.title
     p.post-description == @post.description
