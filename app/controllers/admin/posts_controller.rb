@@ -12,13 +12,9 @@ module Admin
       @pagy, @posts = pagy(@posts, items: 6)
     end
 
-    def show; end
-
     def new
       @post = Post.new
     end
-
-    def edit; end
 
     def create
       @post = current_user.posts.build post_params
@@ -70,7 +66,7 @@ module Admin
     end
 
     def set_post!
-      @post = Post.find params[:id]
+      @post = Post.friendly.find(params[:id])
     end
 
     def fetch_tags

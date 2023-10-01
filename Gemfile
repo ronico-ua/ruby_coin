@@ -10,6 +10,7 @@ gem 'bootsnap', require: false
 gem 'carrierwave'
 gem 'cssbundling-rails'
 gem 'devise'
+gem 'friendly_id', '~> 5.4.0'
 gem 'hotwire-rails'
 gem 'jsbundling-rails'
 gem 'overcommit', '~> 0.60.0'
