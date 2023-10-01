@@ -1,3 +1,4 @@
+- provide(:title, full_title(@post.title.truncate(15)))
 .post-show
   .navigation
     .prev-page Головна
@@ -39,4 +40,3 @@
                 .post-tags
                   - similar_post.tags.first(3).each do |tag|
                     .post-tag = tag.title
-

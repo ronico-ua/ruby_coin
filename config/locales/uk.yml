@@ -1,4 +1,13 @@
 uk:
+  titles:
+    admin: Адмін
+    faq: FAQ
+    main: Головна
+    search: Пошук
+    edit: Редагування
+    new: Новий
+    tags: Теги
+    posts: Дописи
   buttons:
     remember_me: Запам'ятати мене
     forgot_password: Забули пароль?

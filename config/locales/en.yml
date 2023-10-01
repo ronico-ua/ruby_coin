@@ -1,4 +1,13 @@
 en:
+  titles:
+    admin: Admin
+    faq: FAQ
+    main: Main
+    search: Search
+    edit: Edit
+    new: New
+    tags: Tags
+    posts: Posts
   buttons:
     remember_me: Remember me
     forgot_password: Forgot password?
