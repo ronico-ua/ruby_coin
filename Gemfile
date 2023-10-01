@@ -59,6 +59,7 @@ end
 group :test do
   gem 'capybara'
   gem 'rails-controller-testing'
+  gem 'selenium-webdriver'
   # gem 'rspec-sidekiq', '~> 3.0', '>= 3.0.3'
   gem 'shoulda-matchers'
   # gem 'vcr', '5.0.0'
