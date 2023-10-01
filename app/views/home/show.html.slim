@@ -1,7 +1,7 @@
 - provide(:title, full_title(@post.title.truncate(15)))
 .post-show
   .navigation
-    .prev-page Головна
+    .prev-page = t('titles.main')
     .slash
     .next-page = @post.title
   .post-main-img
@@ -20,7 +20,8 @@
     h1.post-title = @post.title
     p.post-description == @post.description
   - if @similar_posts.present?
-    h2.post-title.second Схожі публікації
+    h2.post-title.second
+      = t('.similar_posts')
     .posts
       .posts__inner
         - @similar_posts.each do |similar_post|

@@ -8,6 +8,7 @@ en:
     new: New
     tags: Tags
     posts: Posts
+    categories: Categories
   buttons:
     remember_me: Remember me
     forgot_password: Forgot password?
@@ -21,6 +22,7 @@ en:
     create: Create
     yes_text: 'Yes'
     no_text: 'No'
+    apply: Apply
   labels:
     registration: Registration
     enter_account: Account login
@@ -29,6 +31,19 @@ en:
   confirmations:
     action_confirmation: Action confirmation
     delete: Are you sure you want to delete %{item}?
+  home:
+    index:
+      show_first: Show first
+      new: New
+      best: Best
+      by_tags: By tags
+      by_difficulty: By difficulty level
+      all: All
+      newbie: Easy
+      middle: Middle
+      hard: Hard
+    show:
+      similar_posts: Similar posts
   datetime: &datetime
     month_names:
       [~, January, February, March, April, May, June, July, August, September, October, November, December]

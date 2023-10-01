@@ -1,6 +1,5 @@
 uk:
   titles:
-
     admin: Адмін
     faq: FAQ
     main: Головна
@@ -9,6 +8,7 @@ uk:
     new: Новий
     tags: Теги
     posts: Дописи
+    categories: Категорії
   buttons:
     remember_me: Запам'ятати мене
     forgot_password: Забули пароль?
@@ -22,6 +22,7 @@ uk:
     create: Створити
     yes_text: Так
     no_text: Ні
+    apply: Застосувати
   labels:
     registration: Реєстрація
     enter_account: Вхід в акаунт
@@ -30,6 +31,19 @@ uk:
   confirmations:
     action_confirmation: Підтвердження дії
     delete: Ви впевнені, що бажаєте видалити %{item}?
+  home:
+    index:
+      show_first: Спочатку показувати
+      new: Нові
+      best: Найкращі
+      by_tags: За тегами
+      by_difficulty: За рівнем складності
+      all: Всі
+      easy: Простий
+      middle: Середній
+      hard: Складний
+    show:
+      similar_posts: Схожі публікації
   datetime: &datetime
     month_names:
       [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Жовтень, Листопад, Грудень]
