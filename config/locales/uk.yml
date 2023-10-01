@@ -1,5 +1,6 @@
 uk:
   titles:
+
     admin: Адмін
     faq: FAQ
     main: Головна
@@ -18,10 +19,17 @@ uk:
     have_account: У вас вже є обліковий запис?
     back: Назад
     send_reset_password: Відправити інструкцію зі скидання паролю
+    create: Створити
+    yes_text: Так
+    no_text: Ні
   labels:
     registration: Реєстрація
     enter_account: Вхід в акаунт
     edit_account: Змінити акаунт
+    create_tag: Створити тег
+  confirmations:
+    action_confirmation: Підтвердження дії
+    delete: Ви впевнені, що бажаєте видалити %{item}?
   datetime: &datetime
     month_names:
       [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Жовтень, Листопад, Грудень]

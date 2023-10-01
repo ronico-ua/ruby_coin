@@ -18,10 +18,17 @@ en:
     have_account: Do you already have an account?
     back: Back
     send_reset_password: Send me reset password instructions
+    create: Create
+    yes_text: 'Yes'
+    no_text: 'No'
   labels:
     registration: Registration
     enter_account: Account login
     edit_account: Edit account
+    create_tag: Create tag
+  confirmations:
+    action_confirmation: Action confirmation
+    delete: Are you sure you want to delete %{item}?
   datetime: &datetime
     month_names:
       [~, January, February, March, April, May, June, July, August, September, October, November, December]
