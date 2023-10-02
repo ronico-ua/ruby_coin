@@ -14,9 +14,6 @@ require 'shoulda/matchers'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-Capybara.default_driver = :selenium_chrome
-Capybara.javascript_driver = :selenium_chrome
-
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
