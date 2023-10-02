@@ -155,6 +155,10 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    globalize (6.2.1)
+      activemodel (>= 4.2, < 7.1)
+      activerecord (>= 4.2, < 7.1)
+      request_store (~> 1.0)
     hotwire-rails (0.1.3)
       rails (>= 6.0.0)
       stimulus-rails
@@ -278,6 +282,8 @@ GEM
     redis-client (0.17.0)
       connection_pool
     regexp_parser (2.8.1)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -406,6 +412,7 @@ DEPENDENCIES
   faker
   fasterer (~> 0.10.0)
   friendly_id (~> 5.4.0)
+  globalize
   hotwire-rails
   jsbundling-rails
   letter_opener
