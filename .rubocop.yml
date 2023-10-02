@@ -34,3 +34,6 @@ ExampleLength:
 
 NestedGroups:
   Max: 5
+
+Rails/LexicallyScopedActionFilter:
+ Enabled: false

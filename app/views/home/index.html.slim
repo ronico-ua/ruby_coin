@@ -1,7 +1,8 @@
+- provide(:title, full_title(t("titles.main")))
 .home__container
   - if @main_post.present?
     .intro-block
-      = link_to post_path(@main_post.id) do
+      = link_to post_path(@main_post) do
         .intro-block__img
           - if @main_post.photo.present?
             = image_tag(@main_post.photo.medium.url, class: "intro-block__main_img")
@@ -21,44 +22,47 @@
     .accordion-item
       h2#headingOne.accordion-header
         button.accordion-button.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
-          | Всі категорії
+          = t("titles.categories")
 
       #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
         .accordion-body
           = form_tag root_path(anchor: 'posts-list'), method: :get do
             .filter-block
-              h4.heading-filter Спочатку показувати
+              h4.heading-filter
+                = t(".show_first")
               .filter-inner
-                .filter-item.active Нові
-                .filter-item Найкращі
+                .filter-item.active = t(".new")
+                .filter-item = t(".best")
 
             .filter-block
-              h4.heading-filter За тегами
+              h4.heading-filter
+                = t(".by_tags")
               .filter-inner data-controller="highlight"
                 - @tags.each do |tag|
                   label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}" for="highlight_item_#{tag.id}"
                     = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item", data: { action: "click->highlight#toggleHighlight" }, id: "highlight_item_#{tag.id}"
                     = tag.title
               .search-form
-                input.filter-search type="search" placeholder="Пошук"
+                input.filter-search type="search" placeholder=t("titles.search")
                 .search-button
 
             .filter-block
-              h4.heading-filter Рівень складності
+              h4.heading-filter
+                = t(".by_difficulty")
               .filter-inner
-                .filter-item.active Всі
-                .filter-item Простий
-                .filter-item Середній
-                .filter-item Складний
+                .filter-item.active = t(".all")
+                .filter-item = t(".easy")
+                .filter-item = t(".middle")
+                .filter-item = t(".hard")
 
-            = submit_tag 'Застосувати', class: 'main-btn', name: nil
+            = submit_tag t('buttons.apply'), class: 'main-btn', name: nil
 
   .posts id="posts-list"
     .posts__inner
       - @posts.each do |post|
         .post-column
           .post
-            = link_to post_path(post.id) do
+            = link_to post_path(post) do
               .post-img
                 - if post.photo.present?
                   = image_tag post.photo.medium.url

@@ -3,23 +3,26 @@
 Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
+  scope '/(:locale)', locale: /uk|en/ do
+    devise_for :users, controllers: {
+      registrations: 'users/registrations',
+      sessions: 'users/sessions'
+    }
 
-  root 'home#index'
-  get '/search', to: 'home#search'
-  get '/faq', to: 'faq#index'
-  get '/post/:id', to: 'home#show', as: 'post'
+    root 'home#index'
+    get '/search', to: 'home#search'
+    get '/faq', to: 'faq#index'
+    get '/post/:id', to: 'home#show', as: 'post'
+    get 'set_locale', to: 'application#set_locale'
 
-  namespace :admin do
-    root 'posts#index'
-    resources :posts
-    resources :tags
-  end
+    namespace :admin do
+      root 'posts#index'
+      resources :posts
+      resources :tags
+    end
 
-  namespace :api do
-    resources :tags, only: :index
+    namespace :api do
+      resources :tags, only: :index
+    end
   end
 end
