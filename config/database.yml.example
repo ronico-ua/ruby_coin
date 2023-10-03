@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  username: dev
+  password: dev
+  host: localhost
+  port: 5432
+  encoding: utf8
+  reconnect: true
+  pool: 5
+
+development:
+  <<: *default
+  database: ruby_coin_development
+
+test:
+  <<: *default
+  database: ruby_coin_test
