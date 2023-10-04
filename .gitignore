@@ -39,3 +39,5 @@
 .yarn/cache
 .yarn/install-state.gz
 .env
+
+/config/database.yml
