@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-describe 'Home Page' do
-  let(:post) { create(:post) }
+describe 'Home show Page', type: :feature do
+  let(:post) { create(:post, slug: SecureRandom.hex) }
   let(:main_post) { create(:post, main_post: true) }
 
   context 'when visiting a post page' do

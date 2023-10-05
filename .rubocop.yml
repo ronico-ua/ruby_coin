@@ -37,3 +37,9 @@ NestedGroups:
 
 Rails/LexicallyScopedActionFilter:
  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false
