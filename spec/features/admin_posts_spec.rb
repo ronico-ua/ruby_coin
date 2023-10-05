@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Admin Posts', type: :system do
+describe 'Admin Posts', type: :feature do
   let(:image_path) { Rails.root.join('spec', 'fixtures', 'files', 'example.jpg') }
   let(:tag) { create(:tag, title: 'Тег1') }
   let(:post) { build(:post, tag_ids: [tag.id]) }

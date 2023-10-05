@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Admin Tags', type: :system do
+describe 'Admin Tags', type: :feature do
   let!(:tag) { create(:tag, title: 'Тест') }
 
   before do
@@ -36,9 +36,9 @@ describe 'Admin Tags', type: :system do
     visit admin_tags_path
 
     find("#tag_#{tag.id} .delete").click
-
-    click_button 'Так'
-
+    sleep(1)
+    click_button I18n.t('buttons.yes_text')
+    sleep(1)
     expect(page).to have_content('Тег успішно видалено')
   end
 end
