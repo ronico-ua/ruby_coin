@@ -26,10 +26,10 @@
                         data: { 'ajax-url': '/api/tags' }, placeholder: "Введіть теги" }
       .checkboxes
         .flex-inner
-          = f.label :status, "Статус", class: 'standart-label'
-          = f.check_box :status, { data: { toggle: 'toggle' , onlabel: 'Активний', offlabel: 'Не активний', onstyle: 'success', offstyle: 'danger', class: 'switcher' } }, "active", "inactive"
+          = f.label :status, "Статус", class: 'standart-label', id: 'status_label'
+          = f.check_box :status, { data: { toggle: 'toggle' , onlabel: 'Активний', offlabel: 'Не активний', onstyle: 'success', offstyle: 'danger', class: 'switcher' }, id: 'status_checkbox' }, "active", "inactive"
         .flex-inner
-          = f.label :main_post, "Головний допис", class: 'standart-label'
+          = f.label :main_post, "Головний допис", class: 'standart-label', id: 'main_post_label'
           = f.check_box :main_post, { data: { toggle: 'toggle' , onlabel: 'Головний', offlabel: 'Не головний', onstyle: 'success', offstyle: 'danger', class: 'switcher' } }, "active", "inactive"
     .actions
       = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
