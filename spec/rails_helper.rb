@@ -11,6 +11,7 @@ require 'rspec/rails'
 require 'devise'
 require 'factory_bot_rails'
 require 'shoulda/matchers'
+Capybara.javascript_driver = :rack_test
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
@@ -49,6 +50,9 @@ RSpec.configure do |config|
   end
   config.before(:each, type: :feature) do
     default_url_options[:locale] = I18n.default_locale
+  end
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless
   end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = Rails.root.join('spec', 'fixtures')
