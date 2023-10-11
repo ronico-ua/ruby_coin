@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::Translator < BaseService
+class Posts::Translator
   attr_accessor :post, :params
 
   def initialize(post, params)
@@ -8,34 +8,26 @@ class Posts::Translator < BaseService
     @params = params
   end
 
-  def call
+  def create_translation
     I18n.available_locales.each do |locale|
-      translation = post.translations.find_by(locale:)
+      next if I18n.locale == locale
 
-      if translation.present?
-        translation.update(
-          title: current_locale_params.dig('title', locale),
-          description: current_locale_params.dig('description', locale)
-        )
-      else
-        post.translations.create(
-          title: current_locale_params.dig('title', locale),
-          description: current_locale_params.dig('description', locale),
-          locale:
-        )
-      end
+      post.translations.create(
+        title: params.dig('title_localizations', locale),
+        description: params.dig('description_localizations', locale),
+        locale:
+      )
     end
   end
 
-  private
+  def update_translation
+    I18n.available_locales.each do |locale|
+      next if I18n.locale == locale
 
-  def current_locale_params
-    current_params = {}
-
-    params.each do |key, value|
-      current_params[key] = value if value.is_a?(ActionController::Parameters)
+      post.translations.find_by(locale:).update(
+        title: params.dig('title_localizations', locale),
+        description: params.dig('description_localizations', locale)
+      )
     end
-
-    current_params
   end
 end
