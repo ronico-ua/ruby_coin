@@ -1,4 +1,5 @@
 en:
+
   titles:
     admin: Admin
     faq: FAQ
@@ -154,7 +155,7 @@ en:
         success: Tag successfully deleted
 
   en: English
-  uk: Українська
+  uk: Ukrainian
 
   global:
     errors:

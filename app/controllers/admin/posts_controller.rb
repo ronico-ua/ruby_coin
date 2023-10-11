@@ -17,11 +17,13 @@ module Admin
     end
 
     def create
-      @post = current_user.posts.build post_params
+      @post = Posts::Builder.call(current_user, post_params)
 
       authorize @post
 
       if @post.save
+        Posts::Translator.call(@post, post_params)
+
         flash[:success] = t('.success')
         redirect_to admin_posts_path
       else
@@ -31,6 +33,8 @@ module Admin
 
     def update
       if @post.update post_params
+        Posts::Translator.call(@post, post_params)
+
         respond_to do |format|
           format.html do
             flash[:success] = t('.success')
@@ -62,7 +66,7 @@ module Admin
     private
 
     def post_params
-      params.require(:post).permit(:title, :subtitle, :description, :status, :main_post, :photo, tag_ids: [])
+      params.require(:post).permit(:subtitle, :status, :main_post, :photo, title: {}, description: {}, tag_ids: [])
     end
 
     def set_post!
