@@ -44,6 +44,10 @@ commands:
             bundle exec rails db:create
             bundle exec rails db:schema:load
             bundle exec rails db:migrate
+      - run:
+          name: Precompile assets
+          command: |
+            bundle exec rails assets:precompile
 
   run_specs:
     steps:
