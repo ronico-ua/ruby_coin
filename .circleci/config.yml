@@ -5,7 +5,7 @@ executors:
     working_directory: ~/repo
     description: The official CircleCI Ruby Docker image
     docker:
-      - image: cimg/ruby:3.2.2-node
+      - image: cimg/ruby:3.2.2-browsers
         environment:
           RAILS_ENV: test
           PGHOST: localhost
@@ -81,11 +81,13 @@ commands:
       - run:
           name: run bundle audit
           command: bundle exec bundler-audit check --update
-
+orbs:
+  browser-tools: circleci/browser-tools@1.1
 jobs:
   lintering:
     executor: default
     steps:
+      - browser-tools/install-browser-tools
       - setup_environment
       - run_rubocop
       - run_fasterer
