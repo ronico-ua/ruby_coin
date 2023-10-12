@@ -3,8 +3,8 @@
 class CreateTranslationTable < ActiveRecord::Migration[7.0]
   def up
     Post.create_translation_table!({
-                                     title: string,
-                                     description: string
+                                     title: :string,
+                                     description: :string
                                    }, {
                                      migrate_data: true
                                    })

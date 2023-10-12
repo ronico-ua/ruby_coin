@@ -79,14 +79,14 @@ module Admin
 
       localization_params.each do |field, translations|
         translations.each do |key, value|
-          next if value.presence
+          next if value != ''
 
           fieldname = field.delete_suffix('_localizations')
           errors << "#{I18n.t("activerecord.attributes.post.#{fieldname}")}: #{I18n.t(key).downcase}"
         end
       end
 
-      flash[:alert] = "#{I18n.t('errors.messages.translation_missing')} #{errors.join(', ')}" if errors.present?
+      flash[:warning] = "#{I18n.t('errors.messages.translation_missing')} #{errors.join(', ')}" if errors.present?
     end
 
     def set_post!

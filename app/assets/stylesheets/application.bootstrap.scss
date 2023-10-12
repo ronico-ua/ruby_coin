@@ -81,11 +81,11 @@ input {
 }
 
 #flash {
-  position: fixed;
-  left: 171px;
-  top: 54px;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 323232;
-  display: flex;
 }
 
 .main-btn {
