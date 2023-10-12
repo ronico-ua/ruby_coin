@@ -36,9 +36,9 @@ describe 'Admin Tags', type: :system do
     visit admin_tags_path
 
     find("#tag_#{tag.id} .delete").click
-    sleep(1)
+    sleep(0.2)
     click_button I18n.t('buttons.yes_text')
-    sleep(1)
+    sleep(0.2)
     expect(page).to have_content('Тег успішно видалено')
   end
 end
