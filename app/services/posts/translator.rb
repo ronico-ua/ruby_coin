@@ -24,7 +24,7 @@ class Posts::Translator
     I18n.available_locales.each do |locale|
       next if I18n.locale == locale
 
-      post.translations.find_by(locale:).update(
+      post.translations.find_by(locale:)&.update(
         title: params.dig('title_localizations', locale),
         description: params.dig('description_localizations', locale)
       )
