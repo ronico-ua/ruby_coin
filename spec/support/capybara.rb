@@ -16,7 +16,7 @@ RSpec.configure do |config|
   # end
 
   config.before(:each, type: :system) do
-    driven_by :selenium_headless
+    driven_by :selenium_chrome_headless
   end
   # config.after do
   #   Capybara.use_default_driver
