@@ -5,7 +5,7 @@ executors:
     working_directory: ~/repo
     description: The official CircleCI Ruby Docker image
     docker:
-      - image: cimg/ruby:3.2.2-browsers
+      - image: cimg/ruby:3.2.2-node-browsers
         environment:
           RAILS_ENV: test
           PGHOST: localhost

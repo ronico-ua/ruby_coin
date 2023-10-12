@@ -52,7 +52,7 @@ RSpec.configure do |config|
     default_url_options[:locale] = I18n.default_locale
   end
   config.before(:each, type: :system) do
-    driven_by :selenium_chrome_headless
+    driven_by :selenium_headless
   end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = Rails.root.join('spec', 'fixtures')
