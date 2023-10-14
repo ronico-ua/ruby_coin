@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_144023) do
     t.string "title"
     t.string "subtitle"
     t.string "description"
+    t.string "slug"
     t.index ["locale"], name: "index_post_translations_on_locale"
     t.index ["post_id"], name: "index_post_translations_on_post_id"
   end
@@ -36,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_144023) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "main_post", default: false, null: false
-    t.string "slug", null: false
+    t.string "slug"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

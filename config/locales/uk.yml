@@ -117,8 +117,8 @@ uk:
       edit:
         title: Редагування допису
       form:
-        title_label: Введіть заголовок
-        subtitle_label:  Введіть підзаголовок
+        title_label: Заголовок
+        subtitle_label:  Підзаголовок
         photo_label: Головне зображення
         description_label: Опис
         status_label: Статус Активний ?

@@ -118,8 +118,8 @@ en:
       edit:
         title: Egit the post
       form:
-        title_label: Enter title
-        subtitle_label: Enter subtitle
+        title_label: Title
+        subtitle_label: Subtitle
         photo_label: Main photo
         description_label: Description
         status_label: Status active ?
