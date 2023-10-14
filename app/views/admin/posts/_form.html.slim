@@ -13,8 +13,18 @@
           = f.label :title_localizations, "#{t("activerecord.attributes.post.title")} (#{t(locale).downcase})", for: "title", class: 'standart-label'
           = f.text_field "title_localizations[#{locale}]", id: "title_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: title_value(@post, locale), placeholder: t('.title_label')
 
-      = f.label :subtitle, t('.subtitle_label'), class: 'standart-label'
-    = f.text_field :subtitle, class: 'standart-input', placeholder: t('.subtitle_label')
+    .row
+      .col
+        = f.label :subtitle, t('.subtitle_label'), class: 'standart-label'
+        = f.text_field :subtitle, class: 'standart-input', placeholder: t('.subtitle_label')
+
+      - I18n.available_locales.each do |locale|
+        - next if locale == I18n.locale
+
+        .col
+          = f.label :subtitle_localizations, "#{t("activerecord.attributes.post.subtitle")} (#{t(locale).downcase})", for: "subtitle", class: 'standart-label'
+          = f.text_field "subtitle_localizations[#{locale}]", id: "subtitle_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: subtitle_value(@post, locale), placeholder: t('.subtitle_label')
+
     = f.label :title, "Головне зображення", class: 'standart-label'
     .image-content.group
       #preview.preview-img-box-edit

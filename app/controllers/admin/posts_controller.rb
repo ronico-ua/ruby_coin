@@ -71,7 +71,7 @@ module Admin
     end
 
     def localization_params
-      params.require(:post).permit(title_localizations: {}, description_localizations: {})
+      params.require(:post).permit(title_localizations: {}, subtitle_localizations: {}, description_localizations: {})
     end
 
     def validate_localization

@@ -14,6 +14,7 @@ class Posts::Translator
 
       post.translations.create(
         title: params.dig('title_localizations', locale),
+        subtitle: params.dig('subtitle_localizations', locale),
         description: params.dig('description_localizations', locale),
         locale:
       )
@@ -26,6 +27,7 @@ class Posts::Translator
 
       post.translations.find_by(locale:)&.update(
         title: params.dig('title_localizations', locale),
+        subtitle: params.dig('subtitle_localizations', locale),
         description: params.dig('description_localizations', locale)
       )
     end

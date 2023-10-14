@@ -11,6 +11,16 @@ module PostsHelper
     end
   end
 
+  def subtitle_value(post, locale)
+    if action_name == 'create'
+      params['post'].present? ? params.dig('post', 'subtitle_localizations', locale) : ''
+    elsif action_name == 'edit'
+      post.translations.find_by(locale:)&.subtitle
+    else
+      ''
+    end
+  end
+
   def description_value(post, locale)
     if action_name == 'create'
       params['post'].present? ? params.dig('post', 'description_localizations', locale) : ''

@@ -4,6 +4,7 @@ class CreateTranslationTable < ActiveRecord::Migration[7.0]
   def up
     Post.create_translation_table!({
                                      title: :string,
+                                     subtitle: :string,
                                      description: :string
                                    }, {
                                      migrate_data: true
@@ -11,6 +12,6 @@ class CreateTranslationTable < ActiveRecord::Migration[7.0]
   end
 
   def down
-    Post.drop_translation_table! migrate_data: true
+    Post.drop_translation_table!
   end
 end

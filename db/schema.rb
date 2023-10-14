@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_144023) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.string "subtitle"
     t.string "description"
     t.index ["locale"], name: "index_post_translations_on_locale"
     t.index ["post_id"], name: "index_post_translations_on_post_id"
