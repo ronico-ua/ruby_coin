@@ -1,19 +1,20 @@
 = form_with model: [:admin, post], data: { turbo: :false } do |f|
   .admin-form__content
     = render 'shared/errors', object: post
-    .group
-      = f.label :title, t('.title_label'), class: 'standart-label'
-      = f.text_field :title, class: 'standart-input', placeholder: t('.title_label')
+    .row
+      .col
+        = f.label :title, t('.title_label'), class: 'standart-label'
+        = f.text_field :title, class: 'standart-input', placeholder: t('.title_label')
 
       - I18n.available_locales.each do |locale|
         - next if locale == I18n.locale
 
-        .field
+        .col
           = f.label :title_localizations, "#{t("activerecord.attributes.post.title")} (#{t(locale).downcase})", for: "title", class: 'standart-label'
           = f.text_field "title_localizations[#{locale}]", id: "title_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: title_value(@post, locale), placeholder: t('.title_label')
 
       = f.label :subtitle, t('.subtitle_label'), class: 'standart-label'
-      = f.text_field :subtitle, class: 'standart-input', placeholder: t('.subtitle_label')
+    = f.text_field :subtitle, class: 'standart-input', placeholder: t('.subtitle_label')
     = f.label :title, "Головне зображення", class: 'standart-label'
     .image-content.group
       #preview.preview-img-box-edit
@@ -23,13 +24,15 @@
           path[d="M2 18C1.45 18 0.979 17.8043 0.587 17.413C0.195667 17.021 0 16.55 0 16V2C0 1.45 0.195667 0.979 0.587 0.587C0.979 0.195667 1.45 0 2 0H11V2H2V16H16V7H18V16C18 16.55 17.8043 17.021 17.413 17.413C17.021 17.8043 16.55 18 16 18H2ZM14 6V4H12V2H14V0H16V2H18V4H16V6H14ZM3 14H15L11.25 9L8.25 13L6 10L3 14Z" fill="white"]
         |  Вибрати зображення
       = f.file_field :photo, id: 'add-img', accept: "image/*", class: "btn-main"
-    .group
-      = f.label :description, t('.description_label'), class: 'standart-label'
-      = f.text_area :description, class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60
+    .row
+      .col
+        = f.label :description, t('.description_label'), class: 'standart-label'
+        = f.text_area :description, class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60
 
       - I18n.available_locales.each do |locale|
         - next if locale == I18n.locale
-        .field
+
+        .col
           = f.label :description_localizations, "#{t(".description_label")} (#{t(locale).downcase})", class: 'standart-label', for: "description_#{locale}"
           = f.text_area "description_localizations[#{locale}]", class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60, data: { locale: locale.to_s }, value: description_value(@post, locale)
 
