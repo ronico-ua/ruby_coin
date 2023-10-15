@@ -1,4 +1,5 @@
 en:
+
   titles:
     admin: Admin
     faq: FAQ
@@ -118,12 +119,23 @@ en:
       edit:
         title: Egit the post
       form:
-        title_label: Enter title
-        subtitle_label: Enter subtitle
+        title_label: Title
+        subtitle_label: Subtitle
         photo_label: Main photo
         description_label: Description
         status_label: Status active ?
         tag_label: Tags
+        placeholders:
+          title: Enter title
+          subtitle: Enter subtitle
+          description: Enter description
+          tags: Enter tags
+          select_image: Select image
+        status:
+          label: Status
+          active: Active
+          disabled: Disabled
+        main_post: Main post
       create:
         success: Post successfully created
       update:
@@ -155,7 +167,7 @@ en:
         success: Tag successfully deleted
 
   en: English
-  uk: Українська
+  uk: Ukrainian
 
   global:
     errors:
@@ -195,3 +207,4 @@ en:
       carrierwave_download_error: "Couldn't download image."
       extension_whitelist_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
       extension_blacklist_error: "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
+      translation_missing: 'Translation missing: '

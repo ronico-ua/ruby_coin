@@ -2,27 +2,36 @@
 
 require 'rails_helper'
 
-describe HomeController do
-  describe 'GET #index' do
-    let(:action) { :index }
-    let(:params) { {} }
+describe HomeController, type: :request do
+  let!(:post) { create(:post) }
 
-    it_behaves_like 'has http success'
+  describe 'GET #index' do
+    it 'returns a successful response and renders the index template' do
+      get root_path
+
+      expect(response).to be_successful
+      expect(response).to render_template(:index)
+    end
   end
 
   describe 'GET #show' do
-    let(:user) { create(:user) }
-    let(:post) { create(:post) }
-    let(:action) { :show }
-    let(:params) { { id: post.id } }
+    it 'returns a successful response, renders the show template, and includes post details' do
+      get post_path(post)
 
-    it_behaves_like 'has http success'
+      expect(response).to be_successful
+      expect(response).to render_template(:show)
+
+      expect(response.body).to include(post.title)
+      expect(response.body).to include(post.description)
+    end
   end
 
   describe 'GET #search' do
-    let(:action) { :search }
-    let(:params) { {} }
+    it 'returns a successful response and renders the search template' do
+      get search_path
 
-    it_behaves_like 'has http success'
+      expect(response).to be_successful
+      expect(response).to render_template(:search)
+    end
   end
 end

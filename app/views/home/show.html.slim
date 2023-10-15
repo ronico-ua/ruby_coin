@@ -1,4 +1,4 @@
-- provide(:title, full_title(@post.title.truncate(15)))
+- provide(:title, full_title(@post.title&.truncate(15)))
 .post-show
   .navigation
     .prev-page = t('titles.main')
