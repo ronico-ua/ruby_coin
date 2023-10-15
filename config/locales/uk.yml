@@ -117,13 +117,24 @@ uk:
       edit:
         title: Редагування допису
       form:
-        title_label: Введіть заголовок
-        subtitle_label:  Введіть підзаголовок
+        title_label: Заголовок
+        subtitle_label:  Підзаголовок
         photo_label: Головне зображення
         description_label: Опис
         status_label: Статус Активний ?
         tag_label: Теги
         main_post_label: Головна допис ?
+        placeholders:
+          title: Введіть заголовок
+          subtitle: Введіть підзаголовок
+          description: Введіть опис
+          tags: Введіть теги
+          select_image: Виберіть зображення
+        status:
+          label: Статус
+          active: Активний
+          disabled: Неактивний
+        main_post: Головний допис
       create:
         success: Допис успішно створено
       update:
@@ -195,3 +206,4 @@ uk:
       extension_whitelist_error: "Вам заборонено завантажувати файли %{extension}, дозволені типи: %{allowed_types}"
       extension_blacklist_error: "Вам заборонено завантажувати файли %{extension}, заборонені типи: %{prohibited_types}"
       record_invalid: "Невірно"
+      translation_missing: 'Відсутній переклад: '

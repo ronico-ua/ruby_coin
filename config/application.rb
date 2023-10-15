@@ -15,7 +15,7 @@ module RubyCoin
 
     config.exceptions_app = routes
 
-    config.i18n.available_locales = %i[en uk]
+    config.i18n.available_locales = [:en, :uk]
     config.i18n.default_locale = :uk
     config.time_zone = 'Kyiv'
     # config.active_record.default_timezone = :local
