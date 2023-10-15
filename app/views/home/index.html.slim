@@ -27,7 +27,7 @@
       #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
         .accordion-body
           = form_tag root_path(anchor: 'posts-list'), method: :get do
-            .filter-container
+            .filter-container.first-container
               .filter-block
                 h4.heading-filter
                   = t(".show_first")
@@ -43,7 +43,7 @@
                     label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}" for="highlight_item_#{tag.id}"
                       = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item", data: { action: "click->highlight#toggleHighlight" }, id: "highlight_item_#{tag.id}"
                       = tag.title
-            .filter-container
+            .filter-container.second-container
               .filter-block
                 .search-form
                   input.filter-search type="search" placeholder=t("titles.search")
