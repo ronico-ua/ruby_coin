@@ -57,7 +57,7 @@
     }
     @media (max-width: 700px) {
        width: 20%;
-       padding: 40px 20px;   
+       padding: 40px 20px;
     }
     .admin-badge {
       display: flex;
@@ -381,15 +381,18 @@
         margin-bottom: 30px;
       }
       .flex-inner {
+
         display: flex;
         flex-direction: column;
         &:first-child {
+
           @media (max-width: 550px) {
             margin-right: 30px;
           }
         }
         .toggle {
-          width: 60px;
+          min-width: 100px !important;
+          width: 120px;
         }
         label {
           font-weight: 700;
@@ -600,7 +603,7 @@
   @media (max-width: 450px) {
     height: 180px;
   }
-  
+
 }
 
 #add-img {

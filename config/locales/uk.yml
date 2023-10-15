@@ -124,6 +124,17 @@ uk:
         status_label: Статус Активний ?
         tag_label: Теги
         main_post_label: Головна допис ?
+        placeholders:
+          title: Введіть заголовок
+          subtitle: Введіть підзаголовок
+          description: Введіть опис
+          tags: Введіть теги
+          select_image: Виберіть зображення
+        status:
+          label: Статус
+          active: Активний
+          disabled: Неактивний
+        main_post: Головний допис
       create:
         success: Допис успішно створено
       update:

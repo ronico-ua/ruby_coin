@@ -124,6 +124,17 @@ en:
         description_label: Description
         status_label: Status active ?
         tag_label: Tags
+        placeholders:
+          title: Enter title
+          subtitle: Enter subtitle
+          description: Enter description
+          tags: Enter tags
+          select_image: Select image
+        status:
+          label: Status
+          active: Active
+          disabled: Disabled
+        main_post: Main post
       create:
         success: Post successfully created
       update:
