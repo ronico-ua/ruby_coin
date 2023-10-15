@@ -1,33 +1,16 @@
 # frozen_string_literal: true
 
 module PostsHelper
-  def title_value(post, locale)
+  def current_data(post, item, locale)
     if action_name == 'create'
-      params['post'].present? ? params.dig('post', 'title_localizations', locale) : ''
-    elsif action_name == 'edit'
-      post.translations.find_by(locale:)&.title
-    else
-      ''
-    end
-  end
+      params['post'].present? ? params.dig('post', "#{item}_localizations", locale) : ''
 
-  def subtitle_value(post, locale)
-    if action_name == 'create'
-      params['post'].present? ? params.dig('post', 'subtitle_localizations', locale) : ''
     elsif action_name == 'edit'
-      post.translations.find_by(locale:)&.subtitle
-    else
-      ''
-    end
-  end
+      post.translations.find_by(locale:)&.send(item)
 
-  def description_value(post, locale)
-    if action_name == 'create'
-      params['post'].present? ? params.dig('post', 'description_localizations', locale) : ''
-    elsif action_name == 'edit'
-      post.translations.find_by(locale:)&.description
     else
       ''
+
     end
   end
 end
