@@ -36,4 +36,16 @@ NestedGroups:
   Max: 5
 
 Rails/LexicallyScopedActionFilter:
- Enabled: false
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
