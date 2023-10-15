@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/globalize/globalize
+  revision: 27b69064b87ec6bf8bd7d09a0c289977089b43e6
+  specs:
+    globalize (6.2.1)
+      activemodel (>= 4.2, < 7.2)
+      activerecord (>= 4.2, < 7.2)
+      request_store (~> 1.0)
+
+GIT
+  remote: https://github.com/norman/friendly_id-globalize
+  revision: 097eed19e9d2f6bbf5ee7636493c03f7025d813b
+  specs:
+    friendly_id-globalize (1.0.0.alpha4)
+      friendly_id (>= 5.1.0, < 6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -263,6 +279,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.8)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.8)
       actionpack (= 7.0.8)
       activesupport (= 7.0.8)
@@ -278,6 +297,8 @@ GEM
     redis-client (0.17.0)
       connection_pool
     regexp_parser (2.8.1)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -406,6 +427,8 @@ DEPENDENCIES
   faker
   fasterer (~> 0.10.0)
   friendly_id (~> 5.4.0)
+  friendly_id-globalize!
+  globalize!
   hotwire-rails
   jsbundling-rails
   letter_opener
@@ -419,6 +442,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.4)
   rails-controller-testing
+  rails-i18n
   rbs (~> 3.1)
   redis
   rspec-rails

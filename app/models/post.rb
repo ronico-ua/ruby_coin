@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
+  require 'i18n'
+
+  translates :title, :subtitle, :description, :slug
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: :globalize
 
   has_and_belongs_to_many :tags
   belongs_to :user
@@ -28,8 +31,11 @@ class Post < ApplicationRecord
     Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(3)
   end
 
-  def should_generate_new_friendly_id?
-    slug.blank? || title_changed?
+  def generate_slugs
+    translations.each do |localized_post|
+      localized_post.update(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
+      localized_post.save!
+    end
   end
 
   private
