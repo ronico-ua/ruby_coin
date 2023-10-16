@@ -10,6 +10,7 @@ en:
     tags: Tags
     posts: Posts
     categories: Categories
+    filters: Filters
   buttons:
     remember_me: Remember me
     forgot_password: Forgot password?

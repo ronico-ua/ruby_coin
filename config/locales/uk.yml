@@ -9,6 +9,7 @@ uk:
     tags: Теги
     posts: Дописи
     categories: Категорії
+    filters: Фільтри
   buttons:
     remember_me: Запам'ятати мене
     forgot_password: Забули пароль?
