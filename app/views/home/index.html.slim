@@ -10,7 +10,7 @@
             = image_tag("intro-img.png", class: "intro-block__main_img")
           .intro-block__content
             .flex-admin
-              .admin = @main_post.user.role
+              .admin = @main_post.user.nickname
               .intro-block__date = l(@main_post.created_at, format: :default)
             h1.intro-block__title = @main_post.title
             h6.intro-block__subtitle = @main_post.subtitle
@@ -22,40 +22,42 @@
     .accordion-item
       h2#headingOne.accordion-header
         button.accordion-button.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
-          = t("titles.categories")
+          = t("titles.filters")
 
       #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
         .accordion-body
           = form_tag root_path(anchor: 'posts-list'), method: :get do
-            .filter-block
-              h4.heading-filter
-                = t(".show_first")
-              .filter-inner
-                .filter-item.active = t(".new")
-                .filter-item = t(".best")
+            .filter-container.first-container
+              .filter-block
+                h4.heading-filter
+                  = t(".show_first")
+                .filter-inner
+                  .filter-item.active = t(".new")
+                  .filter-item = t(".best")
 
-            .filter-block
-              h4.heading-filter
-                = t(".by_tags")
-              .filter-inner data-controller="highlight"
-                - @tags.each do |tag|
-                  label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}" for="highlight_item_#{tag.id}"
-                    = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item", data: { action: "click->highlight#toggleHighlight" }, id: "highlight_item_#{tag.id}"
-                    = tag.title
-              .search-form
-                input.filter-search type="search" placeholder=t("titles.search")
-                .search-button
-
-            .filter-block
-              h4.heading-filter
-                = t(".by_difficulty")
-              .filter-inner
-                .filter-item.active = t(".all")
-                .filter-item = t(".easy")
-                .filter-item = t(".middle")
-                .filter-item = t(".hard")
-
-            = submit_tag t('buttons.apply'), class: 'main-btn', name: nil
+              .filter-block
+                h4.heading-filter
+                  = t(".by_tags")
+                .filter-inner data-controller="highlight"
+                  - @tags.each do |tag|
+                    label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}" for="highlight_item_#{tag.id}"
+                      = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item", data: { action: "click->highlight#toggleHighlight" }, id: "highlight_item_#{tag.id}"
+                      = tag.title
+            .filter-container.second-container
+              .filter-block
+                .search-form
+                  input.filter-search type="search" placeholder=t("titles.search")
+                  .search-button
+              .filter-button
+                = submit_tag t('buttons.apply'), class: 'main-btn', name: nil
+            / .filter-block
+            /   h4.heading-filter
+            /     = t(".by_difficulty")
+            /   .filter-inner
+            /     .filter-item.active = t(".all")
+            /     .filter-item = t(".easy")
+            /     .filter-item = t(".middle")
+            /     .filter-item = t(".hard")
 
   .posts id="posts-list"
     .posts__inner
@@ -69,7 +71,7 @@
                 - else
                   = image_tag "post-img.png"
             .flex-admin
-              .admin = post.user.role
+              .admin = post.user.nickname
               .intro-block__date = l(post.created_at, format: :default)
             h2.post__title = post.title
             p.post__text = post.subtitle
