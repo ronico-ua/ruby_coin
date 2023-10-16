@@ -54,8 +54,7 @@ en:
       answer1_1: I am a programmer with experience in Ruby and Ruby on Rails.
       answer1_2: I create Ukrainian-language content, including tutorials and instructions, especially on programming.
       answer1_3: I also develop websites for practical learning and storing created information.
-      more_info1: You can read more about this in the post
-      text_with_link1: " Meet the author of the channel"
+      more_info1_html: You can read more about this in the post <a href="https://t.me/rubychatua">Meet the author of the channel</a>
     services:
       question2: What services do you offer for beginners?
       answer2_1: For beginners, I offer various educational materials, including programming lessons in Ruby and Ruby on Rails that I create myself or have studied.
@@ -67,8 +66,7 @@ en:
     consultation:
       question4: Do you provide mentoring or consulting services?
       answer4_1: Yes, I offer mentoring and consulting services upon prior acquaintance through skype/discord.
-      answer4_2_1: I am ready to answer your questions and help you solve programming tasks in Ruby and Ruby on Rails as much as possible in the
-      answer4_2_2: " telegram group."
+      answer4_2_1_html: I am ready to answer your questions and help you solve programming tasks in Ruby and Ruby on Rails as much as possible in the <a href="https://t.me/rubychatua"> telegram group.</a>
       more_info4: I also provide the first job in this field upon successful completion of the internship.
     communication:
       question5: How can I contact you for more information or consultation?
