@@ -19,7 +19,7 @@ gem 'overcommit', '~> 0.60.0'
 gem 'pagy'
 gem 'pg', '~> 1.5.3'
 gem 'propshaft'
-gem 'puma', '~> 5.6', '>= 5.6.5'
+gem 'puma', '~> 6.4'
 gem 'pundit'
 gem 'rails', '~> 7.1'
 gem 'rails-i18n'
@@ -53,7 +53,7 @@ group :development do
   gem 'web-console'
 
   gem 'capistrano', '~> 3.17', require: false
-  gem 'capistrano3-puma', '~> 5.2', require: false
+  gem 'capistrano3-puma', '6.0.0.beta.1', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rvm', require: false
@@ -63,8 +63,5 @@ end
 group :test do
   gem 'capybara'
   gem 'rails-controller-testing'
-  # gem 'rspec-sidekiq', '~> 3.0', '>= 3.0.3'
   gem 'shoulda-matchers'
-  # gem 'vcr', '5.0.0'
-  # gem 'webmock', '3.6.0'
 end
