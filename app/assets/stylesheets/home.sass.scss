@@ -238,6 +238,7 @@
             @media (max-width: 440px) {
               padding: 5px 20px;
               font-size: 14px;
+              flex-basis: 100%;
             }
           }
           [type="checkbox"]{
@@ -279,10 +280,14 @@
       .main-btn {
         box-shadow: 0px 0px 20px rgba(220, 20, 60, 0.25);
         margin-top: 13px;
-        @media (max-width: 500px) {
+        @media (max-width: 770px) {
+          margin-left: 10px;
+        }
+        @media (max-width: 550px) {
           width: 100%;
           text-align: center;
           font-weight: 600;
+          margin-left: 10px;
         }
       }
     }

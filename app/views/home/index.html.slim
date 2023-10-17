@@ -30,19 +30,19 @@
             .filter-container.first-container
               .filter-block
                 h4.heading-filter
-                  = t(".show_first")
-                .filter-inner
-                  .filter-item.active = t(".new")
-                  .filter-item = t(".best")
-
-              .filter-block
-                h4.heading-filter
                   = t(".by_tags")
                 .filter-inner data-controller="highlight"
                   - @tags.each do |tag|
                     label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}" for="highlight_item_#{tag.id}"
                       = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item", data: { action: "click->highlight#toggleHighlight" }, id: "highlight_item_#{tag.id}"
                       = tag.title
+
+              .filter-block
+                h4.heading-filter
+                  = t(".show_first")
+                .filter-inner
+                  .filter-item.active = t(".new")
+                  .filter-item = t(".best")
             .filter-container.second-container
               .filter-block
                 .search-form
