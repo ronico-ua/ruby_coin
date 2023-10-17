@@ -1,35 +1,56 @@
 - provide(:title, full_title(t("titles.faq")))
 .faq__inner
-  h1.faq__title Часті запитання
+  h1.faq__title= t("titles.faq_title")
   .accordion-item
     h2#headingOne.accordion-header
       button.accordion-button[type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
-        | Чи знаєте ви про мову Ruby?
+        = t("faq.who_am_i.question1")
     #collapseOne.accordion-collapse.collapse.show[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
       .accordion-body
-        .faq__text Ruby - це динамічна, об'єктно-орієнтована мова програмування, яка була розроблена в Японії і вперше випущена в 1995 році. Вона була створена Юкіхіро Мацумото з метою робити програмування легким і цікавим.
-        .faq__text Ruby має синтаксис, який легко читати і писати, і часто використовується для веб-розробки, написання скриптів та побудови додатків. Однією з ключових особливостей Ruby є наголос на виразності та гнучкості, що дозволяє розробникам писати код у природному та лаконічному стилі.
-        .faq__text У Ruby також є велика та активна спільнота розробників, що призвело до створення багатьох бібліотек та фреймворків сторонніх виробників, які спрощують розробку складних додатків. Деякі популярні фреймворки Ruby, наприклад, Ruby on Rails для веб-розробки, Sinatra для побудови веб-додатків та Chef для автоматизації інфраструктури.
-        .faq__text.last Загалом, Ruby - це потужна та гнучка мова програмування, яка підходить для різноманітних завдань.
+        .faq__text = t("faq.who_am_i.answer1_1")
+        .faq__text = t("faq.who_am_i.answer1_2")
+        .faq__text = t("faq.who_am_i.answer1_3")
+        .faq__text.last
+          = t("faq.who_am_i.more_info1_html")
   .accordion-item
     h2#headingTwo.accordion-header
       button.accordion-button[type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"]
-        | Що таке gem в мові Ruby?
+        = t("faq.services.question2")
     #collapseTwo.accordion-collapse.collapse.show[aria-labelledby="headingTwo" data-bs-parent="#accordionExample"]
       .accordion-body
-        .faq__text Gem - це пакетний менеджер для Ruby, який дозволяє легко встановлювати та керувати залежностями між бібліотеками та фреймворками, що використовуються в Ruby-проектах.
-        .faq__text Кожен gem містить код бібліотеки або фреймворку, а також метадані, такі як версія, автор, опис та залежності. Gem може бути встановлений локально на вашому комп'ютері або збережений в онлайн-репозиторії, наприклад, на RubyGems.org.
-        .faq__text Щоб встановити gem, вам потрібно виконати команду gem install, за якою слідує ім'я gem, який ви хочете встановити. Наприклад, команда gem install rails встановлює фреймворк Ruby on Rails. Також можна встановити конкретну версію gem, використовуючи опцію -v.
-        .faq__text Після встановлення gem ви можете використовувати його в своєму Ruby-проекті, додаючи require з посиланням на ім'я бібліотеки або фреймворку, який ви встановили.
-        .faq__text.last Крім того, gem дозволяє створювати та розповсюджувати власні бібліотеки та фреймворки, що зробило Ruby екосистему дуже багатою та розширюваною.
+        .faq__text = t("faq.services.answer2_1")
+        .faq__text.last = t("faq.services.more_info2")
   .accordion-item
     h2#headingThree.accordion-header
       button.accordion-button[type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"]
-        | Що таке gem Pundit в Ruby?
+        = t("faq.collaboration.question3")
     #collapseThree.accordion-collapse.collapse.show[aria-labelledby="headingThree" data-bs-parent="#accordionExample"]
       .accordion-body
-        .faq__text Pundit - це гем, який надає простий і елегантний спосіб здійснювати авторизацію в Ruby-додатках.
-        .faq__text Pundit побудований на базі принципів SOLID та забезпечує чітку окремість між кодом авторизації та кодом контролера. Це означає, що ви можете додавати правила авторизації відповідно до потреб вашого додатка, не засмічуючи контролери логікою авторизації.
-        .faq__text Основними принципами Pundit є простота, гнучкість та безпека. Гем дозволяє використовувати спеціальний клас політики для кожного ресурсу, щоб визначити, чи має користувач доступ до цього ресурсу.
-        .faq__text Pundit дозволяє визначати правила авторизації на рівні дій, а не на рівні ролей, що забезпечує більш гнучкий підхід до авторизації. Ви можете використовувати будь-які критерії для визначення доступу користувача, такі як його роль, права доступу або будь-які інші властивості користувача.
-        .faq__text.last Загалом, Pundit - це потужний та гнучкий гем для авторизації в Ruby-додатках, який дозволяє розробникам зосередитися на логіці свого додатка, не турбуючись про авторизацію користувачів.
+        .faq__text = t("faq.collaboration.answer3_1")
+        .faq__text.last = t("faq.collaboration.more_info3")
+  .accordion-item
+    h2#headingFour.accordion-header
+      button.accordion-button[type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour"]
+        = t("faq.consultation.question4")
+    #collapseFour.accordion-collapse.collapse.show[aria-labelledby="headingFour" data-bs-parent="#accordionExample"]
+      .accordion-body
+        .faq__text = t("faq.consultation.answer4_1")
+        .faq__text
+          = t("faq.consultation.answer4_2_1_html")
+        .faq__text.last = t("faq.consultation.more_info4")
+  .accordion-item
+    h2#headingFive.accordion-header
+      button.accordion-button[type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive"]
+        = t("faq.communication.question5")
+    #collapseFive.accordion-collapse.collapse.show[aria-labelledby="headingFive" data-bs-parent="#accordionExample"]
+      .accordion-body
+        .faq__text = t("faq.communication.answer5_1")
+        .faq__text.last = t("faq.communication.more_info5")
+  .accordion-item
+    h2#headingSix.accordion-header
+      button.accordion-button[type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix"]
+        = t("faq.price.question6")
+    #collapseSix.accordion-collapse.collapse.show[aria-labelledby="headingSix" data-bs-parent="#accordionExample"]
+      .accordion-body
+        .faq__text = t("faq.price.answer6_1")
+        .faq__text.last = t("faq.price.more_info6")

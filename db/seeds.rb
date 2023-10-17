@@ -21,7 +21,7 @@ if User.first.blank?
                                                     random_sentences_to_add: 4),
                 status: :active,
                 user_id: user.id,
-                tag_ids: Array.new(rand(5)) { rand(1...15) },
+                tag_ids: Tag.ids.sample(5),
                 created_at: Faker::Time.backward(days: 1000),
                 remote_photo_url: Faker::Avatar.image)
   end

@@ -17,10 +17,14 @@ class HomeController < ApplicationController
   end
 
   def show
-    @post = Post.friendly.find(params[:id])
+    @post = PostTranslation.find_by(slug: params[:id]).post
     post_tags = @post.tags.limit(3)
 
     @similar_posts = Post.where.not(id: @post.id).includes(:tags)
                          .where(tags: { title: post_tags.pluck(:title) }).limit(3)
+  end
+
+  def search
+    @posts = Post.order('RANDOM()').limit(3)
   end
 end
