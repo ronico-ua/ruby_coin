@@ -11,6 +11,7 @@ en:
     posts: Posts
     categories: Categories
     filters: Filters
+    faq_title: Frequently Asked Questions
   buttons:
     remember_me: Remember me
     forgot_password: Forgot password?
@@ -46,6 +47,36 @@ en:
       hard: Hard
     show:
       similar_posts: Similar posts
+
+  faq:
+    who_am_i:
+      question1: Who are you and what services do you provide?
+      answer1_1: I am a programmer with experience in Ruby and Ruby on Rails.
+      answer1_2: I create Ukrainian-language content, including tutorials and instructions, especially on programming.
+      answer1_3: I also develop websites for practical learning and storing created information.
+      more_info1_html: You can read more about this in the post <a href="https://t.me/rubychatua">Meet the author of the channel</a>
+    services:
+      question2: What services do you offer for beginners?
+      answer2_1: For beginners, I offer various educational materials, including programming lessons in Ruby and Ruby on Rails that I create myself or have studied.
+      more_info2: My goal is to help beginners learn the basics of these technologies and gain practical experience.
+    collaboration:
+      question3: Can I join your projects for practice?
+      answer3_1: Yes.
+      more_info3: If you have enough desire and determination, I will be happy to help.
+    consultation:
+      question4: Do you provide mentoring or consulting services?
+      answer4_1: Yes, I offer mentoring and consulting services upon prior acquaintance through skype/discord.
+      answer4_2_1_html: I am ready to answer your questions and help you solve programming tasks in Ruby and Ruby on Rails as much as possible in the <a href="https://t.me/rubychatua"> telegram group.</a>
+      more_info4: I also provide the first job in this field upon successful completion of the internship.
+    communication:
+      question5: How can I contact you for more information or consultation?
+      answer5_1: You can contact me through linkedIn or telegram.
+      more_info5: Links are located in the footer of the website.
+    price:
+      question6: Is there a cost for your services?
+      answer6_1: My educational materials are available for free on my website (in the process of filling).
+      more_info6: I provide mentoring services for free, as time permits.
+
   datetime: &datetime
     month_names:
       [~, January, February, March, April, May, June, July, August, September, October, November, December]
