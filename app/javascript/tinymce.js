@@ -19,20 +19,25 @@ const rerender = function() {
   tinymce.init({
     selector: 'textarea#default-editor',
     height: 800,
-    codesample_global_prismjs: true,
+    // codesample_global_prismjs: true,
     codesample_languages: [
+      { text: 'Ruby', value: 'ruby' },
       { text: 'HTML/XML', value: 'markup' },
       { text: 'JavaScript', value: 'javascript' },
-      { text: 'CSS', value: 'css' },
-      { text: 'Ruby', value: 'ruby' },
-      { text: 'Python', value: 'python' }
+      { text: 'CSS', value: 'css' }
     ],
-    plugins: ['codesample',  'autolink', 'importcss', 'lists', 'link', 'image', 'anchor', 'searchreplace'],
-    toolbar: 'codesample | casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify' +
-      '| bullist numlist checklist outdent indent | removeformat ',
+    plugins: [
+      'codesample', 'autolink', 'importcss', 'lists', 'link', 'image', 'anchor', 'searchreplace', 'autoresize',
+      'autosave', 'media', 'pagebreak'
+    ],
+    // menubar: 'insert',
+    toolbar: 'codesample | casechange blocks | bold italic | alignleft aligncenter alignjustify' +
+      '| bullist numlist checklist | removeformat | restoredraft',
     content_css: false,
     // skin: false
-    skin: "oxide-dark"
+    skin: "oxide-dark",
+    autoresize_bottom_margin: 50,
+    max_height: 700
   });
 }
 
