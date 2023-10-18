@@ -11,7 +11,6 @@
     "esbuild": "^0.18.8",
     "jquery": "^3.7.0",
     "sass": "^1.63.6",
-    "tinymce": "^6.5.1",
     "tom-select": "^2.2.2"
   },
   "scripts": {

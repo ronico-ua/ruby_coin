@@ -1,5 +1,4 @@
 import "./jquery"
-import "./tinymce"
 import "./prism"
 import "./controllers"
 import "./select"

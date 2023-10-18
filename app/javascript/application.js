@@ -11,3 +11,8 @@ import * as ActiveStorage from "@rails/activestorage"
 
 ActiveStorage.start()
 
+document.addEventListener('DOMContentLoaded', () => {
+  tinymce.init({
+    selector: 'textarea.tinymce',
+  });
+});

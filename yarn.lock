@@ -1332,7 +1332,6 @@ __metadata:
     esbuild: ^0.18.8
     jquery: ^3.7.0
     sass: ^1.63.6
-    tinymce: ^6.5.1
     tom-select: ^2.2.2
   languageName: unknown
   linkType: soft
@@ -1523,13 +1522,6 @@ __metadata:
     mkdirp: ^1.0.3
     yallist: ^4.0.0
   checksum: f23832fceeba7578bf31907aac744ae21e74a66f4a17a9e94507acf460e48f6db598c7023882db33bab75b80e027c21f276d405e4a0322d58f51c7088d428268
-  languageName: node
-  linkType: hard
-
-"tinymce@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "tinymce@npm:6.5.1"
-  checksum: e1f0ea5eb324972421ca38305cbf1ddedd19b22c231aaeb8ae0cad9dc4a689d411db432c3b88cfcd56ff8bb11738944265195ea6dbca18eaa3b4d3584ac6e2bd
   languageName: node
   linkType: hard
 
