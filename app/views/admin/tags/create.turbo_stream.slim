@@ -1,2 +1,3 @@
-= turbo_stream.prepend 'tags', render(@tag)
+- if @tag.title.present?
+  = turbo_stream.prepend 'tags', render(@tag)
 = prepend_flash

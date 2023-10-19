@@ -41,3 +41,7 @@
 .env
 
 /config/database.yml
+
+# Ignore file .DS_Store
+**/.DS_Store
+.DS_Store
