@@ -108,8 +108,7 @@ uk:
         photo: Фото
         status: Статус
       tag:
-        name: Ім'я
-        status: Статус
+        title: Заголовок
     models:
       post: Допис
     errors:
@@ -139,6 +138,7 @@ uk:
               blank: не може бути порожнім
             photo:
               blank: не може бути порожнім
+
   admin:
     posts:
       index:
@@ -186,6 +186,8 @@ uk:
       index:
         tags: Існуючі теги
         create: Створити тег
+        placeholders:
+          name: Введіть назву
       form:
         title_label: Назва тегу
       edit:
@@ -196,6 +198,7 @@ uk:
         success: Тег успішно оновлено
       destroy:
         success: Тег успішно видалено
+
 
   en: Англійська
   uk: Українська

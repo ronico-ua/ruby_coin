@@ -11,52 +11,92 @@ describe 'Admin Posts', type: :system do
     sign_in(admin_user)
   end
 
-  it 'Create new post' do
-    visit admin_root_path
-    click_link I18n.t('buttons.create')
-    fill_in 'post_title', with: post.title
-    fill_in 'post_subtitle', with: post.subtitle
-    page.execute_script("document.getElementById('add-img').style.opacity = '1';")
-    attach_file('add-img', File.absolute_path('./spec/support/files/post-img.png'))
-    sleep(2)
-    page.execute_script("tinyMCE.get('default-editor').setContent('#{post.description}')")
-    sleep(1)
-    find_field('post_tag_ids-ts-control').set('Тег1')
-    find_by_id('post_tag_ids-opt-1').click
-    find('label', text: 'Статус').click
-    sleep(1)
-    find('label', text: 'Головний допис').click
+  context 'when create a new post' do
+    it 'with valid data' do
+      visit admin_root_path
+      click_link I18n.t('buttons.create')
+      fill_in 'post_title', with: post.title
+      fill_in 'post_subtitle', with: post.subtitle
+      page.execute_script("document.getElementById('add-img').style.opacity = '1';")
+      attach_file('add-img', File.absolute_path('./spec/support/files/post-img.png'))
+      sleep(2)
+      page.execute_script("tinyMCE.get('default-editor').setContent('#{post.description}')")
+      sleep(1)
+      find_field('post_tag_ids-ts-control').set('Тег1')
+      find_by_id('post_tag_ids-opt-1').click
+      find('label', text: 'Статус').click
+      sleep(1)
+      find('label', text: 'Головний допис').click
 
-    click_button I18n.t('global.button.create')
-    sleep(1)
-    expect(page).to have_content('Допис успішно створено')
-    expect(page).to have_content(post.title)
-    expect(page).to have_current_path(admin_posts_path)
-  end
-
-  it 'Edit a post' do
-    post = create(:post)
-    visit admin_root_path
-    within('.post', text: post.title) do
-      find('.edit').click
+      click_button I18n.t('global.button.create')
+      sleep(1)
+      expect(page).to have_content('Допис успішно створено')
+      expect(page).to have_content(post.title)
+      expect(page).to have_current_path(admin_posts_path)
     end
 
-    fill_in 'post_title', with: 'Новий заголовок'
-    fill_in 'post_subtitle', with: 'Новий підзаголовок'
-    page.execute_script("document.getElementById('add-img').style.opacity = '1';")
-    attach_file('add-img', File.absolute_path('./spec/support/files/post-img.png'))
-    sleep(1)
-    page.execute_script("tinyMCE.get('default-editor').setContent('#{post.description}')")
-    sleep(1)
-    find_field('post_tag_ids-ts-control').set('Тег1')
-    find_by_id('post_tag_ids-opt-1').click
-    sleep(1)
-    click_button I18n.t('global.button.edit')
-    sleep(1)
+    it 'with invalid data' do
+      visit admin_root_path
+      click_link I18n.t('buttons.create')
 
-    expect(page).to have_content('Допис успішно оновлено')
-    expect(page).to have_content('Новий заголовок')
-    expect(page).to have_current_path(admin_posts_path)
+      find_field('post_tag_ids-ts-control').set('Тег1')
+      find_by_id('post_tag_ids-opt-1').click
+
+      click_button I18n.t('global.button.create')
+
+      expect(page).to have_content('Заголовок не може бути порожнім')
+      expect(page).to have_content('Підзаголовок не може бути порожнім')
+      expect(page).to have_content('Опис не може бути порожнім')
+      expect(page).to have_content('Фото не може бути порожнім')
+    end
+  end
+
+  context 'when edit a post' do
+    it 'with valid data' do
+      post = create(:post)
+      visit admin_root_path
+      within('.post', text: post.title) do
+        find('.edit').click
+      end
+
+      fill_in 'post_title', with: 'Новий заголовок'
+      fill_in 'post_subtitle', with: 'Новий підзаголовок'
+      page.execute_script("document.getElementById('add-img').style.opacity = '1';")
+      attach_file('add-img', File.absolute_path('./spec/support/files/post-img.png'))
+      sleep(1)
+      page.execute_script("tinyMCE.get('default-editor').setContent('#{post.description}')")
+      sleep(1)
+      find_field('post_tag_ids-ts-control').set('Тег1')
+      find_by_id('post_tag_ids-opt-1').click
+      sleep(1)
+      click_button I18n.t('global.button.edit')
+      sleep(1)
+
+      expect(page).to have_content('Допис успішно оновлено')
+      expect(page).to have_content('Новий заголовок')
+      expect(page).to have_current_path(admin_posts_path)
+    end
+
+    it 'with invalid data' do
+      post = create(:post)
+      visit admin_root_path
+      within('.post', text: post.title) do
+        find('.edit').click
+      end
+
+      fill_in 'post_title', with: ''
+      fill_in 'post_subtitle', with: ''
+      page.execute_script("tinyMCE.get('default-editor').setContent('')")
+
+      find_field('post_tag_ids-ts-control').set('Тег1')
+      find_by_id('post_tag_ids-opt-1').click
+
+      click_button I18n.t('global.button.edit')
+
+      expect(page).to have_content('Заголовок не може бути порожнім')
+      expect(page).to have_content('Підзаголовок не може бути порожнім')
+      expect(page).to have_content('Опис не може бути порожнім')
+    end
   end
 
   it 'Delete a post' do

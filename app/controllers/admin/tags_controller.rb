@@ -31,7 +31,10 @@ module Admin
           format.turbo_stream { flash.now[:success] = t('.success') }
         end
       else
-        render 'index', status: :unprocessable_entity
+        respond_to do |format|
+          format.html { redirect_to admin_tags_path, status: :unprocessable_entity }
+          format.turbo_stream { flash.now[:alert] = @tag.errors.full_messages.join }
+        end
       end
     end
 
@@ -46,7 +49,10 @@ module Admin
           format.turbo_stream { flash.now[:success] = t('.success') }
         end
       else
-        render 'index', status: :unprocessable_entity
+        respond_to do |format|
+          format.html { redirect_to admin_tags_path, status: :unprocessable_entity }
+          format.turbo_stream { flash.now[:alert] = @tag.errors.full_messages.join }
+        end
       end
     end
 

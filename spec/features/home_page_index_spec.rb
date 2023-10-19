@@ -11,35 +11,56 @@ describe 'Home Page', type: :feature do
 
   context 'when posts are present' do
     it 'displays .intro-block__content' do
-      expect(page).to have_selector('.intro-block__content')
+      expect(page).to have_css('.intro-block__content')
     end
 
     it 'displays .post-column' do
-      expect(page).to have_selector('.post-column')
+      expect(page).to have_css('.post-column')
     end
 
     it 'displays .pagination__inner' do
-      expect(page).to have_selector('.pagination__inner')
+      expect(page).to have_css('.pagination__inner')
     end
   end
 
-  it 'User visits the home page' do
-    expect(page).to have_selector('.home__container')
+  context 'when posts aren`t present' do
+    before do
+      Post.delete_all
+      visit root_path
+    end
+
+    it 'displays no main post content' do
+      expect(page).not_to have_css('.intro-block__content')
+    end
+
+    it 'displays no posts' do
+      expect(page).not_to have_css('.post-column')
+    end
+
+    it 'displays no pagination' do
+      expect(page).not_to have_css('.pagination__inner')
+    end
   end
 
-  it 'displays .accordion-category' do
-    expect(page).to have_selector('.accordion-category')
-  end
+  context 'when Checking CSS Selectors' do
+    it 'User visits the home page' do
+      expect(page).to have_css('.home__container')
+    end
 
-  it 'displays .accordion-item' do
-    expect(page).to have_selector('.accordion-item')
-  end
+    it 'displays .accordion-category' do
+      expect(page).to have_css('.accordion-category')
+    end
 
-  it 'displays #collapseOne' do
-    expect(page).to have_selector('#collapseOne')
-  end
+    it 'displays .accordion-item' do
+      expect(page).to have_css('.accordion-item')
+    end
 
-  it 'displays .posts' do
-    expect(page).to have_selector('.posts')
+    it 'displays #collapseOne' do
+      expect(page).to have_css('#collapseOne')
+    end
+
+    it 'displays .posts' do
+      expect(page).to have_css('.posts')
+    end
   end
 end

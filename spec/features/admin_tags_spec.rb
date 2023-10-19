@@ -10,26 +10,47 @@ describe 'Admin Tags', type: :system do
     sign_in(admin_user)
   end
 
-  it 'Create a new tag' do
-    visit admin_tags_path
-    fill_in 'tag_title', with: 'Новий тег'
-    click_on I18n.t('global.button.create')
+  context 'when creating a new tag' do
+    it 'with valid data' do
+      visit admin_tags_path
+      fill_in 'tag_title', with: 'Новий тег'
+      click_button I18n.t('global.button.create')
 
-    expect(page).to have_content('Тег успішно створено')
-    expect(page).to have_content('Новий тег')
-  end
-
-  it 'Edit an existing tag' do
-    visit admin_tags_path
-
-    find("#tag_#{tag.id} .edit").click
-    within '.tag-editor' do
-      fill_in 'tag_title', with: 'Редагований Тест'
-      find('.save-tag').click
+      expect(page).to have_content('Тег успішно створено')
+      expect(page).to have_content('Новий тег')
     end
 
-    expect(page).to have_content('Тег успішно оновлено')
-    expect(page).to have_content('Редагований Тест')
+    it 'with invalid data' do
+      visit admin_tags_path
+      click_button I18n.t('global.button.create')
+
+      expect(page).to have_content('Заголовок не може бути пустим')
+    end
+  end
+
+  context 'when editing an existing tag' do
+    it 'with valid data' do
+      visit admin_tags_path
+      find("#tag_#{tag.id} .edit").click
+      within '.tag-editor' do
+        fill_in 'tag_title', with: 'Редагований Тест'
+        find('.save-tag').click
+      end
+
+      expect(page).to have_content('Тег успішно оновлено')
+      expect(page).to have_content('Редагований Тест')
+    end
+
+    it 'with invalid data' do
+      visit admin_tags_path
+      find("#tag_#{tag.id} .edit").click
+      within '.tag-editor' do
+        fill_in 'tag_title', with: ''
+        find('.save-tag').click
+      end
+
+      expect(page).to have_content('Заголовок не може бути пустим')
+    end
   end
 
   it 'Delete tag' do

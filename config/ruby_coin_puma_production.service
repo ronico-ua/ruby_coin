@@ -1,0 +1,26 @@
+[Unit]
+Description=Puma HTTP Server for ruby_coin (production)
+After=network.target
+Requires=ruby_coin_puma_production.socket
+
+[Service]
+Type=simple
+User=
+WorkingDirectory=/home/root/apps/ruby_coin/current
+# Support older bundler versions where file descriptors weren't kept
+# See https://github.com/rubygems/rubygems/issues/3254
+ExecStart=/usr/local/rvm/bin/rvm default do bundle exec --keep-file-descriptors puma -C /home/root/apps/ruby_coin/shared/puma.rb
+ExecReload=/bin/kill -USR1 $MAINPID
+StandardOutput=append:/home/root/apps/ruby_coin/current/log/puma.error.log
+StandardError=append:/home/root/apps/ruby_coin/current/log/puma.access.log
+
+
+
+
+Restart=always
+RestartSec=1
+
+SyslogIdentifier=puma
+
+[Install]
+WantedBy=multi-user.target
