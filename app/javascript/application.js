@@ -11,8 +11,21 @@ import * as ActiveStorage from "@rails/activestorage"
 
 ActiveStorage.start()
 
-document.addEventListener('DOMContentLoaded', () => {
-  tinymce.init({
-    selector: 'textarea.tinymce',
+tinymce.init({
+    selector: 'textarea#default-editor',
+    height: 800,
+    codesample_global_prismjs: true,
+    codesample_languages: [
+      { text: 'HTML/XML', value: 'markup' },
+      { text: 'JavaScript', value: 'javascript' },
+      { text: 'CSS', value: 'css' },
+      { text: 'Ruby', value: 'ruby' },
+      { text: 'Python', value: 'python' }
+    ],
+    plugins: ['codesample',  'autolink', 'importcss', 'lists', 'link', 'image', 'anchor', 'searchreplace'],
+    toolbar: 'codesample | casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify' +
+      '| bullist numlist checklist outdent indent | removeformat ',
+    content_css: false,
+    // skin: false
+    skin: "oxide-dark"
   });
-});

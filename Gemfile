@@ -28,7 +28,6 @@ gem 'redis'
 gem 'sidekiq'
 gem 'slim'
 gem 'stimulus-rails'
-gem 'tinymce-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
