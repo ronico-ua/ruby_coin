@@ -109,8 +109,7 @@ en:
         photo: Photo
         status: Status
       tag:
-        name: Name
-        status: Status
+        title: Title
     models:
       post: Post
     errors:
@@ -123,7 +122,7 @@ en:
             password:
               blank: can't be blank
               too_short: is too short, required minimum %{count} symbols
-              too_long: is too long, reuqired maximum %{count} symbols
+              too_long: is too long, required maximum %{count} symbols
             password_confirmation:
               confirmation: doesn't match
             email:
@@ -148,7 +147,7 @@ en:
       new:
         title: Create a post
       edit:
-        title: Egit the post
+        title: Edit the post
       form:
         title_label: Title
         subtitle_label: Subtitle
@@ -186,6 +185,8 @@ en:
       index:
         tags: Exist tags
         create: Create a tag
+        placeholders:
+          name: Enter name
       form:
         title_label: Name of the tag
       edit:
@@ -196,6 +197,8 @@ en:
         success: Tag successfully updated
       destroy:
         success: Tag successfully deleted
+      placeholders:
+        name: Name
 
   en: English
   uk: Ukrainian

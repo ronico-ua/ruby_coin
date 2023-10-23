@@ -30,6 +30,9 @@ commands:
             - *bundle_cache_full
             - *bundle_cache
       - run:
+          name: Install missed libs
+          command: sudo apt-get update && sudo apt-get install -y pkg-config wget bzip2 libxtst6 libgtk-3-0 libx11-xcb-dev libdbus-glib-1-2 libxt6 libpci-dev
+      - run:
           name: install required gems
           command: |
             bundle config set --local path 'vendor/bundle'
@@ -44,6 +47,10 @@ commands:
             bundle exec rails db:create
             bundle exec rails db:schema:load
             bundle exec rails db:migrate
+      - run:
+          name: Precompile assets
+          command: |
+            bundle exec rails assets:precompile
 
   run_specs:
     steps:
@@ -77,11 +84,20 @@ commands:
       - run:
           name: run bundle audit
           command: bundle exec bundler-audit check --update
-
+orbs:
+  browser-tools: circleci/browser-tools@1.4.6
 jobs:
   lintering:
     executor: default
     steps:
+      - browser-tools/install-browser-tools
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          command: |
+            google-chrome --version
+            chromedriver --version
+          name: Check install
       - setup_environment
       - run_rubocop
       - run_fasterer

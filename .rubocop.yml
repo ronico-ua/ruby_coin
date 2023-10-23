@@ -49,3 +49,6 @@ Lint/MissingSuper:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false

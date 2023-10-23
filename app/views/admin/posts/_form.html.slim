@@ -63,5 +63,9 @@
           = f.label :main_post, t('.main_post'), class: 'standart-label'
           = f.check_box :main_post, { data: { toggle: 'toggle', onlabel: t('buttons.yes_text'), offlabel: t('buttons.no_text'), onstyle: 'success', offstyle: 'danger', class: 'switcher', style: "min-width: 300px !important"} }, "active", "inactive"
     .actions
-      = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
-      = f.submit t('global.button.create'), class: 'main-btn filled'
+      - if post.new_record?
+        = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
+        = f.submit t('global.button.create'), class: 'main-btn filled'
+      - else
+        = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
+        = f.submit t('global.button.edit'), class: 'main-btn filled'
