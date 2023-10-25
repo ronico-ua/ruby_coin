@@ -1,4 +1,4 @@
-= form_with model: [:admin, post], data: { turbo: :false } do |f|
+= form_with model: [:admin, post] do |f|
   .admin-form__content
     = render 'shared/errors', object: post
     .row
@@ -10,8 +10,8 @@
         - next if locale == I18n.locale
 
         .col.d-grid.align-items-end
-          = f.label :title_localizations, "#{t("activerecord.attributes.post.title")} (#{t(locale).downcase})", for: "title", class: 'standart-label'
-          = f.text_field "title_localizations[#{locale}]", id: "title_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: current_data(@post, 'title', locale), placeholder: t('.placeholders.title')
+          = f.label :title_localizations, "#{t("activerecord.attributes.post.title")} (#{t(locale).downcase})", for: "title_localizations[#{locale}]", class: 'standart-label'
+          = f.text_field "title_localizations][#{locale}", id: "title_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: current_data(@post, 'title', locale), placeholder: t('.placeholders.title')
 
     .row
       .col.d-grid.align-items-end
@@ -23,7 +23,7 @@
 
         .col.d-grid.align-items-end
           = f.label :subtitle_localizations, "#{t("activerecord.attributes.post.subtitle")} (#{t(locale).downcase})", for: "subtitle", class: 'standart-label'
-          = f.text_field "subtitle_localizations[#{locale}]", id: "subtitle_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: current_data(@post, 'subtitle', locale), placeholder: t('.placeholders.subtitle')
+          = f.text_field "subtitle_localizations][#{locale}", id: "subtitle_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: current_data(@post, 'subtitle', locale), placeholder: t('.placeholders.subtitle')
 
     = f.label :title, t('.photo_label'), class: 'standart-label'
     .image-content.group
@@ -45,7 +45,7 @@
 
         .col
           = f.label :description_localizations, "#{t(".description_label")} (#{t(locale).downcase})", class: 'standart-label', for: "description_#{locale}"
-          = f.text_area "description_localizations[#{locale}]", class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60, data: { locale: locale.to_s }, value: current_data(@post, 'description', locale), placeholder: t('.placeholders.description')
+          = f.text_area "description_localizations][#{locale}", class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60, data: { locale: locale.to_s }, value: current_data(@post, 'description', locale), placeholder: t('.placeholders.description')
 
     .form-inner
       .group
