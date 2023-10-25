@@ -166,6 +166,7 @@ en:
           active: Active
           disabled: Disabled
         main_post: Main post
+        translation_notice: "* if there won't be translation post will not displayed in another language version of site"
       create:
         success: Post successfully created
       update:

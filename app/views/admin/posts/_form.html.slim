@@ -10,8 +10,12 @@
         - next if locale == I18n.locale
 
         .col.d-grid.align-items-end
-          = f.label :title_localizations, "#{t("activerecord.attributes.post.title")} (#{t(locale).downcase})", for: "title_localizations[#{locale}]", class: 'standart-label'
+          .text-danger.text-small
+            = t('.translation_notice')
+
+          = f.label :title_localizations, "#{t("activerecord.attributes.post.title")} (#{t(locale).downcase})", for: "title_localizations[#{locale}]", class: 'standart-label d-inline'
           = f.text_field "title_localizations][#{locale}", id: "title_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: current_data(@post, 'title', locale), placeholder: t('.placeholders.title')
+
 
     .row
       .col.d-grid.align-items-end

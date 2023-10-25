@@ -21,6 +21,7 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
+  scope :with_translation, ->(locale) { joins(:translations).where('post_translations.locale' => locale) }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
