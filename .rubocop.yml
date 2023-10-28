@@ -18,10 +18,10 @@ Rails/HasAndBelongsToMany:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 40
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 40
 
 Metrics/BlockLength:
   Max: 30
@@ -51,4 +51,7 @@ RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/Rails/InferredSpecType:
+  Enabled: false
+
+Rails/CreateTableWithTimestamps:
   Enabled: false
