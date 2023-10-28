@@ -9,6 +9,7 @@ class Post < ApplicationRecord
 
   has_and_belongs_to_many :tags
   belongs_to :user
+  has_many :post_translations, dependent: :destroy
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?
 
@@ -21,7 +22,17 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
-  scope :with_translation, ->(locale) { joins(:translations).where('post_translations.locale' => locale) }
+  scope :with_translation, lambda {
+    joins(:translations).where("
+        post_translations.locale = ?
+        AND post_translations.title IS NOT NULL
+        AND post_translations.title != ''
+        AND post_translations.subtitle IS NOT NULL
+        AND post_translations.subtitle != ''
+        AND post_translations.description IS NOT NULL
+        AND post_translations.description != ''
+      ", I18n.locale)
+  }
 
   def truncated_description
     description.truncate(100, separator: /\s/)

@@ -3,23 +3,10 @@
 class HomeController < ApplicationController
   def index
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
-
     @active_tags = params[:tags]
 
-    @main_post = Post.find_by(main_post: true)
-    @posts = if @active_tags.present?
-               Post
-                 .active
-                 .with_translation(I18n.locale)
-                 .ordered.joins(:tags)
-                 .where(tags: { title: @active_tags })
-                 .distinct
-             else
-               Post
-                 .active
-                 .with_translation(I18n.locale)
-                 .ordered
-             end
+    @posts = Posts::Filter.new(Post.active, params).call
+    @main_post = @posts.find_by(main_post: true)
 
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
