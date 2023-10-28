@@ -25,7 +25,7 @@ class Posts::Filter
   end
 
   def filter_by_tags(scope)
-    return scope if params[:tags].blank?
+    return scope if params[:tags].nil?
 
     scope.joins(:tags).where(tags: { title: params[:tags] }).distinct
   end

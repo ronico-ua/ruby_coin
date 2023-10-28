@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @active_tags = params[:tags]
 
     @posts = Posts::Filter.new(Post.active, params).call
-    @main_post = @posts.find_by(main_post: true)
+    set_main_post
 
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
@@ -21,5 +21,11 @@ class HomeController < ApplicationController
 
   def search
     @posts = Post.order('RANDOM()').limit(3)
+  end
+
+  def set_main_post
+    post = Post.active.find_by(main_post: true)
+
+    @main_post = post&.tranlation_present? ? post : nil
   end
 end

@@ -50,6 +50,15 @@ class Post < ApplicationRecord
     end
   end
 
+  def tranlation_present?
+    translation = translations.find_by(locale: I18n.locale)
+
+    translation.present? &&
+      translation.title.present? &&
+      translation.subtitle.present? &&
+      translation.description.present?
+  end
+
   private
 
   def deactivate_previous_main_post
