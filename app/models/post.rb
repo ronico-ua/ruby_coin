@@ -44,14 +44,14 @@ class Post < ApplicationRecord
   end
 
   def generate_slugs
-    translations.each do |localized_post|
-      localized_post.update(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
+    post_translations.each do |localized_post|
+      localized_post.update!(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
       localized_post.save!
     end
   end
 
   def tranlation_present?
-    translation = translations.find_by(locale: I18n.locale)
+    translation = post_translations.find_by(locale: I18n.locale)
 
     translation.present? &&
       translation.title.present? &&
