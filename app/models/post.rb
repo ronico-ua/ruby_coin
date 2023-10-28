@@ -50,7 +50,7 @@ class Post < ApplicationRecord
     end
   end
 
-  def tranlation_present?
+  def translation_present?
     translation = post_translations.find_by(locale: I18n.locale)
 
     translation.present? &&

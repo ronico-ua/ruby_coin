@@ -26,6 +26,6 @@ class HomeController < ApplicationController
   def set_main_post
     post = Post.active.find_by(main_post: true)
 
-    @main_post = post&.tranlation_present? ? post : nil
+    @main_post = post&.translation_present? ? post : nil
   end
 end
