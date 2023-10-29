@@ -36,16 +36,16 @@ en:
     delete: Are you sure you want to delete %{item}?
   home:
     index:
-      search_by_tag: Search by tags
       show_first: Show first
       new: New
       best: Best
       by_tags: By tags
       by_difficulty: By difficulty level
       all: All
-      newbie: Easy
+      easy: Easy
       middle: Middle
       hard: Hard
+      search_by_tag: Search by tags
       reset_filter:  Reset filter
       placeholders:
         tags: Enter tags
