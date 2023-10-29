@@ -11,6 +11,7 @@ document.addEventListener("turbo:before-cache", function() {
 
 const rerender = function() {
   const i18n = Translations[document.querySelector('body').dataset.lang]
+  console.log(document.querySelector('body').dataset.lang)
   document.querySelectorAll('select.js-multiple-select').forEach((element) => {
     if(!element.classList.contains('tomselected')) {
       let opts = {

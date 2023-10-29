@@ -9,7 +9,7 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload", media: 'all'
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   - css_classes = [controller_path.gsub('/', '-'), action_name].map { |s| s.gsub('_', '-') }
-  body class=css_classes
+  body class=css_classes data-lang="#{I18n.locale}"
     #flash
       = render 'shared/flash'
     = render 'shared/navbar'

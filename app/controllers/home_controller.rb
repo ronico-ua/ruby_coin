@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
+    @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct
 
     @active_tags = params[:tags]
 

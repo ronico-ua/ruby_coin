@@ -36,6 +36,7 @@ en:
     delete: Are you sure you want to delete %{item}?
   home:
     index:
+      search_by_tag: Search by tags
       show_first: Show first
       new: New
       best: Best
@@ -45,6 +46,9 @@ en:
       newbie: Easy
       middle: Middle
       hard: Hard
+      reset_filter:  Reset filter
+      placeholders:
+        tags: Enter tags
     show:
       similar_posts: Similar posts
 
