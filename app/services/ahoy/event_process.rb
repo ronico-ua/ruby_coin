@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Ahoy
-  class EventProcess
+  class EventProcess < BaseService
     def initialize(ahoy, post, request, remote_ip)
       @ahoy = ahoy
       @post = post
@@ -9,8 +9,8 @@ module Ahoy
       @remote_ip = remote_ip
     end
 
-    def process
-      process_ahoy if first_visit_or_more_than_24_hours?
+    def call
+      process_ahoy
     end
 
     private
@@ -21,16 +21,8 @@ module Ahoy
       update_last_visit_timestamp
     end
 
-    def first_visit_or_more_than_24_hours?
-      last_visit_timestamp = @request.session[:last_visit_timestamp]
-      return true if last_visit_timestamp.nil?
-
-      last_visit_time = Time.zone.at(last_visit_timestamp)
-      24.hours.ago >= last_visit_time
-    end
-
     def update_last_visit_timestamp
-      @request.session[:last_visit_timestamp] = Time.zone.now.to_i
+      @request.session[:last_visit] = Time.zone.now.to_i
     end
   end
 end

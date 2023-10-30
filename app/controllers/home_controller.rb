@@ -18,8 +18,9 @@ class HomeController < ApplicationController
   def show
     @post = PostTranslation.find_by(slug: params[:id]).post
     post_tags = @post.tags.limit(3)
-    event_processor = Ahoy::EventProcess.new(ahoy, @post, request, request.remote_ip)
-    event_processor.process
+
+    validator = Ahoy::VisitsValidator.new(last_visit: request.session[:last_visit])
+    Ahoy::EventProcess.new(ahoy, @post, request, request.remote_ip).call if validator.valid?
     @similar_posts = Post.where.not(id: @post.id).includes(:tags)
                          .where(tags: { title: post_tags.pluck(:title) }).limit(3)
   end
