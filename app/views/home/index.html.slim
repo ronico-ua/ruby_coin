@@ -41,9 +41,11 @@
                   = f.label :tags, t('.search_by_tag'), class: 'h5'
                   = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, { multiple: true, class: 'standart-input js-multiple-select d-inline-block', placeholder: t('.placeholders.tags') }
 
-            .filter-container.second-container
-              = f.submit t('buttons.apply'), class: 'main-btn d-inline-block', name: nil
-              = link_to t('.reset_filter'), root_path(anchor: 'posts-list'), class: 'main-btn d-inline-block'
+            .filter-container.first-container
+              .filter-block
+                .filter-inner.d-inline-block.mt-2
+                  = f.submit t('buttons.apply'), class: 'filter-item active d-inline-block', name: nil
+                  = link_to t('.reset_filter'), root_path(anchor: 'posts-list'), class: 'filter-item active d-inline-block'
 
   .posts id="posts-list"
     .posts__inner
