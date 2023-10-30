@@ -29,23 +29,24 @@
           = form_with url: root_path(anchor: 'posts-list'), method: :get do |f|
             .filter-container.first-container
               .filter-block
-                h4.heading-filter.d-inline-block
+                h4.heading-filter.d-inline-block.me-3
                   = t(".show_first")
-                .filter-inner.d-inline-block.ms-5
+                .filter-inner.d-inline-block
                   .filter-item.active.d-inline-block = t(".new")
                   .filter-item.d-inline-block = t(".best")
 
-            .filter-container.second-container
-              .form-inner
-                .group
-                  = f.label :tags, t('.search_by_tag'), class: 'h5'
-                  = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, { multiple: true, class: 'standart-input js-multiple-select d-inline-block', placeholder: t('.placeholders.tags') }
+            .div
+              .filter-container.second-container.d-inline-block.me-3
+                .form-inner
+                  .group
+                    = f.label :tags, t('.search_by_tag'), class: 'h5'
+                    = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, { multiple: true, class: 'standart-input js-multiple-select d-inline-block', placeholder: t('.placeholders.tags') }
 
-            .filter-container.first-container
-              .filter-block
-                .filter-inner.d-inline-block.mt-2
-                  = f.submit t('buttons.apply'), class: 'filter-item active d-inline-block', name: nil
-                  = link_to t('.reset_filter'), root_path(anchor: 'posts-list'), class: 'filter-item active d-inline-block'
+              .filter-container.d-inline-block
+                .filter-block
+                  .filter-inner.d-inline-block.mt-2
+                    = f.submit t('buttons.apply'), class: 'filter-item active d-inline-block', name: nil
+                    = link_to t('.reset_filter'), root_path(anchor: 'posts-list'), class: 'filter-item d-inline-block'
 
   .posts id="posts-list"
     .posts__inner

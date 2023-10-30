@@ -208,13 +208,8 @@
     padding: 7px 20px 35px;
     .filter-container {
       display: flex;
-      &.first-container {
+      &.first-container, &.second-container {
         justify-content: space-between;
-        margin: 0px 15px 0px 15px;
-      }
-      &.second-container {
-        justify-content: space-between;
-        margin: 0px 15px 0px 15px;
       }
       .filter-block {
         margin-bottom: 30px;
