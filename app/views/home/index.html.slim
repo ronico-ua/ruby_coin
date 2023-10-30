@@ -26,38 +26,27 @@
 
       #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
         .accordion-body
-          = form_tag root_path(anchor: 'posts-list'), method: :get do
+          = form_with url: root_path(anchor: 'posts-list'), method: :get do |f|
             .filter-container.first-container
               .filter-block
-                h4.heading-filter
-                  = t(".by_tags")
-                .filter-inner data-controller="highlight"
-                  - @tags.each do |tag|
-                    label class="filter-item #{@active_tags&.include?(tag.title) ? 'active' : ''}" for="highlight_item_#{tag.id}"
-                      = check_box_tag 'tags[]', tag.title, @active_tags&.include?(tag.title), class: "filter-item", data: { action: "click->highlight#toggleHighlight" }, id: "highlight_item_#{tag.id}"
-                      = tag.title
-
-              .filter-block
-                h4.heading-filter
+                h4.heading-filter.d-inline-block.me-3
                   = t(".show_first")
-                .filter-inner
-                  .filter-item.active = t(".new")
-                  .filter-item = t(".best")
-            .filter-container.second-container
-              .filter-block
-                .search-form
-                  input.filter-search type="search" placeholder=t("titles.search")
-                  .search-button
-              .filter-button
-                = submit_tag t('buttons.apply'), class: 'main-btn', name: nil
-            / .filter-block
-            /   h4.heading-filter
-            /     = t(".by_difficulty")
-            /   .filter-inner
-            /     .filter-item.active = t(".all")
-            /     .filter-item = t(".easy")
-            /     .filter-item = t(".middle")
-            /     .filter-item = t(".hard")
+                .filter-inner.d-inline-block
+                  .filter-item.active.d-inline-block = t(".new")
+                  .filter-item.d-inline-block = t(".best")
+
+            .div
+              .filter-container.second-container.d-inline-block.me-3
+                .form-inner
+                  .group
+                    = f.label :tags, t('.search_by_tag'), class: 'h5'
+                    = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, { multiple: true, class: 'standart-input js-multiple-select d-inline-block', placeholder: t('.placeholders.tags') }
+
+              .filter-container.d-inline-block
+                .filter-block
+                  .filter-inner.d-inline-block.mt-2
+                    = f.submit t('buttons.apply'), class: 'filter-item active d-inline-block', name: nil
+                    = link_to t('.reset_filter'), root_path(anchor: 'posts-list'), class: 'filter-item d-inline-block'
 
   .posts id="posts-list"
     .posts__inner

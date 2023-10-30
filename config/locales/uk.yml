@@ -44,6 +44,10 @@ uk:
       easy: Простий
       middle: Середній
       hard: Складний
+      search_by_tag: Пошук по тегам
+      reset_filter: Скинути фільтри
+      placeholders:
+        tags: Введіть теги
     show:
       similar_posts: Схожі публікації
 
