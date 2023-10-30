@@ -42,9 +42,13 @@ en:
       by_tags: By tags
       by_difficulty: By difficulty level
       all: All
-      newbie: Easy
+      easy: Easy
       middle: Middle
       hard: Hard
+      search_by_tag: Search by tags
+      reset_filter:  Reset filter
+      placeholders:
+        tags: Enter tags
     show:
       similar_posts: Similar posts
 
