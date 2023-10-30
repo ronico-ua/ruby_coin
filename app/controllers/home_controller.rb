@@ -5,14 +5,14 @@ class HomeController < ApplicationController
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
     @active_tags = params[:tags]
 
-    @posts = Posts::Filter.new(Post.active, params).call
+    @posts = Posts::Filter.new(collection, params).call
     set_main_post
 
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
 
   def show
-    @post = PostTranslation.find_by(slug: params[:id]).post
+    @post = resourse
     post_tags = @post.tags.limit(3)
 
     @similar_posts = Post.where.not(id: @post.id).includes(:tags)
@@ -27,5 +27,15 @@ class HomeController < ApplicationController
     post = Post.active.find_by(main_post: true)
 
     @main_post = post&.translation_present? ? post : nil
+  end
+
+  private
+
+  def collection
+    Post.active
+  end
+
+  def resourse
+    PostTranslation.find_by(slug: params[:id]).post
   end
 end

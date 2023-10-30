@@ -52,3 +52,10 @@ RSpec/MultipleExpectations:
 
 RSpec/Rails/InferredSpecType:
   Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Security/Eval:
+  Exclude:
+    - 'spec/services/posts/filter_spec.rb'
