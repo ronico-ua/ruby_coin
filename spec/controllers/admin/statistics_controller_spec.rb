@@ -3,47 +3,59 @@
 require 'rails_helper'
 
 RSpec.describe Admin::StatisticsController, type: :controller do
-  describe 'GET #index' do
-    it 'assigns @daily_views' do
+  context 'when admin' do
+    before do
+      admin_user = create(:user, :admin_user)
+      sign_in(admin_user)
+
       daily_views_query = instance_double(Statistics::DailyViewsQuery, count: 42)
+      monthly_views_query = instance_double(Statistics::MonthlyViewsQuery, count: 100)
+      yearly_views_query = instance_double(Statistics::YearlyViewsQuery, count: 1000)
+      total_views_query = instance_double(Statistics::TotalViewsQuery, count: 10_000)
+
       allow(Statistics::DailyViewsQuery).to receive(:new).and_return(daily_views_query)
+      allow(Statistics::MonthlyViewsQuery).to receive(:new).and_return(monthly_views_query)
+      allow(Statistics::YearlyViewsQuery).to receive(:new).and_return(yearly_views_query)
+      allow(Statistics::TotalViewsQuery).to receive(:new).and_return(total_views_query)
 
       get :index
+    end
 
+    it 'assigns @daily_views' do
       expect(assigns(:daily_views)).to eq(42)
     end
 
     it 'assigns @monthly_views' do
-      monthly_views_query = instance_double(Statistics::MonthlyViewsQuery, count: 100)
-      allow(Statistics::MonthlyViewsQuery).to receive(:new).and_return(monthly_views_query)
-
-      get :index
-
       expect(assigns(:monthly_views)).to eq(100)
     end
 
     it 'assigns @yearly_views' do
-      yearly_views_query = instance_double(Statistics::YearlyViewsQuery, count: 1000)
-      allow(Statistics::YearlyViewsQuery).to receive(:new).and_return(yearly_views_query)
-
-      get :index
-
       expect(assigns(:yearly_views)).to eq(1000)
     end
 
     it 'assigns @total_views' do
-      total_views_query = instance_double(Statistics::TotalViewsQuery, count: 10_000)
-      allow(Statistics::TotalViewsQuery).to receive(:new).and_return(total_views_query)
-
-      get :index
-
       expect(assigns(:total_views)).to eq(10_000)
     end
 
     it 'renders the index template' do
-      get :index
-
       expect(response).to render_template('index')
+    end
+  end
+
+  context 'when user' do
+    before do
+      user = create(:user)
+      sign_in(user)
+
+      get :index
+    end
+
+    it 'redirects to the root page' do
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'sets a flash alert message' do
+      expect(flash[:alert]).to be_present
     end
   end
 end

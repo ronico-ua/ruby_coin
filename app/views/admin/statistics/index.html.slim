@@ -22,9 +22,10 @@
     h1 Post Views Statistics
     table
       tr
-        th Post ID
+        th Title
         th Views
       - @post_views.each do |properties, view_count|
         tr
-          td= properties['post_id']
+          td
+            = link_to properties['title'], post_path(properties['post_id'])
           td= view_count
