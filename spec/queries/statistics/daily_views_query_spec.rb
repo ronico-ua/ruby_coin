@@ -33,10 +33,12 @@ describe Statistics::DailyViewsQuery, type: :query do
       travel_to(now)
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: now)
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: 1.day.ago)
+      create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties,
+                          time: Time.zone.local(2023, 8, 1, 23, 59))
     end
 
     it 'returns the correct number of daily views' do
-      expect(result).to eq(1)
+      expect(result).to eq(2)
     end
   end
 end

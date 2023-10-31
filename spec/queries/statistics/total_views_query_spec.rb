@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 describe Statistics::TotalViewsQuery, type: :query do
-  subject(:result) { described_class.new.all.count }
+  subject(:result) { described_class.new.count }
 
   let(:user) { create(:user) }
   let(:post) { create(:post) }
   let(:ahoy_visit) { create(:ahoy_visit, user:) }
   let(:ahoy_event_properties) { { post_id: post.id } }
-  let(:now) { Time.zone.local(2023, 8, 1, 15, 5) }
+  let(:now) { Time.zone.now }
 
   context 'when there is no data' do
     it 'returns 0 views' do

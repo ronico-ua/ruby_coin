@@ -12,13 +12,19 @@ RSpec.describe Admin::StatisticsController, type: :controller do
       monthly_views_query = instance_double(Statistics::MonthlyViewsQuery, count: 100)
       yearly_views_query = instance_double(Statistics::YearlyViewsQuery, count: 1000)
       total_views_query = instance_double(Statistics::TotalViewsQuery, count: 10_000)
+      post_views_query = instance_double(Statistics::PostViewsQuery, count: 60)
 
       allow(Statistics::DailyViewsQuery).to receive(:new).and_return(daily_views_query)
       allow(Statistics::MonthlyViewsQuery).to receive(:new).and_return(monthly_views_query)
       allow(Statistics::YearlyViewsQuery).to receive(:new).and_return(yearly_views_query)
       allow(Statistics::TotalViewsQuery).to receive(:new).and_return(total_views_query)
+      allow(Statistics::PostViewsQuery).to receive(:new).and_return(post_views_query)
 
       get :index
+    end
+
+    it 'assigns @post_views' do
+      expect(assigns(:post_views)).to eq(60)
     end
 
     it 'assigns @daily_views' do

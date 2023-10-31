@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe Statistics::YearlyViewsQuery, type: :query do
-  subject(:result) { described_class.new.all.count }
+  subject(:result) { described_class.new.count }
 
   let(:user) { create(:user) }
   let(:post) { create(:post) }
@@ -34,10 +34,12 @@ describe Statistics::YearlyViewsQuery, type: :query do
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: now)
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: 1.day.ago)
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: 2.years.from_now)
+      create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties,
+                          time: Time.zone.local(2023, 12, 31, 23, 59))
     end
 
     it 'returns the correct number of yearly views' do
-      expect(result).to eq(2)
+      expect(result).to eq(3)
     end
   end
 end

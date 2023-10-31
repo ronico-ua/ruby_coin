@@ -5,7 +5,7 @@ module Statistics
     delegate :count, to: :all
 
     def all
-      Ahoy::Event.where(time: Time.zone.today.all_day, name: 'Viewed Post')
+      Ahoy::Event.where(time: Time.zone.now.all_day, name: 'Viewed Post')
     end
   end
 end

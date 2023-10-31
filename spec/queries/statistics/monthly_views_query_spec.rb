@@ -34,10 +34,12 @@ describe Statistics::MonthlyViewsQuery, type: :query do
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: now)
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: 5.days.from_now)
       create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties, time: 2.months.ago)
+      create(:ahoy_event, visit_id: ahoy_visit.id, properties: ahoy_event_properties,
+                          time: Time.zone.local(2023, 8, 31, 23, 59))
     end
 
     it 'returns the correct number of views' do
-      expect(result).to eq(2)
+      expect(result).to eq(3)
     end
   end
 end
