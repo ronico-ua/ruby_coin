@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::Translator
+class Posts::Translator < BaseService
   attr_accessor :post, :params
 
   def initialize(post, params)

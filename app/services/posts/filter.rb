@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::Filter
+class Posts::Filter < BaseService
   attr_accessor :initial_scope, :params
 
   def initialize(initial_scope, params)

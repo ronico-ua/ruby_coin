@@ -2,7 +2,7 @@
 
 class BaseService
   def self.call(*)
-    service = new
+    service = new(*)
 
     service.send(:call) if service.respond_to?(:call)
   end

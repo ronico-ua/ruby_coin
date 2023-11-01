@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
     @active_tags = params[:tags]
 
-    @posts = Posts::Filter.new(collection, params).call
+    @posts = Posts::Filter.call(collection, params)
     set_main_post
 
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')

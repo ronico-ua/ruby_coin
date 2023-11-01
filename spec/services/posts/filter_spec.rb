@@ -28,7 +28,7 @@ RSpec.describe Posts::Filter do
     context 'when no filters are applied' do
       POSTS_COLLECTIONS.each do |name, post_collection|
         it "returns collection of #{name}" do
-          expect(described_class.new(eval(post_collection), {}).call.count).to eq(eval(post_collection).count)
+          expect(described_class.call(eval(post_collection), {}).count).to eq(eval(post_collection).count)
         end
       end
     end
@@ -37,7 +37,7 @@ RSpec.describe Posts::Filter do
       POSTS_COLLECTIONS.each do |post, post_collection|
         TAGS_COLLECTIONS.each do |tag, tag_collection|
           it "returns collection of #{post} with #{tag}" do
-            expect(described_class.new(eval(post_collection), { tags: eval(tag_collection) }).call.count)
+            expect(described_class.call(eval(post_collection), { tags: eval(tag_collection) }).count)
               .to eq(eval(post_collection).joins(:tags).where(tags: { title: eval(tag_collection) }).distinct.count)
           end
         end
@@ -46,7 +46,7 @@ RSpec.describe Posts::Filter do
 
     context 'when tags are not exist' do
       it "returns 0 posts and doesn't fail" do
-        expect(described_class.new(Post.all, { tags: 'nonexinstingtag' }).call.count).to eq(0)
+        expect(described_class.call(Post.all, { tags: 'nonexinstingtag' }).count).to eq(0)
       end
     end
   end
