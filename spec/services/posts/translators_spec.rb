@@ -21,13 +21,13 @@ RSpec.describe Posts::Translator do
 
   before do
     I18n.with_locale :uk do
-      described_class.new(post, localization_params).call
+      described_class.call(post, localization_params)
     end
   end
 
   describe '#call' do
     it 'creates translations for available locales' do
-      expect(post.translations.count).to eq(I18n.available_locales.count)
+      expect(post.post_translations.count).to eq(I18n.available_locales.count)
     end
 
     it 'sets the correct attributes in translations' do
@@ -37,10 +37,10 @@ RSpec.describe Posts::Translator do
   end
 
   describe '#call with updated params' do
-    before { described_class.new(post, updated_params).call }
+    before { described_class.call(post, updated_params) }
 
     it 'updates translations for available locales' do
-      expect(post.translations.count).to eq(I18n.available_locales.count)
+      expect(post.post_translations.count).to eq(I18n.available_locales.count)
     end
 
     it 'sets the correct attributes in translations' do

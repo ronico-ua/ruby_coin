@@ -14,8 +14,6 @@ class Post < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] }
 
-  scope :ordered, -> { order(created_at: :desc) }
-
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?
 
@@ -27,6 +25,19 @@ class Post < ApplicationRecord
 
   enum status: { active: 0, inactive: 1 }
 
+  scope :ordered, -> { order(created_at: :desc) }
+  scope :with_translation, lambda {
+    joins(:translations).where("
+        post_translations.locale = ?
+        AND post_translations.title IS NOT NULL
+        AND post_translations.title != ''
+        AND post_translations.subtitle IS NOT NULL
+        AND post_translations.subtitle != ''
+        AND post_translations.description IS NOT NULL
+        AND post_translations.description != ''
+      ", I18n.locale)
+  }
+
   def truncated_description
     description.truncate(100, separator: /\s/)
   end
@@ -37,10 +48,19 @@ class Post < ApplicationRecord
   end
 
   def generate_slugs
-    translations.each do |localized_post|
-      localized_post.update(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
+    post_translations.each do |localized_post|
+      localized_post.update!(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
       localized_post.save!
     end
+  end
+
+  def translation_present?
+    translation = post_translations.find_by(locale: I18n.locale)
+
+    translation.present? &&
+      translation.title.present? &&
+      translation.subtitle.present? &&
+      translation.description.present?
   end
 
   private

@@ -23,7 +23,7 @@ module Admin
       authorize @post
 
       if @post.save
-        Posts::Translator.new(@post, localization_params).call
+        Posts::Translator.call(@post, localization_params)
 
         @post.generate_slugs
 
@@ -36,7 +36,7 @@ module Admin
 
     def update
       if @post.update post_params
-        Posts::Translator.new(@post, localization_params).call
+        Posts::Translator.call(@post, localization_params)
 
         @post.generate_slugs
 
