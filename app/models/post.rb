@@ -3,12 +3,16 @@
 class Post < ApplicationRecord
   require 'i18n'
 
+  include PgSearch::Model
+  pg_search_scope :search_everywhere, against: :title
+
   translates :title, :subtitle, :description, :slug
   extend FriendlyId
   friendly_id :title, use: :globalize
 
   has_and_belongs_to_many :tags
   belongs_to :user
+
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?
 

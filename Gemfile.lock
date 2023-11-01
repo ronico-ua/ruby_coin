@@ -252,6 +252,9 @@ GEM
       racc
     pg (1.5.4)
     pg (1.5.4-x64-mingw-ucrt)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     propshaft (0.7.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -473,6 +476,7 @@ DEPENDENCIES
   overcommit (~> 0.60.0)
   pagy
   pg (~> 1.5.3)
+  pg_search
   propshaft
   pry
   pry-rails
