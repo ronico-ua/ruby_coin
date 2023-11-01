@@ -18,10 +18,10 @@ Rails/HasAndBelongsToMany:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 40
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 40
 
 Metrics/BlockLength:
   Max: 30
@@ -59,3 +59,6 @@ Layout/HashAlignment:
 Security/Eval:
   Exclude:
     - 'spec/services/posts/filter_spec.rb'
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false

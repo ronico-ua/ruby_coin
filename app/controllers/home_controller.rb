@@ -2,8 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct
-
+    @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
     @active_tags = params[:tags]
 
     @posts = Posts::Filter.new(collection, params).call
@@ -16,6 +15,8 @@ class HomeController < ApplicationController
     @post = resourse
     post_tags = @post.tags.limit(3)
 
+    validator = Ahoy::VisitsValidator.new(last_visit: request.session[:last_visit])
+    Ahoy::EventProcess.new(ahoy, @post, request, request.remote_ip).call if validator.valid?
     @similar_posts = Post.where.not(id: @post.id).includes(:tags)
                          .where(tags: { title: post_tags.pluck(:title) }).limit(3)
   end
