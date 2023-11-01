@@ -1,11 +1,12 @@
 - provide(:title, full_title(t("titles.search")))
 .search-page
-  h1.search-page__title Пошук
+  h1.search-page__title
+    = t('.search')
   .search-page__group
 
-    div.position-relative
+    div.position-relative.mb-5
       = form_with url: search_path, method: :get do |f|
-        = f.text_field :query, class: "search-page__input", placeholder: "Що таке gem в мові Ruby?"
+        = f.text_field :query, class: "search-page__input", placeholder: t('.placeholder'), value: params[:query]
         = f.button '', class: 'border-0 shadow-none position-absolute search-page__icon', name: nil do
           i.fa.fa-solid.fa-magnifying-glass.fa-xl
 
@@ -14,10 +15,15 @@
       .posts__inner
         - @results.each do |post|
           = render "home/post", post: post
+  - else
+    - if params[:query].present?
+      h3.d-flex.justify-content-center.my-5
+        = t('.no_results')
 
   hr
 
-  h2.recomment__title Можливо вам буде цікаво
+  h2.recomment__title
+    = t('.interesting')
   .posts
     .posts__inner
       - @posts.each do |post|

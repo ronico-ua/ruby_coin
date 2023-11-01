@@ -51,6 +51,11 @@ en:
         tags: Enter tags
     show:
       similar_posts: Similar posts
+    search:
+      search: Search
+      no_results: No results
+      interesting: Maybe you'll be interested
+      placeholder: What is a "gem" in Ruby?
 
   faq:
     who_am_i:

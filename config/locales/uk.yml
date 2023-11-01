@@ -50,6 +50,12 @@ uk:
         tags: Введіть теги
     show:
       similar_posts: Схожі публікації
+    search:
+      search: Пошук
+      no_results: Немає результатів
+      interesting: Можливо Вам буде цікаво
+      placeholder: Що таке gem в мові Ruby?
+
 
   faq:
     who_am_i:
