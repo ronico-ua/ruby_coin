@@ -5,18 +5,14 @@ class HomeController < ApplicationController
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
     @active_tags = params[:tags]
 
-    @main_post = Post.find_by(main_post: true)
-    @posts = if @active_tags.present?
-               Post.active.ordered.joins(:tags).where(tags: { title: @active_tags }).distinct
-             else
-               Post.active.ordered
-             end
+    @posts = Posts::Filter.call(collection, params)
+    set_main_post
 
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
 
   def show
-    @post = PostTranslation.find_by(slug: params[:id]).post
+    @post = resourse
     post_tags = @post.tags.limit(3)
 
     validator = Ahoy::VisitsValidator.new(last_visit: request.session[:last_visit])
@@ -27,5 +23,21 @@ class HomeController < ApplicationController
 
   def search
     @posts = Post.order('RANDOM()').limit(3)
+  end
+
+  def set_main_post
+    post = Post.active.find_by(main_post: true)
+
+    @main_post = post&.translation_present? ? post : nil
+  end
+
+  private
+
+  def collection
+    Post.active
+  end
+
+  def resourse
+    PostTranslation.find_by(slug: params[:id]).post
   end
 end
