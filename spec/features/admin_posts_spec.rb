@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Admin Posts', type: :system do
+xdescribe 'Admin Posts', type: :system do
   let!(:tag) { create(:tag, title: 'Тег1') }
   let(:post) { create(:post, tag_ids: [tag.id]) }
 

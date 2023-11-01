@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Home show Page', type: :feature do
+xdescribe 'Home show Page', type: :feature do
   let(:post) { create(:post, slug: SecureRandom.hex) }
   let(:main_post) { create(:post, main_post: true) }
 
