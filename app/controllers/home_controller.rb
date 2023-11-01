@@ -26,5 +26,13 @@ class HomeController < ApplicationController
 
   def search
     @posts = Post.order('RANDOM()').limit(3)
+
+    @results = Posts::Search.call(search_params)
+  end
+
+  private
+
+  def search_params
+    params.permit(:query)
   end
 end

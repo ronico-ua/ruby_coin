@@ -2,24 +2,23 @@
 .search-page
   h1.search-page__title Пошук
   .search-page__group
-    input.search-page__input type="search" placeholder="Що таке gem в мові Ruby?"
+
+    div.position-relative
+      = form_with url: search_path, method: :get do |f|
+        = f.text_field :query, class: "search-page__input", placeholder: "Що таке gem в мові Ruby?"
+        = f.button '', class: 'border-0 shadow-none position-absolute search-page__icon', name: nil do
+          i.fa.fa-solid.fa-magnifying-glass.fa-xl
+
+  - if @results.present?
+    .posts
+      .posts__inner
+        - @results.each do |post|
+          = render "home/post", post: post
+
+  hr
+
   h2.recomment__title Можливо вам буде цікаво
   .posts
     .posts__inner
       - @posts.each do |post|
-        .post-column
-          .post
-            = link_to post_path(post) do
-              .post-img
-                - if post.photo.present?
-                  = image_tag post.photo.medium.url
-                - else
-                  = image_tag "post-img.png"
-              .flex-admin
-                .admin = post.user.nickname
-                .intro-block__date = l(post.created_at, format: :default)
-              h2.post__title = post.title
-              p.post__text = post.subtitle
-              .post-tags
-                - post.tags.first(3).each do |tag|
-                  .post-tag = tag.title
+        = render "home/post", post: post

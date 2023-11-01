@@ -3,15 +3,17 @@
 class Post < ApplicationRecord
   require 'i18n'
 
-  include PgSearch::Model
-  pg_search_scope :search_everywhere, against: :title
+  has_and_belongs_to_many :tags
+  belongs_to :user
 
   translates :title, :subtitle, :description, :slug
   extend FriendlyId
   friendly_id :title, use: :globalize
 
-  has_and_belongs_to_many :tags
-  belongs_to :user
+  include PgSearch::Model
+  pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] }
+
+  scope :ordered, -> { order(created_at: :desc) }
 
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?
@@ -23,8 +25,6 @@ class Post < ApplicationRecord
   validates :main_post, inclusion: { in: [true, false] }
 
   enum status: { active: 0, inactive: 1 }
-
-  scope :ordered, -> { order(created_at: :desc) }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
