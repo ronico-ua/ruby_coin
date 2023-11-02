@@ -60,9 +60,7 @@ uk:
         all: всіх полях
         title: назві
         description: опису
-      exact: Точний пошук
-
-
+      results: 'Результати:'
   faq:
     who_am_i:
       question1: Хто ви і які послуги надаєте?

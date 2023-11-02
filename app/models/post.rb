@@ -12,9 +12,12 @@ class Post < ApplicationRecord
   friendly_id :title, use: :globalize
 
   include PgSearch::Model
-  pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] }
-  pg_search_scope :search_by_title, associated_against: { post_translations: [:title] }
-  pg_search_scope :search_by_description, associated_against: { post_translations: [:description] }
+  pg_search_scope :search_everywhere, associated_against: { translations: [:title, :description] },
+                                                  using: { tsearch: { prefix: true, any_word: true } }
+  pg_search_scope :search_by_title, associated_against: { translations: [:title] },
+                                                  using: { tsearch: { prefix: true, any_word: true } }
+  pg_search_scope :search_by_description, associated_against: { post_translations: [:description] },
+                                                  using: { tsearch: { prefix: true, any_word: true } }
 
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?

@@ -8,24 +8,26 @@
       = form_with url: search_path, method: :get do |f|
         = f.text_field :query, class: "search-page__input", placeholder: t('.placeholder'), value: params[:query]
 
-        h2#headingOne.accordion-header.mt-3
-          button.accordion-button.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
-            = t('.advanced')
+        .d-flex.justify-content-center.align-items-center
+          h2.mt-3
+            button.accordion-button.align-items-end.aling-items-end.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
+              = t('.advanced')
+              i.fa.fa-thin.fa-sliders.ms-2
 
-        #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
-          .accordion-body
-
-          - ['all', 'title', 'description'].each do |rbutton|
-            = f.radio_button :search_in, rbutton, class: "me-1", checked: (params[:search_in] == rbutton)
-            = f.label :search_in, t(".radio.#{rbutton}"), class: "me-3 mt-2"
-
-          = f.check_box :exact_match, { checked: params[:exact_match] == 'true' }, true, false
-          = f.label :exact_match, t('.exact')
+        .d-flex.justify-content-center.align-items-center
+          #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
+            - ['all', 'title', 'description'].each do |rbutton|
+              = f.radio_button :search_in, rbutton, class: "me-1", checked: (params[:search_in] == rbutton)
+              = f.label :search_in, t(".radio.#{rbutton}"), class: "me-3 mt-2"
 
         = f.button '', class: 'border-0 shadow-none position-absolute search-page__icon', name: nil do
           i.fa.fa-solid.fa-magnifying-glass.fa-xl
 
   - if @results.present?
+    hr
+    .d-flex.justify-content-center.h2.recomment__title.my-4
+      = t('.results')
+
     .posts
       .posts__inner
         - @results.each do |post|
@@ -36,8 +38,7 @@
         = t('.no_results')
 
   hr
-
-  h2.recomment__title
+  .d-flex.justify-content-center.h2.recomment__title.my-4
     = t('.interesting')
   .posts
     .posts__inner

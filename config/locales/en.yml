@@ -61,8 +61,7 @@ en:
         all: all fields
         title: title
         description: description
-      exact: Exact search
-
+      results: 'Results:'
   faq:
     who_am_i:
       question1: Who are you and what services do you provide?
