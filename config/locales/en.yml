@@ -56,6 +56,12 @@ en:
       no_results: No results
       interesting: Maybe you'll be interested
       placeholder: What is a "gem" in Ruby?
+      advanced: Advanced search
+      radio:
+        all: all fields
+        title: title
+        description: description
+      exact: Exact search
 
   faq:
     who_am_i:

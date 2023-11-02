@@ -13,6 +13,8 @@ class Post < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] }
+  pg_search_scope :search_by_title, associated_against: { post_translations: [:title] }
+  pg_search_scope :search_by_description, associated_against: { post_translations: [:description] }
 
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?

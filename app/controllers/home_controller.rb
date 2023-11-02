@@ -30,7 +30,7 @@ class HomeController < ApplicationController
   private
 
   def search_params
-    params.permit(:query)
+    params.permit(:query, :search_in)
   end
 
   def set_main_post

@@ -55,6 +55,12 @@ uk:
       no_results: Немає результатів
       interesting: Можливо Вам буде цікаво
       placeholder: Що таке gem в мові Ruby?
+      advanced: Розширений пошук
+      radio:
+        all: всіх полях
+        title: назві
+        description: опису
+      exact: Точний пошук
 
 
   faq:
