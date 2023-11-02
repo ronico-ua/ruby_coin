@@ -58,9 +58,9 @@ en:
       placeholder: What is a "gem" in Ruby?
       advanced: Advanced search
       radio:
-        all: all fields
-        title: title
-        description: description
+        all: All fields
+        title: Title
+        description: Description
       results: 'Results:'
   faq:
     who_am_i:

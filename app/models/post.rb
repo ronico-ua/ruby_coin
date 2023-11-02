@@ -31,16 +31,14 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
-  scope :with_translation, lambda {
-    joins(:translations).where("
-        post_translations.locale = ?
-        AND post_translations.title IS NOT NULL
-        AND post_translations.title != ''
-        AND post_translations.subtitle IS NOT NULL
-        AND post_translations.subtitle != ''
-        AND post_translations.description IS NOT NULL
-        AND post_translations.description != ''
-      ", I18n.locale)
+  scope :with_translation, lambda { |alias_name|
+    joins(:translations).where(
+      "#{alias_name}.locale = ? AND
+       #{alias_name}.title IS NOT NULL AND #{alias_name}.title != '' AND
+       #{alias_name}.subtitle IS NOT NULL AND #{alias_name}.subtitle != '' AND
+       #{alias_name}.description IS NOT NULL AND #{alias_name}.description != ''",
+      I18n.locale
+    )
   }
 
   def truncated_description

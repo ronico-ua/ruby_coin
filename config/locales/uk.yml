@@ -57,9 +57,9 @@ uk:
       placeholder: Що таке gem в мові Ruby?
       advanced: Розширений пошук
       radio:
-        all: всіх полях
-        title: назві
-        description: опису
+        all: Всі поля
+        title: Назва
+        description: Опис
       results: 'Результати:'
   faq:
     who_am_i:
