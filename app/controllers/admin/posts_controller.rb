@@ -18,7 +18,7 @@ module Admin
     end
 
     def create
-      @post = current_user.posts.build(post_params)
+      @post = current_user.posts.build(update_main_post_param(post_params))
 
       authorize @post
 
@@ -35,7 +35,7 @@ module Admin
     end
 
     def update
-      if @post.update post_params
+      if @post.update update_main_post_param(post_params)
         Posts::Translator.new(@post, localization_params).call
 
         @post.generate_slugs
@@ -73,6 +73,17 @@ module Admin
     def post_params
       params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, tag_ids: [])
     end
+
+    def update_main_post_param(post_params) 
+        if(post_params[:main_post]=="active") 
+            post_params[:main_post] =true
+        else 
+            post_params[:main_post] =false
+        end
+        post_params
+    end
+
+    
 
     def localization_params
       params.require(:post).permit(title_localizations: {}, subtitle_localizations: {}, description_localizations: {})
