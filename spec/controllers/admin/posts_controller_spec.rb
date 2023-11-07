@@ -82,6 +82,9 @@ describe Admin::PostsController do
     let(:action) { :update }
     let(:new_title) { 'Updated Title' }
     let(:params) { { id: test_post.id, post: { title: new_title } } }
+    let(:test_post2) { create(:post, main_post: false) }
+    let(:params_status_true) { { id: test_post2.id, post: { main_post: 'active' } } }
+    let(:params_status_false) { { id: test_post2.id, post: { main_post: 'false' } } }
 
     context 'when admin is signed in' do
       before do
@@ -94,6 +97,20 @@ describe Admin::PostsController do
           get(action, params:)
           test_post.reload
           expect(test_post.title).to eq(new_title)
+        end
+
+        context 'with main-post:false' do
+          it 'change from false to true' do
+            get(action, params: params_status_true)
+            test_post2.reload
+            expect(test_post2.main_post).to be(true)
+          end
+
+          it 'dont change' do
+            get(action, params: params_status_false)
+            test_post2.reload
+            expect(test_post2.main_post).to be(false)
+          end
         end
       end
 
