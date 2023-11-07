@@ -12,9 +12,9 @@ class Post < ApplicationRecord
   friendly_id :title, use: :globalize
 
   include PgSearch::Model
-  pg_search_scope :search_everywhere, associated_against: { translations: [:title, :description] },
+  pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
                                                   using: { tsearch: { prefix: true, any_word: true } }
-  pg_search_scope :search_by_title, associated_against: { translations: [:title] },
+  pg_search_scope :search_by_title, associated_against: { post_translations: [:title] },
                                                   using: { tsearch: { prefix: true, any_word: true } }
   pg_search_scope :search_by_description, associated_against: { post_translations: [:description] },
                                                   using: { tsearch: { prefix: true, any_word: true } }
@@ -31,14 +31,21 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
-  scope :with_translation, lambda { |alias_name|
-    joins(:translations).where(
-      "#{alias_name}.locale = ? AND
-       #{alias_name}.title IS NOT NULL AND #{alias_name}.title != '' AND
-       #{alias_name}.subtitle IS NOT NULL AND #{alias_name}.subtitle != '' AND
-       #{alias_name}.description IS NOT NULL AND #{alias_name}.description != ''",
-      I18n.locale
+  scope :with_translation, lambda {
+    joins(
+      "INNER JOIN post_translations AS translations_posts
+      ON translations_posts.post_id = posts.id"
     )
+      .where(
+        "translations_posts.locale = ?
+        AND translations_posts.title IS NOT NULL
+        AND translations_posts.title != ''
+        AND translations_posts.subtitle IS NOT NULL
+        AND translations_posts.subtitle != ''
+        AND translations_posts.description IS NOT NULL
+        AND translations_posts.description != ''",
+        I18n.locale
+      )
   }
 
   def truncated_description

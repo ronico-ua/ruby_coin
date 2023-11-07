@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 class Posts::Filter < BaseService
-  attr_accessor :initial_scope, :params, :table_name
+  attr_accessor :initial_scope, :params
 
-  def initialize(initial_scope, params, table_name)
+  def initialize(initial_scope, params)
     @initial_scope = initial_scope
     @params = params
-    @table_name = table_name
   end
 
   def call
@@ -18,7 +17,7 @@ class Posts::Filter < BaseService
   private
 
   def filter_by_translation(scope)
-    scope.with_translation(table_name)
+    scope.with_translation
   end
 
   def ordered(scope)
