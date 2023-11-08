@@ -146,16 +146,16 @@ uk:
           attributes:
             title:
               blank: не може бути порожнім
-              translation_missing: відсутній переклад!
+              translation_missing: відсутній переклад
             subtitle:
               blank: не може бути порожнім
-              translation_missing: відсутній переклад!
+              translation_missing: відсутній переклад
             description:
               blank: не може бути порожнім
-              translation_missing: відсутній переклад!
+              translation_missing: відсутній переклад
             photo:
               blank: не може бути порожнім
-              translation_missing: відсутній переклад!
+              translation_missing: відсутній переклад
 
   admin:
     posts:

@@ -21,9 +21,7 @@ module Admin
 
       authorize @post
 
-      validate_localization(@post)
-
-      if @post.save
+      if @post.save && Posts::Translator.call(@post, localization_params)
         Posts::Translator.call(@post, localization_params)
 
         @post.generate_slugs
@@ -36,11 +34,7 @@ module Admin
     end
 
     def update
-      validate_localization(@post)
-
-      if @post.update(post_params)
-        Posts::Translator.call(@post, localization_params)
-
+      if @post.update(post_params) && Posts::Translator.call(@post, localization_params)
         @post.generate_slugs
 
         respond_to do |format|
@@ -79,17 +73,6 @@ module Admin
 
     def localization_params
       params.require(:post).permit(title_localizations: {}, subtitle_localizations: {}, description_localizations: {})
-    end
-
-    def validate_localization(post)
-      localization_params.each do |field, translations|
-        translations.each do |_key, value|
-          next if value != ''
-
-          fieldname = field.delete_suffix('_localizations')
-          post.errors.add(fieldname.to_sym, :translation_missing, message: I18n.t("activerecord.errors.models.post.attributes.#{fieldname}.translation_missing")) # rubocop:disable Layout/LineLength
-        end
-      end
     end
 
     def set_post!

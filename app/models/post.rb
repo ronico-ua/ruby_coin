@@ -31,22 +31,6 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
-  scope :with_translation, lambda {
-    joins(
-      "INNER JOIN post_translations AS translations_posts
-      ON translations_posts.post_id = posts.id"
-    )
-      .where(
-        "translations_posts.locale = ?
-        AND translations_posts.title IS NOT NULL
-        AND translations_posts.title != ''
-        AND translations_posts.subtitle IS NOT NULL
-        AND translations_posts.subtitle != ''
-        AND translations_posts.description IS NOT NULL
-        AND translations_posts.description != ''",
-        I18n.locale
-      )
-  }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
@@ -62,15 +46,6 @@ class Post < ApplicationRecord
       localized_post.update!(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
       localized_post.save!
     end
-  end
-
-  def translation_present?
-    translation = post_translations.find_by(locale: I18n.locale)
-
-    translation.present? &&
-      translation.title.present? &&
-      translation.subtitle.present? &&
-      translation.description.present?
   end
 
   private

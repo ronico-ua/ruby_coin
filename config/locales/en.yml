@@ -147,16 +147,16 @@ en:
           attributes:
             title:
               blank: can't be blank
-              translation_missing: translation missing!
+              translation_missing: translation missing
             subtitle:
               blank: can't be blank
-              translation_missing: translation missing!
+              translation_missing: translation missing
             description:
               blank: can't be blank
-              translation_missing: translation missing!
+              translation_missing: translation missing
             photo:
               blank: can't be blank
-              translation_missing: translation missing!
+              translation_missing: translation missing
   admin:
     posts:
       index:
