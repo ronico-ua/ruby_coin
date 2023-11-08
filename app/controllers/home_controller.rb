@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @active_tags = params[:tags]
 
     @posts = Posts::Filter.call(collection, params)
-    set_main_post
+    @main_post = Post.active.find_by(main_post: true)
 
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
@@ -35,14 +35,8 @@ class HomeController < ApplicationController
     params.permit(:query, :search_in)
   end
 
-  def set_main_post
-    post = Post.active.find_by(main_post: true)
-
-    @main_post = post&.translation_present? ? post : nil
-  end
-
   def collection
-    Post.active
+    Post.all
   end
 
   def resourse

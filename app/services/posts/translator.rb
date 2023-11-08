@@ -9,7 +9,7 @@ class Posts::Translator < BaseService
   end
 
   def call
-    return unless localization_valid?(params)
+    return false unless localization_valid?(params)
 
     I18n.available_locales.each do |locale|
       article = post.post_translations.find_or_create_by(locale:)
