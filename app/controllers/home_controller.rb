@@ -22,7 +22,7 @@ class HomeController < ApplicationController
   end
 
   def search
-    @posts = Posts::Filter.call(collection, { order: 'RANDOM()' }).limit(3)
+    @posts = Posts::Filter.call(collection.active, { order: 'RANDOM()' }).limit(3)
 
     @results = Posts::Search.call(search_params)
 
