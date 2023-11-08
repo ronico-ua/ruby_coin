@@ -55,3 +55,6 @@ RSpec/Rails/InferredSpecType:
 
 Rails/CreateTableWithTimestamps:
   Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
