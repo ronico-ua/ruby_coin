@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'after_party'
 gem 'ahoy_matey'
 gem 'blueprinter'
 gem 'bootsnap', require: false

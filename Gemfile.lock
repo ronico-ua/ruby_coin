@@ -92,6 +92,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    after_party (1.11.2)
     ahoy_matey (5.0.2)
       activesupport (>= 6.1)
       device_detector (>= 1)
@@ -454,6 +455,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  after_party
   ahoy_matey
   blueprinter
   bootsnap

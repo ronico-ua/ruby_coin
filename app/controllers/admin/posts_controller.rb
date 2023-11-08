@@ -6,7 +6,6 @@ module Admin
     before_action :authorize_policy
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit update]
-    before_action :validate_localization, only: %i[create update]
 
     def index
       @posts = Post.order(created_at: :desc)
@@ -22,6 +21,8 @@ module Admin
 
       authorize @post
 
+      validate_localization(@post)
+
       if @post.save
         Posts::Translator.call(@post, localization_params)
 
@@ -35,7 +36,9 @@ module Admin
     end
 
     def update
-      if @post.update post_params
+      validate_localization(@post)
+
+      if @post.update(post_params)
         Posts::Translator.call(@post, localization_params)
 
         @post.generate_slugs
@@ -78,19 +81,15 @@ module Admin
       params.require(:post).permit(title_localizations: {}, subtitle_localizations: {}, description_localizations: {})
     end
 
-    def validate_localization
-      errors = []
-
+    def validate_localization(post)
       localization_params.each do |field, translations|
-        translations.each do |key, value|
+        translations.each do |_key, value|
           next if value != ''
 
           fieldname = field.delete_suffix('_localizations')
-          errors << "#{I18n.t("activerecord.attributes.post.#{fieldname}")}: #{I18n.t(key).downcase}"
+          post.errors.add(fieldname.to_sym, :translation_missing, message: I18n.t("activerecord.errors.models.post.attributes.#{fieldname}.translation_missing")) # rubocop:disable Layout/LineLength
         end
       end
-
-      flash[:warning] = "#{I18n.t('errors.messages.translation_missing')} #{errors.join(', ')}" if errors.present?
     end
 
     def set_post!
