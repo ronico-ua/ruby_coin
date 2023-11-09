@@ -9,8 +9,6 @@ html
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload", media: 'all'
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-
-    script[src="https://kit.fontawesome.com/c34a6ab486.js" crossorigin="anonymous"]
   - css_classes = [controller_path.gsub('/', '-'), action_name].map { |s| s.gsub('_', '-') }
 
   body class=css_classes data-lang="#{I18n.locale}"

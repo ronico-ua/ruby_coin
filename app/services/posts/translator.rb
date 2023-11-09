@@ -37,10 +37,12 @@ class Posts::Translator < BaseService
   def localization_valid?(localization_params)
     localization_params.each do |field, translations|
       translations.each do |_key, value|
-        next if value != ''
+        next if value.present?
 
         fieldname = field.delete_suffix('_localizations')
-        @post.errors.add(fieldname.to_sym, message: I18n.t("activerecord.errors.models.post.attributes.#{fieldname}.translation_missing")) # rubocop:disable Layout/LineLength
+        message = I18n.t("activerecord.errors.models.post.attributes.#{fieldname}.translation_missing")
+
+        @post.errors.add(fieldname.to_sym, message:)
       end
     end
 
