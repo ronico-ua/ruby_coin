@@ -2,10 +2,10 @@
 
 module Admin
   class PostsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :authorize_policy
+    before_action :authenticate_user!, :authorize_policy
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit update]
+    before_action :normalize_main_post_param, only: %i[create update]
 
     def index
       @posts = Post.order(created_at: :desc)
@@ -67,6 +67,10 @@ module Admin
 
     def post_params
       params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, tag_ids: [])
+    end
+
+    def normalize_main_post_param
+      params[:post][:main_post] = params[:post][:main_post] == 'active'
     end
 
     def localization_params

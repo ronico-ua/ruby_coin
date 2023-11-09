@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe HomeController, type: :request do
-  let!(:post) { create(:post) }
+  let!(:post) { create(:post, status: 'active') }
   let!(:ruby_post) { create(:post, title: 'Ruby on Rails') }
   let!(:inactive_ruby_post) { create(:post, title: 'Ruby on Jets', status: 'inactive') }
 
