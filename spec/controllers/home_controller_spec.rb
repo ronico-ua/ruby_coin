@@ -15,18 +15,30 @@ describe HomeController, type: :request do
   end
 
   describe 'GET #show' do
-    let(:ahoy) { instance_double(Ahoy::Tracker) }
-    let(:request) { instance_double(ActionDispatch::Request, session: { last_visit: nil }) }
+    context 'when visiting the post first time' do
+      it 'tracks the post for the first time' do
+        expect(Ahoy::Visit.count).to eq(0)
+        expect(Ahoy::Event.count).to eq(0)
 
-    it 'calls Ahoy::EventProcess and updates last_visit' do
-      expect(ahoy).to receive(:visit)
-      expect(ahoy).to receive(:track).with('Viewed Post', title: post.title, post_id: post.id)
+        get post_path(post)
 
-      get post_path(post)
+        expect(Ahoy::Visit.count).to eq(1)
+        expect(Ahoy::Event.count).to eq(1)
+      end
+    end
 
-      expect(response).to have_http_status(:success)
-      Ahoy::EventProcess.call(ahoy, post, request)
-      expect(request.session[:last_visit]).not_to be_nil
+    context 'when visit the post and visit again within 3 hours' do
+      it 'does not track again within 3 hours' do
+        expect(Ahoy::Visit.count).to eq(0)
+        expect(Ahoy::Event.count).to eq(0)
+
+        get post_path(post)
+
+        get post_path(post)
+
+        expect(Ahoy::Visit.count).to eq(1)
+        expect(Ahoy::Event.count).to eq(2)
+      end
     end
 
     it 'returns a successful response, renders the show template, and includes post details' do
