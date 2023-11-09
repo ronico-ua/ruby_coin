@@ -9,19 +9,14 @@ class Posts::Filter < BaseService
   end
 
   def call
-    scope = filter_by_translation(initial_scope)
-    scope = ordered(scope)
+    scope = ordered(initial_scope)
     filter_by_tags(scope)
   end
 
   private
 
-  def filter_by_translation(scope)
-    scope.with_translation
-  end
-
   def ordered(scope)
-    scope.order(created_at: :desc)
+    params[:order].present? ? scope.order(params[:order]) : scope.order(created_at: :desc)
   end
 
   def filter_by_tags(scope)

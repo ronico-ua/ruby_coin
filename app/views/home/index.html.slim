@@ -51,22 +51,7 @@
   .posts id="posts-list"
     .posts__inner
       - @posts.each do |post|
-        .post-column
-          .post
-            = link_to post_path(post) do
-              .post-img
-                - if post.photo.present?
-                  = image_tag post.photo.medium.url
-                - else
-                  = image_tag "post-img.png"
-            .flex-admin
-              .admin = post.user.nickname
-              .intro-block__date = l(post.created_at, format: :default)
-            h2.post__title = post.title
-            p.post__text = post.subtitle
-            .post-tags
-              - post.tags.first(3).each do |tag|
-                .post-tag = tag.title
+        = render "home/post", post: post
 
 - if @pagy.pages > 1
     .pagination__inner

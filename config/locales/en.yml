@@ -51,7 +51,17 @@ en:
         tags: Enter tags
     show:
       similar_posts: Similar posts
-
+    search:
+      search: Search
+      no_results: No results
+      interesting: Maybe you'll be interested
+      placeholder: What is a "gem" in Ruby?
+      advanced: Advanced search
+      radio:
+        all: All fields
+        title: Title
+        description: Description
+      results: 'Results:'
   faq:
     who_am_i:
       question1: Who are you and what services do you provide?
@@ -137,12 +147,16 @@ en:
           attributes:
             title:
               blank: can't be blank
+              translation_missing: translation missing
             subtitle:
               blank: can't be blank
+              translation_missing: translation missing
             description:
               blank: can't be blank
+              translation_missing: translation missing
             photo:
               blank: can't be blank
+              translation_missing: translation missing
   admin:
     posts:
       index:
@@ -246,4 +260,3 @@ en:
       carrierwave_download_error: "Couldn't download image."
       extension_whitelist_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
       extension_blacklist_error: "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
-      translation_missing: 'Translation missing: '

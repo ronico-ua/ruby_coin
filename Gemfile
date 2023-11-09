@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'after_party'
 gem 'ahoy_matey'
 gem 'blueprinter'
 gem 'bootsnap', require: false
@@ -19,6 +20,7 @@ gem 'jsbundling-rails'
 gem 'overcommit', '~> 0.60.0'
 gem 'pagy'
 gem 'pg', '~> 1.5.3'
+gem 'pg_search'
 gem 'propshaft'
 gem 'puma', '~> 6.4'
 gem 'pundit'

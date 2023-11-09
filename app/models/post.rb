@@ -3,13 +3,22 @@
 class Post < ApplicationRecord
   require 'i18n'
 
+  has_and_belongs_to_many :tags
+  belongs_to :user
+  has_many :post_translations, dependent: :destroy
+
   translates :title, :subtitle, :description, :slug
   extend FriendlyId
   friendly_id :title, use: :globalize
 
-  has_and_belongs_to_many :tags
-  belongs_to :user
-  has_many :post_translations, dependent: :destroy
+  include PgSearch::Model
+  pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
+                                                  using: { tsearch: { prefix: true, any_word: true } }
+  pg_search_scope :search_by_title, associated_against: { post_translations: [:title] },
+                                                  using: { tsearch: { prefix: true, any_word: true } }
+  pg_search_scope :search_by_description, associated_against: { post_translations: [:description] },
+                                                  using: { tsearch: { prefix: true, any_word: true } }
+
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?
 
@@ -22,17 +31,6 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
-  scope :with_translation, lambda {
-    joins(:translations).where("
-        post_translations.locale = ?
-        AND post_translations.title IS NOT NULL
-        AND post_translations.title != ''
-        AND post_translations.subtitle IS NOT NULL
-        AND post_translations.subtitle != ''
-        AND post_translations.description IS NOT NULL
-        AND post_translations.description != ''
-      ", I18n.locale)
-  }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
@@ -48,15 +46,6 @@ class Post < ApplicationRecord
       localized_post.update!(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
       localized_post.save!
     end
-  end
-
-  def translation_present?
-    translation = post_translations.find_by(locale: I18n.locale)
-
-    translation.present? &&
-      translation.title.present? &&
-      translation.subtitle.present? &&
-      translation.description.present?
   end
 
   private
