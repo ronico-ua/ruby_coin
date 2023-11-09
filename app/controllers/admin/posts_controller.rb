@@ -22,8 +22,6 @@ module Admin
       authorize @post
 
       if @post.save && Posts::Translator.call(@post, localization_params)
-        Posts::Translator.call(@post, localization_params)
-
         @post.generate_slugs
 
         flash[:success] = t('.success')
