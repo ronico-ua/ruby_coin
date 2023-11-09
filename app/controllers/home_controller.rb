@@ -5,8 +5,8 @@ class HomeController < ApplicationController
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
     @active_tags = params[:tags]
 
-    @posts = Posts::Filter.call(collection, params)
-    set_main_post
+    @posts = Posts::Filter.call(collection.active, params)
+    @main_post = Post.active.find_by(main_post: true)
 
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
@@ -22,19 +22,21 @@ class HomeController < ApplicationController
   end
 
   def search
-    @posts = Post.order('RANDOM()').limit(3)
-  end
+    @posts = Posts::Filter.call(collection.active, { order: 'RANDOM()' }).limit(3)
 
-  def set_main_post
-    post = Post.active.find_by(main_post: true)
+    @results = Posts::Search.call(search_params)
 
-    @main_post = post&.translation_present? ? post : nil
+    @results = Posts::Filter.call(@results, params) if @results.present?
   end
 
   private
 
+  def search_params
+    params.permit(:query, :search_in)
+  end
+
   def collection
-    Post.active
+    Post.all
   end
 
   def resourse

@@ -69,3 +69,15 @@ task :seed do
     end
   end
 end
+
+desc 'Fill all empty translations'
+task :after_party do
+  puts "\n=== Filling empty fields ===\n"
+  on primary :db do
+    within current_path do
+      with rails_env: fetch(:stage) do
+        execute :rake, 'after_party:fill_translations'
+      end
+    end
+  end
+end

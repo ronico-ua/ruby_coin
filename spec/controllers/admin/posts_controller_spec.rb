@@ -82,9 +82,12 @@ describe Admin::PostsController do
     let(:action) { :update }
     let(:new_title) { 'Updated Title' }
     let(:params) { { id: test_post.id, post: { title: new_title } } }
-    let(:test_post2) { create(:post, main_post: false) }
-    let(:params_status_true) { { id: test_post2.id, post: { main_post: 'active' } } }
-    let(:params_status_false) { { id: test_post2.id, post: { main_post: 'false' } } }
+    let(:second_post) { create(:post, main_post: false) }
+    let(:params_status_true_second_post) { { id: second_post.id, post: { main_post: 'active' } } }
+    let(:params_status_false_second_post) { { id: second_post.id, post: { main_post: 'inactive' } } }
+    let(:third_post) { create(:post, main_post: true) }
+    let(:params_status_true_third_post) { { id: third_post.id, post: { main_post: 'active' } } }
+    let(:params_status_false_third_post) { { id: third_post.id, post: { main_post: 'inactive' } } }
 
     context 'when admin is signed in' do
       before do
@@ -99,17 +102,31 @@ describe Admin::PostsController do
           expect(test_post.title).to eq(new_title)
         end
 
-        context 'with main-post:false' do
-          it 'change from false to true' do
-            get(action, params: params_status_true)
-            test_post2.reload
-            expect(test_post2.main_post).to be(true)
+        context 'when main-post is false' do
+          it 'changes from false to true' do
+            get(action, params: params_status_true_second_post)
+            second_post.reload
+            expect(second_post.main_post).to be(true)
           end
 
-          it 'dont change' do
-            get(action, params: params_status_false)
-            test_post2.reload
-            expect(test_post2.main_post).to be(false)
+          it 'doesnt change' do
+            get(action, params: params_status_false_second_post)
+            second_post.reload
+            expect(second_post.main_post).to be(false)
+          end
+        end
+
+        context 'when main-post is true' do
+          it 'changes from true to false' do
+            get(action, params: params_status_false_third_post)
+            third_post.reload
+            expect(third_post.main_post).to be(false)
+          end
+
+          it 'doesnt change' do
+            get(action, params: params_status_true_third_post)
+            third_post.reload
+            expect(third_post.main_post).to be(true)
           end
         end
       end
