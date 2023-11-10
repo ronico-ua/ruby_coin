@@ -1,3 +1,4 @@
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 @import 'bootstrap5-toggle/css/bootstrap5-toggle';
@@ -14,6 +15,13 @@
 @import 'admin.sass.scss';
 @import 'prism.sass.scss';
 @import 'statistic.sass.scss';
+
+$fa-font-path: "./webfonts";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+
 
 //@import 'tinymce/skins/content/dark/content';
 //@import 'tinymce/skins/content/writer/content';
@@ -148,3 +156,11 @@ input {
     border-style: solid;
   }
 }
+
+.text-xx-small { font-size: xx-small; }
+.text-x-small { font-size: x-small; }
+.text-small { font-size: small; }
+.text-medium { font-size: medium; }
+.text-large { font-size: large; }
+.text-x-large { font-size: x-large; }
+.text-xx-large { font-size: xx-large; }

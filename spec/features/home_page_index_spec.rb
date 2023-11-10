@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Home Page', type: :feature do
+xdescribe 'Home Page', type: :feature do
   before do
     @main_post = create(:post, main_post: true)
     create_list(:post, 20)

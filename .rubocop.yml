@@ -53,6 +53,18 @@ RSpec/MultipleExpectations:
 RSpec/Rails/InferredSpecType:
   Enabled: false
 
+Layout/HashAlignment:
+  Enabled: false
+
+Security/Eval:
+  Exclude:
+    - 'spec/services/posts/filter_spec.rb'
+    - 'spec/services/posts/search_spec.rb'
+
+RSpec/LetSetup:
+  Exclude:
+    - 'spec/services/posts/search_spec.rb'
+
 Rails/CreateTableWithTimestamps:
   Enabled: false
 

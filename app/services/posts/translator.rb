@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::Translator
+class Posts::Translator < BaseService
   attr_accessor :post, :params
 
   def initialize(post, params)
@@ -9,35 +9,43 @@ class Posts::Translator
   end
 
   def call
-    I18n.available_locales.each do |locale|
-      article = post.translations.find_by(locale:)
+    return false unless localization_valid?(params)
 
-      article.nil? ? create_post(locale) : update_post(article, locale)
+    I18n.available_locales.each do |locale|
+      article = post.post_translations.find_or_create_by(locale:)
+
+      update_post(article, locale)
     end
   end
 
   private
 
-  def create_post(locale)
-    post.translations.create(
-      title: params.dig('title_localizations', locale),
-      subtitle: params.dig('subtitle_localizations', locale),
-      description: params.dig('description_localizations', locale),
-      locale:
-    )
-  end
-
   def update_post(article, locale)
     if params.dig('title_localizations', locale).present?
-      article.update(title: params.dig('title_localizations', locale))
+      article.update!(title: params.dig('title_localizations', locale))
     end
 
     if params.dig('subtitle_localizations', locale).present?
       article.update(subtitle: params.dig('subtitle_localizations', locale))
     end
 
-    if params.dig('description_localizations', locale).present?  # rubocop:disable Style/GuardClause
+    if params.dig('description_localizations', locale).present? # rubocop:disable Style/GuardClause
       article.update(description: params.dig('description_localizations', locale))
     end
+  end
+
+  def localization_valid?(localization_params)
+    localization_params.each do |field, translations|
+      translations.each do |_key, value|
+        next if value.present?
+
+        fieldname = field.delete_suffix('_localizations')
+        message = I18n.t("activerecord.errors.models.post.attributes.#{fieldname}.translation_missing")
+
+        @post.errors.add(fieldname.to_sym, message:)
+      end
+    end
+
+    @post.errors.blank?
   end
 end

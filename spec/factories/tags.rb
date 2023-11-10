@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :tag do
-    title { 'Some Tag' }
+    title { Faker::Hipster.word }
   end
 end
