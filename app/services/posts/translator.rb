@@ -29,9 +29,11 @@ class Posts::Translator < BaseService
       article.update(subtitle: params.dig('subtitle_localizations', locale))
     end
 
-    if params.dig('description_localizations', locale).present? # rubocop:disable Style/GuardClause
+    if params.dig('description_localizations', locale).present?
       article.update(description: params.dig('description_localizations', locale))
     end
+
+    article.update(slug: article.title.to_s.parameterize)
   end
 
   def localization_valid?(localization_params)

@@ -65,5 +65,9 @@ RSpec/LetSetup:
   Exclude:
     - 'spec/services/posts/search_spec.rb'
 
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+
 Rails/CreateTableWithTimestamps:
   Enabled: false

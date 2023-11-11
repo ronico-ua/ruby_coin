@@ -22,8 +22,6 @@ module Admin
       authorize @post
 
       if @post.save && Posts::Translator.call(@post, localization_params)
-        @post.generate_slugs
-
         flash[:success] = t('.success')
         redirect_to admin_posts_path
       else
@@ -33,8 +31,6 @@ module Admin
 
     def update
       if @post.update(post_params) && Posts::Translator.call(@post, localization_params)
-        @post.generate_slugs
-
         respond_to do |format|
           format.html do
             flash[:success] = t('.success')

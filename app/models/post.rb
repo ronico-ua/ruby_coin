@@ -41,13 +41,6 @@ class Post < ApplicationRecord
     Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(3)
   end
 
-  def generate_slugs
-    post_translations.each do |localized_post|
-      localized_post.update!(slug: normalize_friendly_id(I18n.transliterate(localized_post.title)))
-      localized_post.save!
-    end
-  end
-
   private
 
   def deactivate_previous_main_post
