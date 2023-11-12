@@ -15,12 +15,14 @@ Rails.application.routes.draw do
     get '/post/:id', to: 'home#show', as: 'post'
     get 'set_locale', to: 'application#set_locale'
 
-    post 'translate', to: 'admin/posts#translate'
-
     namespace :admin do
       root 'posts#index'
       get 'statistics/index', to: 'statistics#index'
-      resources :posts
+
+      resources :posts do
+        post 'translate', on: :collection
+      end
+
       resources :tags
     end
 
