@@ -18,7 +18,11 @@ class ChatgptService
   end
 
   def call
-    prompt = "Traslate this into English: #{message}"
+    prompt = 'Translate it into English from Ukrainian with saving html structure and return in text format.  ' \
+             "All code blocks you must put inside tag <pre class='language-ruby' " \
+             "contenteditable='false' data-mce-highlighted='true' data-mce-selected='1'>Code block here</pre> " \
+             "and also return as text: #{message}"
+
     body = {
       model:,
       messages: [{ role: 'user', content: prompt }]
