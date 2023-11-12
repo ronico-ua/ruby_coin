@@ -2,7 +2,7 @@
 
 module Admin
   class PostsController < ApplicationController
-    before_action :authenticate_user!, :authorize_policy
+    before_action :authenticate_user!, :authorize_policy, except: :translate
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit update]
     before_action :normalize_main_post_param, only: %i[create update]
@@ -57,6 +57,10 @@ module Admin
 
         format.turbo_stream { flash.now[:success] = t('.success') }
       end
+    end
+
+    def translate
+      render json: { data: ChatgptService.call(params[:input_data]) }
     end
 
     private

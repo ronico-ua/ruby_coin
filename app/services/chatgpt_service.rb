@@ -18,9 +18,10 @@ class ChatgptService
   end
 
   def call
+    prompt = "Traslate this into English: #{message}"
     body = {
       model:,
-      messages: [{ role: 'user', content: message }]
+      messages: [{ role: 'user', content: prompt }]
     }
     response = HTTParty.post(api_url, body: body.to_json, headers: options[:headers], timeout: 10)
     raise response['error']['message'] unless response.code == 200
