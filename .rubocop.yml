@@ -69,5 +69,9 @@ Rails/Output:
   Exclude:
     - 'db/seeds.rb'
 
+Style/RedundantFetchBlock:
+  Exclude:
+    - 'app/services/chatgpt_service.rb'
+
 Rails/CreateTableWithTimestamps:
   Enabled: false
