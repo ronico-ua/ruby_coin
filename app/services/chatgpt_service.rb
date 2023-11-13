@@ -10,7 +10,7 @@ class ChatgptService
 
   attr_reader :api_url, :options, :model, :message, :locale
 
-  def initialize(params, model = 'gpt-3.5-turbo')
+  def initialize(params, model = 'gpt-3.5-turbo-16k')
     @options = {
       headers: {
         'Content-Type' => 'application/json',
@@ -26,6 +26,29 @@ class ChatgptService
   def call
     choose_translation_language(locale)
 
+    if message.length > 16_384
+      sections = separated_content(message)
+      translated_responses = Concurrent::Hash.new
+
+      threads = sections.each_with_index.map do |section, index|
+        Thread.new do
+          translated_responses[index] = translate(section)
+        end
+      end
+
+      threads.each(&:join)
+
+      translated_responses = translated_responses.sort.to_h
+      joined_response = translated_responses.values.join
+
+    else
+      joined_response = translate(message)
+    end
+
+    joined_response
+  end
+
+  def translate(section)
     body = {
       model:,
       messages: [
@@ -36,7 +59,7 @@ class ChatgptService
         },
         {
           role: 'user',
-          content: message
+          content: section
         },
         {
           role: 'assistant',
@@ -53,7 +76,7 @@ class ChatgptService
   end
 
   class << self
-    def call(message, model = 'gpt-3.5-turbo')
+    def call(message, model = 'gpt-3.5-turbo-16k')
       new(message, model).call
     end
   end
@@ -64,5 +87,37 @@ class ChatgptService
     @input_locale = LANGUAGE[locale.to_sym]
 
     @output_locale = locale == 'en' ? LANGUAGE[:uk] : LANGUAGE[:en]
+  end
+
+  def separated_content(message)
+    doc = Nokogiri::HTML(message)
+
+    sections = []
+
+    current_section = ''
+
+    doc.css('h1, h2, h3, h4, h5, h6').each do |heading|
+      section_content = heading.to_html
+      current_node = heading
+
+      while (current_node = current_node.next_element)
+        break if /h[1-6]/i.match?(current_node.name)
+
+        section_content += current_node.to_html
+
+        # Check if adding the current content would exceed the maximum size
+        next unless section_content.length >= 16_384
+
+        sections << current_section
+        current_section = section_content
+        break
+      end
+
+      current_section += section_content
+    end
+
+    sections << current_section unless current_section.empty?
+
+    sections
   end
 end

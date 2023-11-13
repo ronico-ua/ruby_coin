@@ -488,6 +488,7 @@ DEPENDENCIES
   httparty
   jsbundling-rails
   letter_opener
+  nokogiri
   overcommit (~> 0.60.0)
   pagy
   pg (~> 1.5.3)
