@@ -186,6 +186,7 @@ uk:
           disabled: Неактивний
         main_post: Головний допис
         translation_notice: "* якщо перекладу не буде, публікація не відображатиметься в іншомовній версії сайту"
+        translation_button: Перекласти
       create:
         success: Допис успішно створено
       update:

@@ -60,10 +60,14 @@ module Admin
     end
 
     def translate
-      render json: { data: ChatgptService.call(params[:input_data]) }
+      render json: { data: ChatgptService.call(ai_translation_params) }
     end
 
     private
+
+    def ai_translation_params
+      params.permit(:input_data, :locale)
+    end
 
     def post_params
       params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, tag_ids: [])

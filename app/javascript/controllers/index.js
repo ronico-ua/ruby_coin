@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import AiTranslationController from "./ai_translation_controller"
-application.register("ai-translation", AiTranslationController)
+import AitranslationController from "./aitranslation_controller"
+application.register("aitranslation", AitranslationController)
 
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
