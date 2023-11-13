@@ -1,31 +1,36 @@
-.container-wrapper
-  .container_first
-    h1 Views Statistics
-    table
-      tr
-        th Period
-        th Views
-      tr
-        td All Time
-        td #{@total_views}
-      tr
-        td Daily
-        td #{@daily_views}
-      tr
-        td Monthly
-        td #{@monthly_views}
-      tr
-        td Yearly
-        td #{@yearly_views}
+.admin-panel
+  .admin-panel__content
+    .admin-panel__inner
+      = render 'admin/shared/admin_left_panel'
+      .admin-panel__right
+        .container-wrapper
+          .container_first
+            h3 Views Statistics
+            table
+              tr
+                th Period
+                th Views
+              tr
+                td All Time
+                td #{@total_views}
+              tr
+                td Daily
+                td #{@daily_views}
+              tr
+                td Monthly
+                td #{@monthly_views}
+              tr
+                td Yearly
+                td #{@yearly_views}
 
-  .container_second
-    h1 Post Views Statistics
-    table
-      tr
-        th Title
-        th Views
-      - @post_views.each do |properties, view_count|
-        tr
-          td
-            = link_to properties['title'], post_path(properties['post_id'])
-          td= view_count
+          .container_second
+            h3 Post Views
+            table
+              tr
+                th Title
+                th Views
+              - @post_views.each do |properties, view_count|
+                tr
+                  td
+                    = link_to properties['title'], post_path(properties['slug'])
+                  td= view_count

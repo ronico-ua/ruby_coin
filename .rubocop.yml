@@ -71,3 +71,6 @@ Rails/Output:
 
 Rails/CreateTableWithTimestamps:
   Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false

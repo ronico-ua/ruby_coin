@@ -9,10 +9,14 @@ module Ahoy
     private
 
     def first_visit_or_more_than_24_hours
-      return true if last_visit.nil?
+      return if last_visit.nil?
 
       last_visit_time = Time.zone.at(last_visit)
-      24.hours.ago >= last_visit_time
+      time_ago = 24.hours.ago
+
+      return if last_visit_time < time_ago
+
+      errors.add(:base, 'Visit not tracked - last visit within 24 hours')
     end
   end
 end

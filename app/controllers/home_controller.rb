@@ -14,9 +14,8 @@ class HomeController < ApplicationController
   def show
     @post = resourse
     post_tags = @post.tags.limit(3)
-
     validator = Ahoy::VisitsValidator.new(last_visit: request.session[:last_visit])
-    Ahoy::EventProcess.call(ahoy, @post, request, request.remote_ip) if validator.valid?
+    Ahoy::EventProcess.call(ahoy, @post, request) if validator.valid?
     @similar_posts = Post.where.not(id: @post.id).includes(:tags)
                          .where(tags: { title: post_tags.pluck(:title) }).limit(3)
   end

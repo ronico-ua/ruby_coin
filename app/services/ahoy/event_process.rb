@@ -2,11 +2,10 @@
 
 module Ahoy
   class EventProcess < BaseService
-    def initialize(ahoy, post, request, remote_ip)
+    def initialize(ahoy, post, request)
       @ahoy = ahoy
       @post = post
       @request = request
-      @remote_ip = remote_ip
     end
 
     def call
@@ -17,7 +16,7 @@ module Ahoy
 
     def process_ahoy
       @ahoy.visit
-      @ahoy.track 'Viewed Post', title: @post.title, post_id: @post.id
+      @ahoy.track 'Viewed Post', title: @post.title, post_id: @post.id, slug: @post.slug
       update_last_visit_timestamp
     end
 

@@ -7,6 +7,9 @@
     align-items: center;
     justify-content: center;
   }
+  .container_second {
+    width: 450px;
+  }
   table {
     font-size: 18px;
     border-collapse: collapse;
@@ -18,7 +21,8 @@
     padding: 10px;
     text-align: center;
   }
-  h1 {
+  h3 {
     margin-top: 20px;
+    text-align: center;
   }
 }
