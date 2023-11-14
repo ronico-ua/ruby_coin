@@ -2,7 +2,7 @@
 
 module Admin
   class PostsController < ApplicationController
-    before_action :authenticate_user!, :authorize_policy
+    before_action :authenticate_user!, :authorize_policy, except: :translate
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit update]
     before_action :normalize_main_post_param, only: %i[create update]
@@ -59,7 +59,15 @@ module Admin
       end
     end
 
+    def translate
+      render json: { data: ChatgptService.call(ai_translation_params) }
+    end
+
     private
+
+    def ai_translation_params
+      params.permit(:input_data, :locale)
+    end
 
     def post_params
       params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, tag_ids: [])

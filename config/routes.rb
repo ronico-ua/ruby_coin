@@ -18,7 +18,11 @@ Rails.application.routes.draw do
     namespace :admin do
       root 'posts#index'
       get 'statistics/index', to: 'statistics#index'
-      resources :posts
+
+      resources :posts do
+        post 'translate', on: :collection
+      end
+
       resources :tags
     end
 

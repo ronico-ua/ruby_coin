@@ -1,4 +1,4 @@
-= form_with model: [:admin, post], data: { turbo: :false } do |f|
+= form_with model: [:admin, post] do |f|
   .admin-form__content
     = render 'shared/errors', object: post
     .row
@@ -38,18 +38,21 @@
         .mx-2.d-inline
           = t('.placeholders.select_image')
       = f.file_field :photo, id: 'add-img', accept: "image/*", class: "btn-main"
-    .row
-      .col
-        = f.label :description, t('.description_label'), class: 'standart-label'
-        = f.text_area :description, class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60, placeholder: t('.placeholders.description')
 
-      - I18n.available_locales.each do |locale|
-        - next if locale == I18n.locale
+    .row data-controller="aitranslation" data-aitranslation-locale= I18n.locale
+      .d-flex
+        .col.me-5 id="basic-description"
+          = f.label :description, t('.description_label'), class: 'standart-label'
+          = f.text_area :description, class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60, placeholder: t('.placeholders.description'), data: { target: 'aitranslation.inputContainer' }
 
-        .col
-          = f.label :description_localizations, "#{t(".description_label")} (#{t(locale).downcase})", class: 'standart-label', for: "description_#{locale}"
-          = f.text_area "description_localizations][#{locale}", class: "tinymce standart-input descr", id: 'default-editor', rows: 20, cols: 60, data: { locale: locale.to_s }, value: current_data(@post, 'description', locale), placeholder: t('.placeholders.description')
+        - I18n.available_locales.each do |locale|
+          - next if locale == I18n.locale
 
+          .col id="localized_description"
+            = f.label :description_localizations, "#{t(".description_label")} (#{t(locale).downcase})", class: 'standart-label', for: "description_#{locale}"
+            = f.text_area "description_localizations][#{locale}", class: "tinymce standart-input descr", id: "default-editor", rows: 20, cols: 60, data: { locale: locale.to_s }, value: current_data(@post, 'description', locale), placeholder: t('.placeholders.description')
+      .d-flex.justify-content-center.mt-2
+        = link_to t('.translation_button'), "javascript:void(0)", data: { action: 'click->aitranslation#fetchData' }, id: 'translation-button', class: 'btn main-btn'
     .form-inner
       .group
         = f.label :tags, t('.tag_label'), class: 'standart-label'

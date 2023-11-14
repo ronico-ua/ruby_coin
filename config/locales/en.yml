@@ -183,6 +183,7 @@ en:
           label: Status
           active: Active
           disabled: Disabled
+        translation_button: Translate
         main_post: Main post
         translation_notice: "* if there won't be translation post will not displayed in another language version of site"
       create:
