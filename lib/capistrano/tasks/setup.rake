@@ -16,6 +16,9 @@ namespace :deploy do
   namespace :check do
     before :linked_files, :set_master_key do
       on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/credentials.yml.enc ]")
+          upload! 'config/credentials.yml.enc', "#{shared_path}/config/credentials.yml.enc"
+        end
         unless test("[ -f #{shared_path}/config/master.key ]")
           upload! 'config/master.key', "#{shared_path}/config/master.key"
         end
