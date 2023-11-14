@@ -21,7 +21,7 @@ module Ahoy
     end
 
     def update_last_visit_timestamp
-      @request.session[:last_visit] = Time.zone.now.to_i
+      @request.session["last_visit_#{@post.id}"] = Time.zone.now.to_i
     end
   end
 end
