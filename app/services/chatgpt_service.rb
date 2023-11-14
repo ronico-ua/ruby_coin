@@ -26,6 +26,8 @@ class ChatgptService
   def call
     choose_translation_language(locale)
 
+    # gpt-3.5-turbo-16k model can take only 16385 tokens
+
     if message.length > 16_384
       sections = separated_content(message)
       translated_responses = Concurrent::Hash.new
@@ -92,32 +94,42 @@ class ChatgptService
   def separated_content(message)
     doc = Nokogiri::HTML(message)
 
-    sections = []
+    sections = divide_by_tags(doc)
 
+    unite_by_tokens(sections)
+  end
+
+  def divide_by_tags(doc)
+    sections = []
     current_section = ''
 
     doc.css('h1, h2, h3, h4, h5, h6').each do |heading|
-      section_content = heading.to_html
-      current_node = heading
+      part_content = heading.xpath('./following-sibling::*').take_while { |sibling| sibling.name !~ /^h[1-3]$/ }
 
-      while (current_node = current_node.next_element)
-        break if /h[1-6]/i.match?(current_node.name)
-
-        section_content += current_node.to_html
-
-        # Check if adding the current content would exceed the maximum size
-        next unless section_content.length >= 16_384
-
-        sections << current_section
-        current_section = section_content
-        break
-      end
-
-      current_section += section_content
+      content = heading.to_html + part_content.map(&:to_html).join
+      sections << content
     end
 
     sections << current_section unless current_section.empty?
 
     sections
+  end
+
+  def unite_by_tokens(sections)
+    results = []
+    message = ''
+
+    sections.each do |section|
+      if message.length + section.length <= 16_384
+        message += section
+      else
+        results << message
+        message = section
+      end
+    end
+
+    results << message if message.present?
+
+    results
   end
 end
