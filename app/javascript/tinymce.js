@@ -46,36 +46,22 @@ document.addEventListener("turbo:frame-render", rerender)
 document.addEventListener("turbo:render", rerender)
 
 const adjustImageWidth = function() {
-  console.log('Function adjustImageWidth is called.'); 
   const gemContent = document.querySelector('.post-show__content');
   if (gemContent) {
     const img = gemContent.querySelector('img');
-    console.log('Gem Content:', gemContent); 
-    console.log('Image:', img); 
     if (img) {
       const imgWidth = img.clientWidth;
       const screenWidth = window.innerWidth;
-
-      console.log('Image Width:', imgWidth); 
-      console.log('Screen Width:', screenWidth); 
-
       if (screenWidth < imgWidth) {
         img.style.width = '100%';
-        console.log('Image width adjusted to 100%.'); 
       }
     }
   }
 };
 
 window.addEventListener('resize', function () {
-  console.log('Resize event is triggered.');
   adjustImageWidth();
 });
 window.addEventListener('DOMContentLoaded', function () {
-  console.log('DOMContentLoaded event is triggered.');
-  adjustImageWidth();
-});
-window.addEventListener('load', function () {
-  console.log('Load event is triggered.');
   adjustImageWidth();
 });
