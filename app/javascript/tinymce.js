@@ -45,13 +45,13 @@ document.addEventListener("turbo:load", rerender)
 document.addEventListener("turbo:frame-render", rerender)
 document.addEventListener("turbo:render", rerender)
 
-const adjustImageWidth = function() {
-  const gemContent = document.querySelector('.post-show__content');
+let adjustImageWidth = function() {
+  let gemContent = document.querySelector('.post-show__content');
   if (gemContent) {
-    const img = gemContent.querySelector('img');
+    let img = gemContent.querySelector('img');
     if (img) {
-      const imgWidth = img.clientWidth;
-      const screenWidth = window.innerWidth;
+      let imgWidth = img.clientWidth;
+      let screenWidth = window.innerWidth;
       if (screenWidth < imgWidth) {
         img.style.width = '100%';
       }
