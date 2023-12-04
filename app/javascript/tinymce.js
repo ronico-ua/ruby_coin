@@ -28,16 +28,17 @@ const rerender = function() {
     ],
     plugins: [
       'codesample', 'autolink', 'importcss', 'lists', 'link', 'image', 'anchor', 'searchreplace', 'autoresize',
-      'autosave', 'media', 'pagebreak'
+      'autosave', 'media', 'pagebreak', 'nonbreaking'
     ],
     // menubar: 'insert',
-    toolbar: 'codesample | casechange blocks | bold italic | alignleft aligncenter alignjustify' +
+    toolbar: 'codesample nonbreaking | casechange blocks | bold italic | alignleft aligncenter alignjustify' +
       '| bullist numlist checklist | removeformat | restoredraft',
     content_css: false,
     // skin: false
     skin: "oxide-dark",
     autoresize_bottom_margin: 50,
-    max_height: 700
+    max_height: 700,
+    nonbreaking_force_tab: true
   });
 }
 
@@ -45,23 +46,23 @@ document.addEventListener("turbo:load", rerender)
 document.addEventListener("turbo:frame-render", rerender)
 document.addEventListener("turbo:render", rerender)
 
-let adjustImageWidth = function() {
-  let gemContent = document.querySelector('.post-show__content');
-  if (gemContent) {
-    let img = gemContent.querySelector('img');
-    if (img) {
-      let imgWidth = img.clientWidth;
-      let screenWidth = window.innerWidth;
-      if (screenWidth < imgWidth) {
-        img.style.width = '100%';
-      }
-    }
-  }
-};
-
-window.addEventListener('resize', function () {
-  adjustImageWidth();
-});
-window.addEventListener('DOMContentLoaded', function () {
-  adjustImageWidth();
-});
+// let adjustImageWidth = function() {
+//   let gemContent = document.querySelector('.post-show__content');
+//   if (gemContent) {
+//     let img = gemContent.querySelector('img');
+//     if (img) {
+//       let imgWidth = img.clientWidth;
+//       let screenWidth = window.innerWidth;
+//       if (screenWidth < imgWidth) {
+//         img.style.width = '100%';
+//       }
+//     }
+//   }
+// };
+//
+// window.addEventListener('resize', function () {
+//   adjustImageWidth();
+// });
+// window.addEventListener('DOMContentLoaded', function () {
+//   adjustImageWidth();
+// });
