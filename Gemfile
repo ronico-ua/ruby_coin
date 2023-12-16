@@ -19,7 +19,7 @@ gem 'hotwire-rails'
 gem 'httparty'
 gem 'jsbundling-rails'
 gem 'nokogiri'
-gem 'overcommit', '~> 0.60.0'
+gem 'overcommit', '~> 0.61.0'
 gem 'pagy'
 gem 'pg', '~> 1.5.3'
 gem 'pg_search'
@@ -41,14 +41,14 @@ group :development, :test do
   gem 'bundler-leak', '~> 0.3.0'
   gem 'dotenv-rails', '~> 2.8.1'
   gem 'faker'
-  gem 'fasterer', '~> 0.10.0'
+  gem 'fasterer', '~> 0.11.0'
   gem 'letter_opener'
   gem 'pry'
   gem 'rspec-rails'
 end
 
 group :development do
-  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'factory_bot_rails', '~> 6.4.2'
   gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'rubocop-faker', require: false
