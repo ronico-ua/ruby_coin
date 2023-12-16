@@ -1,23 +1,23 @@
 {
   "name": "ruby_coin",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@fortawesome/fontawesome-free": "^6.5.1",
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^7.3.0",
+    "@hotwired/turbo-rails": "^8.0.0-beta.1",
     "@popperjs/core": "^2.11.8",
-    "@rails/activestorage": "^7.1.1",
+    "@rails/activestorage": "^7.1.2",
     "bootstrap": "^5.3.2",
-    "bootstrap-icons": "^1.11.1",
+    "bootstrap-icons": "^1.11.2",
     "bootstrap5-toggle": "^5.0.6",
-    "esbuild": "^0.19.5",
+    "esbuild": "^0.19.9",
     "jquery": "^3.7.1",
-    "sass": "^1.69.4",
-    "tinymce": "^6.7.0",
-    "tom-select": "^2.2.2"
+    "sass": "^1.69.5",
+    "tinymce": "^6.8.2",
+    "tom-select": "^2.3.1"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
-  "packageManager": "yarn@3.6.0"
+  "packageManager": "yarn@4.0.2"
 }
