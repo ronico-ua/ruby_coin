@@ -38,7 +38,7 @@ class Posts::Translator < BaseService
 
   def localization_valid?(localization_params)
     localization_params.each do |field, translations|
-      translations.each do |_key, value|
+      translations.each_value do |value|
         next if value.present?
 
         fieldname = field.delete_suffix('_localizations')
