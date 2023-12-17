@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# config valid for current version and patch releases of Capistrano
 lock '~> 3.18.0'
 
 # Change these
@@ -42,31 +41,6 @@ set :assets_manifests, lambda {
 
 append :linked_files, *%w[config/master.key config/database.yml .env]
 set :linked_dirs, %w[tmp/pids tmp/sockets tmp/cache vendor/bundle public/uploads public/system node_modules]
-
-# namespace :yarn do
-#   task :install do
-#     on release_roles(fetch(:assets_roles)) do
-#       within release_path do
-#         with rails_env: fetch(:rails_env) do
-#           execute :rake, "yarn:install"
-#         end
-#       end
-#     end
-#   end
-# end
-# after 'bundler:install', 'yarn:install'
-
-# before "deploy:assets:precompile", "deploy:yarn_install"
-# namespace :deploy do
-#   desc "Run rake yarn install"
-#   task :yarn_install do
-#     on roles(:web) do
-#       within release_path do
-#         execute("cd #{release_path} && yarn set version berry")
-#       end
-#     end
-#   end
-# end
 
 after  'deploy:finishing',    :compile_assets
 after  'deploy:finishing',    :cleanup
