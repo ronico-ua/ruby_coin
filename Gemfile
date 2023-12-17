@@ -45,12 +45,12 @@ group :development, :test do
   gem 'letter_opener'
   gem 'pry'
   gem 'rspec-rails'
+  gem 'rubocop', require: false
 end
 
 group :development do
   gem 'factory_bot_rails', '~> 6.4.2'
   gem 'pry-rails'
-  gem 'rubocop', require: false
   gem 'rubocop-faker', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
