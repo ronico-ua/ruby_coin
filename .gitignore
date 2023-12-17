@@ -37,7 +37,6 @@
 /node_modules
 .idea
 .yarn/cache
-.yarn/install-state.gz
 .env
 
 /config/database.yml
