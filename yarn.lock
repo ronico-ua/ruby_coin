@@ -173,22 +173,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/turbo-rails@npm:^8.0.0-beta.1":
-  version: 8.0.0-beta.1
-  resolution: "@hotwired/turbo-rails@npm:8.0.0-beta.1"
+"@hotwired/turbo-rails@npm:7.3.0":
+  version: 7.3.0
+  resolution: "@hotwired/turbo-rails@npm:7.3.0"
   dependencies:
-    "@hotwired/turbo": ^8.0.0-beta.1
+    "@hotwired/turbo": ^7.3.0
     "@rails/actioncable": ^7.0
-  checksum: 0516bd48cd13505615e91254a38eb9f10b8609be4bab81fa515c4e5974810c416370757104a8e90a00fc98340b4a090f02f74d545f33e81e144fdeef8ea88fb0
+  checksum: 14e29fc7abcf966b652aaa5494398bd4a18559843d57fd5f6db785b3e1d2541c09fcbb979ccbf1dd8ab50d362558ac6bf52a97ce5dc2bbf503059793058b9e97
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^8.0.0-beta.1":
-  version: 8.0.0-beta.1
-  resolution: "@hotwired/turbo@npm:8.0.0-beta.1"
-  dependencies:
-    idiomorph: "git+https://github.com/basecamp/idiomorph.git#rollout-build"
-  checksum: a9f4dbbad26ee0b928201f679a0f77fd776033096f9fd9c566f85b87f5f00b16afb676148d118eb0de43453472dad8c68c124d9ad61dc5ca460731fd6fecfa57
+"@hotwired/turbo@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "@hotwired/turbo@npm:7.3.0"
+  checksum: ccc03c980e4b4636e48ea2132c7d28be1be4f4e6123f63905fbf871e7647369b5c6ce53301443b218d7abf68fa4897eaf614254688108ed6ae303c5040241a97
   languageName: node
   linkType: hard
 
@@ -876,13 +874,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"idiomorph@git+https://github.com/basecamp/idiomorph.git#rollout-build":
-  version: 0.0.8
-  resolution: "idiomorph@https://github.com/basecamp/idiomorph.git#commit=e906820368e4c9c52489a3336b8c3826b1bf6de5"
-  checksum: b4fb7ea91adb20f988923e26420e0cb83db351e10c167002ae76914bdfa9ff2de9b50801a5af08e56993c7735b7c831365424a723c4cf61d11584e9ded5e95ad
-  languageName: node
-  linkType: hard
-
 "immutable@npm:^4.0.0":
   version: 4.3.0
   resolution: "immutable@npm:4.3.0"
@@ -1340,7 +1331,7 @@ __metadata:
   dependencies:
     "@fortawesome/fontawesome-free": ^6.5.1
     "@hotwired/stimulus": ^3.2.2
-    "@hotwired/turbo-rails": ^8.0.0-beta.1
+    "@hotwired/turbo-rails": 7.3.0
     "@popperjs/core": ^2.11.8
     "@rails/activestorage": ^7.1.2
     bootstrap: ^5.3.2
