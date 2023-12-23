@@ -10,8 +10,8 @@ application.register("aitranslation", AitranslationController)
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import TinymceController from "./tinymce_controller"
+application.register("tinymce", TinymceController)
 
-import HighlightController from "./highlight_controller"
-application.register("highlight", HighlightController)
+import TomselectController from "./tomselect_controller"
+application.register("tomselect", TomselectController)

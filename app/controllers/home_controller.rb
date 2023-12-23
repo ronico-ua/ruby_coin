@@ -13,11 +13,15 @@ class HomeController < ApplicationController
 
   def show
     @post = resourse
+    return redirect_to root_path, alert: t('home_controller.show.errors.not_found') unless @post
+
     post_tags = @post.tags.limit(3)
     validator = Ahoy::VisitsValidator.new(last_visit_for_post: request.session["last_visit_#{@post.id}"])
     Ahoy::EventProcess.call(ahoy, @post, request) if validator.valid?
-    @similar_posts = Post.where.not(id: @post.id).includes(:tags)
-                         .where(tags: { title: post_tags.pluck(:title) }).limit(3)
+    @similar_posts = Post.where.not(id: @post.id)
+                         .includes(:tags)
+                         .where(tags: { title: post_tags.pluck(:title) })
+                         .limit(3)
   end
 
   def search
@@ -39,6 +43,6 @@ class HomeController < ApplicationController
   end
 
   def resourse
-    PostTranslation.find_by(slug: params[:id]).post
+    PostTranslation.find_by(slug: params[:id])&.post
   end
 end

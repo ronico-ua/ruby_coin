@@ -253,6 +253,11 @@ en:
     faq: FAQ
   application_controller:
     alert: You are not authorized to perform this action.
+  
+  home_controller:
+    show:
+      errors:
+        not_found: Post not found
 
   errors:
     messages:
