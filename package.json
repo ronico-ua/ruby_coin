@@ -10,7 +10,6 @@
     "bootstrap-icons": "^1.11.2",
     "bootstrap5-toggle": "^5.0.6",
     "esbuild": "^0.19.9",
-    "jquery": "^3.7.1",
     "sass": "^1.69.5",
     "tinymce": "^6.8.2",
     "tom-select": "^2.3.1"

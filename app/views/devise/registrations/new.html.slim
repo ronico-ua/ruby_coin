@@ -17,20 +17,20 @@
           - if @minimum_password_length
             .ms-1.d-inline
               = t(".password_length", length: @minimum_password_length)
-        .input
+        .input[data-controller="password-visibility"]
           .badge
             = image_tag "pass-icon.svg"
-          = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
-          #show-hide1.show__password-wrapper.active
+          = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input', data: { password_visibility_target: "input" }
+          .show__password-wrapper.active[data-action="click->password-visibility#toggleVisibility"]
             .eye-icon
       .group
         label.standart-label
           = f.label :password_confirmation
-        .input
+        .input[data-controller="password-visibility"]
           .badge
             = image_tag "pass-icon.svg"
-          = f.password_field :password_confirmation, label: false, autocomplete: "current-password", class: 'standart-input'
-          #show-hide2.show__password-wrapper.active
+          = f.password_field :password_confirmation, label: false, autocomplete: "current-password", class: 'standart-input', data: { password_visibility_target: "input" }
+          .show__password-wrapper.active[data-action="click->password-visibility#toggleVisibility"]
             .eye-icon
       .actions
         = f.submit t("buttons.sign_up"), class: 'main-btn not_filled register'

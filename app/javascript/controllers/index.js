@@ -10,6 +10,12 @@ application.register("aitranslation", AitranslationController)
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
+import ImagePreviewController from "./image_preview_controller"
+application.register("image-preview", ImagePreviewController)
+
+import PasswordVisibilityController from "./password_visibility_controller"
+application.register("password-visibility", PasswordVisibilityController)
+
 import TinymceController from "./tinymce_controller"
 application.register("tinymce", TinymceController)
 

@@ -14,16 +14,16 @@
       .group
         label.standart-label
           = f.label :password
-        .input
+        .input[data-controller="password-visibility"]
           .badge
             = image_tag "pass-icon.svg" 
-          = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input'
-          #show-hide.show__password-wrapper.active
+          = f.password_field :password, label: false, autocomplete: "current-password", class: 'standart-input', data: { password_visibility_target: "input" }
+          .show__password-wrapper.active[data-action="click->password-visibility#toggleVisibility"]
             .eye-icon
       - if devise_mapping.rememberable?
         .remember_me
           .left
-            = f.check_box :remember_me
+            = f.check_box :remember_me, data: { toggle: :toggle, onlabel: t('buttons.yes_text'), offlabel: t('buttons.no_text'), onstyle: 'success', offstyle: 'danger' } 
             .ms-2
               = t("buttons.remember_me")
           .right
