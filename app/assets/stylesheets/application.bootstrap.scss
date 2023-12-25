@@ -22,10 +22,6 @@ $fa-font-path: "./webfonts";
 @import "@fortawesome/fontawesome-free/scss/solid";
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
 
-
-@import 'tinymce/skins/ui/oxide-dark/skin';
-@import 'tinymce/skins/ui/oxide-dark/content';
-
 @mixin colorgradint {
   background: linear-gradient(94.22deg, #5174FF 0%, #D251FF 100%);
   -webkit-background-clip: text;
@@ -95,6 +91,7 @@ input {
 
 .main-btn {
   cursor: pointer;
+  width: -moz-fit-content;
   width: fit-content;
   background: initial;
   padding: 13px 29px;

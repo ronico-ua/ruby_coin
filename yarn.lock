@@ -1323,7 +1323,6 @@ __metadata:
     bootstrap5-toggle: "npm:^5.0.6"
     esbuild: "npm:^0.19.9"
     sass: "npm:^1.69.5"
-    tinymce: "npm:^6.8.2"
     tom-select: "npm:^2.3.1"
   languageName: unknown
   linkType: soft
@@ -1514,13 +1513,6 @@ __metadata:
     mkdirp: "npm:^1.0.3"
     yallist: "npm:^4.0.0"
   checksum: 4848b92da8581e64ce4d8a760b47468dd9d212a4612846d8dd75b5c224a42c66ed5bcf8cfa9e9cd2eb64ebe1351413fb3eac93324a4eee536f0941beefa1f2eb
-  languageName: node
-  linkType: hard
-
-"tinymce@npm:^6.8.2":
-  version: 6.8.2
-  resolution: "tinymce@npm:6.8.2"
-  checksum: e90deaaf427cd20561ff2f7243b9fea9afc6c9a98e95671f3d15ad144760c2be1c9b0aa293cb06c95ad2cff468428e83454aa9a2fff264974b97e7c6773f0ac7
   languageName: node
   linkType: hard
 

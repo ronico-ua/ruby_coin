@@ -45,7 +45,8 @@
           = f.label :description, t('.description_label'), class: 'standart-label'
           = f.text_area :description, class: "tinymce standart-input descr", 
                   id: 'default-editor', rows: 20, cols: 60, placeholder: t('.placeholders.description'),
-                          data: { controller: :tinymce, aitranslation_target: 'inputContainer' }
+                          data: { aitranslation_target: 'inputContainer' }
+          = tinymce
 
         - I18n.available_locales.each do |locale|
           - next if locale == I18n.locale
@@ -54,8 +55,9 @@
             = f.label :description_localizations, "#{t(".description_label")} (#{t(locale).downcase})", class: 'standart-label', for: "description_#{locale}"
             = f.text_area "description_localizations][#{locale}", class: "tinymce standart-input descr", 
                     id: "default-editor", rows: 20, cols: 60,
-                            data: { locale: locale.to_s, controller: :tinymce },
+                            data: { locale: locale.to_s },
                                     value: current_data(@post, 'description', locale), placeholder: t('.placeholders.description')
+            = tinymce
       .d-flex.justify-content-center.mt-2
         = link_to t('.translation_button'), "javascript:void(0)", data: { action: 'click->aitranslation#fetchData' }, id: 'translation-button', class: 'btn main-btn'
     .form-inner
