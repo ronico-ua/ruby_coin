@@ -1,5 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
-import tinymce from 'tinymce'
+import 'tinymce/tinymce.min.js'
+import 'tinymce/models/dom/model'
+import 'tinymce/icons/default/icons'
+import 'tinymce/themes/silver/theme'
+import 'tinymce/skins/ui/oxide-dark/skin'
+import 'tinymce/skins/ui/oxide-dark/content'
+import 'tinymce/plugins/codesample/plugin'
+import 'tinymce/plugins/autolink/plugin'
+import 'tinymce/plugins/importcss/plugin'
+import 'tinymce/plugins/lists/plugin'
+import 'tinymce/plugins/link/plugin'
+import 'tinymce/plugins/image/plugin'
+import 'tinymce/plugins/anchor/plugin'
+import 'tinymce/plugins/searchreplace/plugin'
+import 'tinymce/plugins/autoresize/plugin'
+import 'tinymce/plugins/autosave/plugin'
+import 'tinymce/plugins/media/plugin'
+import 'tinymce/plugins/pagebreak/plugin'
+import 'tinymce/plugins/nonbreaking'
+
 
 // Connects to data-controller="tinymce"
 export default class extends Controller {
@@ -34,8 +53,7 @@ export default class extends Controller {
       plugins: this.plugins,
       toolbar: this.toolbar, // menubar: 'insert',
       content_css: false,
-      // skin: false
-      skin: "oxide-dark",
+      skin: false,
       autoresize_bottom_margin: 50,
       max_height: 700,
       nonbreaking_force_tab: true

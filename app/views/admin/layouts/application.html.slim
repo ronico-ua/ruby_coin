@@ -9,7 +9,6 @@ html
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload", media: 'all'
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-    script[src="https://cdn.tiny.cloud/1/0zguq65j15d4mdge1gzlbac3wsfnmrhet3rk8njymgaha7v2/tinymce/6/tinymce.min.js" referrerpolicy="origin"]
   - css_classes = [controller_path.gsub('/', '-'), action_name].map { |s| s.gsub('_', '-') }
   body class=css_classes data-lang="#{I18n.locale}"
     #flash

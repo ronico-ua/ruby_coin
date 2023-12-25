@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+.tox.tox-tinymce {
+  min-height: 240px !important;
+}
+
 @mixin fz-14-text {
   font-weight: 400;
   font-size: 14px;

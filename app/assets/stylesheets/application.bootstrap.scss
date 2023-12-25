@@ -23,12 +23,8 @@ $fa-font-path: "./webfonts";
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
 
 
-//@import 'tinymce/skins/content/dark/content';
-//@import 'tinymce/skins/content/writer/content';
 @import 'tinymce/skins/ui/oxide-dark/skin';
-//@import 'tinymce/skins/ui/oxide-dark/skin.shadowdom';
 @import 'tinymce/skins/ui/oxide-dark/content';
-//@import 'tinymce/skins/ui/oxide-dark/content.inline';
 
 @mixin colorgradint {
   background: linear-gradient(94.22deg, #5174FF 0%, #D251FF 100%);
