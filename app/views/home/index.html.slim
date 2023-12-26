@@ -40,7 +40,10 @@
                 .form-inner
                   .group
                     = f.label :tags, t('.search_by_tag'), class: 'h5'
-                    = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, { multiple: true, class: 'standart-input js-multiple-select d-inline-block', placeholder: t('.placeholders.tags') }
+                    = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, 
+                            { multiple: true, class: 'standart-input js-multiple-select d-inline-block', 
+                                    placeholder: t('.placeholders.tags'), 
+                                            data: { controller: :tomselect, ajax_url: '/api/tags' } }
 
               .filter-container.d-inline-block
                 .filter-block

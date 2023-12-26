@@ -10,8 +10,14 @@ application.register("aitranslation", AitranslationController)
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import ImagePreviewController from "./image_preview_controller"
+application.register("image-preview", ImagePreviewController)
 
-import HighlightController from "./highlight_controller"
-application.register("highlight", HighlightController)
+import PasswordVisibilityController from "./password_visibility_controller"
+application.register("password-visibility", PasswordVisibilityController)
+
+import PrismController from "./prism_controller"
+application.register("prism", PrismController)
+
+import TomselectController from "./tomselect_controller"
+application.register("tomselect", TomselectController)

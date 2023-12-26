@@ -1,7 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
+import '../tinymce/prism'
 
+// Connects to data-controller="prism"
 export default class extends Controller {
   connect() {
-    this.element.textContent = "Hello World!"
+    console.log("Prism connected!")
   }
 }
