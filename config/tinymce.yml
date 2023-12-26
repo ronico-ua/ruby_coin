@@ -15,5 +15,6 @@ language: uk
 promotion: false
 style_formats_merge: true
 autoresize_bottom_margin: 50
+min_height: 300
 max_height: 700
 nonbreaking_force_tab: true

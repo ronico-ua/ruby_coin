@@ -16,5 +16,8 @@ application.register("image-preview", ImagePreviewController)
 import PasswordVisibilityController from "./password_visibility_controller"
 application.register("password-visibility", PasswordVisibilityController)
 
+import PrismController from "./prism_controller"
+application.register("prism", PrismController)
+
 import TomselectController from "./tomselect_controller"
 application.register("tomselect", TomselectController)

@@ -1,6 +1,5 @@
 // Entry point for the build script in your package.json
-import "./common"
-
+import "./controllers"
 import "@hotwired/turbo-rails"
 Turbo.session.drive = false
 import 'bootstrap/js/dist/dropdown'
