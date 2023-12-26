@@ -29,8 +29,8 @@
           = f.text_field "subtitle_localizations][#{locale}", id: "subtitle_#{locale}", class: 'standart-input', data: { locale: locale.to_s }, value: current_data(@post, 'subtitle', locale), placeholder: t('.placeholders.subtitle')
 
     = f.label :title, t('.photo_label'), class: 'standart-label'
-    .image-content.group[data-controller="image-preview"]
-      #preview.preview-img-box-edit[data-image-preview-target='background']
+    .image-content.group[data-controller='image-preview' data-image-preview-image-attached-value="#{@post.photo.present?}"]
+      #preview.preview-img-box-edit.d-flex.justify-content-center.align-items-center[data-image-preview-target='background']
         = image_tag post_image(@post), alt: '', id: "file-ip-1-preview", class: 'admin-preview-img', data: { image_preview_target: :preview }
       label.main-btn[for="add-img"]
         svg.label-img[width="18" height="18" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"]

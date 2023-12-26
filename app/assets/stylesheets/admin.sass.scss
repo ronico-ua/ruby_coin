@@ -589,6 +589,7 @@
   background-image: url(add-img-dec.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   border-radius: 20px;
 
   @media (max-width: 900px) {
@@ -621,12 +622,6 @@
   border-radius: 20px;
   max-width: 100%;
   height: inherit;
-}
-
-.preview-img-box-edit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .tag-editor {
