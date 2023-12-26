@@ -32,13 +32,6 @@ set :keep_releases, 3
 set :conditionally_migrate, true
 set :puma_systemctl_user, :system
 
-# Issue with propshaft as asset pipwlinw
-# See: https://github.com/capistrano/rails/issues/257
-# Workaround
-set :assets_manifests, lambda {
-  [release_path.join('public', fetch(:assets_prefix), '.manifest.json')]
-}
-
 append :linked_files, *%w[config/master.key config/database.yml .env]
 set :linked_dirs, %w[tmp/pids tmp/sockets tmp/cache vendor/bundle public/uploads public/system node_modules]
 
