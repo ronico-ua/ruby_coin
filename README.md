@@ -1,5 +1,13 @@
 # RubyCoin
 
+Preinstallation
+--------------
+### PostgreSQL setup
+
+1. Install postgresql if you don't have it
+2. Create a `dev` user: `sudo -u postgres createuser -d -W dev` and enter password `dev`
+3. Install nodeJS v18.15.0 or higher
+
 Installation
 --------------
 1. git clone git@github.com:ronico-ua/ruby_coin.git
@@ -7,9 +15,7 @@ Installation
 3. Run `overcommit --install`
 4. Run `overcommit --sign`
 5. Run `yarn`
-6. Run `bundle exec rails assets:precompile` if any style issue
-7. Copy .env settings for database: `cp .env.example .env`
-8. Run `rails db:create db:migrate db:seed`
+6. Run `rails db:create db:migrate db:seed`
 
 Start server
 --------------
@@ -17,16 +23,11 @@ Start server
 2. Open [http://localhost:3000/](http://localhost:3000/) in your browser
 
 ### Stack of technologies
-* Ruby version 3.2.2
-* Rails version 7.0.4
+* Ruby       3.2.2
+* Rails      7.1
 * PostgreSQL 15.2
-
-* jsbundling-rails
-* turbo-rails
-* stimulus-rails
-* cssbundling-rails
-* rbenv
-* Capistrano
+* NodeJS    18.15.0 or higher
+* Yarn       4.0.2
 
 
 ### How to skip `overcommit` (only if very needed):
