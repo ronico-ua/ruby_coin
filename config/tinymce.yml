@@ -1,9 +1,11 @@
 height: 500
-menubar: true
+menubar: 'file edit insert view format table'
 toolbar:
-  - codesample nonbreaking | casechange blocks | bold italic | alignleft aligncenter alignjustify| bullist numlist checklist| undo redo | removeformat | restoredraft
+  - codesample nonbreaking | casechange blocks | bold italic | alignleft aligncenter alignjustify |
+    bullist numlist checklist| undo redo | removeformat | restoredraft
 plugins:
-  - codesample advlist autolink autosave autoresize importcss lists link image charmap preview anchor searchreplace pagebreak nonbreaking visualblocks fullscreen insertdatetime media table code help wordcount
+  - codesample advlist autolink autosave autoresize importcss lists link image charmap preview anchor searchreplace
+    pagebreak nonbreaking visualblocks fullscreen insertdatetime media table code help wordcount
 codesample_languages: [  
     { text: 'Ruby', value: 'ruby' },
     { text: 'HTML/XML', value: 'markup' },
