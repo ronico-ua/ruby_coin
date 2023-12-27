@@ -2,7 +2,7 @@
 .admin-panel
   .admin-panel__content
     .admin-panel__inner
-      = render 'admin/shared/admin_left_panel'
+      = render 'management/shared/admin_left_panel'
       .admin-panel__right
         .inner-title
           h1.admin__title = t('.title')
@@ -20,14 +20,14 @@
                   p.post__description = post.subtitle
                 .post__actions
                   .delete
-                    = link_to image_tag("delete-icon.svg"), admin_post_path(post),
+                    = link_to image_tag("delete-icon.svg"), management_post_path(post),
                                             data: { turbo_method: :delete, turbo_confirm: t('global.dialog.you_sure') }
                   .edit
-                    = link_to  image_tag("edit-icon.svg"), edit_admin_post_path(post),
+                    = link_to  image_tag("edit-icon.svg"), edit_management_post_path(post),
                             data: { turbo: :false }
         .footer-panel
           .pagination
             - if @pagy.pages > 1
               .pagination__inner
                 == pagy_bootstrap_nav(@pagy)
-          = link_to t('buttons.create'), new_admin_post_path, class: 'main-btn', data: { turbo: :false }
+          = link_to t('buttons.create'), new_management_post_path, class: 'main-btn', data: { turbo: :false }

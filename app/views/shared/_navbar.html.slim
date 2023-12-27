@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-custom.sticky-top
           - else
             - if current_user.admin?
               li
-                = link_to t("nav_item.panel"), admin_root_path, class: "dropdown-item panel"
+                = link_to t("nav_item.panel"), management_root_path, class: "dropdown-item panel"
             li.exit
               = button_to t("nav_item.sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item exit"
   button.navbar-toggler.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
@@ -43,6 +43,6 @@ nav.navbar.navbar-expand-custom.sticky-top
             - else
               - if current_user.admin?
                 li
-                  = link_to t("nav_item.panel"), admin_root_path, class: "dropdown-item panel"
+                  = link_to t("nav_item.panel"), management_root_path, class: "dropdown-item panel"
               li.exit
                 = button_to t("nav_item.sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item exit"

@@ -157,7 +157,8 @@ en:
             photo:
               blank: can't be blank
               translation_missing: translation missing
-  admin:
+  
+  management:
     posts:
       index:
         title: Post

@@ -14,7 +14,7 @@ export default class extends Controller {
 
     button.innerHTML = i18n['translating']
 
-    fetch('/admin/posts/translate', {
+    fetch('/management/posts/translate', {
       method: 'POST',
       headers: {
         'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").getAttribute("content"),

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Admin
+module Management
   class ApplicationController < ApplicationController
-    layout 'admin/layouts/application'
+    layout 'management/layouts/application'
 
     # before_action :authenticate_user!
   end

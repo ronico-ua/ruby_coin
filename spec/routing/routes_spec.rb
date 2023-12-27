@@ -27,21 +27,21 @@ RSpec.describe 'Routes' do
     end
   end
 
-  describe 'GET /admin' do
-    it 'routes to admin/posts#index' do
-      expect(get: '/admin').to route_to('admin/posts#index')
+  describe 'GET /management' do
+    it 'routes to management/posts#index' do
+      expect(get: '/management').to route_to('management/posts#index')
     end
   end
 
-  describe 'GET /admin/posts' do
-    it 'routes to admin/posts#index' do
-      expect(get: '/admin/posts').to route_to('admin/posts#index')
+  describe 'GET /management/posts' do
+    it 'routes to management/posts#index' do
+      expect(get: '/management/posts').to route_to('management/posts#index')
     end
   end
 
-  describe 'GET /admin/tags' do
-    it 'routes to admin/tags#index' do
-      expect(get: '/admin/tags').to route_to('admin/tags#index')
+  describe 'GET /management/tags' do
+    it 'routes to management/tags#index' do
+      expect(get: '/management/tags').to route_to('management/tags#index')
     end
   end
 

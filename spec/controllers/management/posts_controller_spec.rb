@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Admin::PostsController do
+describe Management::PostsController do
   describe 'GET #index' do
     let(:action) { :index }
     let(:params) { {} }

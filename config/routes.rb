@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     get '/post/:id', to: 'home#show', as: 'post'
     get 'set_locale', to: 'application#set_locale'
 
-    namespace :admin do
-      root 'posts#index'
-      get 'statistics/index', to: 'statistics#index'
+    namespace :management do
+      root 'posts#index', as: 'root'
+      get 'statistics/index', to: 'statistics#index', as: 'statistics'
 
       resources :posts do
         post 'translate', on: :collection

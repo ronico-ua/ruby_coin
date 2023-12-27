@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Admin::StatisticsController, type: :controller do
+RSpec.describe Management::StatisticsController, type: :controller do
   context 'when admin' do
     before do
       admin_user = create(:user, :admin_user)

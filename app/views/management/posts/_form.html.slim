@@ -1,4 +1,4 @@
-= form_with model: [:admin, post], data: { controller: :prism } do |f|
+= form_with model: [:management, post], data: { controller: :prism } do |f|
   .admin-form__content
     = render 'shared/errors', object: post
     .row
@@ -75,8 +75,8 @@
           = f.check_box :main_post, { data: { toggle: 'toggle', onlabel: t('buttons.yes_text'), offlabel: t('buttons.no_text'), onstyle: 'success', offstyle: 'danger', class: 'switcher', style: "min-width: 300px !important"} }, "active", "inactive"
     .actions
       - if post.new_record?
-        = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
+        = link_to t('global.button.cancel'), management_root_path, class: 'main-btn not_filled'
         = f.submit t('global.button.create'), class: 'main-btn filled'
       - else
-        = link_to t('global.button.cancel'), admin_root_path, class: 'main-btn not_filled'
+        = link_to t('global.button.cancel'), management_root_path, class: 'main-btn not_filled'
         = f.submit t('global.button.edit'), class: 'main-btn filled'

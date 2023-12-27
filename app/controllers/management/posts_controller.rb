@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Admin
+module Management
   class PostsController < ApplicationController
     before_action :authenticate_user!, :authorize_policy, except: :translate
     before_action :set_post!, only: %i[show destroy edit update]
@@ -23,7 +23,7 @@ module Admin
 
       if @post.save && Posts::Translator.call(@post, localization_params)
         flash[:success] = t('.success')
-        redirect_to admin_posts_path
+        redirect_to management_posts_path
       else
         render :new, status: :unprocessable_entity
       end
@@ -34,7 +34,7 @@ module Admin
         respond_to do |format|
           format.html do
             flash[:success] = t('.success')
-            redirect_to admin_posts_path
+            redirect_to management_posts_path
           end
 
           format.turbo_stream do
@@ -52,7 +52,7 @@ module Admin
       respond_to do |format|
         format.html do
           flash[:success] = t('.success')
-          redirect_to admin_posts_path, status: :see_other
+          redirect_to management_posts_path, status: :see_other
         end
 
         format.turbo_stream { flash.now[:success] = t('.success') }

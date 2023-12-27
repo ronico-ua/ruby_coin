@@ -1,5 +1,5 @@
 = turbo_frame_tag @tag do
-  = form_with model: [:admin, @tag], class: "form-editor-tag" do |f|
+  = form_with model: [:management, @tag], class: "form-editor-tag" do |f|
     .tag-editor
       = f.text_field :title, class: 'standart-input', placeholder: t('.title_label')
       = f.submit '', class: 'save-tag'

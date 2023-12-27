@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Admin::TagsController do
+describe Management::TagsController do
   describe 'GET #index' do
     let(:action) { :index }
     let(:params) { {} }
