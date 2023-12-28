@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'activeadmin'
 gem 'after_party'
 gem 'ahoy_matey'
 gem 'blueprinter'
@@ -29,6 +30,7 @@ gem 'rails', '~> 7.1'
 gem 'rails-i18n'
 gem 'rbs', '~> 3.1'
 gem 'redis'
+gem 'sass-rails', '~> 6.0' # Use SCSS for stylesheets
 gem 'sidekiq'
 gem 'slim'
 gem 'sprockets-rails'

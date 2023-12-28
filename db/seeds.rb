@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+reurn unless Rails.env.development?
 class String
   def green
     "\e[1;32m#{self}\e[0m"
@@ -7,8 +8,12 @@ class String
 end
 
 # ==== Create User ====
+if AdminUser.where(email: 'admin@example.com').blank?
+  puts "\n===== Creating admin user ======".green
+  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+end
 
-if User.first.blank?
+if User.second.blank?
   puts "\n===== Creating user ======".green
 
   user = User.create(

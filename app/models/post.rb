@@ -31,6 +31,11 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
+  scope :main, -> { where(main_post: true).ordered }
+  scope :active, -> { where(status: :active).ordered }
+  scope :inactive, -> { where(status: :inactive).ordered }
+  scope :new_regular, -> { where(main_post: false).ordered.limit(3) }
+  scope :new_main, -> { where(main_post: true).ordered.limit(3) }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
@@ -39,6 +44,14 @@ class Post < ApplicationRecord
   def similar_posts(post)
     post_tags = post.tags.pluck(:id)
     Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(3)
+  end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[title subtitle description created_at updated_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[post_translations tags translations user]
   end
 
   private

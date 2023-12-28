@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include Pagy::Backend
   protect_from_forgery with: :exception
-  prepend_before_action :set_i18n_locale_from_params
+  # prepend_before_action :set_i18n_locale_from_params
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
