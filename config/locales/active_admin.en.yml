@@ -1,0 +1,13 @@
+en:
+  active_admin:
+    dashboard: Dashboard
+    posts: Posts
+    tags: Tags
+    users: Users
+    user_comments: User Comments
+    statistics:
+      by_day: Statistics by day
+      by_week: Statistics by week
+      by_month: Statistics by month
+      by_year: Statistics by year
+      all_time: Statistics all time

@@ -3,6 +3,8 @@
 ActiveAdmin.register User do
   permit_params :nickname, :avatar, :role, :email, :password, :password_confirmation, :confirmed_at, :unconfirmed_email
 
+  menu priority: 4, label: proc { I18n.t('active_admin.users') }
+
   scope :all, default: true
   scope :admin
   scope :moderator

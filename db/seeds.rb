@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-reurn unless Rails.env.development?
+return unless Rails.env.development?
 
 begin
   length_of_line = `tput cols`.to_i # width of iTerm2 only
@@ -61,13 +61,6 @@ def pretty_print(string, color = 'light_gray', method = :puts, element = '=')
 end
 
 # ==== Create User ====
-if AdminUser.where(email: 'admin@example.com').blank?
-  pretty_print('Creating admin user', 'orange')
-  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
-
-  pretty_print('1/1', 'orange', :print, '')
-end
-
 if User.count.zero?
   pretty_print('Creating regular user', 'green')
 

@@ -3,6 +3,8 @@
 ActiveAdmin.register Post do # rubocop:disable Metrics/BlockLength
   permit_params :photo, :status, :user_id, :main_post, :title, :subtitle, :description, :slug
 
+  menu priority: 2, label: proc { I18n.t('active_admin.posts') }
+
   index do
     selectable_column
     id_column
