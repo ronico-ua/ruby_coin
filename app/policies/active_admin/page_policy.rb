@@ -3,12 +3,9 @@
 module ActiveAdmin
   class PagePolicy < ApplicationPolicy
     def show?
-      case record.name
-      when 'Dashboard'
-        admin?
-      else
-        false
-      end
+      return admin? if record.name == 'Dashboard'
+
+      false
     end
   end
 end

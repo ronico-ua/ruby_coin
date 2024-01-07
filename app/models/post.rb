@@ -11,6 +11,8 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :globalize
 
+  ORDER_TYPES = %w[new best].freeze
+
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
                                                   using: { tsearch: { prefix: true, any_word: true } }
@@ -36,6 +38,14 @@ class Post < ApplicationRecord
   scope :inactive, -> { where(status: :inactive).ordered }
   scope :new_regular, -> { where(main_post: false).ordered.limit(3) }
   scope :new_main, -> { where(main_post: true).ordered.limit(3) }
+  # не кращий варіант, оскільки імплементований status: :active
+  scope :best, lambda {
+    joins("LEFT JOIN ahoy_events ON ahoy_events.properties->>'post_id' = posts.id::text")
+      .where(status: :active, ahoy_events: { name: 'Viewed Post' })
+      .group('posts.id')
+      .select('posts.*, COUNT(ahoy_events.id) AS views_count')
+      .order('COUNT(ahoy_events.id) DESC')
+  }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
