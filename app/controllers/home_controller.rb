@@ -43,6 +43,6 @@ class HomeController < ApplicationController
   end
 
   def resourse
-    PostTranslation.find_by(slug: params[:id])&.post
+    Post.find_by(id: params[:id])
   end
 end
