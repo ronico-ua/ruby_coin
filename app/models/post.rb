@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   translates :title, :subtitle, :description, :slug
   extend FriendlyId
-  friendly_id :title, use: :globalize
+  friendly_id :title, use: %i[globalize finders]
 
   ORDER_TYPES = %w[new best].freeze
 

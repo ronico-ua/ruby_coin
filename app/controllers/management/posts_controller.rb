@@ -82,7 +82,7 @@ module Management
     end
 
     def set_post!
-      @post = Post.friendly.find(params[:id])
+      @post = Post.find(params[:id])
     end
 
     def fetch_tags
