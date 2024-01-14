@@ -7,6 +7,10 @@ class Tag < ApplicationRecord
 
   scope :news, -> { order(created_at: :desc) }
 
+  def self.ransackable_associations(_auth_object = nil)
+    ['posts']
+  end
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[title created_at updated_at]
   end

@@ -20,11 +20,4 @@ ActiveAdmin.register Tag do
   filter :title
   filter :created_at
   filter :updated_at
-
-  form do |f|
-    f.inputs do
-      f.input :title
-    end
-    f.actions
-  end
 end

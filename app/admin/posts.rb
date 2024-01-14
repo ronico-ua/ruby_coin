@@ -11,6 +11,7 @@ ActiveAdmin.register Post do # rubocop:disable Metrics/BlockLength
     column :status
     column :main_post
     column :title
+    column :slug
     column :subtitle
     column :description
     column :user
@@ -26,10 +27,9 @@ ActiveAdmin.register Post do # rubocop:disable Metrics/BlockLength
   scope :active, group: :status
   scope :inactive, group: :status
 
-  filter :title
-  filter :subtitle
-  filter :description
-  filter :user
+  filter :user, as: :select, collection: User.all.pluck([:email, :id])
+  filter :title, as: :string
+  filter :subtitle, as: :string
 
   form do |f|
     f.inputs do
@@ -37,7 +37,7 @@ ActiveAdmin.register Post do # rubocop:disable Metrics/BlockLength
       f.input :subtitle
       f.input :description
       f.input :main_post
-      f.input :user
+      f.input :user, as: :select, collection: User.all.pluck([:email, :id])
       f.input :photo
       f.input :status
     end

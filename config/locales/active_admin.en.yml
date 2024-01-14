@@ -11,3 +11,10 @@ en:
       by_month: Statistics by month
       by_year: Statistics by year
       all_time: Statistics all time
+
+  ransack:
+    predicates:
+      cont: Contains
+      eq: Equals
+      start: Starts with
+      end: Ends with
