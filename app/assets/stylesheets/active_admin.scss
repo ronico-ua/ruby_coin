@@ -15,12 +15,11 @@
   background: #E91E63 !important; 
 }
 
-.rounded-4 img {
-  border-radius: .5rem;
-}
-
-.text-center {
+.col-avatar {
   text-align: center;
+  img {
+    border-radius: .5rem;
+  }
 }
 
 .default-avatar {

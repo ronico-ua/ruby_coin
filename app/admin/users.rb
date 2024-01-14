@@ -9,9 +9,10 @@ ActiveAdmin.register User do
   config.sort_order = 'id_asc'
 
   scope :all, default: true
-  scope :admin, group: :role
-  scope :moderator, group: :role
-  scope :user, group: :role
+  User.roles.each_key do |role|
+    scope role.humanize, role.to_sym.to_s, group: :role
+  end
+
   scope :confirmed, group: :status
   scope :unconfirmed, group: :status
 
@@ -30,11 +31,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :avatar do |user|
-      if user.avatar.present?
-        image_tag url_for(user.avatar.lite.url)
-      else
-        content_tag :div, '', class: 'default-avatar'
-      end
+      user_avatar_column(user)
     end
     column :nickname do |user|
       link_to user.nickname, admin_user_path(user)
@@ -42,28 +39,13 @@ ActiveAdmin.register User do
     column :email
     column :role
     column :confirmed_at do |user|
-      if user.confirmed?
-        status_tag I18n.t('active_admin.good'), class: 'yes'
-      else
-        status_tag I18n.t('active_admin.bad'), class: 'no'
-      end
+      user_confirmed_at_column(user)
     end
     column :created_at
     column :unconfirmed_email
     actions
   end
 
-  form do |f|
-    f.inputs do
-      f.input :email
-      f.input :nickname
-      f.input :role
-      f.input :avatar
-      f.input :password
-      f.input :password_confirmation
-      f.input :confirmed_at
-    end
-    f.actions
-  end
+  form partial: 'form'
 end
 # rubocop:enable Metrics/BlockLength
