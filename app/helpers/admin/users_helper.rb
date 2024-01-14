@@ -13,7 +13,8 @@ module Admin::UsersHelper
     if user.confirmed?
       Arbre::Context.new { status_tag I18n.t('active_admin.good'), class: 'yes' }
     else
-      Arbre::Context.new { status_tag I18n.t('active_admin.bad'), class: 'no' }
+      link_to 'Confirm', confirm_admin_user_path(user), method: :put, class: 'button-confirm'
+      # Arbre::Context.new { status_tag I18n.t('active_admin.bad'), class: 'no' }
     end
   end
 end

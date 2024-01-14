@@ -6,8 +6,10 @@ active_admin_form_for [:admin, resource] do |f|
     f.input :nickname
     f.input :role
     f.input :avatar
-    f.input :password
-    f.input :password_confirmation
+    unless current_user.admin?
+      f.input :password
+      f.input :password_confirmation
+    end
     f.input :confirmed_at
   end
   f.actions

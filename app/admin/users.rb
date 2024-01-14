@@ -47,5 +47,20 @@ ActiveAdmin.register User do
   end
 
   form partial: 'form'
+
+  controller do
+    def update
+      if params[:user][:password].blank?
+        params[:user].delete('password')
+        params[:user].delete('password_confirmation')
+      end
+      super
+    end
+  end
+
+  member_action :confirm, method: :put do
+    resource.confirm!
+    redirect_to collection_path, notice: I18n.t('active_admin.users_controller.confirm.success')
+  end
 end
 # rubocop:enable Metrics/BlockLength
