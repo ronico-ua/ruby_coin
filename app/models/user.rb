@@ -16,9 +16,6 @@ class User < ApplicationRecord
 
   enum :role, { admin: 0, moderator: 1, user: 2 }
 
-  scope :admin, -> { where(role: :admin) }
-  scope :moderator, -> { where(role: :moderator) }
-  scope :user, -> { where(role: :user) }
   scope :confirmed, -> { where.not(confirmed_at: nil) }
   scope :unconfirmed, -> { where(confirmed_at: nil) }
 
