@@ -8,10 +8,10 @@ class HomeController < ApplicationController
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
     @active_tags = params[:tags]
 
-    @posts = Posts::Filter.call(collection.active, params)
+    @posts = Posts::Filter.call(active_collection, params)
     @main_post = Post.active.find_by(main_post: true)
 
-    @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
+    @pagy, @posts = pagy(@posts, items: Post::PAGY_LIMIT, fragment: '#posts-list')
   end
 
   def show
@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   end
 
   def search
-    @posts = Posts::Filter.call(collection.active, { order: 'RANDOM()' }).limit(3) # 3 - бажано винести у константу
+    @posts = Posts::Filter.call(active_collection, { order: 'RANDOM()' }).limit(Post::LIMIT_COUNT)
     @results = Posts::Search.call(search_params)
     @results = Posts::Filter.call(@results, params) if @results.present?
   end
@@ -41,8 +41,8 @@ class HomeController < ApplicationController
     params.permit(:query, :search_in)
   end
 
-  def collection
-    Post.all
+  def active_collection
+    Post.active
   end
 
   def last_visit_for_post
