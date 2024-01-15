@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   translates :title, :subtitle, :description, :slug
   extend FriendlyId
-  friendly_id :title, use: :globalize
+  friendly_id :title, use: %i[globalize finders]
 
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
@@ -31,6 +31,12 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
+  scope :similar_posts, lambda { |current_post|
+    where.not(id: current_post.id)
+         .includes(:tags)
+         .where(tags: { title: current_post.tags.limit(3).pluck(:title) })
+         .limit(3)
+  }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
