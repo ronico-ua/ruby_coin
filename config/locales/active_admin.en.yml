@@ -1,5 +1,7 @@
 en:
   active_admin:
+    good: 'Yes'
+    bad: 'No'
     dashboard: Dashboard
     posts: Posts
     tags: Tags
@@ -11,6 +13,9 @@ en:
       by_month: Statistics by month
       by_year: Statistics by year
       all_time: Statistics all time
+    users_controller:
+      confirm: 
+        success: User confirmed!
 
   ransack:
     predicates:

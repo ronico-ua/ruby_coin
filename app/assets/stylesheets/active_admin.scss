@@ -11,7 +11,59 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-// Overriding any non-variable Sass must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+.status_tag.yes { 
+  background: #E91E63 !important;
+  padding: 7px 14px;
+  border-radius: 200px;
+  font-weight: bold;
+}
+
+.col-avatar {
+  text-align: center;
+  img {
+    border-radius: .5rem;
+  }
+}
+
+.default-avatar {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  background-color: #ccc;
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
+.col-confirmed_at {
+  text-align: center !important;
+  vertical-align: middle !important;
+
+  .button-confirm {
+    border-radius: 200px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.0em;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 12px;
+    padding: 7px 14px;
+    text-decoration: none !important;
+    background-color: #838a90;
+    background-image: linear-gradient(180deg, #838a90, #414549);
+    text-shadow: #000 0 1px 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+    0 1px 0 0px rgba(255, 255, 255, 0.2) inset;
+    border: solid 1px #484e53;
+    border-color: #484e53;
+    border-top-color: #616a71;
+    border-right-color: #484e53;
+    border-bottom-color: #363b3f;
+    border-left-color: #484e53;
+    color: #efefef !important;
+    cursor: pointer;
+ 
+    &:hover {
+      filter: brightness(1.1);
+      transform: scale(1.1);
+    }
+  }
+}

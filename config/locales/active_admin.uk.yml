@@ -1,5 +1,7 @@
 uk:
   active_admin:
+    good: Так 
+    bad: Ні
     dashboard: Панель керування
     posts: Дописи
     tags: Теги
@@ -11,6 +13,9 @@ uk:
       by_month: Статистика переглядів постів за місяць
       by_year: Статистика переглядів постів за рік
       all_time: Статистика переглядів постів за весь час
+    users_controller:
+      confirm: 
+        success: Користувач підтверджений!
 
   ransack:
     predicates:
