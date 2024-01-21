@@ -30,15 +30,15 @@ xdescribe 'Home Page', type: :feature do
     end
 
     it 'displays no main post content' do
-      expect(page).not_to have_css('.intro-block__content')
+      expect(page).to have_no_css('.intro-block__content')
     end
 
     it 'displays no posts' do
-      expect(page).not_to have_css('.post-column')
+      expect(page).to have_no_css('.post-column')
     end
 
     it 'displays no pagination' do
-      expect(page).not_to have_css('.pagination__inner')
+      expect(page).to have_no_css('.pagination__inner')
     end
   end
 

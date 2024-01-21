@@ -78,3 +78,6 @@ Rails/CreateTableWithTimestamps:
 
 RSpec/MessageSpies:
   Enabled: false
+
+FactoryBot/ExcessiveCreateList:
+  MaxAmount: 20
