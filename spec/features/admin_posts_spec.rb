@@ -14,7 +14,7 @@ xdescribe 'Admin Posts', type: :system do
   context 'when create a new post' do
     it 'with valid data' do
       visit management_root_path
-      click_link I18n.t('buttons.create')
+      click_link_or_button I18n.t('buttons.create')
       fill_in 'post_title', with: post.title
       fill_in 'post_subtitle', with: post.subtitle
       page.execute_script("document.getElementById('add-img').style.opacity = '1';")
@@ -28,7 +28,7 @@ xdescribe 'Admin Posts', type: :system do
       sleep(1)
       find('label', text: 'Головний допис').click
 
-      click_button I18n.t('global.button.create')
+      click_link_or_button I18n.t('global.button.create')
       sleep(1)
       expect(page).to have_content('Допис успішно створено')
       expect(page).to have_content(post.title)
@@ -37,7 +37,7 @@ xdescribe 'Admin Posts', type: :system do
 
     it 'with invalid data' do
       visit management_root_path
-      click_link I18n.t('buttons.create')
+      click_link_or_button I18n.t('buttons.create')
 
       find_field('post_tag_ids-ts-control').set('Тег1')
       find_by_id('post_tag_ids-opt-1').click
@@ -69,7 +69,7 @@ xdescribe 'Admin Posts', type: :system do
       find_field('post_tag_ids-ts-control').set('Тег1')
       find_by_id('post_tag_ids-opt-1').click
       sleep(1)
-      click_button I18n.t('global.button.edit')
+      click_link_or_button I18n.t('global.button.edit')
       sleep(1)
 
       expect(page).to have_content('Допис успішно оновлено')
@@ -91,7 +91,7 @@ xdescribe 'Admin Posts', type: :system do
       find_field('post_tag_ids-ts-control').set('Тег1')
       find_by_id('post_tag_ids-opt-1').click
 
-      click_button I18n.t('global.button.edit')
+      click_link_or_button I18n.t('global.button.edit')
 
       expect(page).to have_content('Заголовок не може бути порожнім')
       expect(page).to have_content('Підзаголовок не може бути порожнім')
@@ -110,6 +110,6 @@ xdescribe 'Admin Posts', type: :system do
       end
     end
     expect(page).to have_content('Допис успішно видалено')
-    expect(page).not_to have_content(post.title)
+    expect(page).to have_no_content(post.title)
   end
 end

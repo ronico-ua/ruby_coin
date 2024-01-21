@@ -14,7 +14,7 @@ xdescribe 'Admin Tags', type: :system do
     it 'with valid data' do
       visit management_tags_path
       fill_in 'tag_title', with: 'Новий тег'
-      click_button I18n.t('global.button.create')
+      click_link_or_button I18n.t('global.button.create')
 
       expect(page).to have_content('Тег успішно створено')
       expect(page).to have_content('Новий тег')
@@ -22,7 +22,7 @@ xdescribe 'Admin Tags', type: :system do
 
     it 'with invalid data' do
       visit management_tags_path
-      click_button I18n.t('global.button.create')
+      click_link_or_button I18n.t('global.button.create')
 
       expect(page).to have_content('Заголовок не може бути пустим')
     end
@@ -58,7 +58,7 @@ xdescribe 'Admin Tags', type: :system do
 
     find("#tag_#{tag.id} .delete").click
     sleep(0.2)
-    click_button I18n.t('buttons.yes_text')
+    click_link_or_button I18n.t('buttons.yes_text')
     sleep(0.2)
     expect(page).to have_content('Тег успішно видалено')
   end
