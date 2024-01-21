@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    = favicon_link_tag asset_path('favicon.ico')
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title
       = content_for?(:title) ? yield(:title) : "RubyCoin"
