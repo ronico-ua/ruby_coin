@@ -70,7 +70,7 @@ xdescribe 'Home show Page', type: :feature do
     end
 
     it 'do not displays block with similar post' do
-      expect(page).not_to have_css('.post-title.second', text: 'Схожі публікації')
+      expect(page).to have_no_css('.post-title.second', text: 'Схожі публікації')
     end
   end
 end
