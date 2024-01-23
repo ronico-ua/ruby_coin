@@ -3,13 +3,15 @@
 class Post < ApplicationRecord
   require 'i18n'
 
+  LIMIT_COUNT = 3
+  PAGY_LIMIT = 6
   has_and_belongs_to_many :tags
   belongs_to :user
   has_many :post_translations, dependent: :destroy
 
   translates :title, :subtitle, :description, :slug
   extend FriendlyId
-  friendly_id :title, use: :globalize
+  friendly_id :title, use: %i[globalize finders]
 
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
@@ -31,6 +33,12 @@ class Post < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
+  scope :similar_posts, lambda { |current_post|
+    where.not(id: current_post.id)
+         .includes(:tags)
+         .where(tags: { title: current_post.similar_tags_titles })
+         .limit(LIMIT_COUNT)
+  }
 
   def truncated_description
     description.truncate(100, separator: /\s/)
@@ -38,7 +46,11 @@ class Post < ApplicationRecord
 
   def similar_posts(post)
     post_tags = post.tags.pluck(:id)
-    Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(3)
+    Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(LIMIT_COUNT)
+  end
+
+  def similar_tags_titles
+    tags.limit(LIMIT_COUNT).pluck(:title)
   end
 
   private
