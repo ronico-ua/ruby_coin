@@ -70,7 +70,7 @@ module Admin
     end
 
     def post_params
-      params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, tag_ids: [])
+      params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, :slug, tag_ids: [])
     end
 
     def normalize_main_post_param
@@ -82,7 +82,7 @@ module Admin
     end
 
     def set_post!
-      @post = Post.friendly.find(params[:id])
+      @post = Post.find(params[:id])
     end
 
     def fetch_tags

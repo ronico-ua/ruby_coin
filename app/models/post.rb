@@ -9,9 +9,24 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_translations, dependent: :destroy
 
-  translates :title, :subtitle, :description, :slug
+  translates :title, :subtitle, :description
   extend FriendlyId
-  friendly_id :title, use: %i[globalize finders]
+  friendly_id :title, use: %i[finders]
+
+  friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [
+      :post_translation_locale_en,
+      [:post_translation_locale_en, :id]
+      # Додайте інші варіанти, які вам потрібні
+    ]
+  end
+
+  def post_translation_locale_en
+    translation = post_translations&.find_by(locale: :en)
+    translation&.title&.parameterize
+  end
 
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
@@ -51,6 +66,19 @@ class Post < ApplicationRecord
 
   def similar_tags_titles
     tags.limit(LIMIT_COUNT).pluck(:title)
+  end
+
+  def create_slug
+    self.slug = (en_title || post_translations&.find_by(locale: :uk)&.title&.parameterize)
+    save
+  end
+
+  def en_title
+    post_translations&.find_by(locale: :en)&.title&.parameterize
+  end
+
+  def slug_or_id
+    slug || id
   end
 
   private
