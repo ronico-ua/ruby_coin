@@ -13,21 +13,6 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: %i[finders]
 
-  friendly_id :slug_candidates, use: :slugged
-
-  def slug_candidates
-    [
-      :post_translation_locale_en,
-      [:post_translation_locale_en, :id]
-      # Додайте інші варіанти, які вам потрібні
-    ]
-  end
-
-  def post_translation_locale_en
-    translation = post_translations&.find_by(locale: :en)
-    translation&.title&.parameterize
-  end
-
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
                                                   using: { tsearch: { prefix: true, any_word: true } }

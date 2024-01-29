@@ -16,7 +16,6 @@ class Posts::Translator < BaseService
 
       update_post(article, locale)
     end
-    post.create_slug
   end
 
   private

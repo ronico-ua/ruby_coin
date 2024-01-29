@@ -22,7 +22,7 @@ describe HomeController, type: :request do
         expect(Ahoy::Visit.count).to eq(0)
         expect(Ahoy::Event.count).to eq(0)
 
-        get post_path(post)
+        get post_path(post.slug_or_id)
 
         expect(Ahoy::Visit.count).to eq(1)
         expect(Ahoy::Event.count).to eq(1)
@@ -34,8 +34,8 @@ describe HomeController, type: :request do
         expect(Ahoy::Visit.count).to eq(0)
         expect(Ahoy::Event.count).to eq(0)
 
-        get post_path(post)
-        get post_path(post)
+        get post_path(post.slug_or_id)
+        get post_path(post.slug_or_id)
 
         expect(Ahoy::Visit.count).to eq(1)
         expect(Ahoy::Event.count).to eq(1)
@@ -47,11 +47,11 @@ describe HomeController, type: :request do
         expect(Ahoy::Visit.count).to eq(0)
         expect(Ahoy::Event.count).to eq(0)
 
-        get post_path(post)
+        get post_path(post.slug_or_id)
 
         allow(Time).to receive(:now).and_return(25.hours.from_now)
 
-        get post_path(post)
+        get post_path(post.slug_or_id)
 
         expect(Ahoy::Visit.count).to eq(2)
         expect(Ahoy::Event.count).to eq(2)
@@ -66,8 +66,8 @@ describe HomeController, type: :request do
         expect(Ahoy::Visit.count).to eq(0)
         expect(Ahoy::Event.count).to eq(0)
 
-        get post_path(post_first)
-        get post_path(post_second)
+        get post_path(post_first.slug_or_id)
+        get post_path(post_second.slug_or_id)
 
         expect(Ahoy::Visit.count).to eq(1)
         expect(Ahoy::Event.count).to eq(2)
@@ -75,7 +75,7 @@ describe HomeController, type: :request do
     end
 
     it 'returns a successful response, renders the show template, and includes post details' do
-      get post_path(post)
+      get post_path(post.slug_or_id)
 
       expect(response).to be_successful
       expect(response).to render_template(:show)
