@@ -30,6 +30,16 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process convert: 'png'
   end
 
+  version :little do
+    process resize_to_fit: [400, 400]
+    process convert: 'png'
+  end
+
+  version :large do
+    process resize_to_fit: [1920, 1080]
+    process convert: 'png'
+  end
+
   def extension_allowlist
     %w[jpg jpeg gif png]
   end

@@ -7,7 +7,7 @@
     .next-page = @post.title
   .post-main-img
     - if @post.photo.url
-      = image_tag @post.photo.url
+      = image_tag @post_photo
     - else
       = image_tag "post-img.png"
   .details-inner
@@ -31,7 +31,7 @@
               = link_to post_path(similar_post) do
                 .post-img
                   - if similar_post.photo.present?
-                    = image_tag similar_post.photo.url
+                    = image_tag similar_post.photo.little.url
                   - else
                     = image_tag "post-img.png"
                 .flex-admin

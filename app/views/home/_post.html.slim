@@ -3,7 +3,7 @@
     = link_to post_path(post) do
       .post-img
         - if post.photo.present?
-          = image_tag post.photo.medium.url
+          = image_tag post.photo.little.url
         - else
           = image_tag "post-img.png"
     .flex-admin

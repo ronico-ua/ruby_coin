@@ -8,6 +8,14 @@ class HomeController < ApplicationController
     @posts = Posts::Filter.call(collection.active, params)
     @main_post = Post.active.find_by(main_post: true)
 
+    if @main_post && @main_post.photo.present?
+      device = detect(request.user_agent)
+      @main_post_photo = if device == 'Phone'
+                           @main_post.photo.little.url
+                         else
+                           @main_post.photo.medium.url
+                         end
+    end
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
 
@@ -15,6 +23,14 @@ class HomeController < ApplicationController
     @post = resourse
     return redirect_to root_path, alert: t('home_controller.show.errors.not_found') unless @post
 
+    if @post.photo.present?
+      device = detect(request.user_agent)
+      @post_photo = if device == 'Phone'
+                      @post.photo.medium.url
+                    else
+                      @post.photo.url
+                    end
+    end
     post_tags = @post.tags.limit(3)
     validator = Ahoy::VisitsValidator.new(last_visit_for_post: request.session["last_visit_#{@post.id}"])
     Ahoy::EventProcess.call(ahoy, @post, request) if validator.valid?
@@ -40,6 +56,16 @@ class HomeController < ApplicationController
 
   def collection
     Post.all
+  end
+
+  def detect(user_agent)
+    if /Windows|Linux/.match?(user_agent)
+      'PC'
+    elsif /iPhone|Android/.match?(user_agent)
+      'Phone'
+    else
+      'Default'
+    end
   end
 
   def resourse
