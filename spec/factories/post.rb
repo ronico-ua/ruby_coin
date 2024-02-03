@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :post do
     title { Faker::Book.title }
+    slug { Faker::Internet.slug }
     subtitle { Faker::Lorem.sentence }
     description { Faker::Lorem.sentence }
     photo do

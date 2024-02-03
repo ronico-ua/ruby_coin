@@ -2,7 +2,6 @@
 
 module Admin
   class PostsController < ApplicationController
-    rescue_from ActiveRecord::RecordNotUnique, with: :handle_record_not_unique
     before_action :authenticate_user!, :authorize_policy, except: :translate
     before_action :set_post!, only: %i[show destroy edit update]
     before_action :fetch_tags, only: %i[new edit update]
@@ -18,12 +17,11 @@ module Admin
     end
 
     def create
+      slug_param
       @post = current_user.posts.build(post_params)
 
       authorize @post
-      @post.slug = create_slug
       if @post.save && Posts::Translator.call(@post, localization_params)
-        @post.slug = post&.title & parameterize unless @post.slug
         flash[:success] = t('.success')
         redirect_to admin_posts_path
       else
@@ -95,17 +93,9 @@ module Admin
       authorize Post
     end
 
-    def create_slug
-      slug = if params[:post][:title_localizations]
-               params[:post][:title_localizations][:en]
-             else
-               params[:post][:title]
-             end
-      slug&.parameterize
-    end
-
-    def handle_record_not_unique(_exception)
-      redirect_to new_admin_post_path, alert: t('errors.messages.wrong_posts_name')
+    def slug_param
+      slug = I18n.locale == :en ? params.dig('post', 'title') : params.dig('post', 'title_localizations', 'en')
+      params[:post][:slug] = slug&.parameterize
     end
   end
 end
