@@ -30,6 +30,7 @@ module Admin
     end
 
     def update
+      slug_param
       if @post.update(post_params) && Posts::Translator.call(@post, localization_params)
         respond_to do |format|
           format.html do

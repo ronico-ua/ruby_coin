@@ -7,13 +7,6 @@ GIT
       activerecord (>= 4.2, < 7.2)
       request_store (~> 1.0)
 
-GIT
-  remote: https://github.com/norman/friendly_id-globalize
-  revision: 097eed19e9d2f6bbf5ee7636493c03f7025d813b
-  specs:
-    friendly_id-globalize (1.0.0.alpha4)
-      friendly_id (>= 5.1.0, < 6.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -493,7 +486,6 @@ DEPENDENCIES
   faker
   fasterer (~> 0.11.0)
   friendly_id (~> 5.5.0)
-  friendly_id-globalize!
   globalize!
   hotwire-rails
   httparty

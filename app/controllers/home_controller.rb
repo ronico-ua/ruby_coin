@@ -28,7 +28,11 @@ class HomeController < ApplicationController
   private
 
   def set_post
-    @post = Post.find_by(slug: params[:id]) || Post.find_by(id: params[:id])
+    @post = Post.friendly.find_by(slug: params[:id]) || Post.friendly.find_by(id: params[:id])
+    if @post.nil?
+      slug_record = FriendlyId::Slug.find_by(slug: params[:id], locale: I18n.locale)
+      @post = slug_record.sluggable if slug_record.present?
+    end
   end
 
   def check_present_post

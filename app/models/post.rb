@@ -11,8 +11,7 @@ class Post < ApplicationRecord
 
   translates :title, :subtitle, :description
   extend FriendlyId
-  friendly_id :slug, use: %i[slugged finders]
-
+  friendly_id :slug, use: %i[slugged finders history]
   include PgSearch::Model
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
                                                   using: { tsearch: { prefix: true, any_word: true } }
