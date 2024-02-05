@@ -5,7 +5,7 @@
       = link_to post_path(@main_post) do
         .intro-block__img
           - if @main_post.photo.present?
-            = image_tag(@main_post_photo, class: "intro-block__main_img")
+            = image_tag(@main_post.photo.medium.url, class: "intro-block__main_img")
           - else
             = image_tag("intro-img.png", class: "intro-block__main_img")
           .intro-block__content

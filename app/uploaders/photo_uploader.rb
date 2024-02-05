@@ -26,17 +26,17 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process resize_to_fit: [1356, 1320]
+    process resize_to_fill: [1356, 759]
     process convert: 'png'
   end
 
-  version :little do
-    process resize_to_fit: [400, 400]
+  version :small do
+    process resize_to_fill: [400, 225]
     process convert: 'png'
   end
 
   version :large do
-    process resize_to_fit: [1920, 1080]
+    process resize_to_fill: [1920, 1080]
     process convert: 'png'
   end
 
