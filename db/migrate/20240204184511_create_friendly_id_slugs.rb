@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFriendlyIdSlugs < ActiveRecord::Migration[7.1]
   def change
     create_table :friendly_id_slugs do |t|
@@ -7,7 +9,8 @@ class CreateFriendlyIdSlugs < ActiveRecord::Migration[7.1]
       t.string :scope
     end
     add_index :friendly_id_slugs, [:sluggable_type, :sluggable_id]
-    add_index :friendly_id_slugs, [:slug, :sluggable_type], length: {slug: 140, sluggable_type: 50}
-    add_index :friendly_id_slugs, [:slug, :sluggable_type, :scope], length: {slug: 70, sluggable_type: 50, scope: 70}, unique: true
+    add_index :friendly_id_slugs, [:slug, :sluggable_type], length: { slug: 140, sluggable_type: 50 }
+    add_index :friendly_id_slugs, [:slug, :sluggable_type, :scope], length: { slug: 70, sluggable_type: 50, scope: 70 },
+unique: true
   end
 end
