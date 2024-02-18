@@ -2,7 +2,6 @@
 
 class HomeController < ApplicationController
   before_action :set_post, only: :show
-  before_action :check_present_post, only: :show
 
   def index
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
@@ -28,17 +27,12 @@ class HomeController < ApplicationController
   private
 
   def set_post
-    @post = Post.friendly.find_by(slug: params[:id]) || Post.friendly.find_by(id: params[:id])
-    return unless @post.nil?
-
+    # binding.pry
+    @post = Post.friendly.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
     slug_record = FriendlyId::Slug.find_by(slug: params[:id], locale: I18n.locale)
     @post = slug_record.sluggable if slug_record.present?
-  end
-
-  def check_present_post
-    return if @post.present?
-
-    redirect_to root_path, alert: t('home_controller.show.errors.not_found')
+    redirect_to root_path, alert: t('home_controller.show.errors.not_found') if @post.blank?
   end
 
   def search_params

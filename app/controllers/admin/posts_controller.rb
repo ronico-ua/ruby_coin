@@ -17,7 +17,6 @@ module Admin
     end
 
     def create
-      slug_param
       @post = current_user.posts.build(post_params)
 
       authorize @post
@@ -30,7 +29,6 @@ module Admin
     end
 
     def update
-      slug_param
       if @post.update(post_params) && Posts::Translator.call(@post, localization_params)
         respond_to do |format|
           format.html do
@@ -76,6 +74,7 @@ module Admin
 
     def normalize_main_post_param
       params[:post][:main_post] = params[:post][:main_post] == 'active'
+      slug_param
     end
 
     def localization_params
