@@ -80,7 +80,7 @@ describe HomeController, type: :request do
       expect(response).to be_successful
       expect(response).to render_template(:show)
 
-      expect(response.body).to include(post.title).or(include(post.post_translations.find_by(locale: I18n.locale).title))
+      expect(response.body).to include(post.post_translations.find_by(locale: I18n.locale).title)
       expect(response.body).to include(post.description)
     end
   end
