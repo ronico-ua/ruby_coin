@@ -11,6 +11,8 @@ require 'rspec/rails'
 require 'devise'
 require 'factory_bot_rails'
 require 'shoulda/matchers'
+require 'faker'
+require 'database_cleaner'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
