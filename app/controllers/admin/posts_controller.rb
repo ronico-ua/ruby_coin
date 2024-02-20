@@ -20,7 +20,6 @@ module Admin
       @post = current_user.posts.build(post_params)
 
       authorize @post
-
       if @post.save && Posts::Translator.call(@post, localization_params)
         flash[:success] = t('.success')
         redirect_to admin_posts_path
@@ -70,11 +69,12 @@ module Admin
     end
 
     def post_params
-      params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, tag_ids: [])
+      params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, :slug, tag_ids: [])
     end
 
     def normalize_main_post_param
       params[:post][:main_post] = params[:post][:main_post] == 'active'
+      slug_param
     end
 
     def localization_params
@@ -82,7 +82,7 @@ module Admin
     end
 
     def set_post!
-      @post = Post.friendly.find(params[:id])
+      @post = Post.find(params[:id])
     end
 
     def fetch_tags
@@ -91,6 +91,11 @@ module Admin
 
     def authorize_policy
       authorize Post
+    end
+
+    def slug_param
+      slug = I18n.locale == :en ? params.dig('post', 'title') : params.dig('post', 'title_localizations', 'en')
+      params[:post][:slug] = slug&.parameterize
     end
   end
 end
