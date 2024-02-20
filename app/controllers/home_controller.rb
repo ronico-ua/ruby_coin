@@ -27,7 +27,6 @@ class HomeController < ApplicationController
   private
 
   def set_post
-    # binding.pry
     @post = Post.friendly.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     slug_record = FriendlyId::Slug.find_by(slug: params[:id], locale: I18n.locale)
