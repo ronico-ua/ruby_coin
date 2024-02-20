@@ -9,8 +9,7 @@ class HomeController < ApplicationController
 
     @posts = Posts::Filter.call(active_collection, params)
     @main_post = Post.active.find_by(main_post: true)
-
-    @pagy, @posts = pagy(@posts, items: Post::PAGY_LIMIT, fragment: '#posts-list')
+    @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
 
   def show
