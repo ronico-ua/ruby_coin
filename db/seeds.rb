@@ -35,7 +35,8 @@ if User.first.blank?
   puts "\n===== Creating posts ======".green
 
   50.times do |i|
-    Post.create(title: Faker::Hipster.sentence(word_count: 1),
+    title = Faker::Hipster.sentence(word_count: 1)
+    Post.create(title:,
                 subtitle: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true,
                                                  random_sentences_to_add: 2),
                 description: Faker::Lorem.paragraph(sentence_count: 10, supplemental: true,
@@ -43,6 +44,7 @@ if User.first.blank?
                 status: :active,
                 user_id: user.id,
                 tag_ids: Tag.ids.sample(5),
+                slug: title.parameterize,
                 created_at: Faker::Time.backward(days: 1000),
                 remote_photo_url: Faker::Avatar.image)
 
