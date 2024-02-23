@@ -35,7 +35,7 @@ set :puma_systemctl_user, :system
 append :linked_files, *%w[config/master.key config/database.yml .env]
 set :linked_dirs, %w[tmp/pids tmp/sockets tmp/cache vendor/bundle public/uploads public/system node_modules]
 
-after 'deploy:finished',  :after_party
-after :after_party,       :compile_assets
-after :compile_assets,    :cleanup
-after :cleanup,           :restart
+after 'deploy:finished',       :after_party
+after :after_party,            :compile_assets
+after 'deploy:compile_assets', :cleanup
+after 'deploy:cleanup',        :restart
