@@ -35,7 +35,7 @@ if User.first.blank?
   puts "\n===== Creating posts ======".green
 
   50.times do |i|
-    title = Faker::Hipster.sentence(word_count: 1)
+    title = "#{Faker::Hipster.sentence(word_count: 1)}#{i}"
     Post.create(title:,
                 subtitle: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true,
                                                  random_sentences_to_add: 2),
