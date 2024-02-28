@@ -85,7 +85,7 @@ commands:
           name: run bundle audit
           command: bundle exec bundler-audit check --update
 orbs:
-  browser-tools: circleci/browser-tools@1.4.6
+  browser-tools: circleci/browser-tools@1.4.7
 jobs:
   lintering:
     executor: default

@@ -261,6 +261,7 @@ uk:
 
   errors:
     messages:
+      wrong_posts_name: "Це ім'я вже зайняте"
       carrierwave_processing_error: Неможливо змінити розмір зображення
       carrierwave_integrity_error: Не зображення
       carrierwave_download_error: Не вдалося завантажити зображення

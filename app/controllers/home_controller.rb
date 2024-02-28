@@ -1,48 +1,52 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
+  before_action :set_post, only: :show
+
   def index
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
     @active_tags = params[:tags]
 
-    @posts = Posts::Filter.call(collection.active, params)
+    @posts = Posts::Filter.call(active_collection, params)
     @main_post = Post.active.find_by(main_post: true)
-
     @pagy, @posts = pagy(@posts, items: 6, fragment: '#posts-list')
   end
 
   def show
-    @post = resourse
-    return redirect_to root_path, alert: t('home_controller.show.errors.not_found') unless @post
-
-    post_tags = @post.tags.limit(3)
-    validator = Ahoy::VisitsValidator.new(last_visit_for_post: request.session["last_visit_#{@post.id}"])
-    Ahoy::EventProcess.call(ahoy, @post, request) if validator.valid?
-    @similar_posts = Post.where.not(id: @post.id)
-                         .includes(:tags)
-                         .where(tags: { title: post_tags.pluck(:title) })
-                         .limit(3)
+    process_event
+    @similar_posts = Post.similar_posts(@post)
   end
 
   def search
-    @posts = Posts::Filter.call(collection.active, { order: 'RANDOM()' }).limit(3)
-
+    @posts = Posts::Filter.call(active_collection, { order: 'RANDOM()' }).limit(Post::LIMIT_COUNT)
     @results = Posts::Search.call(search_params)
-
     @results = Posts::Filter.call(@results, params) if @results.present?
   end
 
   private
 
+  def set_post
+    @post = Post.friendly.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    slug_record = FriendlyId::Slug.find_by(slug: params[:id], locale: I18n.locale)
+    @post = slug_record.sluggable if slug_record.present?
+    redirect_to root_path, alert: t('home_controller.show.errors.not_found') if @post.blank?
+  end
+
   def search_params
     params.permit(:query, :search_in)
   end
 
-  def collection
-    Post.all
+  def active_collection
+    Post.active
   end
 
-  def resourse
-    PostTranslation.find_by(slug: params[:id])&.post
+  def last_visit_for_post
+    request.session["last_visit_#{@post.id}"]
+  end
+
+  def process_event
+    validator = Ahoy::VisitsValidator.new(last_visit_for_post:)
+    Ahoy::EventProcess.call(ahoy, @post, request) if validator.valid?
   end
 end

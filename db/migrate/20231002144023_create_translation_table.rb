@@ -3,18 +3,9 @@
 class CreateTranslationTable < ActiveRecord::Migration[7.0]
   def up
     change_column_null :posts, :slug, true
+    return if table_exists?(:post_translations)
 
-    unless table_exists?(:post_translations)
-      Post.create_translation_table!({
-                                       title: :string,
-                                       subtitle: :string,
-                                       description: :string,
-                                       slug: :string
-                                     }, {
-                                       migrate_data: true
-                                     })
-    end
-
-    Post.find_each(&:generate_slugs)
+    post_params = { title: :string, subtitle: :string, description: :text }
+    Post.create_translation_table!(post_params, { migrate_data: true })
   end
 end

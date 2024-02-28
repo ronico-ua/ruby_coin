@@ -89,18 +89,18 @@ if User.count.zero?
     pretty_print('Creating posts', 'purple')
 
     POST_COUNT.times do |i|
-      Post.create(title: Faker::Hipster.sentence(word_count: 1),
-                  subtitle: Faker::Lorem.paragraph(sentence_count: 3,
-                                                   supplemental: true,
-                                                   random_sentences_to_add: 2),
-                  description: Faker::Lorem.paragraph(sentence_count: 10,
-                                                      supplemental: true,
-                                                      random_sentences_to_add: 4),
-                  status: :active,
-                  user_id: user.id,
-                  tag_ids: Tag.ids.sample(5),
-                  created_at: Faker::Time.backward(days: 1000),
-                  remote_photo_url: Faker::Avatar.image)
+      title = "#{Faker::Hipster.sentence(word_count: 1)}#{i}"
+    Post.create(title:,
+                subtitle: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true,
+                                                 random_sentences_to_add: 2),
+                description: Faker::Lorem.paragraph(sentence_count: 10, supplemental: true,
+                                                    random_sentences_to_add: 4),
+                status: :active,
+                user_id: user.id,
+                tag_ids: Tag.ids.sample(5),
+                slug: title.parameterize,
+                created_at: Faker::Time.backward(days: 1000),
+                remote_photo_url: Faker::Avatar.image)
 
       pretty_print("#{i + 1}/50", 'purple', :print, '')
     end

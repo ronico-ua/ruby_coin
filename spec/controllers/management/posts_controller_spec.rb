@@ -81,7 +81,7 @@ describe Management::PostsController do
     let(:test_post) { create(:post) }
     let(:action) { :update }
     let(:new_title) { 'Updated Title' }
-    let(:params) { { id: test_post.id, post: { title: new_title } } }
+    let(:params) { { id: test_post.slug, post: { title: new_title } } }
     let(:second_post) { create(:post, main_post: false) }
     let(:params_status_true_second_post) { { id: second_post.id, post: { main_post: 'active' } } }
     let(:params_status_false_second_post) { { id: second_post.id, post: { main_post: 'inactive' } } }
