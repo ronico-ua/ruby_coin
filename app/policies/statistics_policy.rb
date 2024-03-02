@@ -2,6 +2,6 @@
 
 class StatisticsPolicy < ApplicationPolicy
   def index?
-    admin?
+    admin? || moderator?
   end
 end

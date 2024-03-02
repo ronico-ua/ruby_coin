@@ -13,6 +13,10 @@ FactoryBot.define do
       role { :admin }
     end
 
+    trait :moderator_user do
+      role { :moderator }
+    end
+
     trait :with_avatar do
       remote_avatar_url { Faker::Avatar.image }
     end

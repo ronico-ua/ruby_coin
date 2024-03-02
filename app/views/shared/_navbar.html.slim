@@ -41,7 +41,7 @@ nav.navbar.navbar-expand-custom.sticky-top
               li
                 = link_to t("nav_item.sign_in"), new_user_session_path, class: "dropdown-item profile"
             - else
-              - if current_user.admin?
+              - if current_user.admin? || current_user.moderator?
                 li
                   = link_to t("nav_item.panel"), management_root_path, class: "dropdown-item panel"
               li.exit

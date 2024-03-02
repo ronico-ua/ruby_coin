@@ -81,5 +81,29 @@ RSpec.describe 'Routes' do
         expect(delete: '/users/sign_out').to route_to('users/sessions#destroy')
       end
     end
+
+    describe 'GET /admin' do
+      it 'routes to admin/dashboard#index' do
+        expect(get: '/admin').to route_to('admin/dashboard#index')
+      end
+    end
+
+    describe 'GET /admin/posts' do
+      it 'routes to admin/posts#index' do
+        expect(get: '/admin/posts').to route_to('admin/posts#index')
+      end
+    end
+
+    describe 'GET /admin/tags' do
+      it 'routes to admin/tags#index' do
+        expect(get: '/admin/tags').to route_to('admin/tags#index')
+      end
+    end
+
+    describe 'GET /admin/users' do
+      it 'routes to admin/users#index' do
+        expect(get: '/admin/users').to route_to('admin/users#index')
+      end
+    end
   end
 end

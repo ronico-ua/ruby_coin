@@ -13,6 +13,7 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :slug, use: %i[slugged finders history]
   include PgSearch::Model
+  ORDER_TYPES = %w[new best].freeze
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
                                                   using: { tsearch: { prefix: true, any_word: true } }
   pg_search_scope :search_by_title, associated_against: { post_translations: [:title] },
@@ -71,6 +72,14 @@ class Post < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     %w[post_translations tags translations user]
+  end
+
+  def self.policy_class
+    if caller_locations(1..1).first.path.include?('management')
+      Management::PostPolicy
+    else
+      PostPolicy
+    end
   end
 
   private

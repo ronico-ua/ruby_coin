@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class TagPolicy < ApplicationPolicy
+class Management::TagPolicy < ApplicationPolicy
   def index?
-    admin?
+    admin? || moderator?
   end
 
   def show?
-    admin?
+    admin? || moderator?
   end
 
   class Scope < Scope

@@ -90,7 +90,7 @@ module Management
     end
 
     def authorize_policy
-      authorize Post
+      authorize [:management, Post]
     end
 
     def slug_param

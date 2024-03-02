@@ -80,7 +80,7 @@ module Management
     end
 
     def authorize_policy
-      authorize Tag
+      authorize [:management, Tag]
     end
   end
 end

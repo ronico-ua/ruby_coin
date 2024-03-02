@@ -14,4 +14,12 @@ class Tag < ApplicationRecord
   def self.ransackable_attributes(_auth_object = nil)
     %w[title created_at updated_at]
   end
+
+  def self.policy_class
+    if caller_locations(1..1).first.path.include?('management')
+      Management::TagPolicy
+    else
+      TagPolicy
+    end
+  end
 end

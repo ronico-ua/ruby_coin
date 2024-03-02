@@ -42,7 +42,7 @@ xdescribe 'Admin Posts', type: :system do
       find_field('post_tag_ids-ts-control').set('Тег1')
       find_by_id('post_tag_ids-opt-1').click
 
-      click_button I18n.t('global.button.create')
+      click_link_or_button I18n.t('global.button.create')
 
       expect(page).to have_content('Заголовок не може бути порожнім')
       expect(page).to have_content('Підзаголовок не може бути порожнім')
