@@ -1,25 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../../app/policies/tag_policy'
 RSpec.describe TagPolicy do
   subject(:policy) { described_class.new(user, record) }
-
-  shared_examples 'permit' do
-    context 'when user can enter pages' do
-      let(:user) { create(:user, role) }
-
-      it { expect(policy).to permit_actions(actions) }
-    end
-  end
-
-  shared_examples 'forbid' do
-    context 'when user cant enter pages' do
-      let(:user) { create(:user, role) }
-
-      it { expect(policy).to forbid_actions(actions) }
-    end
-  end
 
   describe '#index? #show?' do
     let(:record) { create(:tag) }
@@ -28,19 +11,19 @@ RSpec.describe TagPolicy do
     context 'when user is admin' do
       let(:role) { :admin }
 
-      it_behaves_like 'permit'
+      it_behaves_like 'permit actions'
     end
 
     context 'when user is moderator' do
       let(:role) { :moderator }
 
-      it_behaves_like 'forbid'
+      it_behaves_like 'forbid actions'
     end
 
     context 'when user' do
-      let(:user) { create(:user) }
+      let(:role) { :user }
 
-      it { expect(policy).to forbid_actions(actions) }
+      it_behaves_like 'forbid actions'
     end
   end
 end

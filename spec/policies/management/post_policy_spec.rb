@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../../../app/policies/active_admin/user_policy'
-RSpec.describe UserPolicy do
+describe Management::PostPolicy do
   subject(:policy) { described_class.new(user, record) }
 
-  describe '#index?' do
-    let(:record) { create(:user) }
-    let(:actions) { %i[index] }
+  describe '#index? #show?' do
+    let(:record) { create(:post) }
+    let(:actions) { %i[index show] }
 
     context 'when user is admin' do
       let(:role) { :admin }
@@ -18,7 +17,7 @@ RSpec.describe UserPolicy do
     context 'when user is moderator' do
       let(:role) { :moderator }
 
-      it_behaves_like 'forbid actions'
+      it_behaves_like 'permit actions'
     end
 
     context 'when user' do
