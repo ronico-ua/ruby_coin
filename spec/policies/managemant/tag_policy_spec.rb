@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../../app/policies/tag_policy'
-RSpec.describe TagPolicy do
+require_relative '../../../app/policies/management/tag_policy'
+RSpec.describe Management::TagPolicy do
   subject(:policy) { described_class.new(user, record) }
 
   shared_examples 'permit' do
@@ -34,7 +34,7 @@ RSpec.describe TagPolicy do
     context 'when user is moderator' do
       let(:role) { :moderator }
 
-      it_behaves_like 'forbid'
+      it_behaves_like 'permit'
     end
 
     context 'when user' do

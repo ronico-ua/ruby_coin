@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../../app/policies/tag_policy'
-RSpec.describe TagPolicy do
+require_relative '../../app/policies/post_policy'
+RSpec.describe PostPolicy do
   subject(:policy) { described_class.new(user, record) }
 
   shared_examples 'permit' do
@@ -22,7 +22,7 @@ RSpec.describe TagPolicy do
   end
 
   describe '#index? #show?' do
-    let(:record) { create(:tag) }
+    let(:record) { create(:post) }
     let(:actions) { %i[index show] }
 
     context 'when user is admin' do

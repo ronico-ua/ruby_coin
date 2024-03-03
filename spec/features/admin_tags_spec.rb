@@ -6,7 +6,7 @@ xdescribe 'Admin Tags', type: :system do
   let!(:tag) { create(:tag, title: 'Тест') }
 
   before do
-    admin_user = create(:user, :admin_user)
+    admin_user = create(:user, :admin)
     sign_in(admin_user)
   end
 

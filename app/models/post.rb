@@ -74,14 +74,6 @@ class Post < ApplicationRecord
     %w[post_translations tags translations user]
   end
 
-  def self.policy_class
-    if caller_locations(1..1).first.path.include?('management')
-      Management::PostPolicy
-    else
-      PostPolicy
-    end
-  end
-
   private
 
   def deactivate_previous_main_post

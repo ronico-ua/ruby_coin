@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Management::StatisticsController, type: :controller do
   context 'when admin' do
     before do
-      admin_user = create(:user, :admin_user)
+      admin_user = create(:user, :admin)
       sign_in(admin_user)
 
       daily_views_query = instance_double(Statistics::DailyViewsQuery, count: 42)

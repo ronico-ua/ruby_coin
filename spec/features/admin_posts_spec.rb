@@ -7,7 +7,7 @@ xdescribe 'Admin Posts', type: :system do
   let(:post) { create(:post, tag_ids: [tag.id]) }
 
   before do
-    admin_user = create(:user, :admin_user)
+    admin_user = create(:user, :admin)
     sign_in(admin_user)
   end
 
