@@ -13,6 +13,8 @@ require 'factory_bot_rails'
 require 'shoulda/matchers'
 require 'faker'
 require 'database_cleaner'
+require 'pundit/rspec'
+require 'pundit/matchers'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
@@ -35,7 +37,6 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include ActiveSupport::Testing::TimeHelpers
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.

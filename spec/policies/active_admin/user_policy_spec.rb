@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../../app/policies/tag_policy'
-RSpec.describe TagPolicy do
+require_relative '../../../app/policies/active_admin/user_policy'
+RSpec.describe UserPolicy do
   subject(:policy) { described_class.new(user, record) }
 
   shared_examples 'permit' do
@@ -21,9 +21,9 @@ RSpec.describe TagPolicy do
     end
   end
 
-  describe '#index? #show?' do
-    let(:record) { create(:tag) }
-    let(:actions) { %i[index show] }
+  describe '#index?' do
+    let(:record) { create(:user) }
+    let(:actions) { %i[index] }
 
     context 'when user is admin' do
       let(:role) { :admin }

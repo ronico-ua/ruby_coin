@@ -31,6 +31,10 @@ class User < ApplicationRecord
     update(confirmed_at: Time.zone.now)
   end
 
+  def staff_member?
+    admin? || moderator?
+  end
+
   private
 
   def set_nickname

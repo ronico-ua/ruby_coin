@@ -9,11 +9,11 @@ FactoryBot.define do
     password { Faker::Internet.password(min_length: 8) }
     confirmed_at { Time.zone.now }
 
-    trait :admin_user do
+    trait :admin do
       role { :admin }
     end
 
-    trait :moderator_user do
+    trait :moderator do
       role { :moderator }
     end
 
