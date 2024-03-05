@@ -45,7 +45,7 @@ class Post < ApplicationRecord
 
   def similar_posts(post)
     post_tags = post.tags.pluck(:id)
-    
+
     Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(LIMIT_COUNT)
   end
 
