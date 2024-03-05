@@ -35,7 +35,7 @@ class Post < ApplicationRecord
   scope :similar_posts, lambda { |current_post|
     where.not(id: current_post.id)
          .includes(:tags)
-         .where(tags: { title: current_post.similar_tags_titles })
+         .where(tags: { title: current_post.similar_tags_titles }).where(status: :active)
          .limit(LIMIT_COUNT)
   }
 
@@ -45,6 +45,7 @@ class Post < ApplicationRecord
 
   def similar_posts(post)
     post_tags = post.tags.pluck(:id)
+    
     Post.joins(:tags).where(tags: { id: post_tags }).where.not(id: post.id).distinct.limit(LIMIT_COUNT)
   end
 
