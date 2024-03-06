@@ -45,4 +45,48 @@ RSpec.describe Post do
       # rubocop:enable Style/MethodCalledOnDoEndBlock
     end
   end
+
+  describe 'similar_posts' do
+    let(:m_post) { create(:post, status: 'active') }
+    let(:similar_tag) { create(:tag) }
+
+    it 'returns active posts with similar tags to a given post' do
+      similar_post = create(:post, status: 'active')
+      similar_tag = create(:tag)
+      m_post.tags << similar_tag
+      similar_post.tags << similar_tag
+
+      expect(described_class.similar_posts(m_post)).to include(similar_post)
+    end
+
+    it 'NOT returns inactive posts with similar tags to a given post' do
+      similar_post = create(:post, status: 'inactive')
+      m_post.tags << similar_tag
+      similar_post.tags << similar_tag
+
+      expect(described_class.similar_posts(m_post)).not_to include(similar_post)
+    end
+
+    it 'excludes the given post from the result' do
+      expect(described_class.similar_posts(post)).not_to include(post)
+    end
+
+    it 'limits the result to LIMIT_COUNT' do
+      similar_posts = create_list(:post, Post::LIMIT_COUNT + 1)
+      m_post.tags << similar_tag
+
+      similar_posts.each { |p| p.tags << similar_tag }
+
+      expect(described_class.similar_posts(m_post).count).to eq(Post::LIMIT_COUNT)
+    end
+  end
+
+  describe '.ordered' do
+    it 'orders posts by created_at in descending order' do
+      post1 = create(:post, created_at: Time.current)
+      post2 = create(:post, created_at: 1.hour.ago)
+      post3 = create(:post, created_at: 2.hours.ago)
+      expect(described_class.ordered).to eq([post1, post2, post3])
+    end
+  end
 end
