@@ -42,42 +42,42 @@ RSpec.describe Post do
           'thumb_icon.png', 'image/png'
         ))
       end.to(change { post.reload.photo })
-      # rubocop:enable Style/MethodCalledOnDoEndBlock
     end
   end
 
   describe 'similar_posts' do
-    let(:m_post) { create(:post, status: 'active') }
     let(:similar_tag) { create(:tag) }
+    let(:post) { create(:post, :active, tags: [similar_tag]) }
 
-    it 'returns active posts with similar tags to a given post' do
-      similar_post = create(:post, status: 'active')
-      similar_tag = create(:tag)
-      m_post.tags << similar_tag
-      similar_post.tags << similar_tag
+    context 'when similar_posts is active' do
+      let(:similar_post) { create(:post, :active, tags: [similar_tag]) }
 
-      expect(described_class.similar_posts(m_post)).to include(similar_post)
+      it 'returns active posts with similar tags' do
+        expect(described_class.similar_posts(post)).to include(similar_post)
+      end
     end
 
-    it 'NOT returns inactive posts with similar tags to a given post' do
-      similar_post = create(:post, status: 'inactive')
-      m_post.tags << similar_tag
-      similar_post.tags << similar_tag
+    context 'when similar_posts is NOT active' do
+      let(:similar_post) { create(:post, :inactive, tags: [similar_tag]) }
 
-      expect(described_class.similar_posts(m_post)).not_to include(similar_post)
+      it 'returns active posts with similar tags' do
+        expect(described_class.similar_posts(post)).not_to include(similar_post)
+      end
     end
 
-    it 'excludes the given post from the result' do
-      expect(described_class.similar_posts(post)).not_to include(post)
+    context 'when no similar posts' do
+      it 'excludes the given post from the result' do
+        expect(described_class.similar_posts(post)).not_to include(post)
+      end
     end
 
-    it 'limits the result to LIMIT_COUNT' do
-      similar_posts = create_list(:post, Post::LIMIT_COUNT + 1)
-      m_post.tags << similar_tag
+    context 'when lots of similar posts' do
+      let(:similar_posts) { Array.new(Post::LIMIT_COUNT + 1) { create(:post, :active, tags: [similar_tag]) } }
 
-      similar_posts.each { |p| p.tags << similar_tag }
-
-      expect(described_class.similar_posts(m_post).count).to eq(Post::LIMIT_COUNT)
+      it 'limits the result to LIMIT_COUNT' do
+        similar_posts.each { |p| p.tags << similar_tag }
+        expect(described_class.similar_posts(post).count).to eq(Post::LIMIT_COUNT)
+      end
     end
   end
 
@@ -86,6 +86,7 @@ RSpec.describe Post do
       post1 = create(:post, created_at: Time.current)
       post2 = create(:post, created_at: 1.hour.ago)
       post3 = create(:post, created_at: 2.hours.ago)
+
       expect(described_class.ordered).to eq([post1, post2, post3])
     end
   end
