@@ -27,7 +27,7 @@ ActiveAdmin.register Post do # rubocop:disable Metrics/BlockLength
   scope :active, group: :status
   scope :inactive, group: :status
 
-  filter :user, as: :select, collection: User.pluck([:email, :id])
+  filter :user, as: :select, collection: proc { User.pluck([:email, :id]) }
   filter :title, as: :string
   filter :subtitle, as: :string
 
