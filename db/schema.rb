@@ -74,7 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_184511) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.string "subtitle"
-    t.string "description"
+    t.text "description"
     t.index ["locale"], name: "index_post_translations_on_locale"
     t.index ["post_id"], name: "index_post_translations_on_post_id"
   end

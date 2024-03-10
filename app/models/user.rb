@@ -16,6 +16,25 @@ class User < ApplicationRecord
 
   enum :role, { admin: 0, moderator: 1, user: 2 }
 
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
+  scope :unconfirmed, -> { where(confirmed_at: nil) }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[nickname email id role unconfirmed_email created_at updated_at confirmed_at current_sign_in_at]
+  end
+
+  def confirmed?
+    confirmed_at.present?
+  end
+
+  def confirm!
+    update(confirmed_at: Time.zone.now)
+  end
+
+  def staff_member?
+    admin? || moderator?
+  end
+
   private
 
   def set_nickname

@@ -38,8 +38,17 @@ module ApplicationHelper
     end
   end
 
+  def process_link_path(link_path)
+    # Для root_path замінюємо на '/', інакше - на ''
+    result = link_path.match?(%r{^/(uk|en)/?$}) ? '/' : ''
+    link_path.sub(%r{^/(uk|en)/?$}, result)
+  end
+
   def active_class(link_path)
-    current_page?(link_path) ? 'active' : ''
+    # Ігноруємо локаль, якщо її немає в посиланні браузера
+    path_locale = request.path.split('/')[1]
+    checked_path = path_locale.blank? ? process_link_path(link_path) : link_path
+    current_page?(checked_path) ? 'active' : ''
   end
 
   def switch_locale_to

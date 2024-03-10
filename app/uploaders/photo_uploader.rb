@@ -20,6 +20,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
     "#{Time.zone.now} - #{original_filename}"
   end
 
+  version :lite do
+    process resize_to_fit: [50, 50]
+    process convert: 'jpg'
+  end
+
   version :thumb do
     process resize_to_fit: [102, 120]
     process convert: 'png'

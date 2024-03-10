@@ -6,13 +6,13 @@ xdescribe 'Admin Tags', type: :system do
   let!(:tag) { create(:tag, title: 'Тест') }
 
   before do
-    admin_user = create(:user, :admin_user)
+    admin_user = create(:user, :admin)
     sign_in(admin_user)
   end
 
   context 'when creating a new tag' do
     it 'with valid data' do
-      visit admin_tags_path
+      visit management_tags_path
       fill_in 'tag_title', with: 'Новий тег'
       click_link_or_button I18n.t('global.button.create')
 
@@ -21,7 +21,7 @@ xdescribe 'Admin Tags', type: :system do
     end
 
     it 'with invalid data' do
-      visit admin_tags_path
+      visit management_tags_path
       click_link_or_button I18n.t('global.button.create')
 
       expect(page).to have_content('Заголовок не може бути пустим')
@@ -30,7 +30,7 @@ xdescribe 'Admin Tags', type: :system do
 
   context 'when editing an existing tag' do
     it 'with valid data' do
-      visit admin_tags_path
+      visit management_tags_path
       find("#tag_#{tag.id} .edit").click
       within '.tag-editor' do
         fill_in 'tag_title', with: 'Редагований Тест'
@@ -42,7 +42,7 @@ xdescribe 'Admin Tags', type: :system do
     end
 
     it 'with invalid data' do
-      visit admin_tags_path
+      visit management_tags_path
       find("#tag_#{tag.id} .edit").click
       within '.tag-editor' do
         fill_in 'tag_title', with: ''
@@ -54,7 +54,7 @@ xdescribe 'Admin Tags', type: :system do
   end
 
   it 'Delete tag' do
-    visit admin_tags_path
+    visit management_tags_path
 
     find("#tag_#{tag.id} .delete").click
     sleep(0.2)

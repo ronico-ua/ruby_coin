@@ -11,7 +11,7 @@ class TagPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.present? && user.admin?
+      if user.present? && user.staff_member?
         scope.all
       else
         scope.where(status: 'active')

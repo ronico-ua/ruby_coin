@@ -1,0 +1,25 @@
+en:
+  active_admin:
+    good: 'Yes'
+    bad: 'No'
+    dashboard: Dashboard
+    posts: Posts
+    tags: Tags
+    users: Users
+    user_comments: User Comments
+    statistics:
+      by_day: Statistics by day
+      by_week: Statistics by week
+      by_month: Statistics by month
+      by_year: Statistics by year
+      all_time: Statistics all time
+    users_controller:
+      confirm: 
+        success: User confirmed!
+
+  ransack:
+    predicates:
+      cont: Contains
+      eq: Equals
+      start: Starts with
+      end: Ends with

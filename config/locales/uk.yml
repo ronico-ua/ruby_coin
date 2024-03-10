@@ -157,7 +157,7 @@ uk:
               blank: не може бути порожнім
               translation_missing: відсутній переклад
 
-  admin:
+  management:
     posts:
       index:
         title: Дописи

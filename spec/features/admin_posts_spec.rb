@@ -7,13 +7,13 @@ xdescribe 'Admin Posts', type: :system do
   let(:post) { create(:post, tag_ids: [tag.id]) }
 
   before do
-    admin_user = create(:user, :admin_user)
+    admin_user = create(:user, :admin)
     sign_in(admin_user)
   end
 
   context 'when create a new post' do
     it 'with valid data' do
-      visit admin_root_path
+      visit management_root_path
       click_link_or_button I18n.t('buttons.create')
       fill_in 'post_title', with: post.title
       fill_in 'post_subtitle', with: post.subtitle
@@ -32,11 +32,11 @@ xdescribe 'Admin Posts', type: :system do
       sleep(1)
       expect(page).to have_content('Допис успішно створено')
       expect(page).to have_content(post.title)
-      expect(page).to have_current_path(admin_posts_path)
+      expect(page).to have_current_path(management_posts_path)
     end
 
     it 'with invalid data' do
-      visit admin_root_path
+      visit management_root_path
       click_link_or_button I18n.t('buttons.create')
 
       find_field('post_tag_ids-ts-control').set('Тег1')
@@ -54,7 +54,7 @@ xdescribe 'Admin Posts', type: :system do
   context 'when edit a post' do
     it 'with valid data' do
       post = create(:post)
-      visit admin_root_path
+      visit management_root_path
       within('.post', text: post.title) do
         find('.edit').click
       end
@@ -74,12 +74,12 @@ xdescribe 'Admin Posts', type: :system do
 
       expect(page).to have_content('Допис успішно оновлено')
       expect(page).to have_content('Новий заголовок')
-      expect(page).to have_current_path(admin_posts_path)
+      expect(page).to have_current_path(management_posts_path)
     end
 
     it 'with invalid data' do
       post = create(:post)
-      visit admin_root_path
+      visit management_root_path
       within('.post', text: post.title) do
         find('.edit').click
       end
@@ -101,7 +101,7 @@ xdescribe 'Admin Posts', type: :system do
 
   it 'Delete a post' do
     post = create(:post)
-    visit admin_root_path
+    visit management_root_path
     expect(page).to have_content(post.title)
 
     within('.post', text: post.title) do

@@ -15,10 +15,8 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale]
   end
 
-  private
-
-  def user_not_authorized
-    flash[:alert] = t('application_controller.alert')
+  def user_not_authorized(error_message = nil)
+    flash[:alert] = error_message&.message || t('application_controller.alert')
     redirect_to(root_path)
   end
 end

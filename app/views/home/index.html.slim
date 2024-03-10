@@ -18,40 +18,41 @@
               - @main_post.tags.first(3).each do |tag|
                 .intro-block__tag = tag.title
 
-  .accordion-category
-    .accordion-item
-      h2#headingOne.accordion-header
-        button.accordion-button.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
-          = t("titles.filters")
+  =turbo_frame_tag :home_posts do
+    .accordion-category
+      .accordion-item
+        h2#headingOne.accordion-header
+          button.accordion-button.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
+            = t("titles.filters")
 
-      #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
-        .accordion-body
-          = form_with url: root_path(anchor: 'posts-list'), method: :get do |f|
-            .filter-container.first-container
-              .filter-block
-                h4.heading-filter.d-inline-block.me-3
-                  = t(".show_first")
-                .filter-inner.d-inline-block
-                  .filter-item.active.d-inline-block = t(".new")
-                  .filter-item.d-inline-block = t(".best")
-
-            .div
-              .filter-container.second-container.d-inline-block.me-3
-                .form-inner
-                  .group
-                    = f.label :tags, t('.search_by_tag'), class: 'h5'
-                    = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, 
-                            { multiple: true, class: 'standart-input js-multiple-select d-inline-block', 
-                                    placeholder: t('.placeholders.tags'), 
-                                            data: { controller: :tomselect, ajax_url: '/api/tags' } }
-
-              .filter-container.d-inline-block
+        #collapseOne.accordion-collapse.collapse[aria-labelledby="headingOne" data-bs-parent="#accordionExample"]
+          .accordion-body
+            = form_with url: root_path(anchor: 'posts-list'), method: :get do |f|
+              .filter-container.first-container
                 .filter-block
-                  .filter-inner.d-inline-block.mt-2
-                    = f.submit t('buttons.apply'), class: 'filter-item active d-inline-block', name: nil
-                    = link_to t('.reset_filter'), root_path(anchor: 'posts-list'), class: 'filter-item d-inline-block'
+                  h4.heading-filter.d-inline-block.me-3
+                    = t(".show_first")
+                  .filter-inner.d-inline-block
+                    = link_to t(".new"), root_path(order: :new), class: "filter-item d-inline-block #{ 'active' if params[:order] == 'new' || params[:order].blank? }" 
+                    = link_to t(".best"), root_path(order: :best), class: "filter-item d-inline-block #{ 'active' if params[:order] == 'best' }"
 
-  .posts id="posts-list"
+              .div
+                .filter-container.second-container.d-inline-block.me-3
+                  .form-inner
+                    .group
+                      = f.label :tags, t('.search_by_tag'), class: 'h5'
+                      = f.select :tags, @tags.pluck(:title), { selected: @active_tags }, 
+                              { multiple: true, class: 'standart-input js-multiple-select d-inline-block', 
+                                      placeholder: t('.placeholders.tags'), 
+                                              data: { controller: :tomselect, ajax_url: '/api/tags' } }
+
+                .filter-container.d-inline-block
+                  .filter-block
+                    .filter-inner.d-inline-block.mt-2
+                      = f.submit t('buttons.apply'), class: 'filter-item active d-inline-block', name: nil
+                      = link_to t('.reset_filter'), root_path(anchor: 'posts-list'), class: 'filter-item d-inline-block'
+
+    .posts id="posts-list"
     .posts__inner
       - @posts.each do |post|
         = render "home/post", post: post
