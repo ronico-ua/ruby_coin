@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../../../app/policies/active_admin/user_policy'
+
 RSpec.describe ActiveAdmin::UserPolicy do
   subject(:policy) { described_class.new(user, record) }
 
