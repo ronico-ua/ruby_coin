@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :post do
+    user
     title { Faker::Book.title }
     sequence(:slug) { |n| "#{Faker::Internet.slug}-#{n}" }
     subtitle { Faker::Lorem.sentence }
@@ -11,6 +12,19 @@ FactoryBot.define do
     end
     status { :active }
     main_post { false }
-    user
+
+    trait :main_post do
+      main_post { true }
+    end
+
+    trait :inactive do
+      status { :inactive }
+    end
+
+    trait :with_tag do
+      after(:create) do |post|
+        post.tags << create(:tag)
+      end
+    end
   end
 end

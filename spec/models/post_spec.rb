@@ -42,7 +42,52 @@ RSpec.describe Post do
           'thumb_icon.png', 'image/png'
         ))
       end.to(change { post.reload.photo })
-      # rubocop:enable Style/MethodCalledOnDoEndBlock
+    end
+  end
+
+  describe 'similar_posts' do
+    let(:similar_tag) { create(:tag) }
+    let(:post) { create(:post, :active, tags: [similar_tag]) }
+
+    context 'when similar_posts is active' do
+      let(:similar_post) { create(:post, :active, tags: [similar_tag]) }
+
+      it 'returns active posts with similar tags' do
+        expect(described_class.similar_posts(post)).to include(similar_post)
+      end
+    end
+
+    context 'when similar_posts is NOT active' do
+      let(:similar_post) { create(:post, :inactive, tags: [similar_tag]) }
+
+      it 'returns active posts with similar tags' do
+        expect(described_class.similar_posts(post)).not_to include(similar_post)
+      end
+    end
+
+    context 'when no similar posts' do
+      it 'excludes the given post from the result' do
+        expect(described_class.similar_posts(post)).not_to include(post)
+      end
+    end
+
+    context 'when lots of similar posts' do
+      let(:similar_posts) { Array.new(Post::LIMIT_COUNT + 1) { create(:post, :active, tags: [similar_tag]) } }
+
+      it 'limits the result to LIMIT_COUNT' do
+        similar_posts.each { |p| p.tags << similar_tag }
+        expect(described_class.similar_posts(post).count).to eq(Post::LIMIT_COUNT)
+      end
+    end
+  end
+
+  describe '.ordered' do
+    it 'orders posts by created_at in descending order' do
+      post1 = create(:post, created_at: Time.current)
+      post2 = create(:post, created_at: 1.hour.ago)
+      post3 = create(:post, created_at: 2.hours.ago)
+
+      expect(described_class.ordered).to eq([post1, post2, post3])
     end
   end
 end
