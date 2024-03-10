@@ -14,25 +14,25 @@ RSpec.describe Admin::PostsController, type: :controller do
     it 'active' do
       post = create(:post)
       get :index
-      expect(response.body).to include(post.title)
-      expect(response.body).to include(post.description)
-      expect(response.body).to include(post.id.to_s)
+      expect(CGI.unescapeHTML(response.body)).to include(post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(post.description)
+      expect(CGI.unescapeHTML(response.body)).to include(post.id.to_s)
     end
 
     it 'inactive' do
       post = create(:post, status: :inactive)
       get :index
-      expect(response.body).to include(post.title)
-      expect(response.body).to include(post.description)
-      expect(response.body).to include(post.id.to_s)
+      expect(CGI.unescapeHTML(response.body)).to include(post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(post.description)
+      expect(CGI.unescapeHTML(response.body)).to include(post.id.to_s)
     end
 
     it 'main' do
       post = create(:post, main_post: true)
       get :index
-      expect(response.body).to include(post.title)
-      expect(response.body).to include(post.description)
-      expect(response.body).to include(post.id.to_s)
+      expect(CGI.unescapeHTML(response.body)).to include(post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(post.description)
+      expect(CGI.unescapeHTML(response.body)).to include(post.id.to_s)
     end
   end
 
@@ -43,30 +43,30 @@ RSpec.describe Admin::PostsController, type: :controller do
 
     it 'all' do
       get :index, params: { scope: 'all' }
-      expect(response.body).to include(inactive_post.title)
-      expect(response.body).to include(main_post.title)
-      expect(response.body).to include(simple_post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(inactive_post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(main_post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(simple_post.title)
     end
 
     it 'main' do
       get :index, params: { scope: 'main' }
-      expect(response.body).to include(main_post.title)
-      expect(response.body).not_to include(simple_post.title)
-      expect(response.body).not_to include(inactive_post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(main_post.title)
+      expect(CGI.unescapeHTML(response.body)).not_to include(simple_post.title)
+      expect(CGI.unescapeHTML(response.body)).not_to include(inactive_post.title)
     end
 
     it 'active' do
       get :index, params: { scope: 'active' }
-      expect(response.body).to include(main_post.title)
-      expect(response.body).to include(simple_post.title)
-      expect(response.body).not_to include(inactive_post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(main_post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(simple_post.title)
+      expect(CGI.unescapeHTML(response.body)).not_to include(inactive_post.title)
     end
 
     it 'inactive' do
       get :index, params: { scope: 'inactive' }
-      expect(response.body).not_to include(main_post.title)
-      expect(response.body).not_to include(simple_post.title)
-      expect(response.body).to include(inactive_post.title)
+      expect(CGI.unescapeHTML(response.body)).not_to include(main_post.title)
+      expect(CGI.unescapeHTML(response.body)).not_to include(simple_post.title)
+      expect(CGI.unescapeHTML(response.body)).to include(inactive_post.title)
     end
   end
 end
