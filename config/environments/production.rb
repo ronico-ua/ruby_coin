@@ -30,6 +30,7 @@ Rails.application.configure do
   # config.asset_host = "http://assets.example.com"
 
   config.assets.compile = false
+  config.assets.css_compressor = nil
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
