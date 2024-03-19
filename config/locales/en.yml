@@ -200,6 +200,7 @@ en:
         posts: Posts
         tags: Tags
         statistic: Statistic
+        active-admin: Administrator
         exit: Exit
 
     tags:
