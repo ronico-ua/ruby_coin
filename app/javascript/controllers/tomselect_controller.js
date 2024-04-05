@@ -28,7 +28,7 @@ export default class extends Controller {
       document.getElementById("tags-ts-control").value = "";
     }
   }
-  
+
   connect() {
     this.destroyTomSelect()
     this.select = new TomSelect(this.element, this.config)
