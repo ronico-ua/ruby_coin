@@ -5,6 +5,10 @@ class AdminPolicy < ApplicationPolicy
     admin?
   end
 
+  def confirm?
+    admin?
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
