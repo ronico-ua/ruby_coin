@@ -13,13 +13,19 @@ export default class extends Controller {
       'no_backspace_delete': { },
       'restore_on_backspace': { }
     },
-    valueField: 'id',
+    valueField: 'title',
     labelField: 'title',
     searchField: 'title',
     create: false,
     load: this.handleLoad.bind(this),
     render: {
       no_results: this.renderNoResults.bind(this)
+    },
+    onItemAdd: function(value, $item) {
+      document.getElementById("tags-ts-control").value = "";
+    },
+    onItemRemove: function(value, $item) {
+      document.getElementById("tags-ts-control").value = "";
     }
   }
 
