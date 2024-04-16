@@ -200,6 +200,7 @@ uk:
         posts: Дописи
         tags: Теги
         statistic: Статистика
+        active-admin: Адміністратор
         exit: Вихід
 
     tags:
