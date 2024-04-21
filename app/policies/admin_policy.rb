@@ -4,10 +4,7 @@ class AdminPolicy < ApplicationPolicy
   def index?
     admin?
   end
-
-  def confirm?
-    admin?
-  end
+  alias confirm? index?
 
   class Scope
     def initialize(user, scope)
