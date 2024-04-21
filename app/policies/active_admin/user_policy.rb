@@ -5,14 +5,8 @@ module ActiveAdmin
     def index?
       admin?
     end
-
-    def show?
-      admin?
-    end
-
-    def confirm?
-      admin?
-    end
+    alias show? index?
+    alias confirm? index?
 
     class Scope
       def initialize(user, scope)

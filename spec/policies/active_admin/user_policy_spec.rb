@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe ActiveAdmin::UserPolicy do
   subject(:policy) { described_class.new(user, record) }
 
-  describe '#index?' do
+  describe '#index? && #confirm? && #show?' do
     let(:record) { create(:user) }
-    let(:actions) { %i[index] }
+    let(:actions) { %i[index confirm show] }
 
     context 'when user is admin' do
       let(:role) { :admin }
