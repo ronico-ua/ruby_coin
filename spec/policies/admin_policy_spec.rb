@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe AdminPolicy do
   subject(:policy) { described_class.new(user, record) }
 
-  describe '#index? #show?' do
+  describe '#index? #confirm?' do
     let(:record) { create(:post) }
     let(:actions) { %i[index confirm] }
 
