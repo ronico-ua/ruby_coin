@@ -12,36 +12,6 @@ namespace :puma do
   before :start, :make_dirs
 end
 
-namespace :deploy do
-  namespace :check do
-    before :linked_files, :set_master_key do
-      on roles(:app), in: :sequence, wait: 10 do
-        unless test("[ -f #{shared_path}/config/credentials.yml.enc ]")
-          upload! 'config/credentials.yml.enc', "#{shared_path}/config/credentials.yml.enc"
-        end
-        unless test("[ -f #{shared_path}/config/master.key ]")
-          upload! 'config/master.key', "#{shared_path}/config/master.key"
-        end
-        unless test("[ -f #{shared_path}/config/database.yml ]")
-          upload! 'config/database.yml', "#{shared_path}/config/database.yml"
-        end
-
-        upload! '.env', "#{shared_path}/.env" unless test("[ -f #{shared_path}/.env ]")
-      end
-    end
-  end
-
-  desc 'Initial Deploy'
-  task :initial do
-    on roles(:app) do
-      before 'deploy:restart', 'puma:start'
-      invoke 'deploy'
-    end
-  end
-
-  before :starting, :check_revision
-end
-
 desc 'Make sure local git is in sync with remote.'
 task :check_revision do
   on roles(:app) do

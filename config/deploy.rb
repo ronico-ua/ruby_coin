@@ -35,6 +35,23 @@ set :puma_systemctl_user, :system
 append :linked_files, *%w[config/master.key config/database.yml .env]
 set :linked_dirs, %w[tmp/pids tmp/sockets tmp/cache vendor/bundle public/uploads public/system node_modules]
 
-before 'puma:restart',         :after_party
-after :after_party,            'deploy:clobber_assets'
-after 'deploy:clobber_assets', 'deploy:compile_assets'
+# before 'puma:restart', :after_party
+
+namespace :deploy do
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:app), in: :sequence, wait: 10 do
+        files_to_upload = [
+          { file: 'config/credentials.yml.enc' },
+          { file: 'config/master.key' },
+          { file: 'config/database.yml' },
+          { file: '.env' }
+        ]
+
+        files_to_upload.each do |file|
+          upload! file[:file], "#{shared_path}/#{file[:file]}" unless test("[ -f #{shared_path}/#{file[:file]} ]")
+        end
+      end
+    end
+  end
+end
