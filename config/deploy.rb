@@ -36,4 +36,5 @@ append :linked_files, *%w[config/master.key config/database.yml .env]
 set :linked_dirs, %w[tmp/pids tmp/sockets tmp/cache vendor/bundle public/uploads public/system node_modules]
 
 before 'puma:restart',         :after_party
-after :after_party,            'deploy:compile_assets'
+after :after_party,            'deploy:clobber_assets'
+after 'deploy:clobber_assets', 'deploy:compile_assets'
