@@ -41,10 +41,9 @@
                   .form-inner
                     .group
                       = f.label :tags, t('.search_by_tag'), class: 'h5'
-                      = f.select :tags, @tags.map(&:title), { selected: @active_tags },
-                              { multiple: true, class: 'standart-input js-multiple-select d-inline-block', 
-                                      placeholder: t('.placeholders.tags'), 
-                                              data: { controller: :tomselect, ajax_url: '/api/tags' } }
+                      = f.collection_select :tag_ids, (@tags || []), :id, :title, { selected: @active_tags },
+                        { multiple: true, class: 'standart-input js-multiple-select d-inline-block',
+                               data: { controller: :tomselect, ajax_url: '/api/tags' }, placeholder:  t('.placeholders.tags') }
 
                 .filter-container.d-inline-block
                   .filter-block

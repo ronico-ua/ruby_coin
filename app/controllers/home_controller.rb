@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   def index
     @tags = Tag.joins(:posts).where(posts: { status: :active }).distinct.limit(5)
-    @active_tags = params[:tags]
+    @active_tags = params[:tag_ids]
 
     @posts = Posts::Filter.call(active_collection, params)
     @main_post = Post.active.find_by(main_post: true)

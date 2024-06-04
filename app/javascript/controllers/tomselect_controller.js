@@ -13,7 +13,7 @@ export default class extends Controller {
       'no_backspace_delete': { },
       'restore_on_backspace': { }
     },
-    valueField: 'title',
+    valueField: 'id',
     labelField: 'title',
     searchField: 'title',
     create: false,
@@ -22,11 +22,14 @@ export default class extends Controller {
       no_results: this.renderNoResults.bind(this)
     },
     onItemAdd: function(value, $item) {
-      document.getElementById("tags-ts-control").value = "";
+      document.getElementById("tags-ts-control") && (document.getElementById("tags-ts-control").value = "");
+      document.getElementById("post_tag_ids-ts-control") && (document.getElementById("post_tag_ids-ts-control").value = "");
     },
     onItemRemove: function(value, $item) {
-      document.getElementById("tags-ts-control").value = "";
+      document.getElementById("tags-ts-control") && (document.getElementById("tags-ts-control").value = "");
+      document.getElementById("post_tag_ids-ts-control") && (document.getElementById("post_tag_ids-ts-control").value = ""); 
     }
+    
   }
 
   connect() {

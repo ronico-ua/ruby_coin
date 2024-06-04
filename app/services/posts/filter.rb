@@ -32,10 +32,10 @@ class Posts::Filter < BaseService
   end
 
   def filter_by_tags(scope_ordered)
-    return scope_ordered if params[:tags].nil?
+    return scope_ordered if params[:tag_ids].nil? || (params[:tag_ids].length == 1)
 
     scope_ordered.joins(:tags)
-                 .where(tags: { title: params[:tags] })
+                 .where(tags: { id: params[:tag_ids] })
                  .distinct
   end
 end
