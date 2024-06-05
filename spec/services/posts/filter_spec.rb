@@ -9,7 +9,7 @@ POSTS_COLLECTIONS = {
 }.freeze
 
 TAGS_COLLECTIONS = {
-  'all tags':   'Tag.pluck(:title)',
+  'all tags':   'Tag.pluck(:id)',
   'first tag':  'Tag.first.title',
   'last tag':   'Tag.last.title'
 }.freeze
@@ -37,8 +37,8 @@ RSpec.describe Posts::Filter do
       POSTS_COLLECTIONS.each do |post, post_collection|
         TAGS_COLLECTIONS.each do |tag, tag_collection|
           it "returns collection of #{post} with #{tag}" do
-            expect(described_class.call(eval(post_collection), { tags: eval(tag_collection) }).count)
-              .to eq(eval(post_collection).joins(:tags).where(tags: { title: eval(tag_collection) }).distinct.count)
+            expect(described_class.call(eval(post_collection), { tag_ids: eval(tag_collection) }).count)
+              .to eq(eval(post_collection).joins(:tags).where(tags: { id: eval(tag_collection) }).distinct.count)
           end
         end
       end
@@ -46,7 +46,7 @@ RSpec.describe Posts::Filter do
 
     context 'when tags are not exist' do
       it "returns 0 posts and doesn't fail" do
-        expect(described_class.call(Post.all, { tags: 'nonexinstingtag' }).count).to eq(0)
+        expect(described_class.call(Post.all, { tag_ids: ['', '0'] }).count).to eq(0)
       end
     end
   end
