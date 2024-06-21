@@ -6,7 +6,7 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.2.2
+  TargetRubyVersion: 3.3.3
 
 Style/Documentation:
   Enabled: false
@@ -50,7 +50,7 @@ Lint/MissingSuper:
 RSpec/MultipleExpectations:
   Enabled: false
 
-RSpec/Rails/InferredSpecType:
+RSpec/RepeatedDescription:
   Enabled: false
 
 Layout/HashAlignment:
@@ -78,6 +78,3 @@ Rails/CreateTableWithTimestamps:
 
 RSpec/MessageSpies:
   Enabled: false
-
-FactoryBot/ExcessiveCreateList:
-  MaxAmount: 20
