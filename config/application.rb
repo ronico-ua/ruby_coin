@@ -17,7 +17,7 @@ module RubyCoin
 
     config.i18n.available_locales = [:en, :uk]
     config.i18n.default_locale = :uk
-    config.time_zone = 'Kyiv'
+    config.time_zone = 'Europe/Kyiv'
     # config.active_record.default_timezone = :local
     config.active_job.queue_adapter = :sidekiq
 
