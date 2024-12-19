@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lock '~> 3.18.0'
+lock '~> 3.19.2'
 
 # Change these
 server '45.90.59.143', port: 22, roles: %i[web app db], primary: true
@@ -16,7 +16,7 @@ set :use_sudo,        false
 set :stage,           :production
 set :rails_env,       :production
 set :deploy_via,      :remote_cache
-set :rvm_ruby_version, '3.3.3'
+set :rvm_ruby_version, '3.3.6'
 set :rvm_custom_path, '/usr/local/rvm'
 
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
@@ -28,7 +28,7 @@ set :puma_preload_app,           true
 set :puma_worker_timeout,        nil
 set :puma_init_active_record,    true
 set :puma_enable_socket_service, true
-set :keep_releases, 3
+set :keep_releases, 2
 set :conditionally_migrate, true
 set :puma_systemctl_user, :system
 

@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.3'
+ruby '3.3.6'
 
 gem 'activeadmin'
 gem 'after_party'
@@ -22,7 +22,7 @@ gem 'httparty'
 gem 'jsbundling-rails'
 gem 'net-pop', github: 'ruby/net-pop'
 gem 'nokogiri'
-gem 'overcommit', '~> 0.63.0'
+gem 'overcommit', '~> 0.64.1'
 gem 'pagy'
 gem 'pg', '~> 1.5.3'
 gem 'pg_search'
