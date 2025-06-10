@@ -10,7 +10,7 @@ class ChatgptService
 
   attr_reader :api_url, :options, :model, :message, :locale
 
-  def initialize(params, model = 'gpt-4o')
+  def initialize(params, model = 'gpt-4.1')
     gpt_key = ENV.fetch('CHAT_GPT_KEY') { Rails.application.credentials.chat_gpt_key }
     @options = {
       headers: {
