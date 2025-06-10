@@ -16,7 +16,7 @@ require 'database_cleaner'
 require 'pundit/rspec'
 require 'pundit/matchers'
 
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -33,7 +33,7 @@ RSpec.configure do |config|
     default_url_options[:locale] = I18n.default_locale
   end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = Rails.root.join('spec', 'fixtures')
+  config.fixture_paths = [Rails.root.join('spec', 'fixtures')]
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include ActiveSupport::Testing::TimeHelpers

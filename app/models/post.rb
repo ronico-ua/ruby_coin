@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   validates :photo, presence: true
   validates :main_post, inclusion: { in: [true, false] }
 
-  enum status: { active: 0, inactive: 1 }
+  enum :status, { active: 0, inactive: 1 }
 
   scope :ordered, -> { order(created_at: :desc) }
   scope :main, -> { where(main_post: true).ordered }
