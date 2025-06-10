@@ -22,7 +22,7 @@ gem 'httparty'
 gem 'jsbundling-rails'
 gem 'net-pop', github: 'ruby/net-pop'
 gem 'nokogiri'
-gem 'overcommit', '~> 0.64.1'
+gem 'overcommit', '~> 0.67.1'
 gem 'pagy'
 gem 'pg', '~> 1.5.3'
 gem 'pg_search'
@@ -65,7 +65,7 @@ group :development do
   gem 'web-console'
 
   gem 'capistrano', '~> 3.17', require: false
-  gem 'capistrano3-puma', '6.0.0.beta.1', require: false
+  gem 'capistrano3-puma', '~> 6.0', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rvm', require: false
