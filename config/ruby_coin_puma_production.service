@@ -5,21 +5,22 @@ Requires=ruby_coin_puma_production.socket
 
 [Service]
 Type=simple
-User=
+User=root
 WorkingDirectory=/home/root/apps/ruby_coin/current
-# Support older bundler versions where file descriptors weren't kept
-# See https://github.com/rubygems/rubygems/issues/3254
-ExecStart=/usr/local/rvm/bin/rvm default do bundle exec --keep-file-descriptors puma -C /home/root/apps/ruby_coin/shared/puma.rb
+
+# rbenv (замість RVM)
+Environment="RBENV_ROOT=/root/.rbenv"
+Environment="PATH=/root/.rbenv/shims:/root/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# запуск Puma через bundle з rbenv-shims
+ExecStart=/usr/bin/env bundle exec --keep-file-descriptors puma -C /home/root/apps/ruby_coin/shared/puma.rb
 ExecReload=/bin/kill -USR1 $MAINPID
-StandardOutput=append:/home/root/apps/ruby_coin/current/log/puma.error.log
-StandardError=append:/home/root/apps/ruby_coin/current/log/puma.access.log
 
-
-
+StandardOutput=append:/home/root/apps/ruby_coin/current/log/puma.access.log
+StandardError=append:/home/root/apps/ruby_coin/current/log/puma.error.log
 
 Restart=always
 RestartSec=1
-
 SyslogIdentifier=puma
 
 [Install]

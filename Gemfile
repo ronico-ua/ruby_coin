@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.6'
+ruby '3.4.7'
 
 gem 'activeadmin'
 gem 'after_party'
@@ -20,16 +20,14 @@ gem 'groupdate'
 gem 'hotwire-rails'
 gem 'httparty'
 gem 'jsbundling-rails'
-gem 'net-pop', github: 'ruby/net-pop'
 gem 'nokogiri'
-gem 'overcommit', '~> 0.67.1'
 gem 'pagy'
 gem 'pg', '~> 1.5.3'
 gem 'pg_search'
 gem 'puma', '~> 6.4'
 gem 'pundit'
 gem 'pundit-matchers'
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 7.2', '>= 7.2.3'
 gem 'rails-i18n'
 gem 'rbs', '~> 3.1'
 gem 'redis'
@@ -57,6 +55,7 @@ end
 
 group :development do
   gem 'factory_bot_rails', '~> 6.4.2'
+  gem 'overcommit', '~> 0.68.0'
   gem 'pry-rails'
   gem 'rubocop-faker', require: false
   gem 'rubocop-performance', require: false
@@ -68,7 +67,7 @@ group :development do
   gem 'capistrano3-puma', '~> 6.0', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
-  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rbenv', '~> 2.2', require: false
   gem 'capistrano-yarn', require: false
 end
 

@@ -10,7 +10,7 @@ class ChatgptService
 
   attr_reader :api_url, :options, :model, :message, :locale
 
-  def initialize(params, model = 'gpt-4.1')
+  def initialize(params, model = 'gpt-5.1')
     gpt_key = ENV.fetch('CHAT_GPT_KEY') { Rails.application.credentials.chat_gpt_key }
     @options = {
       headers: {
@@ -26,9 +26,6 @@ class ChatgptService
 
   def call
     choose_translation_language(locale)
-
-    # gpt-3.5-turbo-16k model can take only 16385 token
-    # gpt-4o model can take 128K tokens
 
     if message.length > 90_000
       sections = separated_content(message)
