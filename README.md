@@ -24,10 +24,10 @@ Start server
 
 ### Stack of technologies
 * Ruby       3.4.7
-* Rails      7.1
+* Rails      7.2
 * PostgreSQL 15.2
-* NodeJS    18.15.0 or higher
-* Yarn       4.0.2
+* Node.js    18.15.0 or higher
+* Yarn       4.12.0
 
 
 ### How to skip `overcommit` (only if very needed):

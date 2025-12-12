@@ -1,3 +1,6 @@
+# TinyMCE 8 requires *license_key* (this is NOT the Tiny Cloud "api key").
+# With tinymce-rails (TinyMCE GPL build), you typically want: license_key: gpl
+license_key: "<%= Rails.application.credentials.dig(:tinymce_license_key) || 'gpl' %>"
 height: 500
 menubar: 'file edit insert view format table'
 toolbar:

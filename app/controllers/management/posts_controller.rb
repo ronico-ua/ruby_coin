@@ -9,7 +9,7 @@ module Management
 
     def index
       @posts = Post.order(created_at: :desc)
-      @pagy, @posts = pagy(@posts, items: 6)
+      @pagy, @posts = pagy(@posts, limit: 6)
     end
 
     def new

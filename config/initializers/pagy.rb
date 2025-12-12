@@ -6,7 +6,7 @@
 # Customize only what you really need and notice that the core Pagy works also without any of the following lines.
 # Should you just cherry pick part of this file, please maintain the require-order of the extras
 
-require 'pagy/extras/bootstrap'
+require 'pagy'
 
 # Pagy DEFAULT Variables
 # See https://ddnexus.github.io/pagy/docs/api/pagy#variables
@@ -16,7 +16,8 @@ require 'pagy/extras/bootstrap'
 # Instance variables
 # See https://ddnexus.github.io/pagy/docs/api/pagy#instance-variables
 # Pagy::DEFAULT[:page]   = 1                                  # default
-Pagy::DEFAULT[:items] = 4 # default
+# Pagy 43+: use Pagy.options (Pagy::DEFAULT is frozen and not Rails-oriented)
+Pagy.options[:limit] = 4
 # Pagy::DEFAULT[:outset] = 0                                  # default
 
 # Other Variables
@@ -212,7 +213,7 @@ Pagy::DEFAULT[:items] = 4 # default
 #
 # Examples:
 # load the "de" built-in locale:
-Pagy::I18n.load(locale: 'uk')
+Pagy::I18n.locale = 'uk'
 #
 # load the "de" locale defined in the custom file at :filepath:
 # Pagy::I18n.load(locale: 'de', filepath: 'path/to/pagy-de.yml')
@@ -235,10 +236,12 @@ Pagy::I18n.load(locale: 'uk')
 # I18n extra: uses the standard i18n gem which is ~18x slower using ~10x more memory
 # than the default pagy internal i18n (see above)
 # See https://ddnexus.github.io/pagy/docs/extras/i18n
-require 'pagy/extras/i18n'
+# Pagy 43+: optional integration with the I18n gem:
+# Pagy.translate_with_the_slower_i18n_gem!
 
 # Default i18n key
 # Pagy::DEFAULT[:i18n_key] = 'pagy.item_name'   # default
 
 # When you are done setting your own default freeze it, so it will not get changed accidentally
-Pagy::DEFAULT.freeze
+# Pagy::DEFAULT is already frozen in Pagy 43+
+

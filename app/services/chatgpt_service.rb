@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
-LANGUAGE = {
-  uk: 'Ukrainian',
-  en: 'English'
-}.freeze
-
 class ChatgptService
   include HTTParty
 
+  DEFAULT_MODEL = 'gpt-5.2'
+  LANGUAGE = { uk: 'Ukrainian', en: 'English' }.freeze
+
   attr_reader :api_url, :options, :model, :message, :locale
 
-  def initialize(params, model = 'gpt-5.1')
-    gpt_key = ENV.fetch('CHAT_GPT_KEY') { Rails.application.credentials.chat_gpt_key }
+  def initialize(params, model = DEFAULT_MODEL)
+    gpt_key = Rails.application.credentials.chat_gpt_key
     @options = {
       headers: {
         'Content-Type' => 'application/json',
@@ -76,10 +74,8 @@ class ChatgptService
     response['choices'][0]['message']['content']
   end
 
-  class << self
-    def call(message)
-      new(message, model).call
-    end
+  def self.call(params, model = DEFAULT_MODEL)
+    new(params, model).call
   end
 
   private

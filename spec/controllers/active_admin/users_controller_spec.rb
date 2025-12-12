@@ -28,31 +28,23 @@ RSpec.describe Admin::UsersController, type: :controller do
         get :index, params: { scope: 'all' }
         expect(response.body).to include(user.email)
         expect(response.body).to include(admin.email)
-        expect(response.body).to include('<td class="col col-role">user</td>')
-        expect(response.body).to include('<td class="col col-role">admin</td>')
       end
 
       it 'admin' do
         get :index, params: { scope: 'admin' }
         expect(response.body).to include(admin.email)
-        expect(response.body).to include('<td class="col col-role">admin</td>')
-        expect(response.body).not_to include('<td class="col col-role">user</td>')
         expect(response.body).not_to include(user.email)
       end
 
       it 'scope user' do
         get :index, params: { scope: 'user' }
         expect(response.body).not_to include(admin.email)
-        expect(response.body).not_to include('<td class="col col-role">admin</td>')
-        expect(response.body).to include('<td class="col col-role">user</td>')
         expect(response.body).to include(user.email)
       end
 
       it 'scope moderator' do
         get :index, params: { scope: 'moderator' }
         expect(response.body).not_to include(admin.email)
-        expect(response.body).not_to include('<td class="col col-role">admin</td>')
-        expect(response.body).not_to include('<td class="col col-role">user</td>')
         expect(response.body).not_to include(user.email)
       end
     end

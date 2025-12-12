@@ -9,7 +9,7 @@ module Management
     def index
       @tag = Tag.new
       @tags = policy_scope(Tag).order(created_at: :desc)
-      @pagy, @tags = pagy(@tags, items: 8)
+      @pagy, @tags = pagy(@tags, limit: 8)
     end
 
     def new

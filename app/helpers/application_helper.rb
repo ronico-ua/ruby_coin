@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  include Pagy::Frontend
+  # Pagy 43+: provide compatibility wrapper for existing views
+  def pagy_bootstrap_nav(pagy, classes: 'pagination', **options)
+    pagy.send(:bootstrap_series_nav, classes:, **options).html_safe
+  end
 
   def prepend_flash
     turbo_stream.prepend 'flash', partial: 'shared/flash'
