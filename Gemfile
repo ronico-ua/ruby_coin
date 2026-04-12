@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.7'
+ruby '3.4.9'
 
 gem 'activeadmin', '~> 3.4'
 gem 'after_party'
@@ -39,7 +39,6 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'tinymce-rails', '~> 8.3'
 gem 'turbo-rails', '~> 2.0', '>= 2.0.20'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
@@ -55,7 +54,7 @@ end
 
 group :development do
   gem 'factory_bot_rails', '~> 6.5', '>= 6.5.1'
-  gem 'overcommit', '~> 0.68.0'
+  gem 'overcommit', '~> 0.69.0'
   gem 'pry-rails'
   gem 'rubocop-faker', require: false
   gem 'rubocop-performance', require: false
@@ -63,7 +62,7 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'web-console'
 
-  gem 'capistrano', '~> 3.19', '>= 3.19.2', require: false
+  gem 'capistrano', '~> 3.20'
   gem 'capistrano3-puma', '~> 7.1', require: false
   gem 'capistrano-bundler', '~> 2.2', require: false
   gem 'capistrano-rails', '~> 1.7', '~> 1.6', require: false

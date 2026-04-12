@@ -3,7 +3,7 @@
 class ChatgptService
   include HTTParty
 
-  DEFAULT_MODEL = 'gpt-5.2'
+  DEFAULT_MODEL = 'gpt-5.4'
   LANGUAGE = { uk: 'Ukrainian', en: 'English' }.freeze
 
   attr_reader :api_url, :options, :model, :message, :locale

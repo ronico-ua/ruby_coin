@@ -23,7 +23,7 @@ Start server
 2. Open [http://localhost:3000/](http://localhost:3000/) in your browser
 
 ### Stack of technologies
-* Ruby       3.4.7
+* Ruby       3.4.9
 * Rails      7.2
 * PostgreSQL 15.2
 * Node.js    18.15.0 or higher

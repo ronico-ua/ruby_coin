@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-lock '~> 3.19.2'
+lock '~> 3.20.0'
 
-server '45.90.59.143', port: 22, roles: %i[web app db], primary: true
+server '167.71.44.132', port: 22, roles: %i[web app db], primary: true
 
 set :application, 'ruby_coin'
 set :repo_url,    'git@github.com:ronico-ua/ruby_coin.git'
@@ -21,7 +21,7 @@ set :deploy_via,   :remote_cache
 # RBENV CONFIG
 # ------------------------------
 set :rbenv_type, :user
-set :rbenv_ruby, '3.4.7'
+set :rbenv_ruby, '3.4.9'
 set :rbenv_path, '/root/.rbenv'
 set :rbenv_roles, :all
 set :rbenv_map_bins, %w[rake gem bundle ruby rails]

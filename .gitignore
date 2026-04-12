@@ -45,3 +45,4 @@
 **/.DS_Store
 .DS_Store
 .yarn/install-state.gz
+*.dump

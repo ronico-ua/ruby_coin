@@ -536,25 +536,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap5-toggle@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "bootstrap5-toggle@npm:5.1.2"
+"bootstrap5-toggle@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "bootstrap5-toggle@npm:5.3.3"
   dependencies:
-    bootstrap: "npm:^5.0.0"
-    jquery: "npm:^3.6.0"
+    jquery: "npm:^4.0.0"
+  peerDependencies:
+    bootstrap: ">=5 <6"
   dependenciesMeta:
     jquery:
       optional: true
-  checksum: 10/a57364a5fa5bbb03ea3f18c1945e2b06608d3bf0984286310843158d101db492a5ffaee87049fd41f9e7e1aa05238aed8460e4b5f16e1886319baf7ca1346537
-  languageName: node
-  linkType: hard
-
-"bootstrap@npm:^5.0.0":
-  version: 5.3.2
-  resolution: "bootstrap@npm:5.3.2"
-  peerDependencies:
-    "@popperjs/core": ^2.11.8
-  checksum: 10/5c3eb0634218d206bc2518154432bc80f7eec225db9c0dcb04b80353ba5cb121b8e6d12993ffe025d32ffe511051290461d8ca0adcae7971d82d329025bd16ab
+  peerDependenciesMeta:
+    bootstrap:
+      optional: false
+  checksum: 10/be242488e65b95e08cd2d84b6207f9c762f9fa5293320248615c72475bae4d3197cf850151b948032c6b746952959497c3ae0c305c7c8cc8b97be59de8ef5067
   languageName: node
   linkType: hard
 
@@ -1114,10 +1109,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:^3.6.0":
-  version: 3.7.1
-  resolution: "jquery@npm:3.7.1"
-  checksum: 10/17be9929f5fa37697d9848284f0d108c543318ef79ec794e130cd0c49f6c050d60c803a69e8cfa16fa19f5ff7cdb814a6905cceab0831186560c65ed113cd579
+"jquery@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "jquery@npm:4.0.0"
+  checksum: 10/722be14779518f27f50463d9aaa8d6b42782673a23f65335c4ff9e2ad124cb4d5267696dfc7bc4f40ecf04e852cbb05b1630b50daacf2821737d5d3b480fbf19
   languageName: node
   linkType: hard
 
@@ -1468,7 +1463,7 @@ __metadata:
     "@rails/activestorage": "npm:7.2.300"
     bootstrap: "npm:^5.3.8"
     bootstrap-icons: "npm:^1.13.1"
-    bootstrap5-toggle: "npm:^5.1.2"
+    bootstrap5-toggle: "npm:^5.3.3"
     esbuild: "npm:^0.27.1"
     sass: "npm:^1.96.0"
     tom-select: "npm:^2.4.3"

@@ -15,16 +15,18 @@
 #
 # Uncomment the following lines to make the configuration take effect.
 
+gemfile: Gemfile
+
 PreCommit:
   RuboCop:
     enabled: true
     on_warn: fail
-    command: ['bundle', 'exec', 'rubocop']
+    command: ['rubocop']
   Fasterer:
     enabled: true
     on_warn: fail
     problem_on_unmodified_line: ignore
-    command: ['bundle', 'exec', 'fasterer']
+    command: ['fasterer']
   BundleAudit:
     enabled: true
-    command: ['bundle', 'exec', 'bundler-audit', 'check', '--update']
+    command: ['bundler-audit', 'check', '--update']

@@ -8,7 +8,7 @@
     "@rails/activestorage": "7.2.300",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
-    "bootstrap5-toggle": "^5.1.2",
+    "bootstrap5-toggle": "^5.3.3",
     "esbuild": "^0.27.1",
     "sass": "^1.96.0",
     "tom-select": "^2.4.3"
