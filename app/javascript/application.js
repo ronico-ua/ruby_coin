@@ -5,7 +5,21 @@ Turbo.session.drive = false
 import 'bootstrap/js/dist/dropdown'
 import 'bootstrap/js/dist/modal'
 import 'bootstrap/js/dist/collapse'
-import 'bootstrap5-toggle/js/bootstrap5-toggle.ecmas'
+import { BootstrapToggle } from 'bootstrap5-toggle'
 import * as ActiveStorage from "@rails/activestorage"
+
+const initBootstrapToggles = () => {
+  document
+    .querySelectorAll("input[type='checkbox'][data-toggle='toggle']")
+    .forEach((element) => {
+      if (!element.bsToggle) {
+        // bootstrap5-toggle stores an instance on element.bsToggle
+        new BootstrapToggle(element)
+      }
+    })
+}
+
+document.addEventListener('DOMContentLoaded', initBootstrapToggles)
+document.addEventListener('turbo:load', initBootstrapToggles)
 
 ActiveStorage.start()
