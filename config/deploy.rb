@@ -53,6 +53,22 @@ append :linked_files, *%w[config/master.key config/database.yml config/credentia
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads public/system node_modules]
 
 # ------------------------------
+# Yarn install before asset precompile
+# ------------------------------
+namespace :deploy do
+  desc 'Install node packages via yarn'
+  task :yarn_install do
+    on roles(:web) do
+      within release_path do
+        execute :yarn, 'install', '--silent', '--no-progress'
+      end
+    end
+  end
+end
+
+before 'deploy:assets:precompile', 'deploy:yarn_install'
+
+# ------------------------------
 # Upload credentials automatically
 # ------------------------------
 namespace :deploy do
