@@ -26,11 +26,31 @@ Start server
 
 ### Stack of technologies
 * Ruby       3.4.9
-* Rails      7.2
+* Rails      8.1
 * PostgreSQL 15.2
 * Node.js    18.15.0 or higher
-* Yarn       4.12.0
+* Yarn       4.15.0
 
+Testing & Quality Control
+--------------
+You can run the same linting and test suites locally before pushing to GitHub:
+
+* **Run all tests (RSpec):**
+  ```bash
+  bundle exec rspec
+  ```
+* **Run RuboCop (Code style linter):**
+  ```bash
+  bundle exec rubocop
+  ```
+* **Run Fasterer (Ruby performance analyzer):**
+  ```bash
+  bundle exec fasterer
+  ```
+* **Run Bundler Audit (Gem security check):**
+  ```bash
+  bundle exec bundler-audit check --update
+  ```
 
 ### How to skip `overcommit` (only if very needed):
 `SKIP=RuboCop git commit`
