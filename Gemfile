@@ -74,4 +74,6 @@ group :test do
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem 'vcr', '~> 6.3'
+  gem 'webmock', '~> 3.26'
 end

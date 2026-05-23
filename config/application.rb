@@ -14,7 +14,7 @@ module RubyCoin
     config.load_defaults 8.1
 
     config.exceptions_app = routes
-    config.tinymce.install = :copy
+    config.tinymce.install = :compile
 
     config.i18n.available_locales = [:en, :uk]
     config.i18n.default_locale = :uk

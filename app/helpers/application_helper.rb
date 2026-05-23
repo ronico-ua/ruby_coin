@@ -3,7 +3,7 @@
 module ApplicationHelper
   # Pagy 43+: provide compatibility wrapper for existing views
   def pagy_bootstrap_nav(pagy, classes: 'pagination', **)
-    pagy.bootstrap_series_nav(classes:, **).html_safe # rubocop:disable Rails/OutputSafety
+    pagy.series_nav(:bootstrap, classes:, **).html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def prepend_flash
