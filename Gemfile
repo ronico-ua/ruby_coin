@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.4.9'
 
-gem 'activeadmin', '~> 3.4'
 gem 'after_party'
 gem 'ahoy_matey', '~> 5.4', '>= 5.4.1'
 gem 'blueprinter'
@@ -31,7 +30,6 @@ gem 'rails', '~> 8.1'
 gem 'rails-i18n'
 gem 'rbs'
 gem 'redis'
-gem 'sass-rails', '~> 6.0'
 gem 'sidekiq'
 gem 'slim'
 gem 'sprockets-rails'
