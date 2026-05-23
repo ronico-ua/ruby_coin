@@ -3,15 +3,15 @@
 require 'rails_helper'
 
 POSTS_COLLECTIONS = {
-  'all posts':      'Post.all',
-  'active posts':   'Post.active',
+  'all posts': 'Post.all',
+  'active posts': 'Post.active',
   'inactive posts': 'Post.inactive'
 }.freeze
 
 TAGS_COLLECTIONS = {
-  'all tags':   'Tag.pluck(:id)',
-  'first tag':  'Tag.first.title',
-  'last tag':   'Tag.last.title'
+  'all tags': 'Tag.pluck(:id)',
+  'first tag': 'Tag.first.title',
+  'last tag': 'Tag.last.title'
 }.freeze
 
 RSpec.describe Posts::Filter do
@@ -20,8 +20,10 @@ RSpec.describe Posts::Filter do
   before do
     create_list(:post, 5, status: 'active', tag_ids: tags.pluck(:id))
     create_list(:post, 2, status: 'inactive', tag_ids: tags.pluck(:id))
+    # rubocop:disable FactoryBot/ExcessiveCreateList
     create_list(:post, 12, status: 'active')
     create_list(:post, 12, status: 'inactive')
+    # rubocop:enable FactoryBot/ExcessiveCreateList
   end
 
   describe '#call' do

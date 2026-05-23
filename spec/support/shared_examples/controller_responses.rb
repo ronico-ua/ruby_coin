@@ -17,6 +17,6 @@ end
 shared_examples 'unprocessable_entity status' do
   it 'responds with unprocessable_entity status' do
     get(action, params:)
-    expect(response).to have_http_status(:unprocessable_entity)
+    expect(response).to have_http_status(:unprocessable_content)
   end
 end

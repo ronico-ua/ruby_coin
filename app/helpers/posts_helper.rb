@@ -5,7 +5,7 @@ module PostsHelper
     if action_name == 'create'
       params['post'].present? ? params.dig('post', "#{item}_localizations", locale) : ''
     else
-      post.post_translations.find_by(locale:)&.send(item)
+      post.post_translations.find_by(locale:)&.public_send(item)
     end
   end
 end

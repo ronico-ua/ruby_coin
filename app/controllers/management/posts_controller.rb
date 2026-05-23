@@ -24,7 +24,7 @@ module Management
         flash[:success] = t('.success')
         redirect_to management_posts_path
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_content
       end
     end
 
@@ -41,7 +41,7 @@ module Management
           end
         end
       else
-        render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_content
       end
     end
 
@@ -69,20 +69,20 @@ module Management
     end
 
     def post_params
-      params.require(:post).permit(:title, :description, :subtitle, :status, :main_post, :photo, :slug, tag_ids: [])
+      params.expect(post: [:title, :description, :subtitle, :status, :main_post, :photo, :slug, { tag_ids: [] }])
     end
 
     def normalize_main_post_param
-      params[:post][:main_post] = params[:post][:main_post] == 'active'
+      params[:post][:main_post] = params[:post][:main_post] == 'active' # rubocop:disable Rails/StrongParametersExpect
       slug_param
     end
 
     def localization_params
-      params.require(:post).permit(title_localizations: {}, subtitle_localizations: {}, description_localizations: {})
+      params.require(:post).permit(title_localizations: {}, subtitle_localizations: {}, description_localizations: {}) # rubocop:disable Rails/StrongParametersExpect
     end
 
     def set_post!
-      @post = Post.find(params[:id])
+      @post = Post.find(params.expect(:id))
     end
 
     def fetch_tags
@@ -95,7 +95,7 @@ module Management
 
     def slug_param
       slug = I18n.locale == :en ? params.dig('post', 'title') : params.dig('post', 'title_localizations', 'en')
-      params[:post][:slug] = slug&.parameterize
+      params[:post][:slug] = slug&.parameterize # rubocop:disable Rails/StrongParametersExpect
     end
   end
 end

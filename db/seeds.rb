@@ -54,14 +54,14 @@ def pretty_print(string, color = 'light_gray', method = :puts, element = '=')
            "#{element * max_element_count} #{string} #{element * max_element_count}"
          end
 
-  output_line = method == :puts ? "\n\n#{line.send(color.to_s)}" : "\r#{line.send(color.to_s)}"
+  output_line = method == :puts ? "\n\n#{line.public_send(color.to_s)}" : "\r#{line.public_send(color.to_s)}"
 
   puts output_line if method == :puts
   print output_line unless method == :puts
 end
 
 # ==== Create User ====
-if User.count.zero?
+if User.none?
   pretty_print('Creating regular user', 'green')
 
   user = User.create(
@@ -74,7 +74,7 @@ if User.count.zero?
   pretty_print('1/1', 'green', :print, '')
 
   # ==== Create Tag ====
-  if Tag.count.zero?
+  if Tag.none?
     pretty_print('Creating tags', 'blue')
 
     TAG_COUNT.times do |i|
@@ -85,7 +85,7 @@ if User.count.zero?
   end
 
   # ==== Create Post ====
-  if Post.count.zero?
+  if Post.none?
     pretty_print('Creating posts', 'purple')
 
     POST_COUNT.times do |i|

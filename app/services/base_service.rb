@@ -4,7 +4,7 @@ class BaseService
   def self.call(*)
     service = new(*)
 
-    service.send(:call) if service.respond_to?(:call)
+    service.__send__(:call) if service.respond_to?(:call)
   end
 
   private

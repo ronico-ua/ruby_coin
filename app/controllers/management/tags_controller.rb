@@ -32,7 +32,7 @@ module Management
         end
       else
         respond_to do |format|
-          format.html { redirect_to management_tags_path, status: :unprocessable_entity }
+          format.html { redirect_to management_tags_path, status: :unprocessable_content }
           format.turbo_stream { flash.now[:alert] = @tag.errors.full_messages.join }
         end
       end
@@ -50,7 +50,7 @@ module Management
         end
       else
         respond_to do |format|
-          format.html { redirect_to management_tags_path, status: :unprocessable_entity }
+          format.html { redirect_to management_tags_path, status: :unprocessable_content }
           format.turbo_stream { flash.now[:alert] = @tag.errors.full_messages.join }
         end
       end
@@ -72,11 +72,11 @@ module Management
     private
 
     def tag_params
-      params.require(:tag).permit(:title)
+      params.expect(tag: [:title])
     end
 
     def set_tag!
-      @tag = Tag.find params[:id]
+      @tag = Tag.find params.expect(:id)
     end
 
     def authorize_policy

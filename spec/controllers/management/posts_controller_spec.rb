@@ -156,9 +156,7 @@ describe Management::PostsController do
 
       it 'deletes the post' do
         post_to_delete = create(:post)
-        expect do
-          delete :destroy, params: { id: post_to_delete.id }
-        end.to change(Post, :count).by(-1)
+        expect { delete :destroy, params: { id: post_to_delete.id } }.to change(Post, :count).by(-1)
       end
     end
 
@@ -181,9 +179,7 @@ describe Management::PostsController do
 
       context 'with valid attributes' do
         it 'creates a new post' do
-          expect do
-            post :create, params: { post: valid_attributes }
-          end.to change(Post, :count).by(1)
+          expect { post :create, params: { post: valid_attributes } }.to change(Post, :count).by(1)
         end
 
         it 'redirects to the new post' do
@@ -195,9 +191,7 @@ describe Management::PostsController do
 
       context 'with invalid attributes' do
         it 'does not create a new post' do
-          expect do
-            post :create, params: { post: invalid_attributes }
-          end.not_to change(Post, :count)
+          expect { post :create, params: { post: invalid_attributes } }.not_to change(Post, :count)
         end
 
         it_behaves_like 'unprocessable_entity status'
@@ -234,7 +228,7 @@ describe Management::PostsController do
       }
 
       controller.params = params
-      permitted_params = controller.send(:post_params)
+      permitted_params = controller.__send__(:post_params)
       expected_params = ActionController::Parameters.new(
         post: {
           title: test_post.title,

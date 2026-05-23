@@ -11,15 +11,17 @@ class Post < ApplicationRecord
 
   translates :title, :subtitle, :description
   extend FriendlyId
+
   friendly_id :slug, use: %i[slugged finders history]
   include PgSearch::Model
+
   ORDER_TYPES = %w[new best].freeze
   pg_search_scope :search_everywhere, associated_against: { post_translations: [:title, :description] },
-                                                  using: { tsearch: { prefix: true, any_word: true } }
+                                      using: { tsearch: { prefix: true, any_word: true } }
   pg_search_scope :search_by_title, associated_against: { post_translations: [:title] },
-                                                  using: { tsearch: { prefix: true, any_word: true } }
+                                    using: { tsearch: { prefix: true, any_word: true } }
   pg_search_scope :search_by_description, associated_against: { post_translations: [:description] },
-                                                  using: { tsearch: { prefix: true, any_word: true } }
+                                          using: { tsearch: { prefix: true, any_word: true } }
 
   mount_uploader :photo, PhotoUploader
   before_save :deactivate_previous_main_post, if: :main_post?

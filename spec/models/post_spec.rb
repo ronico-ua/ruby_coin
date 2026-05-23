@@ -37,11 +37,8 @@ RSpec.describe Post do
 
   describe "updating post's photo" do
     it 'updates the cached profile image for post' do
-      expect do
-        post.update(photo: fixture_file_upload(
-          'thumb_icon.png', 'image/png'
-        ))
-      end.to(change { post.reload.photo })
+      expect { post.update(photo: fixture_file_upload('thumb_icon.png', 'image/png')) }
+        .to(change { post.reload.photo })
     end
   end
 

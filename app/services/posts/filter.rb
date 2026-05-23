@@ -28,7 +28,7 @@ class Posts::Filter < BaseService
     return scope if params[:order].presence == 'new'
     return scope unless params[:order].present? && Post::ORDER_TYPES.include?(params[:order])
 
-    send(params[:order]) # фактично, на цьому етапі, можно залишити тільки -> best
+    __send__(params[:order]) # фактично, на цьому етапі, можно залишити тільки -> best
   end
 
   def filter_by_tags(scope_ordered)

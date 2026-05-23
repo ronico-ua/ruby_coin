@@ -71,9 +71,7 @@ describe Management::TagsController do
       end
 
       it 'creates a new tag' do
-        expect do
-          post :create, params: { tag: valid_attributes }
-        end.to change(Tag, :count).by(1)
+        expect { post :create, params: { tag: valid_attributes } }.to change(Tag, :count).by(1)
       end
 
       it 'redirects to the new post' do
@@ -85,9 +83,7 @@ describe Management::TagsController do
 
     context 'with invalid parameters' do
       it 'does not create a new tag' do
-        expect do
-          post :create, params: { tag: invalid_attributes }
-        end.not_to change(Tag, :count)
+        expect { post :create, params: { tag: invalid_attributes } }.not_to change(Tag, :count)
       end
     end
 

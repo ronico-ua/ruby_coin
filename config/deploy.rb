@@ -60,7 +60,7 @@ namespace :deploy do
   task :yarn_install do
     on roles(:web) do
       within release_path do
-        execute :yarn, 'install', '--silent', '--no-progress'
+        execute :yarn, 'install'
       end
     end
   end

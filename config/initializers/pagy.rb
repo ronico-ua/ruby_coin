@@ -17,7 +17,7 @@ require 'pagy'
 # See https://ddnexus.github.io/pagy/docs/api/pagy#instance-variables
 # Pagy::DEFAULT[:page]   = 1                                  # default
 # Pagy 43+: use Pagy.options (Pagy::DEFAULT is frozen and not Rails-oriented)
-Pagy.options[:limit] = 4
+Pagy::OPTIONS[:limit] = 4
 # Pagy::DEFAULT[:outset] = 0                                  # default
 
 # Other Variables
@@ -244,4 +244,3 @@ Pagy::I18n.locale = 'uk'
 
 # When you are done setting your own default freeze it, so it will not get changed accidentally
 # Pagy::DEFAULT is already frozen in Pagy 43+
-

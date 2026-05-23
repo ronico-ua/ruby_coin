@@ -3,12 +3,235 @@ plugins:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-faker
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
 
-AllCops:
-  NewCops: enable
-  TargetRubyVersion: 3.4.9
+inherit_mode:
+  merge:
+    - Exclude
+
+# Following Cops were enabled:
+Layout/TrailingEmptyLines:
+  Enabled: true
+  EnforcedStyle: final_newline
+
+Layout/ExtraSpacing:
+  Enabled: true
+
+Layout/FirstArrayElementLineBreak:
+  Description: >-
+    Checks for a line break before the first element in a
+    multi-line array.
+  Enabled: true
+
+Layout/FirstHashElementLineBreak:
+  Description: >-
+    Checks for a line break before the first element in a
+    multi-line hash.
+  Enabled: true
+
+Layout/HashAlignment:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - lib/**/*
+  AllowURI: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/Debugger:
+  Description: 'Check for debugger calls.'
+  Enabled: true
+  Severity: 'fatal'
+
+Style/UnlessElse:
+  Enabled: true
+
+Style/UnlessLogicalOperators:
+  Enabled: true
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/CollectionMethods:
+  Description: 'Preferred collection methods.'
+  StyleGuide: '#map-find-select-reduce-size'
+  Enabled: true
+
+Style/GuardClause:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/ImplicitRuntimeError:
+  Description: >-
+    Use `raise` or `fail` with an explicit exception class and
+    message, rather than just a message.
+  Enabled: true
+
+Style/MethodCalledOnDoEndBlock:
+  Description: 'Avoid chaining a method call on a do...end block.'
+  StyleGuide: '#single-line-blocks'
+  Enabled: true
+
+Style/Send:
+  Description: 'Prefer `Object#__send__` or `Object#public_send` to `send`, as `send` may overlap with existing methods.'
+  StyleGuide: '#prefer-public-send'
+  Enabled: true
+
+Style/BlockDelimiters:
+  AllowedMethods: []
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - staging
+    - development
+    - test
+
+Bundler/DuplicatedGem:
+  Enabled: true
+  Include:
+    - '**/Gemfile'
+    - '**/gems.rb'
+    - '**/.overcommit_gems'
+
+Metrics/BlockLength:
+  Description: 'Avoid long blocks with many lines.'
+  Enabled: true
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - 'config/routes.rb'
+    - 'config/routes/*.rb'
+    - 'config/environments/*.rb'
+    - 'app/models/concerns/**/*.rb'
+
+Metrics/MethodLength:
+  Max: 45
+  Exclude:
+    - 'db/**/*'
+
+Metrics/PerceivedComplexity:
+  Max: 15
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/AbcSize:
+  Max: 45
+  Exclude:
+    - 'db/**/*'
+    - 'app/controllers/concerns/routes/base.rb'
+
+Metrics/ModuleLength:
+  Max: 250
+
+Metrics/ClassLength:
+  Max: 250
+
+# Following Cops were disabled:
+
+Style/Encoding:
+  Description: 'Use UTF-8 as the source file encoding.'
+  Enabled: false
 
 Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Description: 'Avoid empty condition in case statements.'
+  Enabled: false
+
+Style/FormatStringToken:
+  Description: 'Prefer annotated tokens (like `%<foo>s`) over unannotated tokens (like `%s`).'
+  Enabled: false
+
+Style/CommentedKeyword:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+# Rails cops
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+# RSpec cops
+
+RSpec/AnyInstance:
+  Description: 'Avoid stubbing using `allow_any_instance_of`.'
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 30
+
+RSpec/SpecFilePathFormat:
+  Description: 'Checks that spec file paths are consistent with the test subject.'
+  Enabled: true
+  IgnoreMethods: true
+
+RSpec/SpecFilePathSuffix:
+  Description: 'Checks that spec file paths have the correct suffix.'
+  Enabled: true
+
+RSpec/LetSetup:
+  Description: 'Checks unreferenced `let!` calls being used for test setup.'
+  Enabled: false
+  Exclude:
+    - 'spec/services/posts/search_spec.rb'
+
+RSpec/MultipleExpectations:
+  Description: 'Checks if examples contain too many `expect` calls.'
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 15
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpecRails/InferredSpecType:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Description: 'Prefer using verifying doubles over normal doubles.'
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/tasks/deployment/*.rb'
+
+RSpec/ContextWording:
+  Enabled: true
+  Prefixes:
+    - when
+    - with
+    - without
+    - if
+    - unless
+    - for
+
+Style/ClassAndModuleChildren:
   Enabled: false
 
 Rails/FilePath:
@@ -17,55 +240,54 @@ Rails/FilePath:
 Rails/HasAndBelongsToMany:
   Enabled: false
 
-Metrics/MethodLength:
-  Max: 40
-
-Metrics/AbcSize:
-  Max: 40
-
-Metrics/BlockLength:
-  Max: 30
+Rails/CreateTableWithTimestamps:
+  Enabled: false
 
 Rails/LexicallyScopedActionFilter:
   Enabled: false
 
-Style/ClassAndModuleChildren:
+Rails/Output:
   Enabled: false
 
 Style/SymbolArray:
   Enabled: false
 
-Lint/MissingSuper:
+Style/ReturnNilInPredicateMethodDefinition:
   Enabled: false
 
-RSpec/MultipleExpectations:
+Style/ClassVars:
   Enabled: false
 
-RSpec/RepeatedDescription:
+Naming/PredicateMethod:
+  AllowedMethods:
+    - call
+    - inline_query
+    - action
+    - main_call_respond
+    - error_message
+    - "valid?"
+
+Rails/BulkChangeTable:
   Enabled: false
 
-Layout/HashAlignment:
+Rails/DangerousColumnNames:
   Enabled: false
+  Exclude:
+    - 'db/**/*'
 
 Security/Eval:
   Exclude:
     - 'spec/services/posts/filter_spec.rb'
     - 'spec/services/posts/search_spec.rb'
 
-RSpec/LetSetup:
+# Global configuration:
+
+AllCops:
+  NewCops: enable
   Exclude:
-    - 'spec/services/posts/search_spec.rb'
-
-Rails/Output:
-  Exclude:
-    - 'db/seeds.rb'
-
-Style/RedundantFetchBlock:
-  Exclude:
-    - 'app/services/chatgpt_service.rb'
-
-Rails/CreateTableWithTimestamps:
-  Enabled: false
-
-RSpec/MessageSpies:
-  Enabled: false
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'config/deploy.rb'
+    - 'config/puma.rb'
+    - 'config/locales/**/*'
+  TargetRubyVersion: 3.4.9

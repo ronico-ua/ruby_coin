@@ -5,7 +5,9 @@ require 'rails_helper'
 xdescribe 'Home Page', type: :feature do
   before do
     @main_post = create(:post, main_post: true)
+    # rubocop:disable FactoryBot/ExcessiveCreateList
     create_list(:post, 20)
+    # rubocop:enable FactoryBot/ExcessiveCreateList
     visit root_path
   end
 

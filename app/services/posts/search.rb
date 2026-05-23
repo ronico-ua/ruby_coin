@@ -16,7 +16,7 @@ class Posts::Search < BaseService
   def call
     return if params[:query].blank?
 
-    Post.active.send(search_scope, params[:query])
+    Post.active.public_send(search_scope, params[:query])
   end
 
   def search_scope

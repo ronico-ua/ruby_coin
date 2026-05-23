@@ -52,10 +52,12 @@ group :development do
   gem 'factory_bot_rails', '~> 6.5', '>= 6.5.1'
   gem 'overcommit', '~> 0.69.0'
   gem 'pry-rails'
+  gem 'rubocop-factory_bot', require: false
   gem 'rubocop-faker', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
   gem 'web-console'
 
   gem 'capistrano', '~> 3.20'
