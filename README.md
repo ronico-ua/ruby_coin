@@ -1,5 +1,7 @@
 # RubyCoin
 
+[![CI](https://github.com/ronico-ua/ruby_coin/actions/workflows/ci.yml/badge.svg)](https://github.com/ronico-ua/ruby_coin/actions/workflows/ci.yml)
+
 Preinstallation
 --------------
 ### PostgreSQL setup
