@@ -19,21 +19,20 @@ gem 'globalize', '~> 7.0'
 gem 'groupdate'
 gem 'hotwire-rails'
 gem 'httparty'
-gem 'importmap-rails'
 gem 'jsbundling-rails'
 gem 'nokogiri'
 gem 'pagy', '~> 43.2'
 gem 'pg', '~> 1.6', '>= 1.6.2'
 gem 'pg_search', '~> 2.3', '>= 2.3.7'
-gem 'puma', '~> 7.1'
+gem 'puma', '~> 8.0'
 gem 'pundit', '~> 2.5', '>= 2.5.2'
 gem 'pundit-matchers', '~> 4.0'
-gem 'rails', '~> 7.2', '>= 7.2.3'
+gem 'rails', '~> 8.1'
 gem 'rails-i18n'
-gem 'rbs', '~> 3.1'
+gem 'rbs'
 gem 'redis'
-gem 'sass-rails', '~> 6.0' # Use SCSS for stylesheets
-gem 'sidekiq', '~> 7.3', '>= 7.3.10'
+gem 'sass-rails', '~> 6.0'
+gem 'sidekiq'
 gem 'slim'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
@@ -42,7 +41,6 @@ gem 'turbo-rails', '~> 2.0', '>= 2.0.20'
 
 group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
-  gem 'bundler-leak', '~> 0.3.0'
   gem 'dotenv-rails', '~> 3.2'
   gem 'faker'
   gem 'fasterer', '~> 0.11.0'
@@ -63,7 +61,7 @@ group :development do
   gem 'web-console'
 
   gem 'capistrano', '~> 3.20'
-  gem 'capistrano3-puma', '~> 7.1', require: false
+  gem 'capistrano3-puma', require: false
   gem 'capistrano-bundler', '~> 2.2', require: false
   gem 'capistrano-rails', '~> 1.7', '~> 1.6', require: false
   gem 'capistrano-rbenv', '~> 2.2', require: false
